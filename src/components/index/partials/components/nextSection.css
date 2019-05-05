@@ -1,0 +1,10 @@
+.next-section-btn {
+  margin-top: auto;
+  align-self: flex-start;
+  color: #999;
+}
+.next-section-btn:hover {
+  margin-top: auto;
+  align-self: flex-start;
+  color: #888;
+}

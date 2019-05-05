@@ -4,7 +4,7 @@ export class Btn extends Component {
   render() {
     return (
       <Button
-        className="is-large join-btn"
+        className="is-large join-btn btn"
         color="dark"
         onClick={() => console.log(this)}
       >

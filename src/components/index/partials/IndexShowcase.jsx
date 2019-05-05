@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../index.css";
 import { Heading } from "react-bulma-components";
 import { Btn } from "../../partials/Btn";
+import NextSection from "./components/NextSection";
 
 export class IndexShowcase extends Component {
   render() {
@@ -15,6 +16,7 @@ export class IndexShowcase extends Component {
           The writer, not the the metro stop
         </Heading>
         <Btn name="Join Us" />
+        <NextSection href="#index-banner" />
       </section>
     );
   }

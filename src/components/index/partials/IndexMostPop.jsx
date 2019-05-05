@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Btn from "../../partials/Btn";
 import { Heading, Section, Hero, Container } from "react-bulma-components/full";
+import NextSection from "./components/NextSection";
 
 export class MostPop extends Component {
   render() {
@@ -20,7 +21,10 @@ export class MostPop extends Component {
             </Container>
           </Hero.Body>
         </Hero>
-        <Btn className="enroll-btn" name="Enroll" />
+        <div className="btn-container">
+          <Btn className="enroll-btn" name="Enroll" />
+          <NextSection href="#index-courses" />
+        </div>
       </Section>
     );
   }
