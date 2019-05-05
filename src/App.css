@@ -19,3 +19,10 @@ svg:hover {
   color: #000;
   transition: all 0.3s linear;
 }
+.chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}

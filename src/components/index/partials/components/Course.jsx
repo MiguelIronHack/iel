@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import { Card, Media, Image, Content, Heading } from "react-bulma-components";
 import Moment from "react-moment";
 const date = Date.now();

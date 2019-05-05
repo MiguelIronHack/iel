@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "iel",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,8 +10,11 @@
     "@storybook/addon-actions": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/react": "^5.0.11",
+    "axios": "^0.18.0",
     "bulma": "^0.7.4",
     "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
     "i": "^0.3.6",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
@@ -29,7 +32,7 @@
   },
   "scripts": {
     "start": "concurrently 'npm run react' 'npm run server'",
-    "server": "nodemon src/server/index.js",
+    "server": "nodemon src/server/server.js",
     "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
