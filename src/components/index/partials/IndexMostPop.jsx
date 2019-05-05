@@ -23,7 +23,7 @@ export class MostPop extends Component {
         </Hero>
         <div className="btn-container">
           <Btn className="enroll-btn" name="Enroll" />
-          <NextSection href="#index-courses" />
+          <NextSection className="next-section-btn" href="#index-courses" />
         </div>
       </Section>
     );

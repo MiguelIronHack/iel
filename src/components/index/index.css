@@ -52,7 +52,9 @@
 .btn {
   margin: 4vh 0;
 }
-
+.footer {
+  max-height: 10vh;
+}
 @media screen and (max-width: 800px) {
   .index-title {
     font-size: 1.4rem;

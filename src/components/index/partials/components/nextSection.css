@@ -8,3 +8,7 @@
   align-self: flex-start;
   color: #888;
 }
+.footer-btn > * {
+  transform: rotate(180deg);
+  margin-left: 50vw;
+}

@@ -16,7 +16,7 @@ export class IndexShowcase extends Component {
           The writer, not the the metro stop
         </Heading>
         <Btn name="Join Us" />
-        <NextSection href="#index-banner" />
+        <NextSection className="next-section-btn" href="#index-banner" />
       </section>
     );
   }
