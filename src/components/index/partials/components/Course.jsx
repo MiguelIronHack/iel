@@ -13,9 +13,8 @@ export class Course extends Component {
             <Media>
               <Media.Item renderAs="figure" position="left">
                 <Image
-                  renderAs="p"
                   size={64}
-                  alt="64x64"
+                  alt="course image"
                   src="http://bulma.io/images/placeholders/128x128.png"
                 />
               </Media.Item>

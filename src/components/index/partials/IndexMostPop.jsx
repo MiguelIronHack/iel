@@ -5,8 +5,8 @@ import { Heading, Section, Hero, Container } from "react-bulma-components/full";
 export class MostPop extends Component {
   render() {
     return (
-      <Section id="pop-section" className="pop-section bb">
-        <Hero color="primary br mb">
+      <Section id="pop-section" className="pop-section br mb bb">
+        <Hero color="primary">
           <Hero.Body>
             <Container>
               <Heading>Hero title Primary</Heading>

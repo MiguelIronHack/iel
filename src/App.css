@@ -12,3 +12,10 @@ html {
 .navbar > * {
   padding: 0 1rem;
 }
+svg {
+  transition: all 0.25s linear;
+}
+svg:hover {
+  color: #000;
+  transition: all 0.3s linear;
+}
