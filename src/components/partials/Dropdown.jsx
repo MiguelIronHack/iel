@@ -1,5 +1,6 @@
 import React from "react";
 import { Dropdown } from "react-bulma-components";
+import { NavLink } from "react-router-dom";
 
 export default class NavBarDropdown extends React.Component {
   state = {
@@ -11,12 +12,19 @@ export default class NavBarDropdown extends React.Component {
   render() {
     return (
       <Dropdown
-        className="columns is-vcentered has-margin-left-4 is-hoverable"
+        className="columns is-vcentered has-margin-left-4 is-hoverable "
         value={this.state.selected}
         onChange={this.onChange}
       >
-        <Dropdown.Item value="active">Login</Dropdown.Item>
-        <Dropdown.Item value="other 2">Register</Dropdown.Item>
+        <Dropdown.Item value="login">
+          <NavLink className="has-text-dark" to="/login">
+            Login
+          </NavLink>
+        </Dropdown.Item>
+
+        <Dropdown.Item value="register">
+          <NavLink to="/register">Register</NavLink>
+        </Dropdown.Item>
       </Dropdown>
     );
   }
