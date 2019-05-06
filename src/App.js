@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import "moment-timezone";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import Navbar from "./components/partials/NavMain";
 import Index from "./components/index/Index";
 import Profile from "./components/profile/Profile";
@@ -23,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);

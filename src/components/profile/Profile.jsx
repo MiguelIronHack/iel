@@ -11,6 +11,7 @@ import "./profile.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCog } from "@fortawesome/free-solid-svg-icons";
+import UploadForm from "../upload/UploadForm";
 
 export class Profile extends Component {
   state = {
@@ -20,6 +21,7 @@ export class Profile extends Component {
   render() {
     return (
       <section className="profile-section">
+        <UploadForm />
         <Menu>
           <Menu.List title="Profile">
             <Menu.List.Item>{this.state.name}</Menu.List.Item>
