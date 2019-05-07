@@ -8,6 +8,7 @@ import Index from "./components/index/Index";
 import Profile from "./components/profile/Profile";
 import Register from "./components/login&register/Register";
 import Login from "./components/login&register/Login";
+import Dashboard from "./components/dashboard/Dashboard";
 
 // import Layout from "./components/chat/Layout";
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/profile" component={Profile} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
+        <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </div>
   );

@@ -1,72 +1,89 @@
 import React, { Component } from "react";
 import { getAllCourses, createCourse } from "../../api/apiHandler";
+import { Heading } from "react-bulma-components";
 import "./form.css";
 
 export default class uploadForm extends Component {
   state = {
     title: "",
+    description: "",
     content: "",
-    ref: "",
-    image: null,
-    category: null,
-    categories: []
+    image: ""
   };
 
   componentDidMount() {
     getAllCourses()
       .then(res => {
-        this.setState({ category: res.data[0], categories: res.data });
+        this.setState({ category: res.data });
       })
       .catch(err => console.error(err));
   }
 
-  handleSubmit = e => {
+  onSubmit = e => {
     e.preventDefault();
 
     createCourse({
       title: this.state.title,
+      description: this.state.description,
       content: this.state.content,
-      image: this.state.image,
-      category: this.state.category,
-      ref: this.state.ref
+      image: this.state.image
     })
       .then(res => console.log(res.data))
       .catch(err => console.error(err));
   };
 
-  handleInput = e => {
-    console.log(e.target);
+  onChange = e => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
   render() {
-    const { handleSubmit, handleInput } = this;
+    const { onSubmit, onChange } = this;
+    const { title, description, content, image } = this.state;
     return (
-      <section className="new-course-section">
-        <form className="course-form" id="course-form" onSubmit={handleSubmit}>
-          <label htmlFor="title">Title</label>
-          <input onChange={handleInput} type="text" id="title" name="title" />
-          <label htmlFor="content">Content</label>
-          <input
-            onChange={handleInput}
-            type="text"
-            id="content"
-            name="content"
-          />
-          <label htmlFor="image">Image</label>
-          <input onChange={handleInput} type="text" id="image" name="image" />
-          <label htmlFor="category">Category</label>
-          <input
-            onChange={handleInput}
-            type="text"
-            id="category"
-            name="category"
-          />
-          <label htmlFor="ref">Ref</label>
-          <input onChange={handleInput} type="text" id="ref" name="ref" />
-          <button className="button">Submit</button>
+      <section className="login-register-section">
+        <Heading className="has-text-centered	">Upload Course</Heading>
+        <form className="register-form box" onSubmit={onSubmit}>
+          <div className="control">
+            <label htmlFor="title">Title</label>
+            <input
+              value={title}
+              onChange={onChange}
+              className="input"
+              placeholder="input your title here..."
+              name="title"
+              type="text"
+            />
+            <label htmlFor="description">Description</label>
+            <input
+              value={description}
+              onChange={onChange}
+              className="input"
+              placeholder="input your description here..."
+              name="description"
+              type="text"
+            />
+            <label htmlFor="content">Content</label>
+            <input
+              value={content}
+              onChange={onChange}
+              className="input"
+              placeholder="input your content here..."
+              name="content"
+              type="text"
+            />
+            <label htmlFor="image">Image</label>
+            <input
+              value={image}
+              onChange={onChange}
+              className="input"
+              placeholder="input your image here..."
+              name="image"
+              type="input"
+            />
+          </div>
+          <button className="button is-primary  is-focused">Submit</button>
         </form>
       </section>
     );
