@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Heading } from "react-bulma-components";
 import "./loginRegister.css";
+import { createUser } from "../../api/userHandler";
 
 export default class Register extends Component {
   state = {
@@ -13,6 +14,18 @@ export default class Register extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+
+    createUser({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2
+    })
+      .then(res => {
+        // console.log(res.data);
+      })
+      .catch(err => console.log(err.response));
   };
 
   onChange = e => {
