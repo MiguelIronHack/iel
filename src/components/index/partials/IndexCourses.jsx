@@ -6,15 +6,26 @@ import { Heading, Columns } from "react-bulma-components";
 
 export class IndexCourses extends Component {
   state = {
-    title: "",
-    description: "",
-    image: "",
-    date: ""
+    title: "title",
+    description: [],
+    image: "img",
+    date: []
   };
 
   componentDidMount() {
     getAllCourses()
-      .then(res => console.log(res.data))
+      .then(res => {
+        res.data.map(e => {
+          this.setState({
+            title: e.title,
+            description: e.description,
+            image: e.image,
+            date: e.date
+          });
+          console.log(e.date);
+          console.log(this.state.date);
+        });
+      })
       .catch(err => console.error(err));
   }
 
@@ -26,43 +37,11 @@ export class IndexCourses extends Component {
           <Columns.Column size={3}>
             <Course
               className="course-link"
-              courseContent={this.props.courseContent}
-            />
-          </Columns.Column>
-          <Columns.Column size={6}>
-            <Course
-              className="course-link"
-              courseContent={this.props.courseContent}
-            />
-          </Columns.Column>
-          <Columns.Column size={3}>
-            <Course
-              className="course-link"
-              courseContent={this.props.courseContent}
-            />
-          </Columns.Column>
-          <Columns.Column size={3}>
-            <Course
-              className="course-link"
-              courseContent={this.props.courseContent}
-            />
-          </Columns.Column>
-          <Columns.Column size={3}>
-            <Course
-              className="course-link"
-              courseContent={this.props.courseContent}
-            />
-          </Columns.Column>
-          <Columns.Column size={3}>
-            <Course
-              className="course-link"
-              courseContent={this.props.courseContent}
-            />
-          </Columns.Column>
-          <Columns.Column size={3}>
-            <Course
-              className="course-link"
-              courseContent={this.props.courseContent}
+              title={this.state.title}
+              description={this.state.description}
+              content={this.state.content}
+              image={this.state.image}
+              // date={this.state.date}
             />
           </Columns.Column>
         </Columns>
