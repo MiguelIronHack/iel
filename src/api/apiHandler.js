@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ApiUrl = "http://localhost:8000/api";
+const ApiUrl = "http://localhost:4000/api";
 
 export const getAllCourses = () => axios.get(`${ApiUrl}/course`);
 
