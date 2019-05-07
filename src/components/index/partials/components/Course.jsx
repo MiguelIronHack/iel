@@ -2,7 +2,6 @@ import React, { Component } from "react";
 // import { NavLink } from "react-router-dom";
 import { Card, Media, Image, Content, Heading } from "react-bulma-components";
 import Moment from "react-moment";
-const date = Date.now();
 
 export class Course extends Component {
   render() {
@@ -14,21 +13,21 @@ export class Course extends Component {
               <Media.Item renderAs="figure" position="left">
                 <Image
                   size={64}
-                  alt="course image"
-                  src="http://bulma.io/images/placeholders/128x128.png"
+                  alt={this.props.title}
+                  src={this.props.image}
                 />
               </Media.Item>
               <Media.Item>
-                <Heading size={4}>Course</Heading>
+                <Heading size={4}>{this.props.title}</Heading>
                 <Heading subtitle size={6}>
-                  Course Description
+                  {this.props.description}
                 </Heading>
               </Media.Item>
             </Media>
             <Content>
-              {this.props.courseContent}
+              {this.props.content}
               <br />
-              <Moment format="DD/MM/YYYY">{date}</Moment>
+              <Moment format="DD/MM/YYYY">{this.props.date}</Moment>
             </Content>
           </Card.Content>
         </Card>

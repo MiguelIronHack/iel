@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getAllCourses, createCourse } from "../../api/apiHandler";
+import { getAllCourses, createCourse } from "../../api/coursesHandler";
 import { Heading } from "react-bulma-components";
 import "./form.css";
 
@@ -10,14 +10,6 @@ export default class uploadForm extends Component {
     content: "",
     image: ""
   };
-
-  componentDidMount() {
-    getAllCourses()
-      .then(res => {
-        this.setState({ category: res.data });
-      })
-      .catch(err => console.error(err));
-  }
 
   onSubmit = e => {
     e.preventDefault();

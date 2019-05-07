@@ -1,9 +1,23 @@
 import React, { Component } from "react";
+import { getAllCourses } from "../../../api/coursesHandler";
 import Course from "./components/Course";
 import Btn from "../../partials/Btn";
 import { Heading, Columns } from "react-bulma-components";
 
 export class IndexCourses extends Component {
+  state = {
+    title: "",
+    description: "",
+    image: "",
+    date: ""
+  };
+
+  componentDidMount() {
+    getAllCourses()
+      .then(res => console.log(res.data))
+      .catch(err => console.error(err));
+  }
+
   render() {
     return (
       <section className="index-courses m-p" id="index-courses">
