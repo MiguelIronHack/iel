@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { getAllCourses, createCourse } from "../../api/apiHandler";
-import { Btn } from "../partials/Btn";
 import "./form.css";
 
 export default class uploadForm extends Component {
   state = {
     title: "",
+    content: "",
     ref: "",
     image: null,
     category: null,
@@ -36,8 +36,9 @@ export default class uploadForm extends Component {
 
   handleInput = e => {
     console.log(e.target);
-    const { title, value } = e.target;
-    this.setState({ [title]: value });
+    this.setState({
+      [e.target.id]: e.target.value
+    });
   };
 
   render() {
@@ -65,7 +66,7 @@ export default class uploadForm extends Component {
           />
           <label htmlFor="ref">Ref</label>
           <input onChange={handleInput} type="text" id="ref" name="ref" />
-          <Btn name="Submit Course" />
+          <button className="button">Submit</button>
         </form>
       </section>
     );
