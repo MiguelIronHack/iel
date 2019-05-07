@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import UploadForm from "../upload/UploadForm";
+import Courses from "../index/partials/IndexCourses";
 
 export default class Dashboard extends Component {
   render() {
-    return <UploadForm />;
+    return (
+      <React.Fragment>
+        <UploadForm />
+        <Courses />
+      </React.Fragment>
+    );
   }
 }

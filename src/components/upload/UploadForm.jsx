@@ -38,6 +38,12 @@ export default class uploadForm extends Component {
     });
   };
 
+  onClick = () => {
+    getAllCourses()
+      .then(res => console.log(res.data))
+      .catch(err => console.error(err));
+  };
+
   render() {
     const { onSubmit, onChange } = this;
     const { title, description, content, image } = this.state;
@@ -85,6 +91,8 @@ export default class uploadForm extends Component {
           </div>
           <button className="button is-primary  is-focused">Submit</button>
         </form>
+        <div>{this.state.title}</div>
+        <button onClick={this.onClick}>hi</button>
       </section>
     );
   }
