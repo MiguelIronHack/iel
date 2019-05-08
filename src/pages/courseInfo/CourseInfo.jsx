@@ -1,7 +1,7 @@
 import React from "react";
 import { Heading } from "react-bulma-components";
 import Btn from "../../components/partials/Btn";
-import "./CourseInfo.css";
+import "./courseInfo.css";
 
 export default function courseInfo() {
   return (
