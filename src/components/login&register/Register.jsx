@@ -23,7 +23,7 @@ export default class Register extends Component {
       password2: this.state.password2
     })
       .then(res => {
-        // console.log(res.data);
+        console.log(res.data);
       })
       .catch(err => console.log(err.response));
   };
