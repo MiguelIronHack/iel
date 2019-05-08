@@ -1,6 +1,30 @@
 .course-section {
   padding: 5vh 5vw;
 }
-.aside-panel-margin {
+.panel {
+  filter: drop-shadow(0.3rem 0.25rem 0.1rem #ccc);
+}
+.panel-block {
+  display: flex;
+  min-width: 12vw;
+}
+.aside-panel-icon {
   margin-left: auto;
+}
+.course-table {
+  margin: 0 1vw;
+}
+.course-panel {
+  position: fixed;
+}
+.course-content {
+  margin-left: 17vw;
+}
+@media screen and (max-width: 450px) {
+  .course-panel {
+    position: static;
+  }
+  .course-content {
+    margin-left: auto;
+  }
 }
