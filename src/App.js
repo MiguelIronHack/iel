@@ -12,6 +12,8 @@ import Dashboard from "./components/dashboard/Dashboard";
 import About from "./pages/about/About";
 import CourseInfo from "./pages/courseInfo/CourseInfo";
 
+import Courses from "./pages/courses/Courses";
+import Footer from "./components/partials/Footer";
 // import Layout from "./components/chat/Layout";
 
 /* <Layout className="chat" /> */
@@ -19,9 +21,7 @@ import CourseInfo from "./pages/courseInfo/CourseInfo";
 function App() {
   return (
     <div className="App has-background-white-bis">
-      <nav>
-        <Navbar />
-      </nav>
+      <Navbar />
       <Switch>
         <Route path="/" component={Index} exact />
         <Route path="/profile" component={Profile} />
@@ -31,7 +31,9 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/course-info" component={CourseInfo} />
 
+        <Route path="/course" component={Courses} />
       </Switch>
+      <Footer />
     </div>
   );
 }
