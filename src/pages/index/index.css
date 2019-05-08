@@ -36,6 +36,12 @@
   justify-content: space-evenly;
   align-items: center;
 }
+.index-banner-icon {
+  transition: all 0.3s linear;
+}
+.index-banner-icon:hover {
+  color: hsl(0, 0%, 48%);
+}
 .index-courses {
   min-height: 60vh;
   display: flex;

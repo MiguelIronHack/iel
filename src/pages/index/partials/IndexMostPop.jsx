@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Btn from "../../partials/Btn";
+import Btn from "../../../components/partials/Btn";
 import { Heading, Section, Hero, Container } from "react-bulma-components/full";
-import NextSection from "./components/NextSection";
+import NextSection from "../components/NextSection";
 
 export class MostPop extends Component {
   render() {
