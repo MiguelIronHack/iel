@@ -16,7 +16,7 @@ export default class Login extends Component {
         console.log(res.data);
         if (res.data._id) {
           setLocalToken(res.data._id);
-          this.props.history.push("/dashboard");
+          this.props.history.push("/profile");
         } else {
           this.props.history.push("/login");
         }
