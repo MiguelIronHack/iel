@@ -1,15 +1,18 @@
-.navbar-brand {
-  text-align: center;
+.course-info {
+  padding: 5vh 5vw;
 }
-
+.navbar-start {
+  display: flex;
+}
+.course-info-nav-link:hover {
+  color: hsl(0, 0%, 29%) !important;
+}
 .category {
-  font-size: 1.5rem;
   text-align: left;
-  margin: 1vh 3vh;
+  margin: 1vh 3vw;
 }
 
 .course-title {
-  font-size: 4rem;
   text-align: left;
   margin: 3vh;
 }
@@ -21,7 +24,6 @@
 }
 
 .contributor {
-  font-size: 2.5rem;
   text-align: left;
   margin: 4vh;
 }
@@ -39,20 +41,18 @@
 }
 
 .headers {
-  font-size: 3rem;
   text-align: left;
   margin: 4vh;
+  font-size: 2.5rem;
 }
 
 .description {
-  font-size: 1.5rem;
   text-align: left;
   margin: 2vh 6vh;
   text-align: justify;
 }
 
 .module-title {
-  font-size: 2.5rem;
   font-weight: bold;
   text-align: left;
   margin: 2vh 6vh;
@@ -61,31 +61,44 @@
 
 .lessons {
   list-style: circle;
+  margin: 0 10vh;
 }
 
-ul li {
-  font-size: 1.5rem;
-  text-align: left;
-  margin: 2vh 10vh;
-  text-align: justify;
+.module {
+  width: 90%;
+  margin: 1% auto;
+  padding: 2%;
 }
 
 .card-container {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   max-width: 80%;
-  margin: 10vh auto;
+  margin: 3vh auto;
+  justify-content: space-between;
+}
+.opinnion {
+  width: 30%;
+  padding: 2%;
+}
+
+.contributor-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 90%;
+  margin: 3vh auto;
   justify-content: space-between;
 }
 
-.opinnion {
-  width: 30%;
+.contributor-content img {
+  width: 20%;
+  border-radius: 50px;
 }
 
-.module {
-  width: 90%;
-  margin: auto;
-  padding: 2%;
+.contributor-description {
+  width: 75%;
 }
 
 @media only screen and (max-width: 770px) {
@@ -93,8 +106,10 @@ ul li {
     flex-direction: column;
     align-items: center;
   }
-
   .opinnion {
     width: 90%;
+    padding: 2%;
+    text-align: center;
+    margin: 1vh auto;
   }
 }
