@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 export default class CourseTable extends Component {
   render() {
     return (
@@ -14,11 +14,6 @@ export default class CourseTable extends Component {
           </thead>
           <tbody>
             <tr>
-              <td>Videos</td>
-              <td>5h 30min</td>
-              <td>3h 20min</td>
-            </tr>
-            <tr>
               <td>Lessons</td>
               <td>5h 30min</td>
               <td>3h 20min</td>
@@ -29,12 +24,18 @@ export default class CourseTable extends Component {
               <td>3h 20min</td>
             </tr>
             <tr>
-              <td>Other</td>
-              <td>5h 30min</td>
-              <td>3h 20min</td>
+              <td>
+                <Link
+                  className=" button is-primary resume-course-btn"
+                  to="course"
+                >
+                  Resume
+                </Link>
+              </td>
             </tr>
           </tbody>
         </table>
+
         <div className="course-table table is-hoverable is-fullwidth">
           <article className="message has-background-white">
             <div className="message-body">
