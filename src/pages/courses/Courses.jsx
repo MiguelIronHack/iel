@@ -49,7 +49,7 @@ export default class Courses extends Component {
               <FontAwesomeIcon icon={faBook} />
             </span>
           </div>
-          <p className="panel-heading" />
+          <p className="panel-heading panel-footer" />
         </aside>
         <div
           className="course-content column is-four-fifths

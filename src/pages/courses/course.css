@@ -24,6 +24,12 @@
 .course-content {
   margin-left: 17vw;
 }
+.panel-footer {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 @media screen and (max-width: 450px) {
   .course-section {
     max-width: 100%;
