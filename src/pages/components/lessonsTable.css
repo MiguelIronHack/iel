@@ -1,0 +1,6 @@
+.lesson-link {
+  text-decoration: none !important;
+}
+.lesson-link:hover {
+  background: hsl(0, 0%, 96%);
+}

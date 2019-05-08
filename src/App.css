@@ -26,7 +26,7 @@ svg {
   transition: all 0.25s linear;
 }
 svg:hover {
-  color: #000;
+  color: hsl(0, 0%, 21%);
   transition: all 0.3s linear;
 }
 .chat {
