@@ -1,14 +1,100 @@
+.navbar-brand {
+  text-align: center;
+}
+
 .category {
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-align: left;
   margin: 1vh 3vh;
 }
 
 .course-title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   text-align: left;
   margin: 3vh;
 }
 
 .rate {
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 4vh;
+}
+
+.contributor {
+  font-size: 2.5rem;
+  text-align: left;
+  margin: 4vh;
+}
+
+#about {
+  margin: 5vh 0;
+}
+
+#program {
+  margin: 5vh 0;
+}
+
+#contributor {
+  margin: 5vh 0;
+}
+
+.headers {
+  font-size: 3rem;
+  text-align: left;
+  margin: 4vh;
+}
+
+.description {
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 2vh 6vh;
+  text-align: justify;
+}
+
+.module-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: left;
+  margin: 2vh 6vh;
+  text-align: justify;
+}
+
+.lessons {
+  list-style: circle;
+}
+
+ul li {
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 2vh 10vh;
+  text-align: justify;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin: 10vh auto;
+  justify-content: space-between;
+}
+
+.opinnion {
+  width: 30%;
+}
+
+.module {
+  width: 90%;
+  margin: auto;
+  padding: 2%;
+}
+
+@media only screen and (max-width: 770px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .opinnion {
+    width: 90%;
+  }
 }
