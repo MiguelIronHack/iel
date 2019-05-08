@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import UploadForm from "../upload/UploadForm";
-import Courses from "../../pages/index/partials/IndexCourses";
+import UploadForm from "../../components/upload/UploadForm";
+import Courses from "../index/partials/IndexCourses";
 
 export default class Dashboard extends Component {
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../index.css";
 import { Heading } from "react-bulma-components";
-import { Btn } from "../../../components/partials/Btn";
+import { Btn } from "../../../components/Btn";
 import NextSection from "../components/NextSection";
 
 export class IndexShowcase extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getAllCourses } from "../../../api/coursesHandler";
 import Course from "../components/Course";
-import Btn from "../../../components/partials/Btn";
+import Btn from "../../../components/Btn";
 import { Heading, Columns } from "react-bulma-components";
 
 export class IndexCourses extends Component {

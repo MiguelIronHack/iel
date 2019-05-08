@@ -3,18 +3,18 @@ import "react-bulma-components";
 import "./App.css";
 import "moment-timezone";
 import { Switch, Route, withRouter } from "react-router-dom";
-import Navbar from "./components/partials/NavMain";
+import Navbar from "./components/NavMain";
 import Index from "./pages/index/Index";
 
-import Profile from "./components/profile/Profile";
-import Register from "./components/login&register/Register";
-import Login from "./components/login&register/Login";
-import Dashboard from "./components/dashboard/Dashboard";
+import Profile from "./pages/profile/Profile";
+import Register from "./pages/login&register/Register";
+import Login from "./pages/login&register/Login";
+import Dashboard from "./pages/dashboard/Dashboard";
 import About from "./pages/about/About";
 import Courses from "./pages/courses/Courses";
 import CourseInfo from "./pages/courseInfo/CourseInfo";
 import CourseContent from "./pages/courseContent/CourseContent";
-import Footer from "./components/partials/Footer";
+import Footer from "./components/Footer";
 
 function App() {
   return (

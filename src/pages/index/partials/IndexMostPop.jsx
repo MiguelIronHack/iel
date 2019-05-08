@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Btn from "../../../components/partials/Btn";
+import Btn from "../../../components/Btn";
 import { Heading, Section, Hero, Container } from "react-bulma-components/full";
 import NextSection from "../components/NextSection";
 
 export class MostPop extends Component {
   render() {
     return (
-      <Section id="pop-section" className="pop-section br mb bb">
+      <Section id="pop-section" className="pop-section">
         <Hero color="primary">
           <Hero.Body>
             <Container>
@@ -21,10 +21,9 @@ export class MostPop extends Component {
             </Container>
           </Hero.Body>
         </Hero>
-        <div className="btn-container">
-          <Btn className="enroll-btn" name="Enroll" />
-          <NextSection className="next-section-btn" href="#index-courses" />
-        </div>
+
+        <Btn className="enroll-btn" name="Enroll" />
+        <NextSection className="next-section-btn" href="#index-courses" />
       </Section>
     );
   }
