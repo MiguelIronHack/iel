@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Heading } from "react-bulma-components";
+import { setLocalToken } from "../../api/ajaxLogin";
+import { login } from "../../api/userHandler";
 
 export default class Login extends Component {
   state = {
@@ -9,16 +11,28 @@ export default class Login extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    login({ email: this.state.email, password: this.state.password })
+      .then(res => {
+        console.log(res.data);
+        if (res.data._id) {
+          setLocalToken(res.data._id);
+          this.props.history.push("/dashboard");
+        } else {
+          this.props.history.push("/login");
+        }
+      })
+      .catch(err => this.props.history.push("/login"));
   };
 
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state.email);
   };
 
   render() {
+    // console.log(this.state.email);
+    // console.log(this.state.password);
     const { email, password } = this.state;
     return (
       <section className="login-register-section">
