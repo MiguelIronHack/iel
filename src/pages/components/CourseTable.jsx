@@ -27,7 +27,7 @@ export default class CourseTable extends Component {
               <td>
                 <Link
                   className=" button is-primary resume-course-btn"
-                  to="course"
+                  to="course-content"
                 >
                   Resume
                 </Link>

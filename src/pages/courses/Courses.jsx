@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Progress, Heading } from "react-bulma-components";
-import CourseTable from "./partials/CourseTable";
-import CourseSidePanel from "./partials/CourseSidePanel";
+import CourseTable from "../components/CourseTable";
+import CourseSidePanel from "../components/CourseSidePanel";
 import "./course.css";
 
 export default class Courses extends Component {

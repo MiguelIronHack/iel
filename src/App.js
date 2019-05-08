@@ -11,7 +11,7 @@ import Login from "./components/login&register/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import About from "./pages/about/About";
 import CourseInfo from "./pages/courseInfo/CourseInfo";
-
+import CourseContent from "./pages/courseContent/CourseContent";
 import Courses from "./pages/courses/Courses";
 import Footer from "./components/partials/Footer";
 // import Layout from "./components/chat/Layout";
@@ -31,6 +31,7 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/course-info" component={CourseInfo} />
 
+        <Route path="/course-content" component={CourseContent} />
         <Route path="/course" component={Courses} />
       </Switch>
       <Footer />
