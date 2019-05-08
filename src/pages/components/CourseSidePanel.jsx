@@ -15,7 +15,7 @@ export default class CourseSidePanel extends Component {
         <label className="panel-block has-background-dark has-text-white aside-panel-text">
           Week 1
           <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon icon={faCircle} />
+            <FontAwesomeIcon icon={faCheckCircle} />
           </span>
         </label>
 
