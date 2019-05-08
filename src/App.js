@@ -10,6 +10,7 @@ import Register from "./components/login&register/Register";
 import Login from "./components/login&register/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import About from "./pages/about/About";
+import CourseInfo from "./pages/courseInfo/CourseInfo";
 
 // import Layout from "./components/chat/Layout";
 
@@ -28,6 +29,8 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/about" component={About} />
+        <Route path="/course-info" component={CourseInfo} />
+
       </Switch>
     </div>
   );
