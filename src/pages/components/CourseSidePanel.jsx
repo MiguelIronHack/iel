@@ -15,35 +15,35 @@ export default class CourseSidePanel extends Component {
         <label className="panel-block has-background-dark has-text-white aside-panel-text">
           Week 1
           <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon color="hsl(0, 0%, 96%)" icon={faCircle} />
+            <FontAwesomeIcon icon={faCircle} />
           </span>
         </label>
 
         <label className="panel-block has-background-dark has-text-white aside-panel-text">
           Week 2
           <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon color="hsl(0, 0%, 96%)" icon={faCircle} />
+            <FontAwesomeIcon icon={faCircle} />
           </span>
         </label>
 
         <label className="panel-block has-background-dark has-text-white aside-panel-text">
           Week 3
           <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon color="hsl(0, 0%, 96%)" icon={faCircle} />
+            <FontAwesomeIcon icon={faCircle} />
           </span>
         </label>
 
         <label className="panel-block has-background-dark has-text-white aside-panel-text">
           <div className="aside-panel-text">Forum</div>
           <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon color="hsl(0, 0%, 96%)" icon={faComments} />
+            <FontAwesomeIcon icon={faComments} />
           </span>
         </label>
 
         <label className="panel-block has-background-dark has-text-white aside-panel-text">
           <div className="aside-panel-text"> Info</div>
           <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon color="hsl(0, 0%, 96%)" icon={faBook} />
+            <FontAwesomeIcon icon={faBook} />
           </span>
         </label>
         <p className="panel-heading panel-footer" />
