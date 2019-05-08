@@ -8,7 +8,7 @@
   border-radius: 5px;
 }
 .m-p {
-  padding: 1vh 10vw;
+  padding: 1vh 5vw;
 }
 .mb {
   margin-bottom: 5vh;
@@ -22,7 +22,11 @@
     url(../../media/showcaseTeach.jpg) center no-repeat;
   background-size: cover;
 }
+.title {
+  text-align: center;
+}
 .join-btn {
+  align-self: center;
   width: fit-content;
 }
 .index-banner {
@@ -36,7 +40,6 @@
   min-height: 60vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .pop-section {
   padding: 5rem 2rem 0;

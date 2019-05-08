@@ -9,6 +9,10 @@ export default class about extends Component {
     };
   }
 
+  onSubmit = e => {
+    e.preventDefault();
+  };
+
   onChange(editorState) {
     this.setState({ editorState });
     console.log(this.state.editorState);
@@ -22,7 +26,7 @@ export default class about extends Component {
     const raw = convertToRaw(this.state.editorState.getCurrentContent());
 
     return (
-      <React.Fragment>
+      <form onSubmit={this.onSubmit}>
         <button
           onClick={() => {
             this.makeBold();
@@ -38,7 +42,8 @@ export default class about extends Component {
         />
 
         <div>{JSON.stringify(raw)}</div>
-      </React.Fragment>
+        <button className="button">submit</button>
+      </form>
     );
   }
 }

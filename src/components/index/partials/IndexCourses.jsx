@@ -16,14 +16,12 @@ export class IndexCourses extends Component {
     getAllCourses()
       .then(res => {
         res.data.map(e => {
-          this.setState({
+          return this.setState({
             title: e.title,
             description: e.description,
             image: e.image,
             date: e.date
           });
-          console.log(e.date);
-          console.log(this.state.date);
         });
       })
       .catch(err => console.error(err));

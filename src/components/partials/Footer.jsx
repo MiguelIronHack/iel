@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Footer, Container } from "react-bulma-components";
-import NextSection from "./components/NextSection";
+import NextSection from "../index/partials/components/NextSection";
 
 export class IndexFooter extends Component {
   render() {

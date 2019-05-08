@@ -18,7 +18,7 @@ export class Course extends Component {
                 />
               </Media.Item>
               <Media.Item>
-                <Heading size={4}>{this.props.title}</Heading>
+                <Heading size={5}>{this.props.title}</Heading>
                 <Heading subtitle size={6}>
                   {this.props.description}
                 </Heading>
