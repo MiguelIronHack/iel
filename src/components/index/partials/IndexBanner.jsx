@@ -11,10 +11,18 @@ export default class Banner extends Component {
   render() {
     return (
       <footer id="index-banner" className="index-banner bb">
-        <FontAwesomeIcon size="3x" icon={faReact} />
-        <FontAwesomeIcon size="3x" icon={faGithub} />
-        <FontAwesomeIcon size="3x" icon={faNodeJs} />
-        <FontAwesomeIcon size="3x" icon={faUbuntu} />
+        <span className="index-banner-icon">
+          <FontAwesomeIcon size="3x" icon={faReact} />
+        </span>
+        <span className="index-banner-icon">
+          <FontAwesomeIcon size="3x" icon={faGithub} />
+        </span>
+        <span className="index-banner-icon">
+          <FontAwesomeIcon size="3x" icon={faNodeJs} />
+        </span>
+        <span className="index-banner-icon">
+          <FontAwesomeIcon size="3x" icon={faUbuntu} />
+        </span>
       </footer>
     );
   }
