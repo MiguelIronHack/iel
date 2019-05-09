@@ -5,42 +5,35 @@ import Btn from "../../../components/Btn";
 import { Heading, Columns } from "react-bulma-components";
 
 export class IndexCourses extends Component {
-  state = {
-    title: "title",
-    description: [],
-    image: "img",
-    date: []
-  };
+  state = { courses: [] };
 
   componentDidMount() {
     getAllCourses()
       .then(res => {
-        res.data.map(e => {
-          return this.setState({
-            title: e.title,
-            description: e.description,
-            image: e.media.image,
-            date: e.date
-          });
-        });
+        console.log("taking data ", res.data);
+        this.setState({ courses: res.data });
+        console.log("testing state after taking data ", this.state.courses);
       })
-      .catch(err => console.error(err));
+      .catch(err => console.error(err.response));
   }
 
   render() {
+    const { courses } = this.state;
     return (
       <section className="index-courses m-p" id="index-courses">
         <Heading>Title</Heading>
         <Columns>
-          <Columns.Column size={3}>
-            <Course
-              className="course-link"
-              title={this.state.title}
-              description={this.state.description}
-              content={this.state.content}
-              image={this.state.image}
-            />
-          </Columns.Column>
+          {courses.map((course, index) => (
+            <Columns.Column size={3} key={index}>
+              <Course
+                className="course-link"
+                title={course.title}
+                description={course.description}
+                content={course.content}
+                image={course.image}
+              />
+            </Columns.Column>
+          ))}
         </Columns>
         <Btn className="mb" name="Explore Our Courses" toPage="explore" />
       </section>
