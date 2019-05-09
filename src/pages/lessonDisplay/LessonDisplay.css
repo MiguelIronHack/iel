@@ -1,0 +1,17 @@
+.lesson-header {
+  max-width: 70%;
+  margin: 2vh 0 0 35vh;
+}
+.lesson {
+  max-width: 70%;
+  margin: 3vh 0 0 35vh;
+  text-align: justify;
+}
+
+.lesson-description {
+  font-style: oblique;
+}
+
+.lesson-content {
+  padding-top: 3vh;
+}
