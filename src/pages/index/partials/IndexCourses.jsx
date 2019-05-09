@@ -3,7 +3,6 @@ import { getAllCourses } from "../../../api/coursesHandler";
 import Course from "../components/Course";
 import Btn from "../../../components/Btn";
 import { Heading, Columns } from "react-bulma-components";
-import { Redirect } from "react-router-dom";
 
 export class IndexCourses extends Component {
   state = {

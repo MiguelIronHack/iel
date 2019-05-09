@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Heading } from "react-bulma-components";
 import { setLocalToken } from "../../api/ajaxLogin";
 import { login } from "../../api/userHandler";
+import { Btn } from "../../components/Btn";
 
 export default class Login extends Component {
   state = {
@@ -60,6 +61,8 @@ export default class Login extends Component {
           </div>
           <button className="button is-primary  is-focused">Submit</button>
         </form>
+        <p>Don't you have an account yet?</p>
+        <Btn className="is-small" name="Create an Account" toPage="register" />
       </section>
     );
   }
