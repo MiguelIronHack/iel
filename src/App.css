@@ -1,5 +1,3 @@
-@import url("https://fontlibrary.org/face/bebasneueregular");
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,7 +17,6 @@ h5,
 h6,
 button {
   letter-spacing: 0.6px;
-  font-family: "BebasNeueRegular" !important;
 }
 
 .ml-1 {
