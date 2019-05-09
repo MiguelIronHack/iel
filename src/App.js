@@ -14,7 +14,9 @@ import About from "./pages/about/About";
 import Courses from "./pages/courses/Courses";
 import CourseInfo from "./pages/courseInfo/CourseInfo";
 import CourseContent from "./pages/courseContent/CourseContent";
+
 import Footer from "./components/Footer";
+import LessonDisplay from "./pages/lessonDisplay/LessonDisplay";
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
         <Route path="/course-info" component={CourseInfo} />
 
         <Route path="/course-content" component={CourseContent} />
+        <Route path="/lesson" component={LessonDisplay} />
         <Route path="/course" component={Courses} />
       </Switch>
       <Footer />
