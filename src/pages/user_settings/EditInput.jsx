@@ -1,12 +1,13 @@
 import React from "react";
 
 const EditInput = props => {
-  const { label, inputPlaceHolder } = props;
+  const { label, inputPlaceHolder, onChange: handleChange } = props;
   return (
     <div className="field">
       <label className="label">{label}</label>
       <div className="control has-icons-left has-icons-right">
         <input
+          onChange={handleChange}
           className="input is-success"
           type="text"
           placeholder={inputPlaceHolder}

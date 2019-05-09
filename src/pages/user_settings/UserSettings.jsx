@@ -13,13 +13,18 @@ class UserSettings extends Component {
     userDescription: "Hey im here to learn to code !",
     isEditable: false
   };
-
+  handleSubmit = data => {
+    console.log(data);
+  };
   handleClick = e => {};
   render() {
     const { user: userName } = this.props.match.params;
     return (
       <div className="container columns is-12">
-        <SettingsForm className="column is-4" submit={this.handleSubmit} />
+        <SettingsForm
+          className="column is-4"
+          handleSubmit={this.handleSubmit}
+        />
         <UserCard className="column is-4" data={this.state} />
       </div>
     );
