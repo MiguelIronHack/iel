@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "react-bulma-components";
 import "./App.css";
 import "moment-timezone";
+import { getAllCategories } from "./api/categoryHandler";
 import { Switch, Route, withRouter } from "react-router-dom";
 import Navbar from "./components/NavMain";
 import Index from "./pages/index/Index";
@@ -18,27 +19,47 @@ import UserSettings from "./pages/user_settings/UserSettings";
 import Footer from "./components/Footer";
 import LessonDisplay from "./pages/lessonDisplay/LessonDisplay";
 import Explore from "./pages/explore/Explore";
-function App() {
-  return (
-    <div className="App has-background-white-bis">
-      <Navbar />
-      <Switch>
-        <Route path="/" component={Index} exact />
-        <Route path="/profile/:user/settings" component={UserSettings} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/about" component={About} />
-        <Route path="/course-info" component={CourseInfo} />
-        <Route path="/course-content" component={CourseContent} />
-        <Route path="/lesson" component={LessonDisplay} />
-        <Route path="/course" component={Courses} />
-        <Route path="/explore" component={Explore} />
-      </Switch>
-      <Footer />
-    </div>
-  );
+
+class App extends Component {
+  state = {
+    categories: []
+  };
+
+  componentDidMount() {
+    getAllCategories()
+      .then(res => {
+        res.data.map(e => {
+          return this.setState({
+            categories: e.categories
+          });
+        });
+        console.log(res.data);
+      })
+      .catch(err => console.error(err));
+  }
+
+  render() {
+    return (
+      <div className="App has-background-white-bis">
+        <Navbar />
+        <Switch>
+          <Route path="/" component={Index} exact />
+          <Route path="/profile/:user/settings" component={UserSettings} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/about" component={About} />
+          <Route path="/course-info" component={CourseInfo} />
+          <Route path="/course-content" component={CourseContent} />
+          <Route path="/lesson" component={LessonDisplay} />
+          <Route path="/course" component={Courses} />
+          <Route path="/explore" component={Explore} />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default withRouter(App);
