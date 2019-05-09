@@ -84,7 +84,7 @@ export default class uploadForm extends Component {
           <button className="button is-primary  is-focused">Submit</button>
         </form>
         <div>{this.state.title}</div>
-        <button onClick={this.onClick}>hi</button>
+        {/* <button onClick={this.onClick}>hi</button> */}
       </section>
     );
   }
