@@ -1,28 +1,20 @@
 import React from "react";
-import { Heading } from "react-bulma-components";
-import Btn from "../../components/Btn";
+import { Heading, Button } from "react-bulma-components";
 import "./CourseInfo.css";
 
 export default function courseInfo() {
   return (
     <section className="course-info">
-      <Heading size={4} className="	category">
-        Category: What a great category
-      </Heading>
-      <Heading size={2} className="	category">
-        COURSE TITLE
-      </Heading>
-      <Heading size={4} className="	category">
-        Contributor
-      </Heading>
-      <Heading size={5} className="	category">
-        Rate: *****
-      </Heading>
+      <header className="course-header">
+        <Heading size={4}>Category: What a great category</Heading>
+        <Heading size={2}>COURSE TITLE</Heading>
+        <Heading size={4}>Contributor</Heading>
+        <Heading size={5}>Rate: *****</Heading>
 
-      <Btn className="enroll-btn" name="Enroll Now!" />
-
+        <Button className="is-primary category-btn">Enroll Now!</Button>
+      </header>
       <nav className="nav has-background-dark ">
-        <ul className="navbar-start ">
+        <ul className="navbar-start course-info-nav">
           <li>
             <a
               className="navbar-item has-text-white-ter course-info-nav-link"

@@ -1,20 +1,39 @@
+@import url("https://fontlibrary.org/face/bebasneueregular");
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 html,
 body {
   scroll-behavior: smooth;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  letter-spacing: 0.6px;
+  font-family: "BebasNeueRegular" !important;
+}
+
 .ml-1 {
   margin-left: 1rem;
 }
+
 .ml-2 {
   margin-left: 2rem;
 }
 .ml-3 {
   margin-left: 3rem;
+}
+.tl {
+  text-align: left;
 }
 .index-title {
   color: #ccc;

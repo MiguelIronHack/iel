@@ -18,3 +18,11 @@
   background: hsl(348, 100%, 91%);
   transition: all 1.5s ease-out;
 }
+.profile-section .table td {
+  padding: 1rem 0;
+}
+@media screen and (min-width: 800px) {
+  .profile-section {
+    margin: 5vh 15vw;
+  }
+}

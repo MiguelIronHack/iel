@@ -1,17 +1,25 @@
 .course-info {
   padding: 5vh 5vw;
 }
-.navbar-start {
+.course-info-nav {
   display: flex;
+  justify-content: space-around;
+}
+.course-info-nav-link {
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .course-info-nav-link:hover {
   color: hsl(0, 0%, 29%) !important;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-.category {
-  text-align: left;
-  margin: 1vh 3vw;
+.course-header {
+  display: flex;
+  flex-direction: column;
 }
-
+.category-btn {
+  width: min-content;
+  margin: 4vh auto;
+}
 .course-title {
   text-align: left;
   margin: 3vh;
@@ -93,8 +101,8 @@
 }
 
 .contributor-content img {
-  width: 20%;
-  border-radius: 50px;
+  height: 100%;
+  border-radius: 50%;
 }
 
 .contributor-description {
