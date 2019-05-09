@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 
 export default class NavBarDropdown extends React.Component {
   state = {
-    selected: "active"
+    selected: "active",
+    user: "HeyLmao",
+    isAuth: true
   };
   onChange = selected => {
     this.setState({ selected });
@@ -18,13 +20,21 @@ export default class NavBarDropdown extends React.Component {
       >
         <Dropdown.Item value="login">
           <NavLink className="has-text-dark" to="/login">
-            Login
+            {this.state.user ? this.state.user : "Login"}
           </NavLink>
         </Dropdown.Item>
 
-        <Dropdown.Item value="register">
-          <NavLink to="/register">Register</NavLink>
-        </Dropdown.Item>
+        {this.state.isAuth ? (
+          <Dropdown.Item value="settings">
+            <NavLink to={`/profile/${this.state.user}/settings`}>
+              Settings
+            </NavLink>
+          </Dropdown.Item>
+        ) : (
+          <Dropdown.Item value="register">
+            <NavLink to="/register">Register</NavLink>
+          </Dropdown.Item>
+        )}
       </Dropdown>
     );
   }
