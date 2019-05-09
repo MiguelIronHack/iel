@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { Button } from "react-bulma-components";
-export class Btn extends Component {
-  render() {
-    return (
-      <Button
-        className="is-large join-btn btn"
-        color="dark"
-        onClick={() => console.log(this)}
-      >
-        {this.props.name}
+import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+export function Btn({ toPage, name }) {
+  return (
+    <Link to={toPage}>
+      <Button className="is-large join-btn btn" color="dark">
+        {name}
       </Button>
-    );
-  }
+    </Link>
+  );
 }
 
 export default Btn;
