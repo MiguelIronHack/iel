@@ -3,13 +3,15 @@ import { getAllCourses } from "../../../api/coursesHandler";
 import Course from "../components/Course";
 import Btn from "../../../components/Btn";
 import { Heading, Columns } from "react-bulma-components";
+import { Redirect } from "react-router-dom";
 
 export class IndexCourses extends Component {
   state = {
     title: "title",
     description: [],
     image: "img",
-    date: []
+    date: [],
+    isSubmited: false
   };
 
   componentDidMount() {
@@ -27,7 +29,16 @@ export class IndexCourses extends Component {
       .catch(err => console.error(err));
   }
 
+  handleRedirect = e => {
+    this.setState({ isSubmited: true });
+  };
+
   render() {
+    if (this.state.isSubmited == true) {
+      console.log(" redirecting");
+      return <Redirect to="/explore" />;
+    }
+
     return (
       <section className="index-courses m-p" id="index-courses">
         <Heading>Title</Heading>
@@ -43,7 +54,11 @@ export class IndexCourses extends Component {
             />
           </Columns.Column>
         </Columns>
-        <Btn className="mb" name="Explore Our Courses" />
+        <Btn
+          className="mb"
+          name="Explore Our Courses"
+          onClick={this.handleRedirect}
+        />
       </section>
     );
   }
