@@ -17,7 +17,7 @@ import CourseContent from "./pages/courseContent/CourseContent";
 import UserSettings from "./pages/user_settings/UserSettings";
 import Footer from "./components/Footer";
 import LessonDisplay from "./pages/lessonDisplay/LessonDisplay";
-import Explore from "./pages/explore/explore";
+import Explore from "./pages/explore/Explore";
 function App() {
   return (
     <div className="App has-background-white-bis">
