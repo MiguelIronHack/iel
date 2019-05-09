@@ -8,7 +8,10 @@ export default class uploadForm extends Component {
     title: "",
     description: "",
     content: "",
-    image: ""
+    media: {
+      video: "",
+      image: ""
+    }
   };
 
   onSubmit = e => {
@@ -18,7 +21,9 @@ export default class uploadForm extends Component {
       title: this.state.title,
       description: this.state.description,
       content: this.state.content,
-      image: this.state.image
+      media: {
+        image: this.state.media.image
+      }
     })
       .then(res => console.log(res.data))
       .catch(err => console.error(err));
@@ -38,7 +43,7 @@ export default class uploadForm extends Component {
 
   render() {
     const { onSubmit, onChange } = this;
-    const { title, description, content, image } = this.state;
+    const { title, description, content, media } = this.state;
     return (
       <section className="login-register-section">
         <Heading className="has-text-centered	">Upload Course</Heading>
@@ -73,7 +78,6 @@ export default class uploadForm extends Component {
             />
             <label htmlFor="image">Image</label>
             <input
-              value={image}
               onChange={onChange}
               className="input"
               placeholder="input your image here..."
