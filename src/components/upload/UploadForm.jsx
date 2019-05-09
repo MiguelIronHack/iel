@@ -7,9 +7,9 @@ export default class uploadForm extends Component {
   state = {
     title: "",
     description: "",
-    content: "",
     video: "",
-    image: ""
+    image: "",
+    category: []
   };
 
   onSubmit = e => {
@@ -18,7 +18,7 @@ export default class uploadForm extends Component {
     createCourse({
       title: this.state.title,
       description: this.state.description,
-      content: this.state.content,
+      category: this.state.category,
       media: {
         video: this.state.video,
         image: this.state.image
@@ -32,6 +32,7 @@ export default class uploadForm extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(e.target.value);
   };
 
   onClick = () => {
@@ -40,9 +41,13 @@ export default class uploadForm extends Component {
       .catch(err => console.error(err));
   };
 
+  verifyThis = e => {
+    console.log(e.target.value);
+  };
+
   render() {
     const { onSubmit, onChange } = this;
-    const { title, description, content, image, video } = this.state;
+    const { title, category, description, image, video } = this.state;
 
     return (
       <section className="login-register-section">
@@ -67,21 +72,37 @@ export default class uploadForm extends Component {
               name="description"
               type="text"
             />
-            <label htmlFor="content">Content</label>
+            <label htmlFor="video">Video</label>
             <input
-              value={content}
+              value={video}
               onChange={onChange}
               className="input"
-              placeholder="input your content here..."
-              name="content"
-              type="text"
+              placeholder="input your video link here..."
+              name="video"
+              type="input"
             />
+            <label htmlFor="category">Category</label>
+            <div
+              value={category}
+              onChange={onChange}
+              className="select control"
+              placeholder="input your category link here..."
+              name="category"
+              type="input"
+            >
+              <select>
+                <option>Programming</option>
+                <option>Music</option>
+                <option>Other</option>
+              </select>
+            </div>
+
             <label htmlFor="image">Image</label>
             <input
               value={image}
               onChange={onChange}
               className="input"
-              placeholder="input your image here..."
+              placeholder="input your image link here..."
               name="image"
               type="input"
             />

@@ -20,7 +20,7 @@ export class IndexCourses extends Component {
           return this.setState({
             title: e.title,
             description: e.description,
-            image: e.image,
+            image: e.media.image,
             date: e.date
           });
         });
@@ -40,7 +40,6 @@ export class IndexCourses extends Component {
               description={this.state.description}
               content={this.state.content}
               image={this.state.image}
-              // date={this.state.date}
             />
           </Columns.Column>
         </Columns>
