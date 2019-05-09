@@ -5,7 +5,8 @@ import {
   Media,
   Image,
   Heading,
-  Content
+  Content,
+  Button
 } from "react-bulma-components";
 import "./profile.css";
 import { Link } from "react-router-dom";
@@ -17,6 +18,12 @@ export class Profile extends Component {
     name: "João Cabeça de Chouriço",
     courses: ["JS", "React", "HTML", "CSS"]
   };
+
+  handleDelete = e => {
+    console.log(e.target);
+    //TODO HANDLE DELETE BUTTON
+  };
+
   render() {
     return (
       <section className="profile-section">
@@ -58,14 +65,7 @@ export class Profile extends Component {
                       <Link to={name}>
                         <Card.Footer.Item renderAs="p">Resume</Card.Footer.Item>
                       </Link>
-                      <Link to="delete">
-                        <Card.Footer.Item
-                          className="has-text-danger danger-hover"
-                          renderAs="p"
-                        >
-                          Delete
-                        </Card.Footer.Item>
-                      </Link>
+                      <Button remove onClick={this.handleDelete} />
                     </Card.Footer>
                   </Card>
                 </td>

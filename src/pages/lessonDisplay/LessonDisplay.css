@@ -1,5 +1,14 @@
 .lesson-display-section {
-  margin-left: 17vw;
+  padding: 4vh 4vw;
+}
+.lesson-header {
+  text-align: center;
+  line-height: 0.5;
+}
+
+.lesson-header:after {
+  left: 100%;
+  margin-left: 15px;
 }
 
 .lesson-description {
@@ -8,4 +17,22 @@
 
 .lesson-content {
   padding-top: 3vh;
+}
+.lesson-nav {
+  display: flex;
+}
+.lesson-nav-left,
+.lesson-nav-right {
+  display: flex;
+  align-items: center;
+}
+.lesson-nav-left,
+.lesson-nav-right > * {
+  margin: 1rem;
+}
+.lesson-nav-left > * > svg {
+  margin-right: 1rem;
+}
+.lesson-nav-right {
+  margin-left: auto;
 }
