@@ -10,8 +10,7 @@ export class IndexCourses extends Component {
     title: "title",
     description: [],
     image: "img",
-    date: [],
-    isSubmited: false
+    date: []
   };
 
   componentDidMount() {
@@ -29,16 +28,7 @@ export class IndexCourses extends Component {
       .catch(err => console.error(err));
   }
 
-  handleRedirect = e => {
-    this.setState({ isSubmited: true });
-  };
-
   render() {
-    if (this.state.isSubmited == true) {
-      console.log(" redirecting");
-      return <Redirect to="/explore" />;
-    }
-
     return (
       <section className="index-courses m-p" id="index-courses">
         <Heading>Title</Heading>
@@ -54,11 +44,7 @@ export class IndexCourses extends Component {
             />
           </Columns.Column>
         </Columns>
-        <Btn
-          className="mb"
-          name="Explore Our Courses"
-          onClick={this.handleRedirect}
-        />
+        <Btn className="mb" name="Explore Our Courses" toPage="explore" />
       </section>
     );
   }
