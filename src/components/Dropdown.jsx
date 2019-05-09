@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 export default class NavBarDropdown extends React.Component {
   state = {
     selected: "active",
-    user: "HeyLmao",
-    isAuth: true
+    user: "",
+    isAuth: false
   };
   onChange = selected => {
     this.setState({ selected });
