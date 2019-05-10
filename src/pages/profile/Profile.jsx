@@ -23,6 +23,7 @@ export class Profile extends Component {
   };
 
   render() {
+    if (!window.localStorage.userCredential) this.props.history.push("/");
     return (
       <section className="profile-section">
         <table className="table profile-table columns">
