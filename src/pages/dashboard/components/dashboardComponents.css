@@ -23,3 +23,8 @@
 .edit-course :hover {
   cursor: pointer;
 }
+
+.btn-create-course {
+  text-align: center;
+  display: block;
+}

@@ -3,9 +3,7 @@ import DashboardNav from "./DashboardNav";
 import { getAllCourses, deleteCourse } from "../../../api/coursesHandler";
 import "./dashboardComponents.css";
 import Btn from "../../../components/Btn";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faUserTimes } from "@fortawesome/free-solid-svg-icons";
-// import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default class UsersList extends Component {
   state = { courses: [] };
@@ -60,12 +58,15 @@ export default class UsersList extends Component {
                 <td className="td">{course.title}</td>
                 <td className="td">{course.description}</td>
                 <td className="td">{course.submitted}</td>
+
                 <td className="td edit-course">
-                  <i
-                    data-id={course._id}
-                    // onClick={this.handleModify}
-                    className="fas fa-edit"
-                  />
+                  <Link to={`/edit-course/${course._id}`}>
+                    <i
+                      data-id={course._id}
+                      // onClick={this.handleModify}
+                      className="fas fa-edit"
+                    />
+                  </Link>
                 </td>
                 <td className="td delete-course">
                   <i
@@ -78,7 +79,9 @@ export default class UsersList extends Component {
             ))}
           </tbody>
         </table>
-        <Btn name="Create New Course" toPage="create-course" />
+        <span className="btn-create-course">
+          <Btn name="Create New Course" toPage="create-course" />
+        </span>
       </React.Fragment>
     );
   }
