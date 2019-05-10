@@ -16,3 +16,11 @@
   width: 50%;
   margin: 3vh auto;
 }
+
+.delete-user :hover {
+  cursor: pointer;
+}
+
+.edit-user :hover {
+  cursor: pointer;
+}
