@@ -17,7 +17,10 @@ export default class Login extends Component {
         console.log(res.data);
         if (res.data._id) {
           setLocalToken(res.data._id);
-          this.props.history.push("/profile");
+          // this.props.history.push("/profile");
+          //this my dOOds is to refresh the state of the page to have
+          // so the navbar state is refreshed with the current info
+          window.location = "/profile";
         } else {
           this.props.history.push("/login");
         }
