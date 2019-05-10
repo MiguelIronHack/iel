@@ -18,6 +18,8 @@ import UserSettings from "./pages/user_settings/UserSettings";
 import Footer from "./components/Footer";
 import LessonDisplay from "./pages/lessonDisplay/LessonDisplay";
 import Explore from "./pages/explore/Explore";
+import UserManagement from "./pages/dashboard/components/UserManagement";
+import CourseManagement from "./pages/dashboard/components/CourseManagement";
 function App() {
   return (
     <div className="App has-background-white-bis">
@@ -35,6 +37,8 @@ function App() {
         <Route path="/lesson" component={LessonDisplay} />
         <Route path="/course" component={Courses} />
         <Route path="/explore" component={Explore} />
+        <Route path="/usermanagement" component={UserManagement} />
+        <Route path="/coursemanagement" component={CourseManagement} />
       </Switch>
       <Footer />
     </div>
