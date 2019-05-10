@@ -6,40 +6,55 @@ export default class SettingsForm extends Component {
 
   raiseSubmit = e => {
     e.preventDefault();
-    const children = e.target.children;
-    for (let item of children) {
-      console.log(item);
-    }
+    this.props.handleSubmit({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      userName: this.state.userName,
+      image: this.state.image
+    });
   };
 
   handleChange = e => {
-    console.log("change");
+    this.setState({ [e.currentTarget.name]: e.currentTarget.value });
+    console.log(this.state);
+  };
+  prevent = e => {
+    e.preventDefault();
   };
 
   render() {
-    const { userName, lastName, image, raiseSubmit } = this.props;
+    const { userName, lastName, image, firstName } = this.state;
     return (
-      <form className="column is-4" onSubmit={raiseSubmit}>
-        <EditInput
-          inputPlaceHolder={userName}
-          onChange={this.handleChange}
-          name="hey"
-          label="User Name"
-        />
-        <EditInput
-          inputPlaceHolder={lastName}
-          name="ho"
-          onChange={this.handleChange}
-          label="Last Name"
-        />
-        <EditInput
-          inputPlaceHolder={image}
-          name="letsgo"
-          onChange={this.handleChange}
-          label="Image url"
-        />
-        <button className="button">Submit changes</button>
-      </form>
+      <React.Fragment>
+        <form id={userName} onSubmit={this.raiseSubmit} className="column is-4">
+          <EditInput
+            inputPlaceHolder={userName}
+            onChange={this.handleChange}
+            name="userName"
+            label="User Name"
+          />
+          <EditInput
+            inputPlaceHolder={firstName}
+            onChange={this.handleChange}
+            name="firstName"
+            label="First Name"
+            id="firstName"
+          />
+          <EditInput
+            inputPlaceHolder={lastName}
+            name="lastName"
+            onChange={this.handleChange}
+            label="Last Name"
+          />
+          <EditInput
+            inputPlaceHolder={image}
+            name="image"
+            onChange={this.handleChange}
+            label="Image url"
+          />
+          <button className="button">Save Changes</button>
+        </form>
+      </React.Fragment>
     );
   }
 }

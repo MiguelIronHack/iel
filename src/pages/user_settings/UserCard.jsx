@@ -1,12 +1,7 @@
 import React from "react";
 
 const UserCard = props => {
-  const {
-    firstName,
-    lastName,
-    userName,
-    image = "https://c-7npsfqifvt0x24hbnfqfejbx2edvstfdeox2edpn.g00.gamepedia.com/g00/3_c-7tusfbnfst.hbnfqfejb.dpn_/c-7NPSFQIFVT0x24iuuqtx3ax2fx2fhbnfqfejb.dvstfdeo.dpnx2fux78judi_hbnfqfejbx2f2x2f2bx2fJnbruqjf.QOHx3fwfstjpox3df429e3251gee9g70830cb847g67d3930x26j21d.nbslx3djnbhf_$/$/$/$/$"
-  } = props.data;
+  const { firstName, lastName, userName, image, userDescription } = props.data;
 
   return (
     <div className="card">
@@ -24,6 +19,7 @@ const UserCard = props => {
               {lastName}
             </p>
             <p className="subtitle is-6">{userName}</p>
+            <p className="subtitle is-6">{userDescription}</p>
           </div>
         </div>
       </div>
