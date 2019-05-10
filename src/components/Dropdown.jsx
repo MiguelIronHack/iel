@@ -1,6 +1,7 @@
 import React from "react";
 import { Dropdown } from "react-bulma-components";
 import { NavLink } from "react-router-dom";
+import { logout } from "../api/userHandler";
 
 export default class NavBarDropdown extends React.Component {
   state = {
@@ -10,6 +11,15 @@ export default class NavBarDropdown extends React.Component {
   };
   onChange = selected => {
     this.setState({ selected });
+  };
+
+  handleSignOut = e => {
+    logout()
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log("fuck"));
+    window.location = "/";
   };
 
   componentDidMount() {
@@ -41,8 +51,8 @@ export default class NavBarDropdown extends React.Component {
                 Settings
               </NavLink>
             </Dropdown.Item>
-            <Dropdown.Item value="settings">
-              <NavLink to={`/`}>Sign Out</NavLink>
+            <Dropdown.Item onClick={this.handleSignOut} value="settings">
+              Sign Out
             </Dropdown.Item>
           </React.Fragment>
         ) : (
