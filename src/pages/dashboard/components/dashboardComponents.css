@@ -17,10 +17,9 @@
   margin: 3vh auto;
 }
 
-.delete-user :hover {
-  cursor: pointer;
-}
-
-.edit-user :hover {
+.delete-user,
+.delete-course,
+.edit-user,
+.edit-course :hover {
   cursor: pointer;
 }

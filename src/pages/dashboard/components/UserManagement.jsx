@@ -56,7 +56,7 @@ export default class UsersList extends Component {
           <tbody className="tbody">
             {users.map((user, index) => (
               <tr className="tr" key={index}>
-                <td className="td">{user.firstName}</td>
+                <td className="td">{user.firsName}</td>
                 <td className="td">{user.lastName}</td>
                 <td className="td">{user.email}</td>
                 <td className="td edit-user">
