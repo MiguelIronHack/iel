@@ -1,20 +1,42 @@
 import React, { Component } from "react";
 import DashboardNav from "./DashboardNav";
-import { getAllUsers } from "../../../api/userHandler";
-import { Link } from "react-router-dom";
+import { getAllUsers, deleteUser } from "../../../api/userHandler";
 import "./dashboardComponents.css";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faUserTimes } from "@fortawesome/free-solid-svg-icons";
+// import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 
 export default class UsersList extends Component {
   state = { users: [] };
+
   componentDidMount() {
-    console.log("users before function: ", this.state.users);
+    this.displayBoard();
+  }
+
+  displayBoard() {
     getAllUsers()
       .then(res => {
-        console.log("users after function: ", res.data);
         this.setState({ users: res.data });
       })
       .catch(err => console.error(err.response));
   }
+
+  handleModify = e => {
+    const id = e.target.getAttribute("data-id");
+    console.log("this is the user ID to MODIFY: ", id);
+  };
+
+  handleDelete = e => {
+    const id = e.target.getAttribute("data-id");
+    console.log("this is the user ID to DELETE: ", id);
+
+    deleteUser(id)
+      .then(res => {
+        this.displayBoard();
+      })
+      .catch(err => console.error(err.response, "qqqqqq"));
+  };
+
   render() {
     const { users } = this.state;
     console.log(users);
@@ -34,14 +56,25 @@ export default class UsersList extends Component {
           <tbody className="tbody">
             {users.map((user, index) => (
               <tr className="tr" key={index}>
-                <td className="td">{user.firstName}</td>
+                <td className="td">{user.firsName}</td>
                 <td className="td">{user.lastName}</td>
                 <td className="td">{user.email}</td>
-                <td className="td">EDIT</td>
-                <td className="td">X</td>
+                <td className="td edit-user">
+                  <i
+                    data-id={user._id}
+                    onClick={this.handleModify}
+                    className="fas fa-user-edit"
+                  />
+                </td>
+                <td className="td delete-user">
+                  <i
+                    data-id={user._id}
+                    onClick={this.handleDelete}
+                    className="fas fa-user-times"
+                  />
+                </td>
               </tr>
             ))}
-            ;
           </tbody>
         </table>
       </React.Fragment>

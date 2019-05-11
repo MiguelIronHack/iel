@@ -16,3 +16,15 @@
   width: 50%;
   margin: 3vh auto;
 }
+
+.delete-user,
+.delete-course,
+.edit-user,
+.edit-course :hover {
+  cursor: pointer;
+}
+
+.btn-create-course {
+  text-align: center;
+  display: block;
+}

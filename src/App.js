@@ -20,6 +20,8 @@ import LessonDisplay from "./pages/lessonDisplay/LessonDisplay";
 import Explore from "./pages/explore/Explore";
 import UserManagement from "./pages/dashboard/components/UserManagement";
 import CourseManagement from "./pages/dashboard/components/CourseManagement";
+import UploadForm from "./components/upload/UploadForm"
+import EditCourse from "./pages/dashboard/components/EditCourse";
 function App() {
   return (
     <div className="App has-background-white-bis">
@@ -39,6 +41,8 @@ function App() {
         <Route path="/explore" component={Explore} />
         <Route path="/usermanagement" component={UserManagement} />
         <Route path="/coursemanagement" component={CourseManagement} />
+        <Route path="/create-course" component={UploadForm} />
+        <Route path="/edit-course/:course" component={EditCourse} />
       </Switch>
       <Footer />
     </div>
