@@ -8,8 +8,8 @@ export const getLocalToken = function getLocalToken(name) {
 };
 
 /**
- * 
- * @param {*} token 
+ *
+ * @param {*} token
  * @return {undefined} void return
  */
 export const setLocalToken = function setLocalToken(token, name) {
@@ -17,7 +17,7 @@ export const setLocalToken = function setLocalToken(token, name) {
 };
 
 /**
- * 
+ *
  * @return {undefined} void return
  */
 export const deleteLocalToken = function deleteLocalToken(name) {
@@ -29,7 +29,7 @@ export const logUserOut = function logUserOut() {
 };
 
 /**
- * 
+ *
  * @return {boolean} True if user is logged in, false otherwise
  */
 export const isLoggedIn = function isLoggedIn() {

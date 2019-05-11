@@ -10,7 +10,7 @@ export default class SettingsForm extends Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       userName: this.state.userName,
-      image: this.state.image
+      avatar: this.state.avatar
     });
   };
 
@@ -23,11 +23,12 @@ export default class SettingsForm extends Component {
   };
 
   render() {
-    const { userName, lastName, image, firstName } = this.state;
+    const { userName, lastName, avatar, firstName } = this.state;
     return (
       <React.Fragment>
         <form id={userName} onSubmit={this.raiseSubmit} className="column is-4">
           <EditInput
+            props={this.props}
             inputPlaceHolder={userName}
             onChange={this.handleChange}
             name="userName"
@@ -47,8 +48,8 @@ export default class SettingsForm extends Component {
             label="Last Name"
           />
           <EditInput
-            inputPlaceHolder={image}
-            name="image"
+            inputPlaceHolder={avatar}
+            name="avatar"
             onChange={this.handleChange}
             label="Image url"
           />

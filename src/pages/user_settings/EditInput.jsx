@@ -13,6 +13,7 @@ const EditInput = props => {
           type="text"
           placeholder={inputPlaceHolder}
         />
+
         <span className="icon is-small is-left">
           <i className="fas fa-user" />
         </span>

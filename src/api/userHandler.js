@@ -27,6 +27,11 @@ export const deleteUser = id => axios.delete(`${ApiUrl}/user/${id}`);
 
 export const login = userInfos => axios.post(`${ApiUrl}/auth/login`, userInfos);
 
+export const editUser = (id, data) => {
+  console.log(id);
+  return axios.patch(`${ApiUrl}/user/${id}`, data);
+};
+
 export const logout = () => {
   deleteLocalToken();
   return axios.post(`${ApiUrl}/auth/logout`, { config });

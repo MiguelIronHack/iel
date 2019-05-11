@@ -3,6 +3,7 @@ import { Heading } from "react-bulma-components";
 import { setLocalToken } from "../../api/ajaxLogin";
 import { login } from "../../api/userHandler";
 import { Btn } from "../../components/Btn";
+import _ from "lodash";
 
 export default class Login extends Component {
   state = {
@@ -14,9 +15,16 @@ export default class Login extends Component {
     e.preventDefault();
     login({ email: this.state.email, password: this.state.password })
       .then(res => {
-        console.log(res.data);
         if (res.data._id) {
-          setLocalToken(res.data._id);
+          const data = _.pick(
+            res.data,
+            "avatar",
+            "_id",
+            "firstName",
+            "lastName",
+            "userName"
+          );
+          setLocalToken(data);
           // this.props.history.push("/profile");
           //this my dOOds is to refresh the state of the page to have
           // so the navbar state is refreshed with the current info

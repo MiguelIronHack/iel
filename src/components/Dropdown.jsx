@@ -6,7 +6,8 @@ import { logout } from "../api/userHandler";
 export default class NavBarDropdown extends React.Component {
   state = {
     selected: "active",
-    user: "",
+    firstName: "",
+    lastName: "",
     isAuth: false
   };
   onChange = selected => {
@@ -24,14 +25,17 @@ export default class NavBarDropdown extends React.Component {
 
   componentDidMount() {
     if (window.localStorage.userCredential) {
-      this.setState({ isAuth: true });
+      this.setState({
+        firstName: JSON.parse(window.localStorage.userCredential).firstName,
+        lastName: JSON.parse(window.localStorage.userCredential).lastName,
+        isAuth: true
+      });
     } else {
       this.setState({ isAuth: false });
     }
   }
 
   render() {
-    console.log(this.state.isAuth);
     return (
       <Dropdown
         className="columns is-vcentered has-margin-left-4 is-hoverable "
@@ -39,15 +43,22 @@ export default class NavBarDropdown extends React.Component {
         onChange={this.onChange}
       >
         <Dropdown.Item value="login">
-          <NavLink className="has-text-dark" to="/login">
-            {this.state.user ? this.state.user : "Login"}
+          <NavLink
+            className="has-text-dark"
+            to={
+              this.state.firstName
+                ? `profile/${this.state.firstName}/settings`
+                : "/login"
+            }
+          >
+            {this.state.firstName ? this.state.firstName : "Login"}
           </NavLink>
         </Dropdown.Item>
 
         {this.state.isAuth ? (
           <React.Fragment>
             <Dropdown.Item value="settings">
-              <NavLink to={`/profile/${this.state.user}/settings`}>
+              <NavLink to={`/profile/${this.state.firstName}/settings`}>
                 Settings
               </NavLink>
             </Dropdown.Item>

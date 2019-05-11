@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { editUser } from "../../api/userHandler";
 
 import UserCard from "./UserCard";
 import SettingsForm from "./SettingsForm";
@@ -7,18 +8,35 @@ class UserSettings extends Component {
   state = {
     isAuth: false,
     userName: this.props.match.params.user,
-    lastName: "Ola",
-    firstName: "Quetal",
-    image:
-      "https://c-7npsfqifvt0x24hbnfqfejbx2edvstfdeox2edpn.g00.gamepedia.com/g00/3_c-7tusfbnfst.hbnfqfejb.dpn_/c-7NPSFQIFVT0x24iuuqtx3ax2fx2fhbnfqfejb.dvstfdeo.dpnx2fux78judi_hbnfqfejbx2f2x2f2bx2fJnbruqjf.QOHx3fwfstjpox3df429e3251gee9g70830cb847g67d3930x26j21d.nbslx3djnbhf_$/$/$/$/$",
-    userDescription: "Hey im here to learn to code !",
+    userDescription: "Hey im here for niquer des meres !",
     isEditable: false
   };
 
   handleSubmit = data => {
-    this.setState(data);
+    console.log(data);
+    const { userName, firstName, avatar, lastName } = data;
+    editUser(this.state.userId, { userName, firstName, avatar, lastName })
+      .then(res => {
+        console.log(res);
+        this.setState(data);
+      })
+      .catch(err => console.log(err));
+    window.localStorage.userCredential = JSON.stringify({
+      ...data,
+      _id: this.state.userId
+    });
   };
 
+  componentDidMount() {
+    // console.log(JSON.parse(window.localStorage.userCredential));
+    const user = JSON.parse(window.localStorage.userCredential);
+    this.setState({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      avatar: user.avatar,
+      userId: user._id
+    });
+  }
   handleClick = e => {};
 
   render() {
