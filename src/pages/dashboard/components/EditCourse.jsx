@@ -23,7 +23,7 @@ export default class CourseDetails extends Component {
     const { course } = this.state;
     return (
       <React.Fragment>
-        <DashboardNav />
+        <DashboardNav rowId={course._id} />
         <h1>Edit Course</h1>
         <h1 className="title">{course.title}</h1>
         <p>price : {course.description} &euro;</p>

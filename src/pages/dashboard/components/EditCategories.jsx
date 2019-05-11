@@ -25,10 +25,10 @@ export default class EditCategories extends Component {
 
   onClick = e => {
     const target = e.target.parentElement;
-    console.log(target.id);
     target.remove();
     deleteCategory(target.id)
       .then(console.log("category removed"))
+
       .catch(err => console.error(err));
   };
 
