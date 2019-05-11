@@ -1,53 +1,94 @@
 import React, { Component } from "react";
 import { editUser } from "../../api/userHandler";
-
-import UserCard from "./UserCard";
-import SettingsForm from "./SettingsForm";
-import "./user_settings.css";
+import UserCard from "./components/UserCard";
+import SettingsForm from "./components/SettingsForm";
+import { uploadImage } from "../../services/imageUploadAPI";
+import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
+import handleSpecialCharacters from "../../components/utils/handleSpecialCharacters";
 class UserSettings extends Component {
   state = {
     isAuth: false,
-    userName: this.props.match.params.user,
-    userDescription: "Hey im here for niquer des meres !",
-    isEditable: false
+    errors: {}
   };
 
-  handleSubmit = data => {
-    console.log(data);
-    const { userName, firstName, avatar, lastName } = data;
-    editUser(this.state.userId, { userName, firstName, avatar, lastName })
+  validateProperty = ({ name, value }) => {
+    if (name === "firstName") {
+      if (value.trim() === "") return "Cannot submit Empty field";
+      // ...
+    }
+    if (name === "lastName") {
+      if (value.trim() === "") return "Cannot submit empty field";
+      // ...
+    }
+    if (name === "userName") {
+      if (value.trim() === "") return "Cannot submit empty field";
+      // ...
+    }
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { userName, firstName, avatar, lastName, _id } = this.state.user;
+    editUser(_id, { userName, firstName, avatar, lastName })
       .then(res => {
         console.log(res);
-        this.setState(data);
       })
       .catch(err => console.log(err));
-    window.localStorage.userCredential = JSON.stringify({
-      ...data,
-      _id: this.state.userId
-    });
+    setLocalToken(this.state.user);
   };
 
   componentDidMount() {
     // console.log(JSON.parse(window.localStorage.userCredential));
-    const user = JSON.parse(window.localStorage.userCredential);
-    this.setState({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      avatar: user.avatar,
-      userId: user._id
-    });
+    const user = getLocalToken();
+    this.setState({ user });
   }
+
   handleClick = e => {};
+
+  handleChange = e => {
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(e.currentTarget);
+    const key = e.currentTarget.name;
+    let value = e.currentTarget.value;
+    if (key === "userName" || key === "firstName") {
+      value = handleSpecialCharacters(value);
+    }
+    if (errorMessage) errors[key] = errorMessage;
+    else delete errors[key];
+    const user = { ...this.state.user };
+    user[key] = value;
+    this.setState({ user, errors });
+  };
+
+  handleImage = e => {
+    uploadImage(e)
+      .then(res => {
+        const imageUrl = res.data.results[0].secure_url;
+        const user = getLocalToken();
+        user.avatar = imageUrl;
+        setLocalToken(user);
+        const user2 = { ...this.state.user };
+        user2.avatar = imageUrl;
+        this.setState({ user: user2 });
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     // const { user: userName } = this.props.match.params;
     return (
       <div className="container columns is-12">
-        <UserCard className="column is-4" data={this.state} />
-        <SettingsForm
-          className="column is-4"
-          handleSubmit={this.handleSubmit}
-        />
+        <div className="column is-4">
+          <UserCard user={this.state.user} handleImage={this.handleImage} />
+        </div>
+        <div className="column is-6">
+          <SettingsForm
+            errors={this.state.errors}
+            user={this.state.user}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+          />
+        </div>
       </div>
     );
   }
