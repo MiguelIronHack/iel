@@ -4,6 +4,7 @@ import UserCard from "./components/UserCard";
 import SettingsForm from "./components/SettingsForm";
 import { uploadImage } from "../../services/imageUploadAPI";
 import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
+import handleSpecialCharacters from "../../components/utils/handleSpecialCharacters";
 class UserSettings extends Component {
   state = {
     isAuth: false,
@@ -50,15 +51,13 @@ class UserSettings extends Component {
     const key = e.currentTarget.name;
     let value = e.currentTarget.value;
     if (key === "userName" || key === "firstName") {
-      value = value.replace(/[. ,:;)?!$*%#]+/g, "");
-      e.currentTarget.value = value;
+      value = handleSpecialCharacters(value);
     }
     if (errorMessage) errors[key] = errorMessage;
     else delete errors[key];
     const user = { ...this.state.user };
     user[key] = value;
     this.setState({ user, errors });
-    console.log(errors);
   };
 
   handleImage = e => {
