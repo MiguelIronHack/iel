@@ -40,7 +40,7 @@ class UserSettings extends Component {
   handleClick = e => {};
 
   render() {
-    const { user: userName } = this.props.match.params;
+    // const { user: userName } = this.props.match.params;
     return (
       <div className="container columns is-12">
         <UserCard className="column is-4" data={this.state} />

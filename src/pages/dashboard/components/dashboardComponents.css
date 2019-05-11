@@ -1,14 +1,18 @@
-.dashboradnav {
+.dashboard-nav {
   display: flex;
   justify-content: space-around;
+  height: 5vh;
+  min-height: 2rem;
+  align-items: center;
 }
 
-.dashboradnav a {
-  color: #f8f8f8;
+.dashboard-nav a {
+  color: hsl(0, 0%, 96%);
 }
 
-.dashboradnav a:hover {
-  color: #3273dc;
+.dashboard-nav a:hover {
+  color: hsl(0, 0%, 88%);
+  transition: all 0.2s ease-out;
 }
 
 .td {

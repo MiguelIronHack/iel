@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Button } from "react-bulma-components";
+import { Heading } from "react-bulma-components";
 import "./LessonDisplay.css";
 import LessonNav from "./LessonNav";
 

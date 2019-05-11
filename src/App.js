@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "react-bulma-components";
 import "./App.css";
 import "moment-timezone";
-import { getAllCategories } from "./api/categoryHandler";
+// import { getAllCategories } from "./api/categoryHandler";
 import { Switch, Route, withRouter } from "react-router-dom";
 import Navbar from "./components/NavMain";
 import Index from "./pages/index/Index";
