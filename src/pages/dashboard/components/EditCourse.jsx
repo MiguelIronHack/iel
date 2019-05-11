@@ -11,7 +11,7 @@ export default class CourseDetails extends Component {
     };
   }
   componentDidMount() {
-    console.log(this.props); // remember this tricks to get access to url infos
+    // remember this tricks to get access to url infos
     getCourse(this.props.match.params.course)
       .then(res => {
         console.log(res.data, " datos del curso");
