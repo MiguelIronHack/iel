@@ -23,12 +23,6 @@
   text-align: center;
 }
 
-.table {
-  display: block;
-  width: 50%;
-  margin: 3vh auto;
-}
-
 .delete-user,
 .delete-course,
 .edit-user,
@@ -39,4 +33,13 @@
 .btn-create-course {
   text-align: center;
   display: block;
+}
+
+/* Edit Course */
+.edit-course {
+  margin: 5vh 5vw;
+}
+.edit-course > :nth-child(odd) > :nth-child(odd) {
+  background: #333;
+  color: #fff;
 }
