@@ -24,8 +24,8 @@ export default class UsersList extends Component {
 
   handleDelete = e => {
     const target = e.target.parentElement.parentElement;
-    console.log(target);
-    target.remove();
+    target.remove(); // removing the course row from the front end
+
     deleteCourse(target.id)
       .then(console.log("Course removed"), console.log(target.id))
       .catch(err => console.error(err));
