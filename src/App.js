@@ -23,6 +23,7 @@ import UserManagement from "./pages/dashboard/components/UserManagement";
 import CourseManagement from "./pages/dashboard/components/CourseManagement";
 import UploadForm from "./components/upload/UploadForm";
 import EditCourse from "./pages/dashboard/components/EditCourse";
+import EditCategories from "./pages/dashboard/components/EditCategories";
 
 class App extends Component {
   render() {
@@ -46,6 +47,7 @@ class App extends Component {
           <Route path="/coursemanagement" component={CourseManagement} />
           <Route path="/create-course" component={UploadForm} />
           <Route path="/edit-course/:course" component={EditCourse} />
+          <Route path="/edit-categories" component={EditCategories} />
         </Switch>
         <Footer />
       </React.Fragment>

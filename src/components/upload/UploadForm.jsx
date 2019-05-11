@@ -54,7 +54,6 @@ export default class uploadForm extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state.category);
   };
 
   onClick = () => {
@@ -124,7 +123,7 @@ export default class uploadForm extends Component {
             value={category}
             onChange={onChange}
             className="input"
-            placeholder="category your image link here..."
+            placeholder="input your category link here..."
             name="category"
             type="category"
           />

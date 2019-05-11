@@ -5,7 +5,9 @@ import Btn from "../../../components/Btn";
 import { Heading, Columns } from "react-bulma-components";
 
 export class IndexCourses extends Component {
-  state = { courses: [] };
+  state = {
+    courses: []
+  };
 
   componentDidMount() {
     getAllCourses()
