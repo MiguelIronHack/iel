@@ -58,7 +58,6 @@ export default class uploadForm extends Component {
   };
 
   onClick = () => {
-    console.log("clicked create button");
     getAllCourses()
       .then(res => console.log(res.data))
       .catch(err => console.error(err));
@@ -79,7 +78,6 @@ export default class uploadForm extends Component {
         <DashboardNav />
         <Heading className="has-text-centered	">Upload Course</Heading>
         <form className="register-form box" onSubmit={onSubmit}>
-          <button onClick={onClick}>the button</button>
           <div className="control">
             <label htmlFor="title">Title</label>
             <input

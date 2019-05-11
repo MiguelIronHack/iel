@@ -30,7 +30,7 @@ export class IndexCourses extends Component {
                 title={course.title}
                 description={course.description}
                 content={course.content}
-                image={course.image}
+                image={course.media.image}
               />
             </Columns.Column>
           ))}
