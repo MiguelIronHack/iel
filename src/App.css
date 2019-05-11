@@ -40,14 +40,7 @@ button {
 .navbar > * {
   padding: 0 1rem;
 }
-
-.chat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+/*  */
 .footer {
   margin-top: 100%;
 }

@@ -27,84 +27,105 @@ export default class CourseDetails extends Component {
   }
 
   editContent = e => {
-    const target = e.target.parentElement.firstChild.childNodes[1];
-    console.log(target);
+    e.preventDefault();
+    const target = e.target.parentElement.childNodes[1];
     target.contentEditable = true;
-    // target.autofocus = true;
+  };
+
+  submitEdition = e => {
+    e.preventDefault();
   };
 
   render() {
-    const { course } = this.state;
-    const { editContent } = this;
+    const { course, image, video } = this.state;
+    const { editContent, handleSubmit: submitEdition } = this;
 
     return (
       <React.Fragment>
         <DashboardNav rowId={course._id} />
-        <section className="edit-course box">
+        <form onSubmit={submitEdition} className="edit-course box">
           <div>
-            <p>
-              title: <span contentEditable={false}>{course.title}</span>
-            </p>
-            <p onClick={editContent}>edit</p>
+            <p>title:</p>
+            <p>{course.title}</p>
+            <button className="button" onClick={editContent}>
+              edit
+            </button>
           </div>
+
           <div>
-            <p>
-              Category: <span contentEditable={false}>{course.category}</span>
-            </p>
-            <p onClick={editContent}>edit</p>
+            <p>Category:</p>
+            <p>{course.category}</p>
+            <button className="button" onClick={editContent}>
+              edit
+            </button>
           </div>
+
           <div>
-            <p>
-              Course Modules:
-              <span contentEditable={false}>{course.courseModules}</span>
-            </p>
-            <p onClick={editContent}>edit</p>
+            <p>Course Modules:</p>
+            <p>{course.courseModules}</p>
+            <button className="button" onClick={editContent}>
+              edit
+            </button>
           </div>
+
           <div>
-            <p>
-              Date Created:
-              <span contentEditable={false}>{course.created_at}</span>
-            </p>
-            <p onClick={editContent}>edit</p>
+            <p>Date Created:</p>
+            <p>{course.created_at}</p>
+            <button className="button" onClick={editContent}>
+              edit
+            </button>
           </div>
+
           <div>
-            <p>
-              Description:
-              <span contentEditable={false}>{course.description}</span>
-            </p>
-            <p onClick={editContent}>edit</p>
+            <p>Description:</p>
+            <p>{course.description}</p>
+            <button className="button" onClick={editContent}>
+              edit
+            </button>
           </div>
+
           <div>
-            <p>
-              Followers: <span contentEditable={false}>{course.followers}</span>
-            </p>
-            <p onClick={editContent}>edit</p>
+            <p>Image:</p>
+            <p className="react-bug"> {image} </p>
+            <button className="button" onClick={editContent}>
+              edit
+            </button>
           </div>
+
           <div>
-            <p>
-              Level: <span contentEditable={false}>{course.level}</span>
-            </p>
-            <p onClick={editContent}>edit</p>
+            <p>Video:</p>
+            <p className="react-bug">{video}</p>
+            <button className="button" onClick={editContent}>
+              edit
+            </button>
           </div>
+
           <div>
-            <p>
-              Image: <span contentEditable={false}>{this.state.image}</span>
-            </p>
-            <p onClick={editContent}>edit</p>
+            <p>Followers:</p>
+            <p>{course.followers}</p>
+            <button className="button" onClick={editContent}>
+              edit
+            </button>
           </div>
+
           <div>
-            <p>
-              Video: <span contentEditable={false}>{this.state.video}</span>
-            </p>
-            <p onClick={editContent}>edit</p>
+            <p>Level:</p>
+            <p>{course.level}</p>
+            <button className="button" onClick={editContent}>
+              edit
+            </button>
           </div>
+
           <div>
-            <p>
-              Teacher: <span contentEditable={false}>{course.teacher}</span>
-            </p>
-            <p onClick={editContent}>edit</p>
+            <p>Teacher:</p>
+            <p>{course.teacher}</p>
+            <button className="button" onClick={editContent}>
+              edit
+            </button>
           </div>
-        </section>
+
+          <button className="button">submit edition</button>
+        </form>
       </React.Fragment>
     );
   }
