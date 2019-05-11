@@ -3,6 +3,14 @@
   justify-content: space-around;
 }
 
+.dashboradnav a {
+  color: #f8f8f8;
+}
+
+.dashboradnav a:hover {
+  color: #3273dc;
+}
+
 .td {
   text-align: center;
 }

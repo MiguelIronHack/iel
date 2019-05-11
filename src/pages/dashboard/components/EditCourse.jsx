@@ -1,40 +1,33 @@
 import React, { Component } from "react";
-import { Heading } from "react-bulma-components";
 import DashboardNav from "../components/DashboardNav";
-import "./dashboardComponents.css";
+import { getCourse } from "../../../api/coursesHandler";
 
-export default class uploadForm extends Component {
-  state = {
-    title: "",
-    description: "",
-    video: "",
-    image: "",
-    category: [],
-    submited: false
-  };
-
-  componentWillUnmount() {}
-
-  onSubmit = e => {
-    e.preventDefault();
-  };
-
-  onChange = e => {
-    // this.setState({
-    //   [e.target.name]: e.target.value
-    // });
-    // console.log(e.target.value);
-  };
-
+export default class CourseDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.state = {
+      course: {}
+    };
+  }
+  componentDidMount() {
+    console.log(this.props); // remember this tricks to get access to url infos
+    getCourse(this.props.match.params.course)
+      .then(res => {
+        console.log(res.data, " datos del curso");
+        this.setState({ course: res.data });
+      })
+      .catch(err => console.error(err.response));
+  }
   render() {
-    const { onSubmit, onChange } = this;
-    const { title, category, description, image, video } = this.state;
-
+    const { course } = this.state;
     return (
-      <section className="login-register-section">
+      <React.Fragment>
         <DashboardNav />
-        <Heading className="has-text-centered	">Edit Course</Heading>
-      </section>
+        <h1>Edit Course</h1>
+        <h1 className="title">{course.title}</h1>
+        <p>price : {course.description} &euro;</p>
+      </React.Fragment>
     );
   }
 }

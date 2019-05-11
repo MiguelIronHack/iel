@@ -46,8 +46,8 @@ export default class UsersList extends Component {
           <thead className="thead">
             <tr className="tr">
               <th className="th">Title</th>
-              <th className="th">description</th>
-              <th className="th">submitted</th>
+              <th className="th">Description</th>
+              <th className="th">Date</th>
               <th className="th">Edit</th>
               <th className="th">Delete</th>
             </tr>
@@ -57,7 +57,7 @@ export default class UsersList extends Component {
               <tr className="tr" key={index}>
                 <td className="td">{course.title}</td>
                 <td className="td">{course.description}</td>
-                <td className="td">{course.submitted}</td>
+                <td className="td">{course.date}</td>
 
                 <td className="td edit-course">
                   <Link to={`/edit-course/${course._id}`}>

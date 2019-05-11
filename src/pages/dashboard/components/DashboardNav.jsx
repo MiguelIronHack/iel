@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../components/dashboardComponents.css";
+import "./dashboardComponents.css";
 
 export default function dashboardnav() {
   return (
