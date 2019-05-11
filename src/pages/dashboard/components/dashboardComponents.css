@@ -39,7 +39,7 @@
 .edit-course {
   margin: 5vh 5vw;
 }
-.edit-course > :nth-child(odd) > :nth-child(odd) {
+.edit-course > * > * > :nth-child(odd) {
   background: #333;
   color: #fff;
 }
