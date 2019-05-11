@@ -7,7 +7,6 @@ import DashboardNav from "../../pages/dashboard/components/DashboardNav";
 import { Redirect } from "react-router-dom";
 
 import "./form.css";
-import { createCategory, getAllCategories } from "../../api/categoryHandler";
 
 export default class uploadForm extends Component {
   state = {
