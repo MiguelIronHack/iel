@@ -11,11 +11,15 @@ class UserSettings extends Component {
   };
 
   validateProperty = ({ name, value }) => {
-    if (name === "userName") {
+    if (name === "firstName") {
       if (value.trim() === "") return "Cannot submit Empty field";
       // ...
     }
     if (name === "lastName") {
+      if (value.trim() === "") return "Cannot submit empty field";
+      // ...
+    }
+    if (name === "userName") {
       if (value.trim() === "") return "Cannot submit empty field";
       // ...
     }
@@ -41,20 +45,20 @@ class UserSettings extends Component {
   handleClick = e => {};
 
   handleChange = e => {
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(e.currentTarget);
     const key = e.currentTarget.name;
     let value = e.currentTarget.value;
     if (key === "userName" || key === "firstName") {
       value = value.replace(/[. ,:;)?!$*%#]+/g, "");
       e.currentTarget.value = value;
     }
-
-    const errors = { ...this.state.errors };
-    const errorMessage = this.validateProperty(e.currentTarget);
     if (errorMessage) errors[key] = errorMessage;
     else delete errors[key];
     const user = { ...this.state.user };
     user[key] = value;
     this.setState({ user, errors });
+    console.log(errors);
   };
 
   handleImage = e => {
