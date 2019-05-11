@@ -1,24 +1,20 @@
-import React, { Component } from 'react';
-import { getAllCourses, createCourse } from '../../api/coursesHandler';
-import { createCategory, getAllCategories } from '../../api/categoryHandler';
-import { Heading } from 'react-bulma-components';
-import DashboardNav from '../../pages/dashboard/components/DashboardNav';
+import React, { Component } from "react";
+import { getAllCourses, createCourse } from "../../api/coursesHandler";
+import { createCategory, getAllCategories } from "../../api/categoryHandler";
+import { Heading } from "react-bulma-components";
+import DashboardNav from "../../pages/dashboard/components/DashboardNav";
 
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 
-<<<<<<< HEAD
 import "./form.css";
 import { createCategory, getAllCategories } from "../../api/categoryHandler";
-=======
-import './form.css';
->>>>>>> 01e3c102b8d9d4f87468bec3c545c022c7fd28ce
 
 export default class uploadForm extends Component {
   state = {
-    title: '',
-    description: '',
-    video: '',
-    image: '',
+    title: "",
+    description: "",
+    video: "",
+    image: "",
     category: [],
     submitted: false
   };
@@ -39,7 +35,7 @@ export default class uploadForm extends Component {
       }
     })
       .then(res => {
-        console.log('We go to course page');
+        console.log("We go to course page");
         // <Redirect to="/coursemanagement" />;
 
         this.setState({ submitted: true });
@@ -63,7 +59,7 @@ export default class uploadForm extends Component {
   };
 
   onClick = () => {
-    console.log('clicked create button');
+    console.log("clicked create button");
     getAllCourses()
       .then(res => console.log(res.data))
       .catch(err => console.error(err));
@@ -113,26 +109,6 @@ export default class uploadForm extends Component {
               name="video"
               type="input"
             />
-<<<<<<< HEAD
-            <label htmlFor="category">Category</label>
-            <div
-              className="  is-fullwidth"
-              placeholder="input your category link here..."
-              name="category"
-              type="input"
-            >
-              <select
-                className="control select"
-                value={category}
-                onChange={onChange}
-              >
-                <option>Programming</option>
-                <option>Music</option>
-                <option>Other</option>
-              </select>
-            </div>
-=======
->>>>>>> 01e3c102b8d9d4f87468bec3c545c022c7fd28ce
 
             <label htmlFor="image">Image</label>
             <input
