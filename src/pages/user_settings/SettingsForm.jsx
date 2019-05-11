@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import EditInput from "./EditInput";
-import axios from "axios";
+import { uploadImage } from "./../../services/imageUploadAPI";
 export default class SettingsForm extends Component {
   state = {};
 
@@ -16,15 +16,10 @@ export default class SettingsForm extends Component {
   };
 
   handleImage = e => {
-    const files = Array.from(e.target.files);
-    const formData = new FormData();
-    files.forEach((file, i) => {
-      formData.append(i, file);
-    });
-
-    axios
-      .post("http://localhost:4000/upload/image", formData)
-      .then(res => console.log(res))
+    uploadImage(e)
+      .then(res => {
+        console.log(res.data.results[0].secure_url);
+      })
       .catch(err => console.log(err));
   };
 
