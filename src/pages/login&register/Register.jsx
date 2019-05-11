@@ -19,6 +19,7 @@ export default class Register extends Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
+      userName: this.state.firstName,
       password: this.state.password,
       password2: this.state.password2
     })

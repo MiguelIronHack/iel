@@ -5,7 +5,9 @@ import Btn from "../../../components/Btn";
 import { Heading, Columns } from "react-bulma-components";
 
 export class IndexCourses extends Component {
-  state = { courses: [] };
+  state = {
+    courses: []
+  };
 
   componentDidMount() {
     getAllCourses()
@@ -30,7 +32,7 @@ export class IndexCourses extends Component {
                 title={course.title}
                 description={course.description}
                 content={course.content}
-                image={course.image}
+                image={course.media.image}
               />
             </Columns.Column>
           ))}

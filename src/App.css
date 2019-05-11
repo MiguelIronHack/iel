@@ -8,7 +8,9 @@ html,
 body {
   scroll-behavior: smooth;
 }
-
+.section {
+  height: 100vh;
+}
 h1,
 h2,
 h3,
@@ -45,4 +47,7 @@ button {
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+.footer {
+  margin-top: 100%;
 }

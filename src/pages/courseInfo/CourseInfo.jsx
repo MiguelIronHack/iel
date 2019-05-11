@@ -140,7 +140,7 @@ export default function courseInfo() {
         <div className="contributor-content">
           <img
             src="https://media.licdn.com/dms/image/C5603AQGcTUgKHAB77A/profile-displayphoto-shrink_100_100/0?e=1562803200&v=beta&t=ZY_n3oeeuttVY2l7YpkB9m77ufSZ_2Eqx1ro3FLoeGc"
-            alt="contributor-image"
+            alt="contributor"
           />
           <p className="contributor-description">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam

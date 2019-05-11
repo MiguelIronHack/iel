@@ -9,10 +9,7 @@ export default class UsersList extends Component {
   state = { courses: [] };
 
   componentDidMount() {
-    this.displayBoard();
-  }
-
-  displayBoard() {
+    // this is the display board function
     getAllCourses()
       .then(res => {
         this.setState({ courses: res.data });
@@ -26,14 +23,12 @@ export default class UsersList extends Component {
   // };
 
   handleDelete = e => {
-    const id = e.target.getAttribute("data-id");
-    console.log("this is the user ID to DELETE: ", id);
+    const target = e.target.parentElement.parentElement;
+    target.remove(); // removing the course row from the front end
 
-    deleteCourse(id)
-      .then(res => {
-        this.displayBoard();
-      })
-      .catch(err => console.error(err.response, "What's!"));
+    deleteCourse(target.id)
+      .then(console.log("Course removed"), console.log(target.id))
+      .catch(err => console.error(err));
   };
 
   render() {
@@ -54,7 +49,7 @@ export default class UsersList extends Component {
           </thead>
           <tbody className="tbody">
             {courses.map((course, index) => (
-              <tr className="tr" key={index}>
+              <tr id={course._id} className="tr" key={index}>
                 <td className="td">{course.title}</td>
                 <td className="td">{course.description}</td>
                 <td className="td">{course.date}</td>

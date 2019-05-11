@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-  Menu,
   Card,
   Media,
   Image,
