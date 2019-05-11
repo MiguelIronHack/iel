@@ -1,25 +1,30 @@
-import React, { Component } from "react";
-import { getAllCourses, createCourse } from "../../api/coursesHandler";
-import { Heading } from "react-bulma-components";
-import DashboardNav from "../../pages/dashboard/components/DashboardNav";
+import React, { Component } from 'react';
+import { getAllCourses, createCourse } from '../../api/coursesHandler';
+import { createCategory, getAllCategories } from '../../api/categoryHandler';
+import { Heading } from 'react-bulma-components';
+import DashboardNav from '../../pages/dashboard/components/DashboardNav';
 
-import { Redirect } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 
+<<<<<<< HEAD
 import "./form.css";
 import { createCategory, getAllCategories } from "../../api/categoryHandler";
+=======
+import './form.css';
+>>>>>>> 01e3c102b8d9d4f87468bec3c545c022c7fd28ce
 
 export default class uploadForm extends Component {
   state = {
-    title: "",
-    description: "",
-    video: "",
-    image: "",
+    title: '',
+    description: '',
+    video: '',
+    image: '',
     category: [],
-    submited: false
+    submitted: false
   };
 
   componentWillUnmount() {
-    this.setState({ submited: false });
+    this.setState({ submitted: false });
   }
 
   onSubmit = e => {
@@ -34,10 +39,10 @@ export default class uploadForm extends Component {
       }
     })
       .then(res => {
-        console.log("We go to course page");
+        console.log('We go to course page');
         // <Redirect to="/coursemanagement" />;
 
-        this.setState({ submited: true });
+        this.setState({ submitted: true });
 
         console.log(res.data);
       })
@@ -57,23 +62,21 @@ export default class uploadForm extends Component {
     console.log(this.state.category);
   };
 
-  // onClick = () => {
-  //   console.log("clicked create button");
-  //   // getAllCourses()
-  //   //   .then(res => console.log(res.data))
-  //   //   .catch(err => console.error(err));
-  // };
-
-  //   getAllCategories()
-  //     .then(res => console.log(res.data))
-  //     .catch(err => console.error(err));
-  // };
+  onClick = () => {
+    console.log('clicked create button');
+    getAllCourses()
+      .then(res => console.log(res.data))
+      .catch(err => console.error(err));
+    getAllCategories()
+      .then(res => console.log(res.data))
+      .catch(err => console.error(err));
+  };
 
   render() {
-    if (this.state.submited == true) {
+    if (this.state.submitted == true) {
       return <Redirect to="/coursemanagement" />;
     }
-    const { onSubmit, onChange } = this;
+    const { onSubmit, onChange, onClick } = this;
     const { title, category, description, image, video } = this.state;
 
     return (
@@ -110,6 +113,7 @@ export default class uploadForm extends Component {
               name="video"
               type="input"
             />
+<<<<<<< HEAD
             <label htmlFor="category">Category</label>
             <div
               className="  is-fullwidth"
@@ -127,6 +131,8 @@ export default class uploadForm extends Component {
                 <option>Other</option>
               </select>
             </div>
+=======
+>>>>>>> 01e3c102b8d9d4f87468bec3c545c022c7fd28ce
 
             <label htmlFor="image">Image</label>
             <input
@@ -138,6 +144,18 @@ export default class uploadForm extends Component {
               type="input"
             />
           </div>
+
+          <label htmlFor="category">Category</label>
+
+          <input
+            value={category}
+            onChange={onChange}
+            className="input"
+            placeholder="category your image link here..."
+            name="category"
+            type="category"
+          />
+
           <button
             className="button is-primary  is-focused"
             onClick={this.onClick}
@@ -145,6 +163,9 @@ export default class uploadForm extends Component {
             Submit
           </button>
         </form>
+        <button onClick={onClick} className="button">
+          get courses and categories
+        </button>
       </section>
     );
   }

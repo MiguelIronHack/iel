@@ -1,12 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import "./dashboardComponents.css";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './dashboardComponents.css';
 
 export default function dashboardnav() {
   return (
     <React.Fragment>
       <div className="has-background-grey-dark  is-active dashboradnav">
-        <NavLink className="" to="/Dashboard">
+        <NavLink className="" to="/dashboard">
           Dashboard
         </NavLink>
         <NavLink className="" to="/userManagement">
