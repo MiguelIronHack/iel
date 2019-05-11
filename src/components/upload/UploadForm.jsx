@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { getAllCourses, createCourse } from "../../api/coursesHandler";
 import { Heading } from "react-bulma-components";
+import DashboardNav from "../../pages/dashboard/components/DashboardNav";
+
+import { Redirect } from "react-router-dom";
+
 import "./form.css";
 import { createCategory, getAllCategories } from "../../api/categoryHandler";
 
@@ -10,8 +14,13 @@ export default class uploadForm extends Component {
     description: "",
     video: "",
     image: "",
-    category: ""
+    category: [],
+    submited: false
   };
+
+  componentWillUnmount() {
+    this.setState({ submited: false });
+  }
 
   onSubmit = e => {
     e.preventDefault();
@@ -24,7 +33,14 @@ export default class uploadForm extends Component {
         image: this.state.image
       }
     })
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log("We go to course page");
+        // <Redirect to="/coursemanagement" />;
+
+        this.setState({ submited: true });
+
+        console.log(res.data);
+      })
       .catch(err => console.error(err));
 
     createCategory({
@@ -41,22 +57,28 @@ export default class uploadForm extends Component {
     console.log(this.state.category);
   };
 
-  onClick = () => {
-    getAllCourses()
-      .then(res => console.log(res.data))
-      .catch(err => console.error(err));
+  // onClick = () => {
+  //   console.log("clicked create button");
+  //   // getAllCourses()
+  //   //   .then(res => console.log(res.data))
+  //   //   .catch(err => console.error(err));
+  // };
 
-    getAllCategories()
-      .then(res => console.log(res.data))
-      .catch(err => console.error(err));
-  };
+  //   getAllCategories()
+  //     .then(res => console.log(res.data))
+  //     .catch(err => console.error(err));
+  // };
 
   render() {
-    const { onSubmit, onChange, onClick } = this;
+    if (this.state.submited == true) {
+      return <Redirect to="/coursemanagement" />;
+    }
+    const { onSubmit, onChange } = this;
     const { title, category, description, image, video } = this.state;
 
     return (
       <section className="login-register-section">
+        <DashboardNav />
         <Heading className="has-text-centered	">Upload Course</Heading>
         <form className="register-form box" onSubmit={onSubmit}>
           <button onClick={onClick}>the button</button>
@@ -116,9 +138,13 @@ export default class uploadForm extends Component {
               type="input"
             />
           </div>
-          <button className="button is-primary  is-focused">Submit</button>
+          <button
+            className="button is-primary  is-focused"
+            onClick={this.onClick}
+          >
+            Submit
+          </button>
         </form>
-        <div>{this.state.title}</div>
       </section>
     );
   }

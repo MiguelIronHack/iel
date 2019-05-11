@@ -1,9 +1,8 @@
 import axios from "axios";
-import { getLocalToken } from "./ajaxLogin";
+import { getLocalToken, deleteLocalToken } from "./ajaxLogin";
 
 const port = 4000;
 const ApiUrl = `http://localhost:${port}/api`;
-
 
 const config = {
   withCredentials: true,
@@ -26,6 +25,14 @@ export const getAllUsers = () => axios.get(`${ApiUrl}/user`);
 
 export const deleteUser = id => axios.delete(`${ApiUrl}/user/${id}`);
 
-export const login = (userInfos) => axios.post(`${ApiUrl}/auth/login`, userInfos);
+export const login = userInfos => axios.post(`${ApiUrl}/auth/login`, userInfos);
 
-export const logout = () => axios.post(`${ApiUrl}/logout`, {}, config);
+export const editUser = (id, data) => {
+  console.log(id);
+  return axios.patch(`${ApiUrl}/user/${id}`, data);
+};
+
+export const logout = () => {
+  deleteLocalToken();
+  return axios.post(`${ApiUrl}/auth/logout`, { config });
+};

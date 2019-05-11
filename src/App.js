@@ -19,46 +19,35 @@ import UserSettings from "./pages/user_settings/UserSettings";
 import Footer from "./components/Footer";
 import LessonDisplay from "./pages/lessonDisplay/LessonDisplay";
 import Explore from "./pages/explore/Explore";
+import UserManagement from "./pages/dashboard/components/UserManagement";
+import CourseManagement from "./pages/dashboard/components/CourseManagement";
+import UploadForm from "./components/upload/UploadForm";
+import EditCourse from "./pages/dashboard/components/EditCourse";
 
-class App extends Component {
-  state = {
-    categories: []
-  };
-
-  componentDidMount() {
-    getAllCategories()
-      .then(res => {
-        res.data.map(e => {
-          return this.setState({
-            categories: e.categories
-          });
-        });
-        console.log(res.data);
-      })
-      .catch(err => console.error(err));
-  }
-
+export class App extends Component {
   render() {
     return (
-      <div className="App has-background-white-bis">
-        <Navbar />
-        <Switch>
-          <Route path="/" component={Index} exact />
-          <Route path="/profile/:user/settings" component={UserSettings} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/about" component={About} />
-          <Route path="/course-info" component={CourseInfo} />
-          <Route path="/course-content" component={CourseContent} />
-          <Route path="/lesson" component={LessonDisplay} />
-          <Route path="/course" component={Courses} />
-          <Route path="/explore" component={Explore} />
-        </Switch>
-        <Footer />
-      </div>
-    );
+      <Navbar />
+      <Switch>
+        <Route path="/" component={Index} exact />
+        <Route path="/profile/:user/settings" component={UserSettings} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/about" component={About} />
+        <Route path="/course-info" component={CourseInfo} />
+        <Route path="/course-content" component={CourseContent} />
+        <Route path="/lesson" component={LessonDisplay} />
+        <Route path="/course" component={Courses} />
+        <Route path="/explore" component={Explore} />
+        <Route path="/usermanagement" component={UserManagement} />
+        <Route path="/coursemanagement" component={CourseManagement} />
+        <Route path="/create-course" component={UploadForm} />
+        <Route path="/edit-course/:course" component={EditCourse} />
+      </Switch>
+      <Footer />
+    )
   }
 }
 
