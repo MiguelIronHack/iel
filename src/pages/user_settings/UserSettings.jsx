@@ -5,6 +5,7 @@ import SettingsForm from "./components/SettingsForm";
 import { uploadImage } from "../../services/imageUploadAPI";
 import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
 import handleSpecialCharacters from "../../components/utils/handleSpecialCharacters";
+
 class UserSettings extends Component {
   state = {
     isAuth: false,
@@ -78,10 +79,10 @@ class UserSettings extends Component {
     // const { user: userName } = this.props.match.params;
     return (
       <div className="container columns is-12">
-        <div className="column is-4">
+        <div className="column is-5">
           <UserCard user={this.state.user} handleImage={this.handleImage} />
         </div>
-        <div className="column is-6">
+        <div className="column is-5">
           <SettingsForm
             errors={this.state.errors}
             user={this.state.user}
