@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DashboardNav from "../components/DashboardNav";
-import { getCourse } from "../../../api/coursesHandler";
+import { getCourse, updateCourse } from "../../../api/coursesHandler";
 
 export default class CourseDetails extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class CourseDetails extends Component {
     };
   }
   componentDidMount() {
-    // remember this tricks to get access to url infos
+    // remember this trick to get access to url info
     getCourse(this.props.match.params.course)
       .then(res => {
         console.log("course data", res.data);
@@ -30,10 +30,13 @@ export default class CourseDetails extends Component {
     e.preventDefault();
     const target = e.target.parentElement.childNodes[1];
     target.contentEditable = true;
+    target.autofocus = true;
   };
 
   submitEdition = e => {
     e.preventDefault();
+    console.log();
+    updateCourse();
   };
 
   render() {
@@ -43,7 +46,11 @@ export default class CourseDetails extends Component {
     return (
       <React.Fragment>
         <DashboardNav rowId={course._id} />
-        <form onSubmit={submitEdition} className="edit-course box">
+        <form
+          id={course._id}
+          onSubmit={submitEdition}
+          className="edit-course box"
+        >
           <div>
             <p>title:</p>
             <p>{course.title}</p>

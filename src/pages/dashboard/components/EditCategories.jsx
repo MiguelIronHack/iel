@@ -27,17 +27,17 @@ export default class EditCategories extends Component {
   onClick = e => {
     const target = e.target.parentElement;
     target.remove();
-    deleteCategory(target.id)
-      .then(console.log("category removed"))
-      .catch(err => console.error(err));
+    deleteCategory(target.id).then(console.log("category removed"));
   };
   // creating a new category
   newCategory = e => {
     e.preventDefault();
     createCategory({
       name: this.state.category
-    })
-      .then(console.log("New Category added"))
+    });
+
+    getAllCategories()
+      .then(res => this.setState({ categories: res.data }))
       .catch(err => console.error(err));
   };
 
