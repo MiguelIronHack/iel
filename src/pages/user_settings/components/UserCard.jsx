@@ -9,13 +9,6 @@ const UserCard = ({ user, handleImage }) => {
         <figure className="image is-4by3">
           <img src={user.avatar} alt="Placeholder image1" />
         </figure>
-        <input
-          onChange={e => handleImage(e)}
-          type="file"
-          id="avatar"
-          name="avatar"
-          accept="image/jpeg, image/png"
-        />
       </div>
       <div className="card-content">
         <div className="media">
