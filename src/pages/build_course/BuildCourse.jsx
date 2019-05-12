@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import List from "../../components/List";
 import Dropdown from "./../../components/RealDropDown";
+import { getLessons } from "./../../api/lessonHandler";
+import { getAllTags } from "../../api/tagHandler";
 class BuildCourse extends Component {
   state = {
     buildingCourse: false,
-    selectedTag: "Css",
+    selectedTag: "All",
     tags: [
+      { name: "All" },
       { name: "css" },
       { name: "html" },
       { name: "Javascript" },
@@ -104,7 +107,17 @@ class BuildCourse extends Component {
   };
 
   componentDidMount() {
+    console.log("Querying Lessons data....");
     //TODO EYYYYY
+    getLessons()
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+
+    getAllTags()
+      .then(res => this.setState({ tags: res.data }))
+      .catch(err => console.log(err));
   }
   handleClick = e => this.setState({ buildingCourse: !this.state.BuildCourse });
 
@@ -184,6 +197,12 @@ class BuildCourse extends Component {
               </div>
               <div className="column is-4">
                 <button className="button">Add Lesson</button>
+                <Dropdown
+                  name="tag"
+                  handleSelect={this.handleSelect}
+                  currentItem={this.state.selectedTag}
+                  data={this.state.tags}
+                />
                 <List
                   handleClick={this.addLesson}
                   title="Lessons"
@@ -205,13 +224,6 @@ class BuildCourse extends Component {
         <button onClick={this.watchState} className="button">
           TEST
         </button>
-
-        <Dropdown
-          name="tag"
-          handleSelect={this.handleSelect}
-          currentItem={this.state.selectedTag}
-          data={this.state.tags}
-        />
       </React.Fragment>
     );
   }
