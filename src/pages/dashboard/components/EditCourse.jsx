@@ -35,13 +35,13 @@ export default class CourseDetails extends Component {
 
   submitEdition = e => {
     e.preventDefault();
-    console.log(e.target);
-    updateCourse({});
+    console.log(e);
+    // updateCourse({});
   };
 
   render() {
     const { course, image, video } = this.state;
-    const { editContent, handleSubmit: submitEdition } = this;
+    const { editContent, submitEdition } = this;
 
     return (
       <React.Fragment>
@@ -123,7 +123,9 @@ export default class CourseDetails extends Component {
             </button>
           </div>
 
-          <button className="button">submit edition</button>
+          <button onClick={this.onclick} className="button">
+            submit edition
+          </button>
         </form>
       </React.Fragment>
     );
