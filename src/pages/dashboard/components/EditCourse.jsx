@@ -76,14 +76,6 @@ export default class CourseDetails extends Component {
           </div>
 
           <div>
-            <p>Date Created:</p>
-            <p>{course.created_at}</p>
-            <button className="button" onClick={editContent}>
-              edit
-            </button>
-          </div>
-
-          <div>
             <p>Description:</p>
             <p>{course.description}</p>
             <button className="button" onClick={editContent}>
