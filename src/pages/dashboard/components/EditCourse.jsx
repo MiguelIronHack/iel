@@ -30,7 +30,7 @@ export default class CourseDetails extends Component {
     e.preventDefault();
     const target = e.target.parentElement.childNodes[1];
     target.contentEditable = true;
-    target.autofocus = true;
+    target.style.backgroundColor = "#FCD0A1";
   };
 
   submitEdition = e => {
