@@ -2,16 +2,18 @@ import React, { Component } from "react";
 
 class List extends Component {
   state = {};
+
   render() {
-    if (!this.props.data.length)
+    const { data, title, id, type, handleModule, handleClick } = this.props;
+    if (!data.length)
       return (
         <React.Fragment>
-          {this.props.type === "module" ? (
-            <h1 id={this.props.id} onClick={this.props.handleModule}>
-              {this.props.title}
+          {type === "module" ? (
+            <h1 id={id} onClick={handleModule}>
+              {title}
             </h1>
           ) : (
-            <h1>{this.props.title}</h1>
+            <h1>{title}</h1>
           )}
           <ul>
             <li>
@@ -26,18 +28,18 @@ class List extends Component {
     return (
       <React.Fragment>
         {this.props.type === "module" ? (
-          <h1 id={this.props.id} onClick={this.props.handleModule}>
-            {this.props.title}
+          <h1 id={id} onClick={handleModule}>
+            {title}
           </h1>
         ) : (
-          <h1>{this.props.title}</h1>
+          <h1>{title}</h1>
         )}
         <ul>
-          {this.props.data.map((item, index) => (
+          {data.map((item, index) => (
             <li
-              id={item.id}
+              id={item._id}
               style={{ margin: "1rem" }}
-              onClick={e => this.props.handleClick(e)}
+              onClick={e => handleClick(e)}
               key={index}
             >
               <div className="notification">

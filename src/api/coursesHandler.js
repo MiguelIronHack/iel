@@ -10,12 +10,17 @@ export const getCourse = id => axios.get(`${ApiUrl}/course/${id}`);
 
 export const deleteCourse = id => axios.delete(`${ApiUrl}/course/${id}`);
 
-export const updateCourse = id => axios.patch(`${ApiUrl}/course/${id}`);
+export const updateCourse = (id, data) =>
+  axios.patch(`${ApiUrl}/course/${id}`, data);
+
+export const getUserCourses = userId =>
+  axios.get(ApiUrl + "/course/user-course/" + userId);
 
 export default {
   getAllCourses,
   createCourse,
   getCourse,
   deleteCourse,
-  updateCourse
+  updateCourse,
+  getUserCourses
 };

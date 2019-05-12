@@ -3,129 +3,64 @@ import List from "../../components/List";
 import Dropdown from "./../../components/RealDropDown";
 import { getLessons } from "./../../api/lessonHandler";
 import { getAllTags } from "../../api/tagHandler";
+import { getUserCourses, updateCourse } from "../../api/coursesHandler";
+import { createModule } from "../../api/moduleHandler";
 class BuildCourse extends Component {
   state = {
     buildingCourse: false,
-    selectedTag: "All",
-    tags: [
-      { name: "All" },
-      { name: "css" },
-      { name: "html" },
-      { name: "Javascript" },
-      { name: "React" }
-    ],
+    selectedTag: {},
+    tags: [],
     selectedModule: "",
-    courses: [
-      {
-        id: 1,
-        title: "Master React",
-        description: "Short Description Lorem ipsum"
-      },
-      {
-        id: 2,
-        title: "Master React",
-        description: "Short Description Lorem ipsum"
-      },
-      {
-        id: 3,
-        title: "Master React",
-        description: "Short Description Lorem ipsum"
-      },
-      {
-        id: 4,
-        title: "Master React",
-        description: "Short Description Lorem ipsum"
-      }
-    ],
-
-    modules: [
-      {
-        id: 1,
-        title: "Module 1",
-        description: "Short Description Lorem ipsum",
-        lessons: [
-          {
-            id: 1,
-            title: "Lesson 1",
-            description: "Short Description Lorem ipsum"
-          },
-          {
-            id: 2,
-            title: "Lesson 1",
-            description: "Short Description Lorem ipsum"
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: "Module 1",
-        description: "Short Description Lorem ipsum",
-        lessons: []
-      },
-      {
-        id: 3,
-        title: "Module 1",
-        description: "Short Description Lorem ipsum",
-        lessons: []
-      },
-      {
-        id: 4,
-        title: "Module 1",
-        description: "Short Description Lorem ipsum",
-        lessons: [
-          {
-            id: 1,
-            title: "Lesson 1",
-            description: "Short Description Lorem ipsum"
-          }
-        ]
-      }
-    ],
-
-    lessons: [
-      {
-        id: 1,
-        title: "Lesson 1",
-        description: "Short Description Lorem ipsum"
-      },
-      {
-        id: 2,
-        title: "Lesson 1",
-        description: "Short Description Lorem ipsum"
-      },
-      {
-        id: 3,
-        title: "Lesson 1",
-        description: "Short Description Lorem ipsum"
-      },
-      {
-        id: 4,
-        title: "Lesson 1",
-        description: "Short Description Lorem ipsum"
-      }
-    ]
+    courses: [],
+    modules: []
   };
 
   componentDidMount() {
+    //TODO  Render all the modules a course has kill me pls
+    //TODO get this hardcorded userId out of the way kek
+    //TODO GOTTA BRING DEM PROMISE.all
+    getUserCourses("5cd81de6e013f00dc47da7ae")
+      .then(({ data: courses }) => {
+        this.setState({ courses });
+      })
+      .catch(err => console.log(err));
     console.log("Querying Lessons data....");
-    //TODO EYYYYY
     getLessons()
-      .then(res => {
-        console.log(res.data);
+      .then(({ data: lessons }) => {
+        this.setState({ lessons });
       })
       .catch(err => console.log(err));
 
     getAllTags()
-      .then(res => this.setState({ tags: res.data }))
+      .then(res => {
+        const generalTag = { name: "All" };
+        this.setState({
+          tags: [generalTag, ...res.data],
+          selectedTag: generalTag.name
+        });
+      })
       .catch(err => console.log(err));
   }
-  handleClick = e => this.setState({ buildingCourse: !this.state.BuildCourse });
+  handleClick = ({ currentTarget }) => {
+    this.setState({ buildingCourse: !this.state.BuildCourse });
+    const currentCourse = this.state.courses[
+      this.getSelectedCourse(currentTarget.id)
+    ];
+    this.setState({ currentCourseId: currentTarget.id });
+    this.setState({ modules: currentCourse.courseModules });
+  };
 
+  getSelectedCourse = id => {
+    let index = null;
+    for (let course of this.state.courses) {
+      if (course._id === id) index = this.state.courses.indexOf(course);
+    }
+    return index;
+  };
   getLesson = ({ id }) => {
     let lesson = null;
     for (let item of this.state.lessons) {
-      //+ sign to transform the id into a number otherwise this fucks up the whole compare
-      if (item.id === +id) lesson = item;
+      if (item._id === id) lesson = item;
     }
     return lesson;
   };
@@ -140,14 +75,17 @@ class BuildCourse extends Component {
 
   addModule = () => {
     const modules = [...this.state.modules];
-    const id = modules.length;
-    const createdModule = {
-      title: "",
-      lessons: [],
-      id: id
-    };
-    modules.push(createdModule);
-    this.setState({ modules: modules });
+    createModule(this.state.currentCourseId)
+      .then(res => {
+        const createdModule = {
+          title: "",
+          lessons: [],
+          id: res.data
+        };
+        modules.push(createdModule);
+        this.setState({ modules: modules });
+      })
+      .catch(err => console.log(err));
   };
 
   handleSelect = ({ currentTarget }) => {
@@ -172,7 +110,16 @@ class BuildCourse extends Component {
   };
 
   render() {
-    const { buildingCourse, courses, modules, lessons } = this.state;
+    const {
+      buildingCourse,
+      courses,
+      lessons,
+      modules,
+      selectedTag,
+      tags
+    } = this.state;
+
+    if (!courses.length) return <h1>No courses to display</h1>;
     return (
       <React.Fragment>
         <div className="container columns is-12">
@@ -183,25 +130,29 @@ class BuildCourse extends Component {
                 <button onClick={this.addModule} className="button">
                   Add Module
                 </button>
-                {modules.map((mod, index) => (
-                  <List
-                    key={index}
-                    id={mod.id}
-                    type="module"
-                    handleModule={this.handleModuleSelect}
-                    title={`Module ${index + 1}`}
-                    data={mod.lessons}
-                    handleClick={this.handleClick}
-                  />
-                ))}
+                {modules.length ? (
+                  modules.map((mod, index) => (
+                    <List
+                      key={index}
+                      id={mod.id}
+                      type="module"
+                      handleModule={this.handleModuleSelect}
+                      title={`Module ${index + 1}`}
+                      data={mod.lessons}
+                      handleClick={() => console.log("hey")}
+                    />
+                  ))
+                ) : (
+                  <p>No Modules to display</p>
+                )}
               </div>
               <div className="column is-4">
                 <button className="button">Add Lesson</button>
                 <Dropdown
                   name="tag"
                   handleSelect={this.handleSelect}
-                  currentItem={this.state.selectedTag}
-                  data={this.state.tags}
+                  currentItem={selectedTag}
+                  data={tags}
                 />
                 <List
                   handleClick={this.addLesson}
@@ -229,6 +180,12 @@ class BuildCourse extends Component {
   }
   watchState = e => {
     console.log(this.state.modules);
+    console.log(this.state.currentCourseId);
+    updateCourse(this.state.currentCourseId, {
+      courseModules: this.state.modules
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 }
 
