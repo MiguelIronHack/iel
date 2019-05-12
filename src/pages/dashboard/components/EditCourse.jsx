@@ -123,9 +123,7 @@ export default class CourseDetails extends Component {
             </button>
           </div>
 
-          <button onClick={submitEdition} className="button">
-            submit edition
-          </button>
+          <button className="button">submit edition</button>
         </form>
       </React.Fragment>
     );
