@@ -57,6 +57,7 @@
   margin-right: auto;
 }
 .react-bug {
+  display: flex;
   width: 0%;
   font-size: 0.9rem;
 }
