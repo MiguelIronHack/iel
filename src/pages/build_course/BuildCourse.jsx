@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import List from "../../components/List";
-
+import Dropdown from "./../../components/RealDropDown";
 class BuildCourse extends Component {
   state = {
     buildingCourse: false,
+    selectedTag: "Css",
+    tags: [
+      { name: "css" },
+      { name: "html" },
+      { name: "Javascript" },
+      { name: "React" }
+    ],
     selectedModule: "",
     courses: [
       {
@@ -96,6 +103,9 @@ class BuildCourse extends Component {
     ]
   };
 
+  componentDidMount() {
+    //TODO EYYYYY
+  }
   handleClick = e => this.setState({ buildingCourse: !this.state.BuildCourse });
 
   getLesson = ({ id }) => {
@@ -125,6 +135,11 @@ class BuildCourse extends Component {
     };
     modules.push(createdModule);
     this.setState({ modules: modules });
+  };
+
+  handleSelect = ({ currentTarget }) => {
+    const selectedTag = currentTarget.children[0].textContent;
+    this.setState({ selectedTag: selectedTag });
   };
 
   handleModuleSelect = ({ currentTarget }) => {
@@ -190,6 +205,13 @@ class BuildCourse extends Component {
         <button onClick={this.watchState} className="button">
           TEST
         </button>
+
+        <Dropdown
+          name="tag"
+          handleSelect={this.handleSelect}
+          currentItem={this.state.selectedTag}
+          data={this.state.tags}
+        />
       </React.Fragment>
     );
   }
