@@ -35,8 +35,8 @@ export default class CourseDetails extends Component {
 
   submitEdition = e => {
     e.preventDefault();
-    console.log();
-    updateCourse();
+    console.log(e.target);
+    updateCourse({});
   };
 
   render() {
@@ -123,7 +123,9 @@ export default class CourseDetails extends Component {
             </button>
           </div>
 
-          <button className="button">submit edition</button>
+          <button onClick={submitEdition} className="button">
+            submit edition
+          </button>
         </form>
       </React.Fragment>
     );
