@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 import DashboardNav from "../components/DashboardNav";
 import { getCourse, updateCourse } from "../../../api/coursesHandler";
+import Input from "../../../components/Input";
 
 export default class CourseDetails extends Component {
   constructor(props) {
     super(props);
     this.props = props;
-
-    this.state = {
-      course: {},
-      image: "",
-      video: ""
-    };
+    this.state = {};
   }
   componentDidMount() {
     // remember this trick to get access to url info
@@ -27,61 +23,101 @@ export default class CourseDetails extends Component {
       .catch(err => console.error(err.response));
   }
 
-  onChange = e => {
-    this.setState({
-      course: {
-        [e.target.name]: e.target.innerHTML
-      }
-    });
+  handleChange = ({ currentTarget }) => {
+    const key = currentTarget.name;
+    const value = currentTarget.value;
+    const course = { ...this.state.course };
+    if (key === "video") {
+      this.setState({ [key]: value });
+      return;
+    }
+    course[key] = value;
+    this.setState({ course: course });
   };
+  // onChange = e => {
+  //   this.setState({
+  //     course: {
+  //       [e.target.name]: e.target.innerHTML
+  //     }
+  //   });
+  // };
 
-  onClick = e => {
-    e.preventDefault();
-    const target = e.target.parentElement.childNodes[1];
-    target.contentEditable = "true";
-    console.log(target.innerHTML);
-    this.setState({
-      course: {
-        [e.target.name]: e.target.innerHTML
-      }
-    });
-  };
+  // onClick = e => {
+  //   e.preventDefault();
+  //   const target = e.target.parentElement.childNodes[1];
+  //   target.contentEditable = "true";
+  //   console.log(target.innerHTML);
+  //   this.setState({
+  //     course: {
+  //       [e.target.name]: e.target.innerHTML
+  //     }
+  //   });
+  // };
 
   submitEdition = e => {
     e.preventDefault();
-    console.log(e.target.id);
-    console.log(this.state.course);
-    // updateCourse({});
+    console.log(this.state);
+    //CALL TO DB ?
   };
 
   render() {
-    const { course, image, video } = this.state;
-    const { onChange, onClick, submitEdition } = this;
-
+    const { course, video } = this.state;
+    if (!course) return null;
     return (
       <React.Fragment>
         <DashboardNav rowId={course._id} />
         <form
           id={course._id}
-          onSubmit={submitEdition}
+          onSubmit={this.submitEdition}
           className="edit-course box"
         >
+          <Input
+            label="Title:"
+            name="title"
+            text={course.title}
+            inputPlaceHolder="Edit field"
+            handleChange={this.handleChange}
+          />
+
+          {/* <Input
+            label="Category:"
+            handleChange={this.handleChange}
+            name="category"
+            text={course.category || ""}
+            inputPlaceHolder="Edit field"
+          /> */}
+
+          <Input
+            label="Description:"
+            handleChange={this.handleChange}
+            name="description"
+            text={course.description}
+            inputPlaceHolder="Edit field"
+          />
+          <h1>
+            TODO // HANDLE IMAGE DISPLAY AND CHANGE// THIS DOESNT GO INTO AN
+            INPUT{" "}
+          </h1>
+          <h1>TODO // COURSE LEVEL IS A DROPDOWN MENU</h1>
+          <h1>TODO // CATEGORY DROPDOWN</h1>
+          <Input
+            label="Video:"
+            handleChange={this.handleChange}
+            name="video"
+            text={video}
+            inputPlaceHolder="Edit field"
+          />
+
+          {/* 
           <div>
             <label htmlFor="title">title:</label>
             <p onChange={onChange} name="title" className="input">
               {course.title}
             </p>
-            <button onClick={onClick} className="button">
-              edit
-            </button>
           </div>
-
           <div>
             <label htmlFor="category">Category:</label>
             <input name="category" className="input" value={course.category} />
-            <button onClick={onChange} className="button">
-              edit
-            </button>
           </div>
 
           <div>
@@ -91,9 +127,6 @@ export default class CourseDetails extends Component {
               className="input"
               value={course.courseModules}
             />
-            <button onClick={onChange} className="button">
-              edit
-            </button>
           </div>
 
           <div>
@@ -103,28 +136,16 @@ export default class CourseDetails extends Component {
               className="input"
               value={course.description}
             />
-
-            <button onClick={onChange} className="button">
-              edit
-            </button>
           </div>
 
           <div>
             <label htmlFor="image">Image:</label>
             <input name="image" className="input" value={image} />
-            <button className="button" onClick={onChange}>
-              edit
-            </button>
           </div>
-
           <div>
             <label htmlFor="video">Video:</label>
             <input name="video" className="input" value={video} />
-            <button className="button" onClick={onChange}>
-              edit
-            </button>
           </div>
-
           <div>
             <label htmlFor="followers">Followers:</label>
             <input
@@ -132,27 +153,15 @@ export default class CourseDetails extends Component {
               className="input"
               value={course.followers}
             />
-            <button onClick={onChange} className="button">
-              edit
-            </button>
           </div>
-
           <div>
             <label htmlFor="level">Level:</label>
             <input name="level" className="input" value={course.level} />
-            <button onClick={onChange} className="button">
-              edit
-            </button>
           </div>
-
           <div>
             <label htmlFor="teacher">Teacher:</label>
             <input name="teacher" className="input" value={course.teacher} />
-            <button onClick={onChange} className="button">
-              edit
-            </button>
-          </div>
-
+          </div> */}
           <button className="button">submit edition</button>
         </form>
       </React.Fragment>
