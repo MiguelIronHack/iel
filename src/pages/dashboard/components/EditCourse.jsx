@@ -6,6 +6,7 @@ export default class CourseDetails extends Component {
   constructor(props) {
     super(props);
     this.props = props;
+
     this.state = {
       course: {},
       image: "",
@@ -26,22 +27,36 @@ export default class CourseDetails extends Component {
       .catch(err => console.error(err.response));
   }
 
-  editContent = e => {
+  onChange = e => {
+    this.setState({
+      course: {
+        [e.target.name]: e.target.innerHTML
+      }
+    });
+  };
+
+  onClick = e => {
     e.preventDefault();
     const target = e.target.parentElement.childNodes[1];
-    target.contentEditable = true;
-    target.style.backgroundColor = "#FCD0A1";
+    target.contentEditable = "true";
+    console.log(target.innerHTML);
+    this.setState({
+      course: {
+        [e.target.name]: e.target.innerHTML
+      }
+    });
   };
 
   submitEdition = e => {
     e.preventDefault();
-    console.log(e);
+    console.log(e.target.id);
+    console.log(this.state.course);
     // updateCourse({});
   };
 
   render() {
     const { course, image, video } = this.state;
-    const { editContent, submitEdition } = this;
+    const { onChange, onClick, submitEdition } = this;
 
     return (
       <React.Fragment>
@@ -52,80 +67,93 @@ export default class CourseDetails extends Component {
           className="edit-course box"
         >
           <div>
-            <p>title:</p>
-            <p>{course.title}</p>
-            <button className="button" onClick={editContent}>
+            <label htmlFor="title">title:</label>
+            <p onChange={onChange} name="title" className="input">
+              {course.title}
+            </p>
+            <button onClick={onClick} className="button">
               edit
             </button>
           </div>
 
           <div>
-            <p>Category:</p>
-            <p>{course.category}</p>
-            <button className="button" onClick={editContent}>
+            <label htmlFor="category">Category:</label>
+            <input name="category" className="input" value={course.category} />
+            <button onClick={onChange} className="button">
               edit
             </button>
           </div>
 
           <div>
-            <p>Course Modules:</p>
-            <p>{course.courseModules}</p>
-            <button className="button" onClick={editContent}>
+            <label htmlFor="modules">Course Modules:</label>
+            <input
+              name="modules"
+              className="input"
+              value={course.courseModules}
+            />
+            <button onClick={onChange} className="button">
               edit
             </button>
           </div>
 
           <div>
-            <p>Description:</p>
-            <p>{course.description}</p>
-            <button className="button" onClick={editContent}>
+            <label htmlFor="description">Description:</label>
+            <input
+              name="description"
+              className="input"
+              value={course.description}
+            />
+
+            <button onClick={onChange} className="button">
               edit
             </button>
           </div>
 
           <div>
-            <p>Image:</p>
-            <p className="react-bug"> {image} </p>
-            <button className="button" onClick={editContent}>
+            <label htmlFor="image">Image:</label>
+            <input name="image" className="input" value={image} />
+            <button className="button" onClick={onChange}>
               edit
             </button>
           </div>
 
           <div>
-            <p>Video:</p>
-            <p className="react-bug">{video}</p>
-            <button className="button" onClick={editContent}>
+            <label htmlFor="video">Video:</label>
+            <input name="video" className="input" value={video} />
+            <button className="button" onClick={onChange}>
               edit
             </button>
           </div>
 
           <div>
-            <p>Followers:</p>
-            <p>{course.followers}</p>
-            <button className="button" onClick={editContent}>
+            <label htmlFor="followers">Followers:</label>
+            <input
+              name="followers"
+              className="input"
+              value={course.followers}
+            />
+            <button onClick={onChange} className="button">
               edit
             </button>
           </div>
 
           <div>
-            <p>Level:</p>
-            <p>{course.level}</p>
-            <button className="button" onClick={editContent}>
+            <label htmlFor="level">Level:</label>
+            <input name="level" className="input" value={course.level} />
+            <button onClick={onChange} className="button">
               edit
             </button>
           </div>
 
           <div>
-            <p>Teacher:</p>
-            <p>{course.teacher}</p>
-            <button className="button" onClick={editContent}>
+            <label htmlFor="teacher">Teacher:</label>
+            <input name="teacher" className="input" value={course.teacher} />
+            <button onClick={onChange} className="button">
               edit
             </button>
           </div>
 
-          <button onClick={this.onclick} className="button">
-            submit edition
-          </button>
+          <button className="button">submit edition</button>
         </form>
       </React.Fragment>
     );

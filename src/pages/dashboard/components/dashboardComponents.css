@@ -48,16 +48,11 @@
 }
 .edit-course > div {
   display: flex;
-  border-bottom: 1px solid #333;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
+  margin-bottom: 2vh;
 }
 
 .edit-course > div > p {
   margin-right: auto;
-}
-.react-bug {
-  display: flex;
-  width: 0%;
-  font-size: 0.9rem;
 }
