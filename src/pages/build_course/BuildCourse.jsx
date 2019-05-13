@@ -5,6 +5,7 @@ import { getLessons } from "./../../api/lessonHandler";
 import { getAllTags } from "../../api/tagHandler";
 import { getUserCourses, updateCourse } from "../../api/coursesHandler";
 import { createModule } from "../../api/moduleHandler";
+import { getLocalToken } from "../../api/ajaxLogin";
 class BuildCourse extends Component {
   state = {
     buildingCourse: false,
@@ -19,7 +20,8 @@ class BuildCourse extends Component {
     //TODO  Render all the modules a course has kill me pls
     //TODO get this hardcorded userId out of the way kek
     //TODO GOTTA BRING DEM PROMISE.all
-    getUserCourses("5cd57f93be12791f30a3e388")
+    const userToken = getLocalToken();
+    getUserCourses(userToken._id)
       .then(({ data: courses }) => {
         this.setState({ courses });
       })
