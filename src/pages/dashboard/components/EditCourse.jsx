@@ -5,6 +5,7 @@ import { getAllCategories } from "../../../api/categoryHandler";
 import Input from "../../../components/Input";
 import Dropdown from "../../../components/RealDropDown";
 import InputFile from "../../../components/InputFile";
+import { uploadImage } from "../../../services/imageUploadAPI";
 
 export default class CourseDetails extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class CourseDetails extends Component {
     this.props = props;
     this.state = {
       video: "",
-      image: "",
+
       selectedCategory: {},
       categories: [],
       selectedLevel: "",
@@ -73,20 +74,34 @@ export default class CourseDetails extends Component {
     this.setState({ selectedLevel: data });
   };
 
-  submitEdition = e => {
-    const { title, description } = this.state.course;
-    const { selectedLevel, selectedCategory, video } = this.state;
-    e.preventDefault();
-    console.log(this.state);
+  handleImage = file => {
+    this.setState({
+      imgFileList: file
+    });
+  };
 
-    updateCourse(e.target.id, {
-      title: title,
-      category: selectedCategory._id,
-      level: selectedLevel.name,
-      description: description,
-      video: video
-    })
-      .then(res => console.log(res))
+  submitEdition = e => {
+    e.preventDefault();
+    const { title, description } = this.state.course;
+    const { selectedLevel, selectedCategory, video, image } = this.state;
+
+    uploadImage(this.state.imgFileList)
+      .then(res => {
+        this.setState({ image: res.data.results[0].secure_url });
+
+        updateCourse(this.props.match.params.course, {
+          title: title,
+          category: selectedCategory._id,
+          level: selectedLevel.name,
+          description: description,
+          media: {
+            video: video,
+            image: image
+          }
+        })
+          .then(res => console.log(res))
+          .catch(err => console.error(err));
+      })
       .catch(err => console.error(err));
   };
 
@@ -136,7 +151,7 @@ export default class CourseDetails extends Component {
             inputPlaceHolder="Edit field"
           />
           <h1>
-            <InputFile />
+            <InputFile handleImage={this.handleImage} />
           </h1>
           <Input
             label="Video:"

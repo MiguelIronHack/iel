@@ -1,12 +1,11 @@
 import React from "react";
 import { uploadImage } from "../services/imageUploadAPI.js";
 
-export default function InputFile() {
-  const handleChange = e => {
-    uploadImage(e)
-      .then(res => res.secure_url)
-      .catch(err => console.error(err));
+const InputFile = props => {
+  const raiseImage = e => {
+    props.handleImage(e.target.files);
   };
 
-  return <input id="inputImgFile" type="file" />;
-}
+  return <input onChange={e => raiseImage(e)} id="inputImgFile" type="file" />;
+};
+export default InputFile;
