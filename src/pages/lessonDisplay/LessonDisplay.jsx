@@ -2,29 +2,48 @@ import React from "react";
 import { Heading } from "react-bulma-components";
 import "./LessonDisplay.css";
 import LessonNav from "./LessonNav";
+import { getLessons } from "../../api/lessonHandler";
+import { convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
 
 export default class LessonDisplay extends React.Component {
   state = {
-    title: "lesson",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto pariatur incidunt recusandae deleniti. Sunt quam iusto non quos doloribus expedita maxime veniam. Doloremque quidem quis saepe quas, deserunt totam veritatis.",
-    content: "videos and monkeys flying"
-  };
-  state = {
-    title: "lesson 1.2",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto pariatur incidunt recusandae deleniti. Sunt quam iusto non quos doloribus expedita maxime veniam. Doloremque quidem quis saepe quas, deserunt totam veritatis.",
-    content: "videos and monkeys flying"
+    lessons: []
   };
 
+  componentDidMount() {
+    getLessons()
+      .then(res => {
+        console.log(res.data);
+
+        this.setState({
+          lessons: res.data
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
+    console.log(this.state.lessons, " lalala");
+
     return (
       <React.Fragment>
         <LessonNav />
         <section className="lesson-display-section">
           <Heading className="lesson-header column">{this.state.title}</Heading>
           <article className="lesson box column is-three-quarters">
-            <p className="lesson-description">
+            {this.state.lessons.map((lessons, index) => (
+              // console.log(lessons.content.blocks[0].text)
+              <p key={index}>
+                {index} {lessons.content.blocks[0].text}
+              </p>
+            ))}
+            {/* {lessons.map((lesson, index) => (
+              <p key={index}>
+                {index} {text}
+              </p>
+            ))} */}
+            {/* <p className="lesson-description">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur
               porro illo velit optio consequuntur necessitatibus architecto in
               maiores, quod pariatur mollitia cupiditate, blanditiis dolores
@@ -57,7 +76,7 @@ export default class LessonDisplay extends React.Component {
               placeat. Dolor, dolorem cum voluptatibus amet autem impedit
               nostrum. Accusamus voluptatibus expedita, odit dolor eius quisquam
               explicabo debitis nam deleniti facilis suscipit, rem officia?
-            </p>
+            </p> */}
           </article>
         </section>
       </React.Fragment>
