@@ -21,7 +21,10 @@
   margin: 0;
   padding: 0;
 }
-
+.scroll-container::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
 .scroll-container {
   position: absolute;
   overflow: auto;
