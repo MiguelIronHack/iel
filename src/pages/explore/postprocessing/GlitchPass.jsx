@@ -12,15 +12,12 @@ import {
 } from "three/src/Three";
 import { DigitalGlitch } from "../shaders/DigiGlitch";
 import { Pass } from "./Pass";
-/**
- * @author alteredq / http://alteredqualia.com/
- */
 
-var GlitchPass = function(dt_size) {
+const GlitchPass = function(dt_size) {
   Pass.call(this);
   if (DigitalGlitch === undefined)
     console.error("THREE.GlitchPass relies on THREE.DigitalGlitch");
-  var shader = DigitalGlitch;
+  const shader = DigitalGlitch;
   this.uniforms = UniformsUtils.clone(shader.uniforms);
   if (dt_size === undefined) dt_size = 64;
   this.uniforms["tDisp"].value = this.generateHeightmap(dt_size);
@@ -66,9 +63,9 @@ GlitchPass.prototype = Object.assign(Object.create(Pass.prototype), {
   },
 
   generateHeightmap: function(dt_size) {
-    var data_arr = new Float32Array(dt_size * dt_size * 1);
+    const data_arr = new Float32Array(dt_size * dt_size * 1);
 
-    var texture = new DataTexture(
+    const texture = new DataTexture(
       data_arr,
       dt_size,
       dt_size,

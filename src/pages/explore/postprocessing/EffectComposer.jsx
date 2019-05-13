@@ -7,22 +7,19 @@ import {
   Vector2,
   WebGLRenderTarget
 } from "three/src/Three";
-/**
- * @author alteredq / http://alteredqualia.com/
- */
 
-var EffectComposer = function(renderer, renderTarget) {
+const EffectComposer = function(renderer, renderTarget) {
   this.renderer = renderer;
 
   if (renderTarget === undefined) {
-    var parameters = {
+    let parameters = {
       minFilter: LinearFilter,
       magFilter: LinearFilter,
       format: RGBAFormat,
       stencilBuffer: false
     };
 
-    var size = renderer.getDrawingBufferSize(new Vector2());
+    let size = renderer.getDrawingBufferSize(new Vector2());
     renderTarget = new WebGLRenderTarget(size.width, size.height, parameters);
     renderTarget.texture.name = "EffectComposer.rt1";
   }
@@ -47,14 +44,14 @@ var EffectComposer = function(renderer, renderTarget) {
 
 Object.assign(EffectComposer.prototype, {
   swapBuffers: function() {
-    var tmp = this.readBuffer;
+    let tmp = this.readBuffer;
     this.readBuffer = this.writeBuffer;
     this.writeBuffer = tmp;
   },
 
   addPass: function(pass) {
     this.passes.push(pass);
-    var size = this.renderer.getDrawingBufferSize(new Vector2());
+    let size = this.renderer.getDrawingBufferSize(new Vector2());
     pass.setSize(size.width, size.height);
   },
 
@@ -68,9 +65,9 @@ Object.assign(EffectComposer.prototype, {
       deltaTime = (Date.now() - this._previousFrameTime) * 0.001;
     }
     this._previousFrameTime = Date.now();
-    var currentRenderTarget = this.renderer.getRenderTarget();
-    var maskActive = false;
-    var pass,
+    let currentRenderTarget = this.renderer.getRenderTarget();
+    let maskActive = false;
+    let pass,
       i,
       il = this.passes.length;
 
@@ -87,7 +84,7 @@ Object.assign(EffectComposer.prototype, {
       );
       if (pass.needsSwap) {
         if (maskActive) {
-          var context = this.renderer.context;
+          let context = this.renderer.context;
           context.stencilFunc(context.NOTEQUAL, 1, 0xffffffff);
           this.copyPass.render(
             this.renderer,
@@ -112,7 +109,7 @@ Object.assign(EffectComposer.prototype, {
 
   reset: function(renderTarget) {
     if (renderTarget === undefined) {
-      var size = this.renderer.getDrawingBufferSize(new Vector2());
+      let size = this.renderer.getDrawingBufferSize(new Vector2());
       renderTarget = this.renderTarget1.clone();
       renderTarget.setSize(size.width, size.height);
     }
@@ -126,7 +123,7 @@ Object.assign(EffectComposer.prototype, {
   setSize: function(width, height) {
     this.renderTarget1.setSize(width, height);
     this.renderTarget2.setSize(width, height);
-    for (var i = 0; i < this.passes.length; i++) {
+    for (let i = 0; i < this.passes.length; i++) {
       this.passes[i].setSize(width, height);
     }
   }

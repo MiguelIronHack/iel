@@ -1,6 +1,4 @@
-/**
- * @author alteredq / http://alteredqualia.com/
- */
+// Props to drcmda
 
 import "./explore.css";
 import ExploreCourses from "./components/ExploreCourses";

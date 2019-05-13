@@ -1,9 +1,6 @@
 import { Pass } from "./Pass";
-/**
- * @author alteredq / http://alteredqualia.com/
- */
 
-var MaskPass = function(scene, camera) {
+const MaskPass = function(scene, camera) {
   Pass.call(this);
 
   this.scene = scene;
@@ -18,9 +15,9 @@ var MaskPass = function(scene, camera) {
 MaskPass.prototype = Object.assign(Object.create(Pass.prototype), {
   constructor: MaskPass,
 
-  render: function(renderer, writeBuffer, readBuffer, deltaTime, maskActive) {
-    var context = renderer.context;
-    var state = renderer.state;
+  render: function(renderer, writeBuffer, readBuffer) {
+    let context = renderer.context;
+    let state = renderer.state;
 
     // don't update color or depth
 
@@ -34,7 +31,7 @@ MaskPass.prototype = Object.assign(Object.create(Pass.prototype), {
 
     // set up stencil
 
-    var writeValue, clearValue;
+    let writeValue, clearValue;
 
     if (this.inverse) {
       writeValue = 0;
@@ -75,7 +72,7 @@ MaskPass.prototype = Object.assign(Object.create(Pass.prototype), {
   }
 });
 
-var ClearMaskPass = function() {
+const ClearMaskPass = function() {
   Pass.call(this);
 
   this.needsSwap = false;
@@ -84,7 +81,7 @@ var ClearMaskPass = function() {
 ClearMaskPass.prototype = Object.create(Pass.prototype);
 
 Object.assign(ClearMaskPass.prototype, {
-  render: function(renderer, writeBuffer, readBuffer, deltaTime, maskActive) {
+  render: function(renderer) {
     renderer.state.buffers.stencil.setTest(false);
   }
 });

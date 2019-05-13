@@ -1,9 +1,6 @@
 import { Pass } from "./Pass";
-/**
- * @author alteredq / http://alteredqualia.com/
- */
 
-var RenderPass = function(
+const RenderPass = function(
   scene,
   camera,
   overrideMaterial,
@@ -29,12 +26,12 @@ RenderPass.prototype = Object.assign(Object.create(Pass.prototype), {
   constructor: RenderPass,
 
   render: function(renderer, writeBuffer, readBuffer, deltaTime, maskActive) {
-    var oldAutoClear = renderer.autoClear;
+    let oldAutoClear = renderer.autoClear;
     renderer.autoClear = false;
 
     this.scene.overrideMaterial = this.overrideMaterial;
 
-    var oldClearColor, oldClearAlpha;
+    let oldClearColor, oldClearAlpha;
 
     if (this.clearColor) {
       oldClearColor = renderer.getClearColor().getHex();

@@ -7,11 +7,8 @@ import {
   UniformsUtils
 } from "three/src/Three";
 import { Pass } from "./Pass";
-/**
- * @author alteredq / http://alteredqualia.com/
- */
 
-var ShaderPass = function(shader, textureID) {
+const ShaderPass = function(shader, textureID) {
   Pass.call(this);
 
   this.textureID = textureID !== undefined ? textureID : "tDiffuse";
