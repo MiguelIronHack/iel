@@ -1,49 +1,55 @@
 import React, { Component } from "react";
-import { Editor, EditorState, RichUtils, convertToRaw } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
+import { convertFromRaw } from "draft-js";
+import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-export default class about extends Component {
+const content = {
+  entityMap: {},
+  blocks: [
+    {
+      key: "637gr",
+      text: "Initialized from content state.",
+      type: "unstyled",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+      data: {}
+    }
+  ]
+};
+
+class EditorConvertToJSON extends Component {
   constructor(props) {
     super(props);
+    const contentState = convertFromRaw(content);
     this.state = {
-      editorState: EditorState.createEmpty()
+      contentState
     };
   }
 
-  onSubmit = e => {
-    e.preventDefault();
+  onContentStateChange: Function = contentState => {
+    this.setState({
+      contentState
+    });
   };
 
-  onChange(editorState) {
-    this.setState({ editorState });
-    console.log(this.state.editorState);
-  }
-
-  makeBold() {
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, "BOLD"));
-  }
-
   render() {
-    const raw = convertToRaw(this.state.editorState.getCurrentContent());
-
+    const { contentState } = this.state;
     return (
-      <form onSubmit={this.onSubmit}>
-        <button
-          onClick={() => {
-            this.makeBold();
-          }}
-          className="button"
-        >
-          Bold
-        </button>
-        <Editor
-          onChange={editorState => this.onChange(editorState)}
-          editorState={this.state.editorState}
-          placeholder="This is the editor"
-        />
-
-        <div>{JSON.stringify(raw)}</div>
-        <button className="button">submit</button>
-      </form>
+      <Editor
+        wrapperClassName="wrapper-class"
+        editorClassName="editor-class"
+        toolbarClassName="toolbar-class"
+        toolbar={{
+          inline: { inDropdown: true },
+          list: { inDropdown: true },
+          textAlign: { inDropdown: true },
+          link: { inDropdown: true },
+          history: { inDropdown: true }
+        }}
+      />
     );
   }
 }
+
+export default EditorConvertToJSON;
