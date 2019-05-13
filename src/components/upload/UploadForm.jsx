@@ -3,7 +3,7 @@ import { getAllCourses, createCourse } from "../../api/coursesHandler";
 import { createCategory, getAllCategories } from "../../api/categoryHandler";
 import { Heading } from "react-bulma-components";
 import DashboardNav from "../../pages/dashboard/components/DashboardNav";
-
+import { getLocalToken } from "../../api/ajaxLogin.js";
 import { Redirect } from "react-router-dom";
 
 import "./form.css";
@@ -25,8 +25,10 @@ export default class uploadForm extends Component {
   onSubmit = e => {
     e.preventDefault();
 
+    const userToken = getLocalToken();
+
     createCourse({
-      teacher: "5cd57f93be12791f30a3e388",
+      teacher: userToken._id,
       title: this.state.title,
       description: this.state.description,
       media: {
@@ -53,7 +55,7 @@ export default class uploadForm extends Component {
 
   onChange = e => {
     this.setState({
-      [e.target.name]: e.target.placeholder
+      [e.target.name]: e.target.value
     });
   };
 
