@@ -23,7 +23,8 @@ const content = {
 class TextEditor extends Component {
   constructor(props) {
     super(props);
-    const contentState = convertFromRaw(content);
+    const contentState = JSON.stringify(content);
+    console.log(typeof contentState, " typeoooff");
     this.state = {
       contentState
     };
@@ -38,7 +39,7 @@ class TextEditor extends Component {
   handleSubmit = e => {
     const user = getLocalToken();
     e.preventDefault();
-    console.log(this.state.contentState);
+    console.log(this.state.contentState, " ono");
 
     createLesson({
       content: this.state.contentState,
