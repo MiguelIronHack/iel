@@ -1,26 +1,54 @@
 import React, { Component } from "react";
 import DashboardNav from "../components/DashboardNav";
 import { getCourse, updateCourse } from "../../../api/coursesHandler";
+import { getAllCategories } from "../../../api/categoryHandler";
 import Input from "../../../components/Input";
+import Dropdown from "../../../components/RealDropDown";
 
 export default class CourseDetails extends Component {
   constructor(props) {
     super(props);
     this.props = props;
-    this.state = {};
+    this.state = {
+      video: "",
+      selectedCategory: {},
+      categories: [],
+      selectedLevel: "",
+      levels: [
+        {
+          name: "Beginner"
+        },
+        {
+          name: "Intermediate"
+        },
+        {
+          name: "Advanced"
+        }
+      ]
+    };
   }
   componentDidMount() {
     // remember this trick to get access to url info
     getCourse(this.props.match.params.course)
       .then(res => {
         console.log("course data", res.data);
+        const course = { ...res.data };
+        console.log(course);
         this.setState({
-          course: res.data,
-          image: res.data.media.image,
-          video: res.data.media.video
+          course: course,
+          selectedLevel: this.state.levels[0]
         });
       })
       .catch(err => console.error(err.response));
+
+    getAllCategories().then(({ data }) => {
+      this.setState({
+        categories: data,
+        selectedCategory: data[0]
+      });
+
+      console.log(this.state);
+    });
   }
 
   handleChange = ({ currentTarget }) => {
@@ -34,34 +62,30 @@ export default class CourseDetails extends Component {
     course[key] = value;
     this.setState({ course: course });
   };
-  // onChange = e => {
-  //   this.setState({
-  //     course: {
-  //       [e.target.name]: e.target.innerHTML
-  //     }
-  //   });
-  // };
 
-  // onClick = e => {
-  //   e.preventDefault();
-  //   const target = e.target.parentElement.childNodes[1];
-  //   target.contentEditable = "true";
-  //   console.log(target.innerHTML);
-  //   this.setState({
-  //     course: {
-  //       [e.target.name]: e.target.innerHTML
-  //     }
-  //   });
-  // };
+  handleSelectedCategory = data => {
+    this.setState({ selectedCategory: data });
+  };
+
+  handleSelectedLevel = data => {
+    this.setState({ selectedLevel: data });
+  };
 
   submitEdition = e => {
     e.preventDefault();
-    console.log(this.state);
-    //CALL TO DB ?
+    // console.log(this.state);
+    //Patch
   };
 
   render() {
-    const { course, video } = this.state;
+    const {
+      course,
+      video,
+      categories,
+      selectedCategory,
+      levels,
+      selectedLevel
+    } = this.state;
     if (!course) return null;
     return (
       <React.Fragment>
@@ -78,14 +102,18 @@ export default class CourseDetails extends Component {
             inputPlaceHolder="Edit field"
             handleChange={this.handleChange}
           />
+          {/* dropdown */}
+          <Dropdown
+            currentItem={selectedCategory}
+            handleSelect={this.handleSelectedCategory}
+            data={categories}
+          />
 
-          {/* <Input
-            label="Category:"
-            handleChange={this.handleChange}
-            name="category"
-            text={course.category || ""}
-            inputPlaceHolder="Edit field"
-          /> */}
+          <Dropdown
+            currentItem={selectedLevel}
+            handleSelect={this.handleSelectedLevel}
+            data={levels}
+          />
 
           <Input
             label="Description:"
@@ -96,10 +124,8 @@ export default class CourseDetails extends Component {
           />
           <h1>
             TODO // HANDLE IMAGE DISPLAY AND CHANGE// THIS DOESNT GO INTO AN
-            INPUT{" "}
+            INPUT
           </h1>
-          <h1>TODO // COURSE LEVEL IS A DROPDOWN MENU</h1>
-          <h1>TODO // CATEGORY DROPDOWN</h1>
           <Input
             label="Video:"
             handleChange={this.handleChange}
@@ -108,60 +134,6 @@ export default class CourseDetails extends Component {
             inputPlaceHolder="Edit field"
           />
 
-          {/* 
-          <div>
-            <label htmlFor="title">title:</label>
-            <p onChange={onChange} name="title" className="input">
-              {course.title}
-            </p>
-          </div>
-          <div>
-            <label htmlFor="category">Category:</label>
-            <input name="category" className="input" value={course.category} />
-          </div>
-
-          <div>
-            <label htmlFor="modules">Course Modules:</label>
-            <input
-              name="modules"
-              className="input"
-              value={course.courseModules}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="description">Description:</label>
-            <input
-              name="description"
-              className="input"
-              value={course.description}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="image">Image:</label>
-            <input name="image" className="input" value={image} />
-          </div>
-          <div>
-            <label htmlFor="video">Video:</label>
-            <input name="video" className="input" value={video} />
-          </div>
-          <div>
-            <label htmlFor="followers">Followers:</label>
-            <input
-              name="followers"
-              className="input"
-              value={course.followers}
-            />
-          </div>
-          <div>
-            <label htmlFor="level">Level:</label>
-            <input name="level" className="input" value={course.level} />
-          </div>
-          <div>
-            <label htmlFor="teacher">Teacher:</label>
-            <input name="teacher" className="input" value={course.teacher} />
-          </div> */}
           <button className="button">submit edition</button>
         </form>
       </React.Fragment>

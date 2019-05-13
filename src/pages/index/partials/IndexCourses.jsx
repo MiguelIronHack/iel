@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getAllCourses } from "../../../api/coursesHandler";
-import Course from "../components/Course";
+import Course from "../../../components/CourseCard";
 import Btn from "../../../components/Btn";
 import { Heading, Columns } from "react-bulma-components";
 

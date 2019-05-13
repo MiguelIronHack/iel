@@ -12,8 +12,13 @@ const Dropdown = ({ currentItem, data, name, handleSelect }) => {
       className={isActive ? "dropdown is-active" : "dropdown"}
     >
       <div className="dropdown-trigger">
-        <button className="button" aria-haspopup="true" aria-controls={name}>
-          <span>{currentItem}</span>
+        <button
+          onClick={e => e.preventDefault()}
+          className="button"
+          aria-haspopup="true"
+          aria-controls={name}
+        >
+          <span>{currentItem.name}</span>
           <span className="icon is-small">
             <i className="fas fa-angle-down" aria-hidden="true" />
           </span>
