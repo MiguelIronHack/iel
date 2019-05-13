@@ -79,15 +79,13 @@ export default class CourseDetails extends Component {
     e.preventDefault();
     console.log(this.state);
 
-    updateCourse(e.target.id, [
-      {
-        title: title,
-        category: selectedCategory._id,
-        level: selectedLevel,
-        description: description,
-        video: video
-      }
-    ])
+    updateCourse(e.target.id, {
+      title: title,
+      category: selectedCategory._id,
+      level: selectedLevel,
+      description: description,
+      video: video
+    })
       .then(res => console.log(res))
       .catch(err => console.error(err));
   };
