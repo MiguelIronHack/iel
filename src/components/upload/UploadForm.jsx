@@ -73,72 +73,74 @@ export default class uploadForm extends Component {
     const { title, category, description, image, video } = this.state;
 
     return (
-      <section className="login-register-section">
+      <React.Fragment>
         <DashboardNav />
-        <Heading className="has-text-centered	">Upload Course</Heading>
-        <form className="register-form box" onSubmit={onSubmit}>
-          <div className="control">
-            <label htmlFor="title">Title</label>
+        <section className="login-register-section">
+          <Heading className="has-text-centered	">Upload Course</Heading>
+          <form className="register-form box" onSubmit={onSubmit}>
+            <div className="control">
+              <label htmlFor="title">Title</label>
+              <input
+                value={title}
+                onChange={onChange}
+                className="input"
+                placeholder="input your title here..."
+                name="title"
+                type="text"
+              />
+              <label htmlFor="description">Description</label>
+              <input
+                value={description}
+                onChange={onChange}
+                className="input"
+                placeholder="input your description here..."
+                name="description"
+                type="text"
+              />
+              <label htmlFor="video">Video</label>
+              <input
+                value={video}
+                onChange={onChange}
+                className="input"
+                placeholder="input your video link here..."
+                name="video"
+                type="input"
+              />
+
+              <label htmlFor="image">Image</label>
+              <input
+                value={image}
+                onChange={onChange}
+                className="input"
+                placeholder="input your image link here..."
+                name="image"
+                type="input"
+              />
+            </div>
+
+            <label htmlFor="category">Category</label>
+
             <input
-              value={title}
+              value={category}
               onChange={onChange}
               className="input"
-              placeholder="input your title here..."
-              name="title"
-              type="text"
-            />
-            <label htmlFor="description">Description</label>
-            <input
-              value={description}
-              onChange={onChange}
-              className="input"
-              placeholder="input your description here..."
-              name="description"
-              type="text"
-            />
-            <label htmlFor="video">Video</label>
-            <input
-              value={video}
-              onChange={onChange}
-              className="input"
-              placeholder="input your video link here..."
-              name="video"
-              type="input"
+              placeholder="input your category link here..."
+              name="category"
+              type="category"
             />
 
-            <label htmlFor="image">Image</label>
-            <input
-              value={image}
-              onChange={onChange}
-              className="input"
-              placeholder="input your image link here..."
-              name="image"
-              type="input"
-            />
-          </div>
-
-          <label htmlFor="category">Category</label>
-
-          <input
-            value={category}
-            onChange={onChange}
-            className="input"
-            placeholder="input your category link here..."
-            name="category"
-            type="category"
-          />
-
-          <button
-            className="button is-primary  is-focused"
-            onClick={this.onClick}
-          >
-            Submit
+            <button
+              className="button is-primary  is-focused"
+              onClick={this.onClick}
+            >
+              Submit
+            </button>
+          </form>
+          <button onClick={onClick} className="button">
+            get courses and categories
           </button>
-        </form>
-        <button onClick={onClick} className="button">
-          get courses and categories
-        </button>
-      </section>
+        </section>
+      </React.Fragment>
     );
   }
 }
