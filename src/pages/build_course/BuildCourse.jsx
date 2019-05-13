@@ -6,6 +6,8 @@ import { getAllTags } from "../../api/tagHandler";
 import { getUserCourses, updateCourse } from "../../api/coursesHandler";
 import { createModule } from "../../api/moduleHandler";
 import { getLocalToken } from "../../api/ajaxLogin";
+import _ from "lodash";
+
 class BuildCourse extends Component {
   state = {
     buildingCourse: false,
@@ -26,7 +28,6 @@ class BuildCourse extends Component {
         this.setState({ courses });
       })
       .catch(err => console.log(err));
-    console.log("Querying Lessons data....");
     getLessons()
       .then(({ data: lessons }) => {
         this.setState({ lessons });
@@ -43,36 +44,12 @@ class BuildCourse extends Component {
       })
       .catch(err => console.log(err));
   }
-  handleClick = ({ currentTarget }) => {
-    this.setState({ buildingCourse: !this.state.BuildCourse });
-    const currentCourse = this.state.courses[
-      this.getSelectedCourse(currentTarget.id)
-    ];
-    this.setState({ currentCourseId: currentTarget.id });
-    this.setState({ modules: currentCourse.courseModules });
-  };
-
-  getSelectedCourse = id => {
-    let index = null;
-    for (let course of this.state.courses) {
-      if (course._id === id) index = this.state.courses.indexOf(course);
-    }
-    return index;
-  };
-  getLesson = ({ id }) => {
-    let lesson = null;
-    for (let item of this.state.lessons) {
-      if (item._id === id) lesson = item;
-    }
-    return lesson;
-  };
-
-  getModule = ({ id }) => {
-    let selectedModule = null;
-    for (let item of this.state.modules) {
-      if (item.id === +id) selectedModule = item;
-    }
-    return selectedModule;
+  handleClick = course => {
+    this.setState({
+      currentCourse: course,
+      modules: course.courseModules,
+      buildingCourse: !this.state.BuildCourse
+    });
   };
 
   addModule = () => {
@@ -82,7 +59,7 @@ class BuildCourse extends Component {
         const createdModule = {
           title: "",
           lessons: [],
-          id: res.data
+          _id: res.data
         };
         modules.push(createdModule);
         this.setState({ modules: modules });
@@ -95,17 +72,14 @@ class BuildCourse extends Component {
     this.setState({ selectedTag: selectedTag });
   };
 
-  handleModuleSelect = ({ currentTarget }) => {
-    const selectedModule = this.getModule(currentTarget);
-    this.setState({ selectedModule: selectedModule });
-  };
+  handleModuleSelect = mod => this.setState({ selectedModule: mod });
 
-  addLesson = ({ currentTarget: input }) => {
+  addLesson = lesson => {
     if (!this.state.selectedModule) {
       console.log("no module fuck you");
       return;
     }
-    const lesson = this.getLesson(input);
+    // const lesson = this.getLesson(input);
     const selectedModule = { ...this.state.selectedModule };
     selectedModule.lessons.push(lesson);
     this.setState({ selectedModule: selectedModule });
@@ -120,8 +94,8 @@ class BuildCourse extends Component {
       selectedTag,
       tags
     } = this.state;
-
     if (!courses.length) return <h1>No courses to display</h1>;
+
     return (
       <React.Fragment>
         <div className="container columns is-12">
@@ -141,7 +115,7 @@ class BuildCourse extends Component {
                       handleModule={this.handleModuleSelect}
                       title={`Module ${index + 1}`}
                       data={mod.lessons}
-                      handleClick={() => console.log("hey")}
+                      module={mod}
                     />
                   ))
                 ) : (
@@ -181,10 +155,9 @@ class BuildCourse extends Component {
     );
   }
   watchState = e => {
-    console.log(this.state.modules);
-    console.log(this.state.currentCourseId);
-    updateCourse(this.state.currentCourseId, {
-      courseModules: this.state.modules
+    const newModules = this.state.modules.map(mod => _.pick(mod, "_id"));
+    updateCourse(this.state.currentCourse._id, {
+      courseModules: newModules
     })
       .then(res => console.log(res))
       .catch(err => console.log(err));

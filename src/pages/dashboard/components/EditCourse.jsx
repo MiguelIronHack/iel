@@ -4,6 +4,7 @@ import { getCourse, updateCourse } from "../../../api/coursesHandler";
 import { getAllCategories } from "../../../api/categoryHandler";
 import Input from "../../../components/Input";
 import Dropdown from "../../../components/RealDropDown";
+import InputFile from "../../../components/InputFile";
 
 export default class CourseDetails extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export default class CourseDetails extends Component {
     this.props = props;
     this.state = {
       video: "",
+      image: "",
       selectedCategory: {},
       categories: [],
       selectedLevel: "",
@@ -72,9 +74,20 @@ export default class CourseDetails extends Component {
   };
 
   submitEdition = e => {
+    const { title, description } = this.state.course;
+    const { selectedLevel, selectedCategory, video } = this.state;
     e.preventDefault();
-    // console.log(this.state);
-    //Patch
+    console.log(this.state);
+
+    updateCourse(e.target.id, {
+      title: title,
+      category: selectedCategory._id,
+      level: selectedLevel.name,
+      description: description,
+      video: video
+    })
+      .then(res => console.log(res))
+      .catch(err => console.error(err));
   };
 
   render() {
@@ -123,8 +136,7 @@ export default class CourseDetails extends Component {
             inputPlaceHolder="Edit field"
           />
           <h1>
-            TODO // HANDLE IMAGE DISPLAY AND CHANGE// THIS DOESNT GO INTO AN
-            INPUT
+            <InputFile />
           </h1>
           <Input
             label="Video:"
