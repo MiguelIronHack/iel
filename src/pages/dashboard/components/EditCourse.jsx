@@ -82,7 +82,7 @@ export default class CourseDetails extends Component {
     updateCourse(e.target.id, {
       title: title,
       category: selectedCategory._id,
-      level: selectedLevel,
+      level: selectedLevel.name,
       description: description,
       video: video
     })
