@@ -26,6 +26,7 @@ export default class uploadForm extends Component {
     e.preventDefault();
 
     createCourse({
+      teacher: "5cd57f93be12791f30a3e388",
       title: this.state.title,
       description: this.state.description,
       media: {
