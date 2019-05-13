@@ -16,17 +16,17 @@ class TextEditor extends Component {
   }
 
   componentDidMount() {
-    getOneLesson("5cd9d7679a4f2a107cb628ec")
-      .then(res => {
-        const raw = JSON.parse(res.data.content);
-        const contentState = convertFromRaw(raw);
-        const editorState = EditorState.createWithContent(contentState);
-        this.setState({ editorState: editorState });
-        // const test = convertFromRaw(res.data.content);
-        // console.log(test);
-        // this.setState({ contentState: res.data.content });
-      })
-      .catch(err => console.log(err));
+    // getOneLesson("5cd9dbd89a4f2a107cb628ed")
+    //   .then(res => {
+    //     const raw = JSON.parse(res.data.content);
+    //     const contentState = convertFromRaw(raw);
+    //     const editorState = EditorState.createWithContent(contentState);
+    //     this.setState({ editorState: editorState });
+    //     // const test = convertFromRaw(res.data.content);
+    //     // console.log(test);
+    //     // this.setState({ contentState: res.data.content });
+    //   })
+    //   .catch(err => console.log(err));
   }
 
   onContentStateChange = editorState => {
