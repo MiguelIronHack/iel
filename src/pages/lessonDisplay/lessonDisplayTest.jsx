@@ -19,16 +19,7 @@ class EditorConvertToHTML extends Component {
     };
   }
 
-  componentDidMount() {
-    getLessons()
-      .then(res => {
-        const converted = convertToRaw(res.data.content);
-        console.log("lessons data", converted);
-        this.html = res.data;
-        this.setState(res.data);
-      })
-      .catch(err => console.error(err.response));
-  }
+  componentDidMount() {}
 
   // onEditorStateChange: Function = editorState => {
   //   this.setState({
