@@ -2,24 +2,27 @@ import React from "react";
 import { Heading } from "react-bulma-components";
 import "./LessonDisplay.css";
 import LessonNav from "./LessonNav";
-import { getLessons } from "../../api/lessonHandler";
+import { getLessons, getOneLesson } from "../../api/lessonHandler";
 import { convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 
 export default class LessonDisplay extends React.Component {
   state = {
-    lessons: []
+    lessons: {}
   };
 
   componentDidMount() {
-    getLessons()
-      .then(res => {
-        console.log(res.data);
-
-        this.setState({
-          lessons: res.data
-        });
-      })
+    // getLessons()
+    //   .then(res => {
+    //     console.log(res.data);
+    //     this.setState({
+    //       lessons: res.data
+    //     });
+    //   })
+    //   .catch(err => console.log(err));
+    console.log("here");
+    getOneLesson("5cd9c791c3480a3c1085cb8c")
+      .then(res => console.log(res))
       .catch(err => console.log(err));
   }
 
@@ -32,12 +35,10 @@ export default class LessonDisplay extends React.Component {
         <section className="lesson-display-section">
           <Heading className="lesson-header column">{this.state.title}</Heading>
           <article className="lesson box column is-three-quarters">
-            {this.state.lessons.map((lessons, index) => (
-              // console.log(lessons.content.blocks[0].text)
-              <p key={index}>
-                {index} {lessons.content.blocks[0].text}
-              </p>
-            ))}
+            <p key={this.state.lesson._id}>
+              {10} {this.state.lesson.content.blocks[0].text}
+            </p>
+
             {/* {lessons.map((lesson, index) => (
               <p key={index}>
                 {index} {text}

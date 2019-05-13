@@ -1,55 +1,53 @@
 import React, { Component } from "react";
 import { Editor } from "react-draft-wysiwyg";
-import { convertFromRaw } from "draft-js";
+import { EditorState } from "draft-js";
+import { convertFromRaw, convertToRaw } from "draft-js";
 import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./about.css";
-import { createLesson } from "../../api/lessonHandler";
+import { createLesson, getOneLesson } from "../../api/lessonHandler";
 import { getLocalToken } from "../../api/ajaxLogin.js";
-const content = {
-  entityMap: {},
-  blocks: [
-    {
-      key: "637gr",
-      text: "Initialized from content state.",
-      type: "unstyled",
-      depth: 0,
-      inlineStyleRanges: [],
-      entityRanges: [],
-      data: {}
-    }
-  ]
-};
 
 class TextEditor extends Component {
   constructor(props) {
     super(props);
-    const contentState = JSON.stringify(content);
-    console.log(typeof contentState, " typeoooff");
     this.state = {
-      contentState
+      editorState: EditorState.createEmpty()
     };
   }
 
-  onContentStateChange = contentState => {
-    this.setState({
-      contentState
-    });
+  componentDidMount() {
+    getOneLesson("5cd9d7679a4f2a107cb628ec")
+      .then(res => {
+        const raw = JSON.parse(res.data.content);
+        const contentState = convertFromRaw(raw);
+        const editorState = EditorState.createWithContent(contentState);
+        this.setState({ editorState: editorState });
+        // const test = convertFromRaw(res.data.content);
+        // console.log(test);
+        // this.setState({ contentState: res.data.content });
+      })
+      .catch(err => console.log(err));
+  }
+
+  onContentStateChange = editorState => {
+    this.setState({ editorState });
   };
 
   handleSubmit = e => {
     const user = getLocalToken();
     e.preventDefault();
-    console.log(this.state.contentState, " ono");
-
+    // console.log(this.state.contentState, " ono");
+    const xx = convertToRaw(this.state.editorState.getCurrentContent());
+    const ppp = JSON.stringify(xx);
     createLesson({
-      content: this.state.contentState,
+      content: ppp,
       teacher: user._id
     })
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
+
   render() {
-    const { contentState } = this.state;
     return (
       <div className="form-submit-lesson">
         <form onSubmit={this.handleSubmit}>
@@ -60,10 +58,11 @@ class TextEditor extends Component {
           <label>Content</label>
           <div className="text-editor">
             <Editor
+              editorState={this.state.editorState}
+              onEditorStateChange={this.onContentStateChange}
               wrapperClassName="wrapper-class"
               editorClassName="editor-class"
               toolbarClassName="toolbar-class"
-              onChange={this.onContentStateChange}
               toolbar={{
                 inline: { inDropdown: true },
                 list: { inDropdown: true },
