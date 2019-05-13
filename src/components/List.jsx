@@ -3,13 +3,17 @@ import React, { Component } from "react";
 class List extends Component {
   state = {};
 
+  raiseSelectedModule = mod => {
+    this.props.handleModule(mod);
+  };
+
   render() {
-    const { data, title, id, type, handleModule, handleClick } = this.props;
+    const { data, module: mod, title, id, type, handleClick } = this.props;
     if (!data.length)
       return (
         <React.Fragment>
           {type === "module" ? (
-            <h1 id={id} onClick={handleModule}>
+            <h1 id={id} onClick={e => this.raiseSelectedModule(mod)}>
               {title}
             </h1>
           ) : (
@@ -28,7 +32,7 @@ class List extends Component {
     return (
       <React.Fragment>
         {this.props.type === "module" ? (
-          <h1 id={id} onClick={handleModule}>
+          <h1 id={id} onClick={e => this.raiseSelectedModule(mod)}>
             {title}
           </h1>
         ) : (
@@ -39,7 +43,7 @@ class List extends Component {
             <li
               id={item._id}
               style={{ margin: "1rem" }}
-              onClick={e => handleClick(e)}
+              onClick={e => handleClick(item)}
               key={index}
             >
               <div className="notification">
