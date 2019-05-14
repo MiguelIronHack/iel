@@ -20,7 +20,7 @@ export default class explore extends Component {
     return (
       <div>
         {categories.map(e => {
-          return <p>{e.name}</p>;
+          return <section className="explore-seciton">{e.name}</section>;
         })}
       </div>
     );
