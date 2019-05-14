@@ -99,8 +99,8 @@ export default class CourseDetails extends Component {
     } else {
       uploadImage(this.state.imgFileList)
         .then(res => {
+          console.log("Upload Responsse..", res);
           this.setState({ image: res.data.results[0].secure_url });
-
           updateCourse(this.props.match.params.course, {
             title: title,
             category: selectedCategory._id,
@@ -108,7 +108,7 @@ export default class CourseDetails extends Component {
             description: description,
             media: {
               video: video,
-              image: image
+              image: res.data.results[0].secure_url
             }
           })
             .then(res => console.log(res))

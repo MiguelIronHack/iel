@@ -25,20 +25,19 @@ export default class LessonDisplay extends React.Component {
       .catch(err => console.log(err));
   }
 
-  handlePage = page => {
-    console.log(page);
+  handlePage = direction => {
+    direction === "right"
+      ? this.setState({ currentPage: this.state.currentPage + 1 })
+      : this.setState({ currentPage: this.state.currentPage - 1 });
   };
 
   render() {
     const { currentLesson, lessons, currentPage } = this.state;
+    console.log(currentPage);
     if (!lessons.length) return <p className="title">No lessons to display</p>;
     return (
       <React.Fragment>
-        <LessonNav
-          handlePage={this.handlePage}
-          currentPage={currentPage}
-          title={currentLesson.title}
-        />
+        <LessonNav handlePage={this.handlePage} title={currentLesson.title} />
         <section className="lesson-display-section">
           <Heading className="lesson-header column">
             {currentLesson.title}

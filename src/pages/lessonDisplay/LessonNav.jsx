@@ -6,11 +6,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-const LessonNav = ({ title, currentPage, handlePage }) => {
+const LessonNav = ({ title, handlePage }) => {
   const pageChange = ({ currentTarget }) => {
     const direction = currentTarget.className.replace("lesson-nav-", "");
-    if (direction === "left") handlePage((currentPage -= 0));
-    if (direction === "right") handlePage(currentPage++);
+    handlePage(direction);
   };
 
   return (
