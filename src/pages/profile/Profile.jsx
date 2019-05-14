@@ -63,7 +63,11 @@ export class Profile extends Component {
                       <Link to={name}>
                         <Card.Footer.Item renderAs="p">Resume</Card.Footer.Item>
                       </Link>
-                      <Button remove onClick={this.handleDelete} />
+                      <Button
+                        className="profile-delete-btn"
+                        remove
+                        onClick={this.handleDelete}
+                      />
                     </Card.Footer>
                   </Card>
                 </td>
