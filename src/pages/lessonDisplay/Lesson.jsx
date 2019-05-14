@@ -43,7 +43,6 @@ const Lesson = ({ lesson }) => {
     const raw = JSON.parse(lesson.content);
     const contentState = convertFromRaw(raw);
     const editorState = EditorState.createWithContent(contentState);
-    console.log(editorState.getCurrentContent());
     const html = stateToHTML(editorState.getCurrentContent(), options);
     return html;
   };
