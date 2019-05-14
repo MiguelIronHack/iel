@@ -15,6 +15,14 @@ export default class Explore extends Component {
   }
 
   render() {
-    return <section />;
+    const { courses } = this.state;
+
+    return (
+      <React.Fragment>
+        {courses.map((course, index) => {
+          console.log({ course });
+        })}
+      </React.Fragment>
+    );
   }
 }
