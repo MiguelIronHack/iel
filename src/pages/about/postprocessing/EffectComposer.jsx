@@ -1,6 +1,6 @@
 import { ClearMaskPass, MaskPass } from "./MaskPass";
 import { ShaderPass } from "./ShaderPass";
-import { CopyShader } from "../shaders/CopyShader.jsx.js";
+import { CopyShader } from "../shaders/CopyShader";
 import {
   LinearFilter,
   RGBAFormat,
