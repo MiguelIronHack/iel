@@ -51,7 +51,7 @@ export default class NavBarDropdown extends React.Component {
                 : "/login"
             }
           >
-            {this.state.firstName ? this.state.firstName : "Login"}
+            {this.state.firstName ? this.state.firstName : "Sign In"}
           </NavLink>
         </Dropdown.Item>
 
@@ -68,7 +68,9 @@ export default class NavBarDropdown extends React.Component {
           </React.Fragment>
         ) : (
           <Dropdown.Item value="register">
-            <NavLink to="/register">Register</NavLink>
+            <NavLink className="register-link" to="/register">
+              Register
+            </NavLink>
           </Dropdown.Item>
         )}
       </Dropdown>

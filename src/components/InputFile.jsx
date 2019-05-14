@@ -1,5 +1,4 @@
 import React from "react";
-import { uploadImage } from "../services/imageUploadAPI.js";
 
 const InputFile = props => {
   const raiseImage = e => {
