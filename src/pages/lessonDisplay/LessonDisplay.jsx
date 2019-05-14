@@ -2,9 +2,6 @@ import React from "react";
 import { Heading } from "react-bulma-components";
 import "./LessonDisplay.css";
 import LessonNav from "./LessonNav";
-import { getOneLesson } from "../../api/lessonHandler";
-import { convertFromRaw, EditorConvertToHTML, EditorState } from "draft-js";
-import draftToHtml from "draftjs-to-html";
 import Lesson from "./Lesson";
 import { getUser } from "../../api/userHandler";
 import { getLocalToken } from "../../api/ajaxLogin";
@@ -12,7 +9,8 @@ import { getLocalToken } from "../../api/ajaxLogin";
 export default class LessonDisplay extends React.Component {
   state = {
     lessons: [],
-    currentLesson: {}
+    currentLesson: {},
+    currentPage: 0
   };
 
   componentDidMount() {
@@ -27,12 +25,19 @@ export default class LessonDisplay extends React.Component {
       .catch(err => console.log(err));
   }
 
+  handlePage = direction => {
+    direction === "right"
+      ? this.setState({ currentPage: this.state.currentPage + 1 })
+      : this.setState({ currentPage: this.state.currentPage - 1 });
+  };
+
   render() {
-    const { currentLesson, lessons } = this.state;
-    if (!lessons.length) return <p>No lessons to display</p>;
+    const { currentLesson, lessons, currentPage } = this.state;
+    console.log(currentPage);
+    if (!lessons.length) return <p className="title">No lessons to display</p>;
     return (
       <React.Fragment>
-        <LessonNav />
+        <LessonNav handlePage={this.handlePage} title={currentLesson.title} />
         <section className="lesson-display-section">
           <Heading className="lesson-header column">
             {currentLesson.title}

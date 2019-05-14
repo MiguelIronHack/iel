@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   faChevronLeft,
   faChevronRight
@@ -6,40 +6,34 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-export default class LessonNav extends Component {
-  onClick = e => {
-    console.log(e);
+const LessonNav = ({ title, handlePage }) => {
+  const pageChange = ({ currentTarget }) => {
+    const direction = currentTarget.className.replace("lesson-nav-", "");
+    handlePage(direction);
   };
 
-  render() {
-    return (
-      <React.Fragment>
-        <div
-          onClick={this.onClick}
-          className="has-background-grey-dark  is-active lesson-nav"
-        >
-          <Link className="lesson-nav-left" to="/prev">
-            <span className="has-text-white-ter">
-              <FontAwesomeIcon
-                className="lesson-nav-icon"
-                icon={faChevronLeft}
-              />
-              Previous
-            </span>
-          </Link>
+  return (
+    <React.Fragment>
+      <div className="has-background-grey-dark  is-active lesson-nav">
+        <p onClick={pageChange} name="left" className="lesson-nav-left">
+          <span className="has-text-white-ter">
+            <FontAwesomeIcon className="lesson-nav-icon" icon={faChevronLeft} />
+            Previous
+          </span>
+        </p>
+        <p className="lesson-nav-title">{title}</p>
+        <p onClick={pageChange} direction="right" className="lesson-nav-right">
+          <span className="lesson-nav-right has-text-white-ter">
+            Next
+            <FontAwesomeIcon
+              className="lesson-nav-icon"
+              icon={faChevronRight}
+            />
+          </span>
+        </p>
+      </div>
+    </React.Fragment>
+  );
+};
 
-          {this.props.title}
-          <Link className="lesson-nav-right" to="">
-            <span className="lesson-nav-right has-text-white-ter">
-              Next
-              <FontAwesomeIcon
-                className="lesson-nav-icon"
-                icon={faChevronRight}
-              />
-            </span>
-          </Link>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+export default LessonNav;

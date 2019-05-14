@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
+<<<<<<< HEAD
 import { Card, Media, Image, Heading, Content } from "react-bulma-components";
+=======
+import { getUser } from "../../api/userHandler";
+
+import {
+  Card,
+  Media,
+  Image,
+  Heading,
+  Content,
+  Button
+} from "react-bulma-components";
+>>>>>>> 89149acd079d9fb1f1e6732a4a0d32ea2aa860a1
 import "./profile.css";
 import { Link } from "react-router-dom";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
@@ -8,16 +21,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class Profile extends Component {
   state = {
-    name: "João Cabeça de Chouriço",
-    courses: ["JS", "React", "HTML", "CSS"],
+    name: "",
+    courses: [],
     user: {}
   };
 
   componentDidMount() {
-    const userData = getLocalToken();
-    console.log(userData.enrolledCourses);
-    this.setState({ user: getLocalToken() });
-    console.log(this.state, " this is the new state");
+    const user = getLocalToken();
+    console.log(user);
+    this.setState({ user });
+    getUser(user._id)
+      .then(res => {
+        console.log(res.data.firstName);
+        this.setState({
+          name: res.data.firstName,
+          courses: res.data.enrolledCourses
+        });
+        console.log(this.state, " eyeyey");
+      })
+      .catch(err => console.log(err));
   }
 
   handleDelete = e => {
@@ -26,20 +48,21 @@ export class Profile extends Component {
   };
 
   render() {
+    console.log(this.state, " this is the new state");
     if (!window.localStorage.userCredential) this.props.history.push("/");
     return (
       <section className="profile-section">
         <Heading>Enrolled Courses</Heading>
         <table className="table profile-table columns">
-          {this.state.courses.map((name, i) => (
+          {this.state.courses.map((course, i) => (
             <tbody key={i}>
               <tr>
                 <td className="column">
                   <Card className="has-background-grey-dark has-text-white-ter">
                     <Card.Header>
-                      <Link to={name}>
+                      <Link to={course._id}>
                         <Card.Header.Title className="has-text-white-ter">
-                          {name}
+                          {course.teacher}
                         </Card.Header.Title>
                       </Link>
                     </Card.Header>
@@ -54,7 +77,7 @@ export class Profile extends Component {
                         </Media.Item>
                         <Media.Item>
                           <Heading className="has-text-white-ter" size={4}>
-                            John Smith
+                            {course.title}
                           </Heading>
                           <Heading subtitle size={6}>
                             @johnsmith
@@ -62,15 +85,19 @@ export class Profile extends Component {
                         </Media.Item>
                       </Media>
                       <Content>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Phasellus nec iaculis mauris.
+                        {course.description}
                         <br />
-                        <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        <time dateTime="2016-1-1">{course.updated_at}</time>
                       </Content>
                     </Card.Content>
                     <Card.Footer>
+<<<<<<< HEAD
                       <Link className="link" to={name}>
                         <Card.Footer.Item renderAs="p">Resume</Card.Footer.Item>
+=======
+                      <Link to={course._id}>
+                        <Card.Footer.Item renderAs="p">Go</Card.Footer.Item>
+>>>>>>> 89149acd079d9fb1f1e6732a4a0d32ea2aa860a1
                       </Link>
                       <div
                         className="profile-delete-btn is-danger"
