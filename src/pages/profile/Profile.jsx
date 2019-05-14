@@ -41,10 +41,12 @@ export class Profile extends Component {
             <tbody key={i}>
               <tr>
                 <td className="column">
-                  <Card>
+                  <Card className="has-background-grey-dark has-text-white-ter">
                     <Card.Header>
                       <Link to={name}>
-                        <Card.Header.Title>{name}</Card.Header.Title>
+                        <Card.Header.Title className="has-text-white-ter">
+                          {name}
+                        </Card.Header.Title>
                       </Link>
                     </Card.Header>
                     <Card.Content>
@@ -57,7 +59,9 @@ export class Profile extends Component {
                           />
                         </Media.Item>
                         <Media.Item>
-                          <Heading size={4}>John Smith</Heading>
+                          <Heading className="has-text-white-ter" size={4}>
+                            John Smith
+                          </Heading>
                           <Heading subtitle size={6}>
                             @johnsmith
                           </Heading>
