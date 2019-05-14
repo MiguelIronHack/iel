@@ -2,20 +2,27 @@ import React, { Component } from "react";
 import { Heading } from "react-bulma-components";
 import "./loginRegister.css";
 import { createUser } from "../../api/userHandler";
+import Dropdown from "../../components/RealDropDown";
 
 export default class CreateUser extends Component {
   state = {
     firstName: "",
     lastName: "",
     email: "",
-    role: "",
     password: "",
-    password2: ""
+    password2: "",
+    role: ""
   };
+
+  componentDidMount() {
+    this.setState({
+      role: "admin"
+    });
+  }
 
   onSubmit = e => {
     e.preventDefault();
-
+    console.log(this.state);
     createUser({
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -37,6 +44,12 @@ export default class CreateUser extends Component {
       [e.target.name]: e.target.value
     });
     console.log(this.state.firstName);
+    console.log(this.state.role);
+  };
+
+  selectRole = e => {
+    console.log(e);
+    this.setState({ role: e.currentTarget.value });
   };
 
   render() {
@@ -80,12 +93,12 @@ export default class CreateUser extends Component {
               name="email"
               type="email"
             />
-            <label htmlFor="role">Role</label>
+            <label htmlFor="role">role</label>
             <select
               value={role}
-              onChange={this.onChange}
+              onChange={this.selectRole}
+              // onChange={this.onChange}
               className="input"
-              placeholder="input the role here..."
               name="role"
             >
               <option value="admin">Admin</option>

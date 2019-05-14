@@ -13,7 +13,6 @@ export default class CourseDetails extends Component {
     this.props = props;
     this.state = {
       video: "",
-
       selectedCategory: {},
       categories: [],
       selectedLevel: "",
