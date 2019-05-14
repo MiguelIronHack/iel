@@ -15,15 +15,15 @@ const LessonNav = ({ title, handlePage }) => {
   return (
     <React.Fragment>
       <div className="has-background-grey-dark  is-active lesson-nav">
-        <p onClick={pageChange} name="left" className="lesson-nav-left">
-          <span className="has-text-white-ter">
+        <p onClick={pageChange} name="left" className="lesson-nav-left active">
+          <span>
             <FontAwesomeIcon className="lesson-nav-icon" icon={faChevronLeft} />
             Previous
           </span>
         </p>
         <p className="lesson-nav-title">{title}</p>
         <p onClick={pageChange} direction="right" className="lesson-nav-right">
-          <span className="lesson-nav-right has-text-white-ter">
+          <span>
             Next
             <FontAwesomeIcon
               className="lesson-nav-icon"

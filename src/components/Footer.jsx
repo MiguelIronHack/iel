@@ -5,7 +5,7 @@ import NextSection from "../pages/index/components/NextSection";
 export class IndexFooter extends Component {
   render() {
     return (
-      <Footer className="footer has-background-white-ter">
+      <Footer className="footer">
         <Container>
           <p>
             iel was created by Miguel Bento and Daniel Diaz, Frank Marmier and

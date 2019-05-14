@@ -37,3 +37,9 @@
 .lesson-nav-right {
   margin-left: auto;
 }
+
+.lesson-nav-left.active,
+.lesson-nav-right.active {
+  pointer-events: none;
+  color: #333;
+}

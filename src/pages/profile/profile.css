@@ -18,6 +18,12 @@
 .profile-th {
   width: 70%;
 }
+.profile-section .link:hover {
+  color: hsl(141, 71%, 48%);
+  border-radius: 5px;
+  margin: 0.5%;
+}
+
 .danger-hover:hover {
   color: hsl(0, 0%, 100%);
   background: hsl(348, 100%, 91%);
@@ -27,8 +33,20 @@
   padding: 1rem 0;
 }
 .profile-delete-btn {
+  margin-left: auto;
+  margin-right: 2vw;
   align-self: center;
   justify-self: flex-end;
+  transform: rotate(-90deg);
+  transition: all 0.3s ease-out;
+  font-size: 1.3rem;
+  color: #ff7171;
+}
+.profile-delete-btn:hover {
+  color: #ff9879;
+  transform: rotate(90deg);
+  transition: all 0.3s ease-out;
+  font-size: 1.4rem;
 }
 
 @media screen and (min-width: 800px) {

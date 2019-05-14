@@ -12,6 +12,8 @@ import {
 } from "react-bulma-components";
 import "./profile.css";
 import { Link } from "react-router-dom";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class Profile extends Component {
   state = {
@@ -36,10 +38,10 @@ export class Profile extends Component {
       .catch(err => console.log(err));
   }
 
-  // handleDelete = e => {
-  //   console.log(e.target);
-  //   e.target.parentElement.parentElement.remove();
-  // };
+  handleDelete = e => {
+    console.log(e.target);
+    e.target.parentElement.parentElement.parentElement.remove();
+  };
 
   render() {
     console.log(this.state, " this is the new state");
@@ -88,11 +90,12 @@ export class Profile extends Component {
                       <Link to={course._id}>
                         <Card.Footer.Item renderAs="p">Go</Card.Footer.Item>
                       </Link>
-                      <Button
-                        className="profile-delete-btn"
-                        remove
+                      <div
+                        className="profile-delete-btn is-danger"
                         onClick={this.handleDelete}
-                      />
+                      >
+                        <FontAwesomeIcon icon={faTimesCircle} />
+                      </div>
                     </Card.Footer>
                   </Card>
                 </td>
