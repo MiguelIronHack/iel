@@ -10,17 +10,17 @@ export default class Dashboard extends Component {
         <DashboardNav />
         <div className="dashboard-icons">
           <Link to="/userManagement">
-            <i class="fas fa-users fa-9x">
+            <i className="fas fa-users fa-9x">
               <span>Users</span>
             </i>
           </Link>
-          <Link to="/userManagement">
-            <i class="fab fa-leanpub fa-9x">
+          <Link to="/courseManagement">
+            <i className="fab fa-leanpub fa-9x">
               <span>Courses</span>
             </i>
           </Link>
-          <Link to="/userManagement">
-            <i class="fas fa-object-group fa-9x">
+          <Link to="/edit-categories">
+            <i className="fas fa-object-group fa-9x">
               <span>Categories</span>
             </i>
           </Link>
