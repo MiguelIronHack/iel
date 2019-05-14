@@ -90,7 +90,12 @@ class BuildCourse extends Component {
   handleRemove = (item, mod) => {
     const index = mod.lessons.indexOf(item);
     const arr = _.pull(mod.lessons, item);
-
+    const newLessons = arr.map(less => _.pick(less, "_id"));
+    updateModule(mod._id, { lessons: newLessons })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
     const modules = [...this.state.modules];
     modules[modules.indexOf(mod)].lessons = arr;
     this.setState({ modules });
