@@ -38,6 +38,7 @@ export default class LessonDisplay extends React.Component {
     return (
       <React.Fragment>
         <LessonNav
+          max={lessons.length}
           currentPage={this.currentPage}
           handlePage={this.handlePage}
           title={currentLesson.title}

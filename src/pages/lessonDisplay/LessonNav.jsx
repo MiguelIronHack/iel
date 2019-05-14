@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-const LessonNav = ({ title, handlePage, currentPage }) => {
+const LessonNav = ({ title, handlePage, currentPage, max }) => {
   const pageChange = ({ currentTarget }) => {
     const direction = currentTarget.className.replace("lesson-nav-", "");
     handlePage(direction);
@@ -29,7 +29,7 @@ const LessonNav = ({ title, handlePage, currentPage }) => {
         </p>
         <p className="lesson-nav-title">{title}</p>
         <p onClick={pageChange} direction="right" className="lesson-nav-right">
-          <span>
+          <span className="lesson-nav-right">
             Next
             <FontAwesomeIcon
               className="lesson-nav-icon"
