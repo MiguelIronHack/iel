@@ -3,6 +3,14 @@
   margin: 0;
   padding: 0;
 }
+.link {
+  text-decoration: none;
+  color: hsl(0, 0%, 96%);
+  transition: all 0.2s ease-out;
+}
+.link:hover {
+  background: hsl(0, 0%, 48%);
+}
 
 html,
 body {
