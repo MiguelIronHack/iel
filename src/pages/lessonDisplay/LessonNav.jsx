@@ -18,15 +18,15 @@ export default class LessonNav extends Component {
           onClick={this.onClick}
           className="has-background-grey-dark  is-active lesson-nav"
         >
-          <Link className="lesson-nav-left" to="/prev">
-            <span className="has-text-white-ter">
+          <button className="lesson-nav-left">
+            <span className="has-text-white-t er">
               <FontAwesomeIcon
                 className="lesson-nav-icon"
                 icon={faChevronLeft}
               />
               Previous
             </span>
-          </Link>
+          </button>
 
           {this.props.title}
           <Link className="lesson-nav-right" to="">

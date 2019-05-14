@@ -1,7 +1,7 @@
 import React from "react";
 import { convertFromRaw, EditorState } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
-
+import "./lesson.css";
 const Lesson = ({ lesson }) => {
   if (typeof lesson === "undefined") return null;
 
@@ -17,28 +17,6 @@ const Lesson = ({ lesson }) => {
     //       style: { fontSize: 40 }
     //     },
     //   }
-    // Use a custom inline style. Default element is `span`.
-    // inlineStyleFn: styles => {
-    // //   let key = "color-";
-    // //   let color = styles.filter(value => value.startsWith(key)).first();
-    // //   if (color) {
-    // //     return {
-    // //       element: "span",
-    // //       style: {
-    // //         color: color.replace(key, "")
-    // //       }
-    // //     };
-    // //   }
-    // //   let fontKey = "fontsize-";
-    // //   let fontSize = styles.filter(value => value.startsWith(fontKey)).first();
-    // //   if (fontSize) {
-    // //     return {
-    // //       style: {
-    // //         fontSize: fontSize.replace(fontKey, "")
-    // //       }
-    // //     };
-    // //   }
-    // // }
     inlineStyleFn: styles => {
       let colorKey = "color-";
       let fontKey = "fontsize-";

@@ -6,58 +6,92 @@ import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./about.css";
 import { createLesson, getOneLesson } from "../../api/lessonHandler";
 import { getLocalToken } from "../../api/ajaxLogin.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+//TODO CLEAN INPUTS AND DENY SUBMISSION IF THE FIELDS ARE EMPTY
 
 class TextEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorState: EditorState.createEmpty()
+      editorState: EditorState.createEmpty(),
+      title: "",
+      description: ""
     };
   }
 
-  componentDidMount() {
-    getOneLesson("5cda760403db1d2fd468873c")
-      .then(res => {
-        const raw = JSON.parse(res.data.content);
-        const contentState = convertFromRaw(raw);
-        const editorState = EditorState.createWithContent(contentState);
-        this.setState({ editorState: editorState });
-        // const test = convertFromRaw(res.data.content);
-        // console.log(test);
-        // this.setState({ contentState: res.data.content });
-      })
-      .catch(err => console.log(err));
-  }
+  notifyError = message =>
+    toast(
+      "Something went bad, might be us, might be you, we don't know " + message,
+      {
+        type: toast.TYPE.ERROR
+      }
+    );
+
+  notifySuccess = () =>
+    toast("Your lesson has been submitted my bruddahs", {
+      type: toast.TYPE.SUCCESS
+    });
 
   onContentStateChange = editorState => {
     this.setState({ editorState });
-    console.log(convertToRaw(this.state.editorState.getCurrentContent()));
+  };
+
+  handleInput = ({ currentTarget }) => {
+    const key = currentTarget.name;
+    const value = currentTarget.value;
+    this.setState({ [key]: value });
   };
 
   handleSubmit = e => {
-    const user = getLocalToken();
     e.preventDefault();
-    // console.log(this.state.contentState, " ono");
-    const xx = convertToRaw(this.state.editorState.getCurrentContent());
-    const ppp = JSON.stringify(xx);
+    const { title, description } = this.state;
+    const user = getLocalToken();
+    const raw = convertToRaw(this.state.editorState.getCurrentContent());
+    const rawJSON = JSON.stringify(raw);
     createLesson({
-      content: ppp,
-      teacher: user._id
+      content: rawJSON,
+      teacher: user._id,
+      title,
+      description
     })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .then(res => {
+        this.setState({
+          title: "",
+          description: "",
+          editorState: EditorState.createEmpty()
+        });
+        this.notifySuccess();
+      })
+      .catch(err => this.notifyError(err));
   };
 
   render() {
+    const { description, title } = this.state;
     return (
       <div className="form-submit-lesson">
         <form onSubmit={this.handleSubmit}>
-          <label>Title</label>
-          <input name="title" />
-          <label>Description</label>
-          <input name="description" />
-          <label>Content</label>
-          <div className="text-editor">
+          <div className="column is-4">
+            <input
+              className=" input is-info"
+              placeHolder="Course title"
+              name="title"
+              onChange={this.handleInput}
+              value={title}
+            />
+          </div>
+          <div className="column is-4">
+            <input
+              className="input is-info"
+              placeHolder="Description"
+              name="description"
+              onChange={this.handleInput}
+              value={description}
+            />
+          </div>
+          <label className="title">Lesson Content</label>
+          <div onClick={() => this.focus} className="text-editor">
             <Editor
               editorState={this.state.editorState}
               onEditorStateChange={this.onContentStateChange}
@@ -73,7 +107,8 @@ class TextEditor extends Component {
               }}
             />
           </div>
-          <button>Submit Lesson</button>
+          <button className="button is-success">Submit Lesson</button>
+          <ToastContainer />
         </form>
       </div>
     );
