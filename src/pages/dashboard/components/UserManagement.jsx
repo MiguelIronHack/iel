@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import DashboardNav from "./DashboardNav";
 import { getAllUsers, deleteUser } from "../../../api/userHandler";
 import "./dashboardComponents.css";
+import Btn from "../../../components/Btn";
+
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faUserTimes } from "@fortawesome/free-solid-svg-icons";
 // import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
@@ -77,6 +79,7 @@ export default class UsersList extends Component {
             ))}
           </tbody>
         </table>
+        <Btn name="Create New User" toPage="create-users" />
       </React.Fragment>
     );
   }

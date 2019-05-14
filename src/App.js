@@ -25,6 +25,7 @@ import UploadForm from "./components/upload/UploadForm";
 import EditCourse from "./pages/dashboard/components/EditCourse";
 import EditCategories from "./pages/dashboard/components/EditCategories";
 import BuildCourse from "./pages/build_course/BuildCourse";
+import CreateUsers from "./pages/login&register/CreateUsers";
 
 class App extends Component {
   render() {
@@ -50,6 +51,7 @@ class App extends Component {
           <Route path="/edit-course/:course" component={EditCourse} />
           <Route path="/edit-categories" component={EditCategories} />
           <Route path="/build-course" component={BuildCourse} />
+          <Route path="/create-users" component={CreateUsers} />
         </Switch>
         <Footer />
       </React.Fragment>
