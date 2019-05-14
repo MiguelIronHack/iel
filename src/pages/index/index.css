@@ -60,6 +60,12 @@
 .btn {
   margin: 4vh 0;
 }
+
+.is-64x64 > img {
+  max-height: 64px;
+  max-width: 100%;
+}
+
 .footer {
   position: relative !important;
   max-height: 30vh;

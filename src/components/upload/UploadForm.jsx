@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getAllCourses, createCourse } from "../../api/coursesHandler";
 import { createCategory, getAllCategories } from "../../api/categoryHandler";
+import inputFile from "../InputFile";
 import { Heading } from "react-bulma-components";
 import DashboardNav from "../../pages/dashboard/components/DashboardNav";
 import { getLocalToken } from "../../api/ajaxLogin.js";

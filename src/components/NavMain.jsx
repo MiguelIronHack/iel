@@ -43,6 +43,11 @@ export default class NavMain extends React.Component {
                 About
               </NavLink>
             </Navbar.Item>
+            <Navbar.Item renderAs="div">
+              <NavLink className="nav-link" to="/explore">
+                Explore
+              </NavLink>
+            </Navbar.Item>
           </Navbar.Container>
           <Navbar.Container position="end">
             <Navbar.Item renderAs="div">
