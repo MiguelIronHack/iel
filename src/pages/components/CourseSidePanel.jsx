@@ -9,7 +9,7 @@ import {
 export default class CourseSidePanel extends Component {
   render() {
     return (
-      <aside className="panel course-panel column">
+      <aside className="panel course-panel column shadow">
         <p className="panel-heading" />
 
         <label className="panel-block has-background-dark has-text-white aside-panel-text">

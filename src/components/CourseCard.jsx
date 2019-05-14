@@ -6,22 +6,20 @@ import Moment from "react-moment";
 export class Course extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Card>
+      <>
+        <Card className="course-card shadow">
           <Card.Content>
             <Media>
-              <Media.Item renderAs="figure" position="left">
-                <Image
-                  size={64}
-                  alt={this.props.title}
-                  src={this.props.image}
-                />
+              <Media.Item
+                className="course-img"
+                renderAs="figure"
+                position="left"
+              >
+                <Image alt={this.props.title} src={this.props.image} />
               </Media.Item>
               <Media.Item>
                 <Heading size={5}>{this.props.title}</Heading>
-                <Heading subtitle size={6}>
-                  {this.props.description}
-                </Heading>
+                <p className="card-subtitle">{this.props.description}</p>
               </Media.Item>
             </Media>
             <Content>
@@ -29,7 +27,7 @@ export class Course extends Component {
             </Content>
           </Card.Content>
         </Card>
-      </React.Fragment>
+      </>
     );
   }
 }

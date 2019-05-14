@@ -1,7 +1,14 @@
 .lesson-display-section {
-  margin-top: 5vh;
+  margin-top: 1vh;
   height: 100vh;
   padding: 4vh 4vw;
+}
+.lesson-nav {
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 3rem;
 }
 .lesson-nav-title {
   align-self: center;
@@ -60,4 +67,7 @@
 .lesson-nav-right.active {
   pointer-events: none;
   color: #333;
+}
+.lesson {
+  margin: 0 auto;
 }

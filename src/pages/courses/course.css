@@ -1,9 +1,7 @@
 .course-section {
   padding: 5vh 2vw;
 }
-.panel {
-  filter: drop-shadow(0.3rem 0.25rem 0.1rem #ccc);
-}
+
 .panel-block {
   display: flex;
   min-width: 15vw;

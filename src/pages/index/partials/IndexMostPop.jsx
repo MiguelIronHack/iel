@@ -7,22 +7,22 @@ export class MostPop extends Component {
   render() {
     return (
       <Section id="pop-section" className="pop-section">
-        <Hero color="primary">
+        <Hero className="pop-section-hero">
           <Hero.Body>
             <Container>
               <Heading>Hero title Primary</Heading>
-              <Heading subtitle size={4}>
+              <p className="pop-section-content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Exercitationem voluptates quaerat beatae doloremque minima
                 reiciendis modi rem earum, accusantium ipsum delectus,
                 necessitatibus ipsa in recusandae alias voluptate, expedita
                 libero! Rerum?
-              </Heading>
+              </p>
             </Container>
           </Hero.Body>
         </Hero>
 
-        <Btn className="enroll-btn" name="Enroll" />
+        <Btn to="/register" className="enroll-btn" name="Enroll" />
         <NextSection className="next-section-btn" href="#index-courses" />
       </Section>
     );
