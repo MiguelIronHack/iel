@@ -25,6 +25,7 @@
 .lesson-nav-right {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .lesson-nav-left,
 .lesson-nav-right > * {
