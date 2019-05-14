@@ -8,7 +8,15 @@ class List extends Component {
   };
 
   render() {
-    const { data, module: mod, title, id, type, handleClick } = this.props;
+    const {
+      data,
+      module: mod,
+      title,
+      id,
+      type,
+      handleClick,
+      handleRemove
+    } = this.props;
     if (!data.length)
       return (
         <React.Fragment>
@@ -48,7 +56,10 @@ class List extends Component {
             >
               <div className="notification">
                 {this.props.type === "module" ? (
-                  <button onClick={this.props.handleRemove} className="delete">
+                  <button
+                    onClick={e => handleRemove(item, mod)}
+                    className="delete"
+                  >
                     d
                   </button>
                 ) : null}
