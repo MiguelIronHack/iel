@@ -1,3 +1,22 @@
+.dashboard-icons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 65vh;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-icons i {
+  display: flex;
+  flex-direction: column;
+}
+.dashboard-icons i span {
+  font-size: 2rem;
+  text-align: center;
+}
+
 .dashboard-nav {
   display: flex;
   justify-content: space-around;
