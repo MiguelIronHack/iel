@@ -26,6 +26,7 @@ import EditCategories from "./pages/dashboard/components/EditCategories";
 import BuildCourse from "./pages/build_course/BuildCourse";
 import CreateUsers from "./pages/login&register/CreateUsers";
 import CreateLesson from "./pages/createLesson/CreateLesson";
+import Explore from "./pages/explore/Explore";
 
 class App extends Component {
   render() {
@@ -52,7 +53,7 @@ class App extends Component {
           <Route path="/edit-categories" component={EditCategories} />
           <Route path="/build-course" component={BuildCourse} />
           <Route path="/create-users" component={CreateUsers} />
-          {/* <Route path="/explore" component={Explore} /> */}
+          <Route path="/explore" component={Explore} />
         </Switch>
         <Footer />
       </React.Fragment>
