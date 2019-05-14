@@ -1,14 +1,19 @@
 .profile-section {
   margin: 5vh 5vw;
   padding: 1rem;
-  border: 2px solid hsl(171, 100%, 41%);
+  border: 2px solid hsl(0, 0%, 29%);
   border-radius: 5px;
-  /* max-width: 60%; */
-  /* margin-left: auto; */
+  background: hsl(0, 0%, 21%);
+  filter: drop-shadow(-5px -5px 9px hsl(0, 0%, 21%));
 }
 .profile-table {
+  background: hsl(0, 0%, 21%);
   margin: 0 auto;
   width: 100%;
+}
+
+.profile-table > * {
+  margin: 0 0.3vw;
 }
 .profile-th {
   width: 70%;
@@ -21,6 +26,11 @@
 .profile-section .table td {
   padding: 1rem 0;
 }
+.profile-delete-btn {
+  align-self: center;
+  justify-self: flex-end;
+}
+
 @media screen and (min-width: 800px) {
   .profile-section {
     margin: 5vh 15vw;

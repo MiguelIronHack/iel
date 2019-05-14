@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
+
 import {
   Card,
   Media,
@@ -13,27 +15,38 @@ import { Link } from "react-router-dom";
 export class Profile extends Component {
   state = {
     name: "João Cabeça de Chouriço",
-    courses: ["JS", "React", "HTML", "CSS"]
+    courses: ["JS", "React", "HTML", "CSS"],
+    user: {}
   };
 
-  handleDelete = e => {
-    console.log(e.target);
-    e.target.parentElement.parentElement.remove();
-  };
+  componentDidMount() {
+    const userData = getLocalToken();
+    console.log(userData.enrolledCourses);
+    this.setState({ user: getLocalToken() });
+    console.log(this.state, " this is the new state");
+  }
+
+  // handleDelete = e => {
+  //   console.log(e.target);
+  //   e.target.parentElement.parentElement.remove();
+  // };
 
   render() {
     if (!window.localStorage.userCredential) this.props.history.push("/");
     return (
       <section className="profile-section">
+        <Heading>Enrolled Courses</Heading>
         <table className="table profile-table columns">
           {this.state.courses.map((name, i) => (
             <tbody key={i}>
               <tr>
                 <td className="column">
-                  <Card>
+                  <Card className="has-background-grey-dark has-text-white-ter">
                     <Card.Header>
                       <Link to={name}>
-                        <Card.Header.Title>{name}</Card.Header.Title>
+                        <Card.Header.Title className="has-text-white-ter">
+                          {name}
+                        </Card.Header.Title>
                       </Link>
                     </Card.Header>
                     <Card.Content>
@@ -46,7 +59,9 @@ export class Profile extends Component {
                           />
                         </Media.Item>
                         <Media.Item>
-                          <Heading size={4}>John Smith</Heading>
+                          <Heading className="has-text-white-ter" size={4}>
+                            John Smith
+                          </Heading>
                           <Heading subtitle size={6}>
                             @johnsmith
                           </Heading>
@@ -63,7 +78,11 @@ export class Profile extends Component {
                       <Link to={name}>
                         <Card.Footer.Item renderAs="p">Resume</Card.Footer.Item>
                       </Link>
-                      <Button remove onClick={this.handleDelete} />
+                      <Button
+                        className="profile-delete-btn"
+                        remove
+                        onClick={this.handleDelete}
+                      />
                     </Card.Footer>
                   </Card>
                 </td>
