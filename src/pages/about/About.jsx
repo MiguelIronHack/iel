@@ -31,6 +31,7 @@ class TextEditor extends Component {
 
   onContentStateChange = editorState => {
     this.setState({ editorState });
+    console.log(convertToRaw(this.state.editorState.getCurrentContent()));
   };
 
   handleSubmit = e => {
