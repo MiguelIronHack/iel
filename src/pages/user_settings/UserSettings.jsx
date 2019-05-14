@@ -78,8 +78,8 @@ class UserSettings extends Component {
   render() {
     // const { user: userName } = this.props.match.params;
     return (
-      <div className="container columns is-12">
-        <div className="column is-5">
+      <div className="container columns is-12 shadow">
+        <div className="column is-5 profile-user-info">
           <UserCard user={this.state.user} handleImage={this.handleImage} />
         </div>
         <div className="column is-5">

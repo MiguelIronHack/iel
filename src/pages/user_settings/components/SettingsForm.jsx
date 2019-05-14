@@ -6,7 +6,11 @@ const SettingsForm = ({ handleSubmit, user, handleChange, errors }) => {
   if (!user) return null;
   return (
     <React.Fragment>
-      <form id={user.userName} onSubmit={handleSubmit} className="column is-4">
+      <form
+        id={user.userName}
+        onSubmit={handleSubmit}
+        className="column is-4 profile-settings-form"
+      >
         <EditInput
           inputPlaceHolder={user.userName}
           text={user.userName}

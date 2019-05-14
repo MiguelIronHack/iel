@@ -63,7 +63,9 @@ h1.title {
 .pop-section-hero {
   background: hsl(171, 100%, 17%);
   border-radius: 5px;
+  text-align: center;
 }
+
 .pop-section-content {
   color: hsl(0, 0%, 96%);
   font-size: 1.2rem;
