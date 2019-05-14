@@ -47,7 +47,11 @@ class List extends Component {
               key={index}
             >
               <div className="notification">
-                <button className="delete" />
+                {this.props.type === "module" ? (
+                  <button onClick={this.props.handleRemove} className="delete">
+                    d
+                  </button>
+                ) : null}
                 <p>{item.title}</p>
                 <p>{item.description}</p>
               </div>

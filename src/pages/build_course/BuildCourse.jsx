@@ -4,8 +4,10 @@ import Dropdown from "./../../components/RealDropDown";
 import { getLessons } from "./../../api/lessonHandler";
 import { getAllTags } from "../../api/tagHandler";
 import { getUserCourses, updateCourse } from "../../api/coursesHandler";
-import { createModule } from "../../api/moduleHandler";
+import { createModule, updateModule } from "../../api/moduleHandler";
 import { getLocalToken } from "../../api/ajaxLogin";
+import Pagination from "../../components/Pagination";
+import { getRandomCourse } from "../../api/coursesHandler";
 import _ from "lodash";
 
 class BuildCourse extends Component {
@@ -19,6 +21,9 @@ class BuildCourse extends Component {
   };
 
   componentDidMount() {
+    getRandomCourse()
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
     //TODO  Render all the modules a course has kill me pls
     //TODO get this hardcorded userId out of the way kek
     //TODO GOTTA BRING DEM PROMISE.all
@@ -83,8 +88,12 @@ class BuildCourse extends Component {
     const selectedModule = { ...this.state.selectedModule };
     selectedModule.lessons.push(lesson);
     this.setState({ selectedModule: selectedModule });
+    const parsedLessons = selectedModule.lessons.map(lesson => lesson._id);
+    updateModule(selectedModule._id, { lessons: parsedLessons })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
-
+  handleRemove = () => console.log("hey");
   render() {
     const {
       buildingCourse,
@@ -106,6 +115,7 @@ class BuildCourse extends Component {
                 <button onClick={this.addModule} className="button">
                   Add Module
                 </button>
+                {/* <Pagination items={modules} /> */}
                 {modules.length ? (
                   modules.map((mod, index) => (
                     <List
@@ -114,6 +124,7 @@ class BuildCourse extends Component {
                       type="module"
                       handleModule={this.handleModuleSelect}
                       title={`Module ${index + 1}`}
+                      handleRemove={this.handleRemove}
                       data={mod.lessons}
                       module={mod}
                     />
