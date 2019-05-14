@@ -1,4 +1,6 @@
 .lesson-display-section {
+  margin-top: 5vh;
+  height: 100vh;
   padding: 4vh 4vw;
 }
 .lesson-nav-title {

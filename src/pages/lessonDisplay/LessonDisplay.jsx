@@ -44,9 +44,6 @@ export default class LessonDisplay extends React.Component {
           title={currentLesson.title}
         />
         <section className="lesson-display-section">
-          <Heading className="title lesson-header column">
-            {currentLesson.title}
-          </Heading>
           <article className="lesson box column is-three-quarters">
             <p className="lesson-description">{currentLesson.description}</p>
             <div className="lesson-content">
