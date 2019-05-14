@@ -1,6 +1,3 @@
-// Props to drcmda
-
-import "./explore.css";
 import ExploreCourses from "./components/ExploreCourses";
 
 // export default class Explore extends Component {
@@ -16,6 +13,9 @@ import ExploreCourses from "./components/ExploreCourses";
 //     );
 //   }
 // }
+
+// Props to drcmda
+import "./explore.css";
 
 import * as THREE from "three/src/Three";
 import React, {
@@ -81,7 +81,6 @@ function Text({
   fontSize = 410
 }) {
   const {
-    size: { width, height },
     viewport: { width: viewportWidth, height: viewportHeight }
   } = useThree();
   const scale = viewportWidth > viewportHeight ? viewportWidth : viewportHeight;
@@ -164,6 +163,7 @@ const Effects = React.memo(({ factor }) => {
   ]);
   // This takes over as the main render-loop (when 2nd arg is set to true)
   useRender(() => composer.current.render(), true);
+
   return (
     <effectComposer ref={composer} args={[gl]}>
       <renderPass attachArray="passes" args={[scene, camera]} />
@@ -234,7 +234,7 @@ function Scene({ top, mouse }) {
 }
 
 /** Main component */
-export default function Main() {
+export default function About() {
   // This tiny spring right here controlls all(!) the animations, one for scroll, the other for mouse movement ...
   const [{ top, mouse }, set] = useSpring(() => ({ top: 0, mouse: [0, 0] }));
   const onMouseMove = useCallback(
@@ -243,6 +243,7 @@ export default function Main() {
     [set]
   );
   const onScroll = useCallback(e => set({ top: e.target.scrollTop }), [set]);
+
   return (
     <section className="explore" id="explore">
       <Canvas className="canvas">

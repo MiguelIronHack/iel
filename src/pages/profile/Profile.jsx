@@ -18,7 +18,7 @@ export class Profile extends Component {
 
   handleDelete = e => {
     console.log(e.target);
-    //TODO HANDLE DELETE BUTTON
+    e.target.parentElement.parentElement.remove();
   };
 
   render() {

@@ -38,7 +38,7 @@ GlitchPass.prototype = Object.assign(Object.create(Pass.prototype), {
   constructor: GlitchPass,
 
   render: function(renderer, writeBuffer, readBuffer) {
-    const factor = Math.max(0, 0);
+    const factor = 0;
     this.uniforms["tDiffuse"].value = readBuffer.texture;
     this.uniforms["seed"].value = Math.random() * factor; //default seeding
     this.uniforms["byp"].value = 0;

@@ -44,7 +44,6 @@ class App extends Component {
           <Route path="/course-content" component={CourseContent} />
           <Route path="/lesson" component={LessonDisplay} />
           <Route path="/course" component={Courses} />
-          <Route path="/explore" component={Explore} />
           <Route path="/usermanagement" component={UserManagement} />
           <Route path="/coursemanagement" component={CourseManagement} />
           <Route path="/create-course" component={UploadForm} />
@@ -52,6 +51,7 @@ class App extends Component {
           <Route path="/edit-categories" component={EditCategories} />
           <Route path="/build-course" component={BuildCourse} />
           <Route path="/create-users" component={CreateUsers} />
+          <Route path="/explore" component={Explore} />
         </Switch>
         <Footer />
       </React.Fragment>
