@@ -53,3 +53,7 @@ button {
 .footer {
   margin-top: 0%;
 }
+
+.shadow {
+  filter: drop-shadow(-5px -5px 9px hsl(0, 0%, 21%));
+}

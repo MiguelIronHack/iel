@@ -1,6 +1,24 @@
 .lesson-display-section {
   padding: 4vh 4vw;
 }
+.lesson-nav-title {
+  align-self: center;
+  margin: auto;
+  color: hsl(0, 0%, 96%);
+}
+
+.lesson-display-section > .lesson {
+  background: hsl(0, 0%, 21%);
+  color: hsl(0, 0%, 96%);
+  border: 2px solid hsl(0, 0%, 29%);
+  filter: drop-shadow(-5px -5px 9px hsl(0, 0%, 21%));
+  transition: all 0.3s ease-out;
+}
+.lesson-display-section > .lesson:hover {
+  border: 2px solid hsl(0, 0%, 21%);
+  transition: all 0.3s linear;
+}
+
 .lesson-header {
   text-align: center;
   line-height: 0.5;
@@ -34,9 +52,6 @@
 }
 .lesson-nav-left > * > svg {
   margin-right: 1rem;
-}
-.lesson-nav-right {
-  margin-left: auto;
 }
 
 .lesson-nav-left.active,

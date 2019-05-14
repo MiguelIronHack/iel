@@ -26,7 +26,7 @@ const LessonNav = ({ title, handlePage, currentPage, max }) => {
             Previous
           </span>
         </p>
-        <p className="lesson-nav-title">{title}</p>
+        <p className="lesson-nav-title title">{title}</p>
         <p
           onClick={pageChange}
           direction="right"
