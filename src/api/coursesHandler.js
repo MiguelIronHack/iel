@@ -16,11 +16,14 @@ export const updateCourse = (id, data) =>
 export const getUserCourses = userId =>
   axios.get(ApiUrl + "/course/user-course/" + userId);
 
+export const getRandomCourse = () => axios.get(`${ApiUrl}/course/random`);
+
 export default {
   getAllCourses,
   createCourse,
   getCourse,
   deleteCourse,
   updateCourse,
-  getUserCourses
+  getUserCourses,
+  getRandomCourse
 };
