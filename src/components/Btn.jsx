@@ -5,10 +5,8 @@ import { Link } from "react-router-dom";
 
 export function Btn({ toPage, name }) {
   return (
-    <Link to={toPage}>
-      <Button className="is-large join-btn btn" color="dark">
-        {name}
-      </Button>
+    <Link to={toPage} className="is-large join-btn btn button is-dark">
+      {name}
     </Link>
   );
 }
