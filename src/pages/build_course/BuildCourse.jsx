@@ -7,7 +7,7 @@ import { getUserCourses, updateCourse } from "../../api/coursesHandler";
 import { createModule, updateModule } from "../../api/moduleHandler";
 import { getLocalToken } from "../../api/ajaxLogin";
 import Pagination from "../../components/Pagination";
-
+import { getRandomCourse } from "../../api/coursesHandler";
 import _ from "lodash";
 
 class BuildCourse extends Component {
@@ -21,6 +21,9 @@ class BuildCourse extends Component {
   };
 
   componentDidMount() {
+    getRandomCourse()
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
     //TODO  Render all the modules a course has kill me pls
     //TODO get this hardcorded userId out of the way kek
     //TODO GOTTA BRING DEM PROMISE.all
