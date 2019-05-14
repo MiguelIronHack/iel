@@ -1,146 +1,118 @@
-import React from "react";
-import {
-  // Editor,
-  EditorState,
-  RichUtils,
-  convertFromRaw,
-  convertToRaw
-} from "draft-js";
-import Editor from "draft-js-plugins-editor";
-import createHighlightPlugin from "./plugin/Highlight";
+import React, { Component } from "react";
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState } from "draft-js";
+import { convertFromRaw, convertToRaw } from "draft-js";
+import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "./createLesson.css";
+import { createLesson, getOneLesson } from "../../api/lessonHandler";
+import { getLocalToken } from "../../api/ajaxLogin.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const highlightPlugin = createHighlightPlugin();
+//TODO CLEAN INPUTS AND DENY SUBMISSION IF THE FIELDS ARE EMPTY
 
-class PageContainer extends React.Component {
+class TextEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorState: EditorState.createEmpty()
+      editorState: EditorState.createEmpty(),
+      title: "",
+      description: ""
     };
-
-    this.plugins = [highlightPlugin];
   }
 
-  componentDidMount() {
-    if (this.props.note === null) {
-      this.setState({
-        displayedNote: "new",
-        editorState: EditorState.createEmpty()
-      });
-    } else {
-      this.setState({
-        displayedNote: this.props.note.id,
-        editorState: EditorState.createWithContent(
-          convertFromRaw(JSON.parse(this.props.note.content))
-        )
-      });
-    }
-  }
+  notifyError = message =>
+    toast(
+      "Something went bad, might be us, might be you, we don't know " + message,
+      {
+        type: toast.TYPE.ERROR
+      }
+    );
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.note == null && !this.props.note) {
-      this.props.loadNote;
-      this.setState({
-        displayedNote: this.props.note.id,
-        editorState: EditorState.createWithContent(
-          convertFromRaw(JSON.parse(this.props.note.content))
-        )
-      });
-    }
-  }
-
-  onChange = editorState => {
-    this.setState({
-      editorState
+  notifySuccess = () =>
+    toast("Your lesson has been submitted my bruddahs", {
+      type: toast.TYPE.SUCCESS
     });
+
+  onContentStateChange = editorState => {
+    this.setState({ editorState });
   };
 
-  submitEditor = () => {
-    let contentState = this.state.editorState.getCurrentContent();
-    if (this.state.displayedNote == "new") {
-      let note = { content: convertToRaw(contentState) };
-      note["content"] = JSON.stringify(note.content);
-      this.props.createNote(note.content);
-    } else {
-      let note = { content: convertToRaw(contentState) };
-      note["content"] = JSON.stringify(note.content);
-      this.props.updateNote(this.state.displayedNote, note.content);
-    }
+  handleInput = ({ currentTarget }) => {
+    const key = currentTarget.name;
+    const value = currentTarget.value;
+    this.setState({ [key]: value });
   };
 
-  handleKeyCommand = command => {
-    const newState = RichUtils.handleKeyCommand(
-      this.state.editorState,
-      command
-    );
-    if (newState) {
-      this.onChange(newState);
-      return "handled";
-    }
-    return "not-handled";
+  handleSubmit = e => {
+    e.preventDefault();
+    const { title, description } = this.state;
+    const user = getLocalToken();
+    const raw = convertToRaw(this.state.editorState.getCurrentContent());
+    const rawJSON = JSON.stringify(raw);
+    createLesson({
+      content: rawJSON,
+      teacher: user._id,
+      title,
+      description
+    })
+      .then(res => {
+        this.setState({
+          title: "",
+          description: "",
+          editorState: EditorState.createEmpty()
+        });
+        this.notifySuccess();
+      })
+      .catch(err => this.notifyError(err));
   };
-
-  onUnderlineClick = () => {
-    this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, "UNDERLINE")
-    );
-  };
-
-  onBoldClick = () => {
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, "BOLD"));
-  };
-
-  onItalicClick = () => {
-    this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, "ITALIC")
-    );
-  };
-
-  onStrikeThroughClick = () => {
-    this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, "STRIKETHROUGH")
-    );
-  };
-
-  onHighlight = () => {
-    this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, "HIGHLIGHT")
-    );
-  };
-
-  // onLinkClick = () => {
-  // 	this.onChange(RichUtils.toggleLink(this.state.editorState));
-  // };
 
   render() {
+    const { description, title } = this.state;
     return (
-      <div className="editorContainer">
-        <button className="underline" onClick={this.onUnderlineClick}>
-          U
-        </button>
-        <button className="bold" onClick={this.onBoldClick}>
-          <b>B</b>
-        </button>
-        <button className="italic" onClick={this.onItalicClick}>
-          <em>I</em>
-        </button>
-        <button className="strikethrough" onClick={this.onStrikeThroughClick}>
-          abc
-        </button>
-        <button className="highlight" onClick={this.onHighlight}>
-          <span style={{ background: "yellow", padding: "0.3em" }}>H</span>
-        </button>
-        <div className="editors">
-          <Editor
-            editorState={this.state.editorState}
-            handleKeyCommand={this.handleKeyCommand}
-            plugins={this.plugins}
-            onChange={this.onChange}
-          />
-        </div>
+      <div className="form-submit-lesson">
+        <form onSubmit={this.handleSubmit}>
+          <div className="column is-4">
+            <input
+              className=" input is-info"
+              placeHolder="Course title"
+              name="title"
+              onChange={this.handleInput}
+              value={title}
+            />
+          </div>
+          <div className="column is-4">
+            <input
+              className="input is-info"
+              placeHolder="Description"
+              name="description"
+              onChange={this.handleInput}
+              value={description}
+            />
+          </div>
+          <label className="title">Lesson Content</label>
+          <div onClick={() => this.focus} className="text-editor">
+            <Editor
+              editorState={this.state.editorState}
+              onEditorStateChange={this.onContentStateChange}
+              wrapperClassName="wrapper-class"
+              editorClassName="editor-class"
+              toolbarClassName="toolbar-class"
+              toolbar={{
+                inline: { inDropdown: true },
+                list: { inDropdown: true },
+                textAlign: { inDropdown: true },
+                link: { inDropdown: true },
+                history: { inDropdown: true }
+              }}
+            />
+          </div>
+          <button className="button is-success">Submit Lesson</button>
+          <ToastContainer />
+        </form>
       </div>
     );
   }
 }
 
-export default PageContainer;
+export default TextEditor;
