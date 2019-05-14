@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
+
 import {
   Card,
   Media,
@@ -13,18 +15,27 @@ import { Link } from "react-router-dom";
 export class Profile extends Component {
   state = {
     name: "João Cabeça de Chouriço",
-    courses: ["JS", "React", "HTML", "CSS"]
+    courses: ["JS", "React", "HTML", "CSS"],
+    user: {}
   };
 
-  handleDelete = e => {
-    console.log(e.target);
-    e.target.parentElement.parentElement.remove();
-  };
+  componentDidMount() {
+    const userData = getLocalToken();
+    console.log(userData.enrolledCourses);
+    this.setState({ user: getLocalToken() });
+    console.log(this.state, " this is the new state");
+  }
+
+  // handleDelete = e => {
+  //   console.log(e.target);
+  //   e.target.parentElement.parentElement.remove();
+  // };
 
   render() {
     if (!window.localStorage.userCredential) this.props.history.push("/");
     return (
       <section className="profile-section">
+        <Heading>Enrolled Courses</Heading>
         <table className="table profile-table columns">
           {this.state.courses.map((name, i) => (
             <tbody key={i}>
