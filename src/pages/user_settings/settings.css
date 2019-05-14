@@ -1,0 +1,10 @@
+.profile-img {
+  margin: 0 auto;
+}
+.profile-card {
+  display: flex;
+  justify-content: center;
+}
+.profile-card > .media > .media-content > p {
+  text-align: center;
+}

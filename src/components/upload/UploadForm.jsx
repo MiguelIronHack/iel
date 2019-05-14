@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getAllCourses, createCourse } from "../../api/coursesHandler";
 import { createCategory, getAllCategories } from "../../api/categoryHandler";
-import inputFile from "../InputFile";
+import InputFile from "../InputFile";
 import { Heading } from "react-bulma-components";
 import DashboardNav from "../../pages/dashboard/components/DashboardNav";
 import { getLocalToken } from "../../api/ajaxLogin.js";
@@ -82,45 +82,35 @@ export default class uploadForm extends Component {
         <section className="login-register-section">
           <Heading className="has-text-centered	">Upload Course</Heading>
           <form className="register-form box" onSubmit={onSubmit}>
-            <div className="control">
-              <label htmlFor="title">Title</label>
-              <input
-                value={title}
-                onChange={onChange}
-                className="input"
-                placeholder="input your title here..."
-                name="title"
-                type="text"
-              />
-              <label htmlFor="description">Description</label>
-              <input
-                value={description}
-                onChange={onChange}
-                className="input"
-                placeholder="input your description here..."
-                name="description"
-                type="text"
-              />
-              <label htmlFor="video">Video</label>
-              <input
-                value={video}
-                onChange={onChange}
-                className="input"
-                placeholder="input your video link here..."
-                name="video"
-                type="input"
-              />
+            <label htmlFor="title">Title</label>
+            <input
+              value={title}
+              onChange={onChange}
+              className="input"
+              placeholder="input your title here..."
+              name="title"
+              type="text"
+            />
+            <label htmlFor="description">Description</label>
+            <input
+              value={description}
+              onChange={onChange}
+              className="input"
+              placeholder="input your description here..."
+              name="description"
+              type="text"
+            />
+            <label htmlFor="video">Video</label>
+            <input
+              value={video}
+              onChange={onChange}
+              className="input"
+              placeholder="input your video link here..."
+              name="video"
+              type="input"
+            />
 
-              <label htmlFor="image">Image</label>
-              <input
-                value={image}
-                onChange={onChange}
-                className="input"
-                placeholder="input your image link here..."
-                name="image"
-                type="input"
-              />
-            </div>
+            <InputFile />
 
             <label htmlFor="category">Category</label>
 

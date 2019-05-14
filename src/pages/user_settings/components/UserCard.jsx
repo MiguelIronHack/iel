@@ -6,11 +6,11 @@ const UserCard = ({ user, handleImage }) => {
   return (
     <div className="card">
       <div className="card-image">
-        <figure className="image is-4by3">
+        <figure className="image profile-img is-64x64">
           <img src={user.avatar} alt="Placeholder image1" />
         </figure>
       </div>
-      <div className="card-content">
+      <div className="card-content profile-card">
         <div className="media">
           <div className="media-left" />
           <div className="media-content">

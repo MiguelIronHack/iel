@@ -85,24 +85,38 @@ export default class CourseDetails extends Component {
     const { title, description } = this.state.course;
     const { selectedLevel, selectedCategory, video, image } = this.state;
 
-    uploadImage(this.state.imgFileList)
-      .then(res => {
-        this.setState({ image: res.data.results[0].secure_url });
-
-        updateCourse(this.props.match.params.course, {
-          title: title,
-          category: selectedCategory._id,
-          level: selectedLevel.name,
-          description: description,
-          media: {
-            video: video,
-            image: image
-          }
-        })
-          .then(res => console.log(res))
-          .catch(err => console.error(err));
+    if (!this.state.imgFileList) {
+      updateCourse(this.props.match.params.course, {
+        title: title,
+        category: selectedCategory._id,
+        level: selectedLevel.name,
+        description: description,
+        media: {
+          video: video
+        }
       })
-      .catch(err => console.error(err));
+        .then(res => console.log(res))
+        .catch(err => console.error(err));
+    } else {
+      uploadImage(this.state.imgFileList)
+        .then(res => {
+          this.setState({ image: res.data.results[0].secure_url });
+
+          updateCourse(this.props.match.params.course, {
+            title: title,
+            category: selectedCategory._id,
+            level: selectedLevel.name,
+            description: description,
+            media: {
+              video: video,
+              image: image
+            }
+          })
+            .then(res => console.log(res))
+            .catch(err => console.error(err));
+        })
+        .catch(err => console.error(err));
+    }
   };
 
   render() {
@@ -116,12 +130,12 @@ export default class CourseDetails extends Component {
     } = this.state;
     if (!course) return null;
     return (
-      <React.Fragment>
+      <section className="edit-course-section has-background-dark">
         <DashboardNav rowId={course._id} />
         <form
           id={course._id}
           onSubmit={this.submitEdition}
-          className="edit-course box"
+          className="edit-course box has-background-grey-dark"
         >
           <Input
             label="Title:"
@@ -130,19 +144,6 @@ export default class CourseDetails extends Component {
             inputPlaceHolder="Edit field"
             handleChange={this.handleChange}
           />
-          {/* dropdown */}
-          <Dropdown
-            currentItem={selectedCategory}
-            handleSelect={this.handleSelectedCategory}
-            data={categories}
-          />
-
-          <Dropdown
-            currentItem={selectedLevel}
-            handleSelect={this.handleSelectedLevel}
-            data={levels}
-          />
-
           <Input
             label="Description:"
             handleChange={this.handleChange}
@@ -150,9 +151,7 @@ export default class CourseDetails extends Component {
             text={course.description}
             inputPlaceHolder="Edit field"
           />
-          <h1>
-            <InputFile handleImage={this.handleImage} />
-          </h1>
+
           <Input
             label="Video:"
             handleChange={this.handleChange}
@@ -161,9 +160,25 @@ export default class CourseDetails extends Component {
             inputPlaceHolder="Edit field"
           />
 
+          <Dropdown
+            label="Category:"
+            currentItem={selectedCategory}
+            handleSelect={this.handleSelectedCategory}
+            data={categories}
+          />
+
+          <Dropdown
+            label="difficulty:"
+            id="level"
+            currentItem={selectedLevel}
+            handleSelect={this.handleSelectedLevel}
+            data={levels}
+          />
+
+          <InputFile handleImage={this.handleImage} />
           <button className="button">submit edition</button>
         </form>
-      </React.Fragment>
+      </section>
     );
   }
 }

@@ -36,23 +36,45 @@
 }
 
 /* Edit Course */
-.edit-course {
-  margin: 5vh 5vw;
+.edit-course-section {
+  height: 100vh;
+}
+.edit-course-section .edit-course {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin: 5vh auto;
 }
 
 .edit-course > div > *:first-child {
-  color: #333;
+  color: hsl(0, 0%, 96%);
   text-transform: uppercase;
   font-weight: bold;
-  margin-right: 1vw;
+  margin-right: 2vw;
+  justify-self: flex-start;
 }
-.edit-course > div {
+
+.edit-course-section > .edit-course > .field > :nth-child(2),
+.edit-course-section > .edit-course > .dropdown > .dropdown-trigger {
+  margin-left: auto;
+}
+.edit-course-section > .edit-course > .dropdown {
+  display: flex;
+}
+.edit-course-section > .edit-course > .dropdown > .dropdown-menu {
+  margin-left: 50%;
+}
+
+.edit-course-section > .edit-course > .button {
+  margin: 0 auto;
+}
+
+.edit-course-section .edit-course > div {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin-bottom: 2vh;
 }
 
-.edit-course > div > p {
-  margin-right: auto;
+.edit-course-upload-image {
+  margin: 1vh auto;
 }
