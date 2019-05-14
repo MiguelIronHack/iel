@@ -39,7 +39,7 @@ export default class LessonDisplay extends React.Component {
       <React.Fragment>
         <LessonNav handlePage={this.handlePage} title={currentLesson.title} />
         <section className="lesson-display-section">
-          <Heading className="lesson-header column">
+          <Heading className="title lesson-header column">
             {currentLesson.title}
           </Heading>
           <article className="lesson box column is-three-quarters">
