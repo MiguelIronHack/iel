@@ -4,7 +4,6 @@ import {
   faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 
 const LessonNav = ({ title, handlePage, currentPage, max }) => {
   const pageChange = ({ currentTarget }) => {
@@ -19,7 +18,7 @@ const LessonNav = ({ title, handlePage, currentPage, max }) => {
           onClick={pageChange}
           name="left"
           className={
-            currentPage >= 0 ? "lesson-nav-left active" : "lesson-nav-left"
+            currentPage <= 0 ? "lesson-nav-left active" : "lesson-nav-left"
           }
         >
           <span>
@@ -28,8 +27,22 @@ const LessonNav = ({ title, handlePage, currentPage, max }) => {
           </span>
         </p>
         <p className="lesson-nav-title">{title}</p>
-        <p onClick={pageChange} direction="right" className="lesson-nav-right">
-          <span className="lesson-nav-right">
+        <p
+          onClick={pageChange}
+          direction="right"
+          className={
+            currentPage >= max - 1
+              ? "lesson-nav-right active"
+              : "lesson-nav-right"
+          }
+        >
+          <span
+            className={
+              currentPage >= max - 1
+                ? "lesson-nav-right active"
+                : "lesson-nav-right"
+            }
+          >
             Next
             <FontAwesomeIcon
               className="lesson-nav-icon"
