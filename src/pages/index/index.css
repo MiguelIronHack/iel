@@ -24,8 +24,9 @@
   align-items: center;
   justify-content: space-evenly;
 }
-.title {
+h1.title {
   text-align: center;
+  color: hsl(0, 0%, 96%);
 }
 
 .index-banner {

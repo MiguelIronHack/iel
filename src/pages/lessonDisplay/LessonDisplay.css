@@ -12,7 +12,7 @@
 }
 
 .lesson-description {
-  font-style: oblique;
+  font-size: 1.7rem;
 }
 
 .lesson-content {
@@ -26,6 +26,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: #fff;
 }
 .lesson-nav-left,
 .lesson-nav-right > * {
