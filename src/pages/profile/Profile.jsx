@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
-<<<<<<< HEAD
-import { Card, Media, Image, Heading, Content } from "react-bulma-components";
-=======
 import { getUser } from "../../api/userHandler";
 
 import {
@@ -13,7 +10,6 @@ import {
   Content,
   Button
 } from "react-bulma-components";
->>>>>>> 89149acd079d9fb1f1e6732a4a0d32ea2aa860a1
 import "./profile.css";
 import { Link } from "react-router-dom";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
@@ -91,13 +87,8 @@ export class Profile extends Component {
                       </Content>
                     </Card.Content>
                     <Card.Footer>
-<<<<<<< HEAD
-                      <Link className="link" to={name}>
-                        <Card.Footer.Item renderAs="p">Resume</Card.Footer.Item>
-=======
                       <Link to={course._id}>
                         <Card.Footer.Item renderAs="p">Go</Card.Footer.Item>
->>>>>>> 89149acd079d9fb1f1e6732a4a0d32ea2aa860a1
                       </Link>
                       <div
                         className="profile-delete-btn is-danger"
