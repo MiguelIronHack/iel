@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-const LessonNav = ({ title, handlePage }) => {
+const LessonNav = ({ title, handlePage, currentPage }) => {
   const pageChange = ({ currentTarget }) => {
     const direction = currentTarget.className.replace("lesson-nav-", "");
     handlePage(direction);
@@ -15,7 +15,13 @@ const LessonNav = ({ title, handlePage }) => {
   return (
     <React.Fragment>
       <div className="has-background-grey-dark  is-active lesson-nav">
-        <p onClick={pageChange} name="left" className="lesson-nav-left active">
+        <p
+          onClick={pageChange}
+          name="left"
+          className={
+            currentPage >= 0 ? "lesson-nav-left active" : "lesson-nav-left"
+          }
+        >
           <span>
             <FontAwesomeIcon className="lesson-nav-icon" icon={faChevronLeft} />
             Previous

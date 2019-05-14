@@ -25,8 +25,6 @@ export class Course extends Component {
               </Media.Item>
             </Media>
             <Content>
-              {this.props.content}
-              <br />
               <Moment format="DD/MM/YYYY">{this.props.date}</Moment>
             </Content>
           </Card.Content>
