@@ -24,8 +24,8 @@ export default class NavMain extends React.Component {
           <NavLink to="/">
             <Navbar.Item renderAs="div">
               <img
-                src="http://hashtag-bg.com/wp-content/uploads/2018/08/atom-gif-transparent-resume-fuyu-red.gif"
-                alt="logo"
+                src="https://ia601407.us.archive.org/24/items/cupidstrick_execs_Logo/logo.png"
+                alt="TeaChimp Logo"
               />
             </Navbar.Item>
           </NavLink>
