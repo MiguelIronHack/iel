@@ -20,7 +20,7 @@ html,
 body {
   scroll-behavior: smooth;
   background: hsl(0, 0%, 14%);
-  font-family: "Quicksand", sans-serif;
+  font-family: "Quicksand", sans-serif !important;
 }
 .section {
   height: 100vh;
