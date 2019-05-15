@@ -28,9 +28,11 @@ export class Profile extends Component {
     this.setState({ user });
     getUser(user._id)
       .then(res => {
+        console.log(res.data.enrolledCourses, " this are the data");
         console.log(res.data.firstName);
+
         this.setState({
-          name: res.data.firstName,
+          teacher: res.data.firstName,
           courses: res.data.enrolledCourses
         });
         console.log(this.state, " eyeyey");
@@ -58,7 +60,7 @@ export class Profile extends Component {
                     <Card.Header>
                       <Link to={course._id}>
                         <Card.Header.Title className="has-text-white-ter">
-                          {course.teacher}
+                          {this.state.teacher}
                         </Card.Header.Title>
                       </Link>
                     </Card.Header>

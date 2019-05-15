@@ -4,6 +4,7 @@ import { Card, Media, Image, Content, Heading } from "react-bulma-components";
 import Moment from "react-moment";
 import { getLocalToken } from "../api/ajaxLogin";
 import { getUser } from "../api/userHandler";
+import { editUser } from "../api/userHandler";
 
 export class Course extends Component {
   state = {
@@ -30,6 +31,12 @@ export class Course extends Component {
     console.log(this.state.user);
     this.state.user.enrolledCourses.push(courseId);
     console.log(this.state.user, " user after enroll");
+    const { enrolledCourses, _id } = this.state.user;
+    editUser(_id, { enrolledCourses })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
   };
 
   render() {

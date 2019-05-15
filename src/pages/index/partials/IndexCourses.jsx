@@ -30,6 +30,7 @@ export class IndexCourses extends Component {
               <Course
                 className="course-link"
                 key={index}
+                id={course._id}
                 title={course.title}
                 description={course.description}
                 content={course.content}
