@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Quicksand");
+/* font-family: 'Quicksand', sans-serif; */
+/* font-family: 'Open Sans', sans-serif; */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,6 +20,7 @@ html,
 body {
   scroll-behavior: smooth;
   background: hsl(0, 0%, 14%);
+  font-family: "Quicksand", sans-serif;
 }
 .section {
   height: 100vh;
@@ -28,6 +33,9 @@ h5,
 h6,
 button {
   letter-spacing: 0.6px;
+}
+.button {
+  font-family: "Open Sans", sans-serif;
 }
 
 .ml-1 {
@@ -69,13 +77,17 @@ button {
   text-align: center;
 }
 /*  */
-
+.footer > .container {
+  width: 100%;
+}
 .footer > .container > .footer-content {
   display: grid;
   grid-template-columns: 5rem 1fr 10vw;
 }
 .footer > .container > .footer-content > * {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .footer > .container > .footer-content > .footer-btn {

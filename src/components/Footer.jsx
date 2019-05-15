@@ -15,10 +15,7 @@ export class IndexFooter extends Component {
                 alt="Teachimp Logo"
               />
             </a>
-            <p className="footer-text">
-              iel was created by Miguel Bento and Daniel Diaz, Frank Marmier and
-              Gerard Joubi. The order matters.
-            </p>
+            <p className="footer-text">Teachimp &copy; 2019</p>
             <NextSection className="footer-btn next-section-btn" href="#" />
           </div>
         </Container>
