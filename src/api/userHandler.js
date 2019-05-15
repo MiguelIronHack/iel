@@ -1,8 +1,9 @@
 import axios from "axios";
 import { getLocalToken, deleteLocalToken } from "./ajaxLogin";
 
-const port = 4000;
-const ApiUrl = `http://localhost:${port}/api`;
+const port = process.env.REACT_APP_BACK_PORT;
+const ApiUrl =
+  process.env.REACT_APP_BACK_URL + process.env.REACT_APP_BACK_PORT + "/api";
 
 const config = {
   withCredentials: true,
