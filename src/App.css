@@ -69,9 +69,29 @@ button {
   text-align: center;
 }
 /*  */
-.footer {
-  margin-top: 0%;
+
+.footer > .container > .footer-content {
+  display: grid;
+  grid-template-columns: 5rem 1fr 10vw;
 }
+.footer > .container > .footer-content > * {
+  display: flex;
+}
+
+.footer > .container > .footer-content > .footer-btn {
+  margin-left: auto;
+}
+
+.footer-img {
+  height: 64px;
+  width: 64px;
+}
+
 .shadow {
   filter: drop-shadow(-5px -5px 9px hsl(0, 0%, 21%));
+}
+@media screen and (max-width: 340px) {
+  .footer {
+    min-height: min-content;
+  }
 }

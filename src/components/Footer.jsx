@@ -7,11 +7,20 @@ export class IndexFooter extends Component {
     return (
       <Footer className="footer">
         <Container>
-          <p>
-            iel was created by Miguel Bento and Daniel Diaz, Frank Marmier and
-            Gerard Joubi. The order matters.
-          </p>
-          <NextSection className="footer-btn next-section-btn" href="#" />
+          <div className="footer-content">
+            <a href="#">
+              <img
+                className="footer-img"
+                src="https://ia601407.us.archive.org/24/items/cupidstrick_execs_Logo/logo.png"
+                alt="Teachimp Logo"
+              />
+            </a>
+            <p className="footer-text">
+              iel was created by Miguel Bento and Daniel Diaz, Frank Marmier and
+              Gerard Joubi. The order matters.
+            </p>
+            <NextSection className="footer-btn next-section-btn" href="#" />
+          </div>
         </Container>
       </Footer>
     );
