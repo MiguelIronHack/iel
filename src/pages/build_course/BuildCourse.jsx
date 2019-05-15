@@ -62,15 +62,18 @@ class BuildCourse extends Component {
           lessons: [],
           _id: res.data
         };
+        const { currentCourse } = { ...this.state };
+        currentCourse.courseModules = modules;
         modules.push(createdModule);
-        this.setState({ modules: modules });
+        this.setState({ modules, currentCourse });
       })
       .catch(err => console.log(err));
   };
 
-  handleSelect = ({ currentTarget }) => {
-    const selectedTag = currentTarget.children[0].textContent;
-    this.setState({ selectedTag: selectedTag });
+  handleSelect = data => {
+    // const selectedTag = currentTarget.children[0].textContent;
+    this.setState({ selectedModule: data });
+    // this.setState({ selectedTag: selectedTag });
   };
 
   handleModuleSelect = mod => this.setState({ selectedModule: mod });
@@ -89,6 +92,15 @@ class BuildCourse extends Component {
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
+
+  deleteModule = mod => {
+    const index = this.state.currentCourse.courseModules.indexOf(mod);
+    const arr = _.pull(this.state.currentCourse.courseModules, mod);
+    const currentCourse = { ...this.state.currentCourse };
+    currentCourse.courseModules = arr;
+    this.setState({ currentCourse });
+  };
+
   handleRemove = (item, mod) => {
     // const index = mod.lessons.indexOf(item);
     const arr = _.pull(mod.lessons, item);
@@ -125,6 +137,7 @@ class BuildCourse extends Component {
                 </button>
                 {modules.map((mod, i) => (
                   <ModuleList
+                    handleModule={this.deleteModule}
                     key={i}
                     handleRemove={this.handleRemove}
                     handleSelect={this.handleModuleSelect}
