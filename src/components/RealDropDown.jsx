@@ -5,7 +5,7 @@ import DropdownItem from "./DropdownItem";
 
 const Dropdown = ({ currentItem, data, name, handleSelect, label }) => {
   const [isActive, setActiveClassName] = useState(false);
-  console.log(currentItem);
+  if (!currentItem) return null;
   return (
     <React.Fragment>
       <div
