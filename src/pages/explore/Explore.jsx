@@ -43,9 +43,6 @@ export default class explore extends Component {
           selectedCategory: res.data,
           courses: res.data.courses
         });
-        if (this.state.courses.length === 0) {
-          return <h1>This category has no courses yet</h1>;
-        }
       })
       .catch(err => console.error(err.response, "qqqqqq"));
   };
@@ -69,16 +66,22 @@ export default class explore extends Component {
               ))}
             </ul>
             <Columns>
-              {courses.map((course, index) => (
-                <Columns.Column size={4} key={index}>
-                  <CourseCard
-                    key={index}
-                    title={course.title}
-                    description={course.description}
-                    date={course.date}
-                  />
-                </Columns.Column>
-              ))}
+              {!courses.length ? (
+                <div className="section">
+                  <p className="title">There is no courses in that category</p>
+                </div>
+              ) : (
+                courses.map((course, index) => (
+                  <Columns.Column size={4} key={index}>
+                    <CourseCard
+                      key={index}
+                      title={course.title}
+                      description={course.description}
+                      date={course.date}
+                    />
+                  </Columns.Column>
+                ))
+              )}
             </Columns>
           </div>
         </div>
