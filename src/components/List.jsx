@@ -8,65 +8,32 @@ class List extends Component {
   };
 
   render() {
-    const {
-      data,
-      module: mod,
-      title,
-      id,
-      type,
-      handleClick,
-      handleRemove
-    } = this.props;
-
+    const { data, handleClick, deletable, mod } = this.props;
     if (!data.length)
       return (
-        <React.Fragment>
-          {type === "module" ? (
-            <h1 id={id} onClick={e => this.raiseSelectedModule(mod)}>
-              {title}
-            </h1>
-          ) : (
-            <h1>{title}</h1>
-          )}
-          <ul>
-            <li>
-              <div className="notification">
-                <p>This is Empty</p>
-              </div>
-            </li>
-          </ul>
-        </React.Fragment>
+        <div className="notification">
+          <p>Empty</p>
+        </div>
       );
-
     return (
       <React.Fragment>
-        {this.props.type === "module" ? (
-          <div>
-            <h1 id={id} onClick={e => this.raiseSelectedModule(mod)}>
-              {title}
-            </h1>
-            <button className="delete">d</button>
-          </div>
-        ) : (
-          <h1>{title}</h1>
-        )}
         <ul>
           {data.map((item, index) => (
             <li
               id={item._id}
               style={{ margin: "1rem" }}
-              onClick={e => handleClick(item)}
+              onClick={() => (!deletable ? handleClick(item) : void 0)}
               key={index}
             >
+              {deletable ? (
+                <button
+                  onClick={() => handleClick(item, mod)}
+                  className="delete"
+                >
+                  e
+                </button>
+              ) : null}
               <div className="notification">
-                {this.props.type === "module" ? (
-                  <button
-                    onClick={e => handleRemove(item, mod)}
-                    className="delete"
-                  >
-                    d
-                  </button>
-                ) : null}
                 <p>{item.title}</p>
                 <p>{item.description}</p>
               </div>
@@ -79,3 +46,14 @@ class List extends Component {
 }
 
 export default List;
+
+{
+  /* {this.props.type === "module" ? (
+                  <button
+                    onClick={e => handleRemove(item, mod)}
+                    className="delete"
+                  >
+                    d
+                  </button>
+                ) : null} */
+}
