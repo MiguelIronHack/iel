@@ -61,9 +61,13 @@ h1.title {
   justify-content: space-evenly;
 }
 .pop-section-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: hsl(171, 100%, 17%);
   border-radius: 5px;
   text-align: center;
+  width: 80%;
 }
 
 .pop-section-content {

@@ -1,7 +1,7 @@
 import React from "react";
 
 const DropdownItem = ({ index, data, handleSelect }) => {
-  const raiseSelectedItem = () => {
+  const raiseSelectedItem = e => {
     handleSelect(data);
   };
   return (
