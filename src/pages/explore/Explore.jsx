@@ -68,7 +68,9 @@ export default class explore extends Component {
             <Columns>
               {!courses.length ? (
                 <div className="section">
-                  <p className="title">There is no courses in that category</p>
+                  <h1 className="title">
+                    There is no courses in that category
+                  </h1>
                 </div>
               ) : (
                 courses.map((course, index) => (
