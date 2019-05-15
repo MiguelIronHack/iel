@@ -69,7 +69,7 @@ export default class explore extends Component {
               {!courses.length ? (
                 <div className="section">
                   <h1 className="title">
-                    There is no courses in that category
+                    There are no courses
                   </h1>
                 </div>
               ) : (

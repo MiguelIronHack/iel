@@ -1,12 +1,35 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { getAllCourses } from "../../api/coursesHandler";
+import { getLessons } from "../../api/lessonHandler";
+
 export default class CourseTable extends Component {
   state = {
+    course: [],
     lessons: [],
     description: ""
   };
 
+  componentDidMount() {
+    getAllCourses()
+      .then(res =>
+        this.setState({
+          course: [...res.data]
+        })
+      )
+      .catch(err => console.error(err));
+    getLessons()
+      .then(res =>
+        this.setState({
+          lessons: res.data
+        })
+      )
+      .catch(err => console.error(err));
+  }
+
   render() {
+    const { lessons } = this.state;
+    console.log(lessons);
     return (
       <article className="columns course-article">
         <table className="table course-table is-hoverable ">
@@ -19,38 +42,24 @@ export default class CourseTable extends Component {
           </thead>
           <tbody>
             <tr>
-              <td>Lessons</td>
+              {lessons.map((l, i) => (
+                <td key={i}>
+                  <Link to={`/lesson/${l._id}`}>{l.title}</Link>
+                </td>
+              ))}
               <td>5h 30min</td>
               <td>3h 20min</td>
-            </tr>
-            <tr>
-              <td>Exercises</td>
-              <td>5h 30min</td>
-              <td>3h 20min</td>
-            </tr>
-            <tr>
-              <td>
-                <Link
-                  className=" button is-primary resume-course-btn"
-                  to="course-content"
-                >
-                  Resume
-                </Link>
-              </td>
             </tr>
           </tbody>
         </table>
 
         <div className="course-table table is-hoverable is-fullwidth">
           <article className="message has-background-white">
-            <div className="message-body">
-              tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex
-              sit amet fringilla. Nullam gravida purus diam, et dictum
-              efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus.
-              Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor
-              ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et
-              sem eget, facilisis sodales sem.
-            </div>
+            {lessons.map((l, i) => (
+              <div key={i} className="message-body">
+                {l.description}
+              </div>
+            ))}
           </article>
         </div>
       </article>

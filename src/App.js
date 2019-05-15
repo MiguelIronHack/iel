@@ -56,6 +56,7 @@ class App extends Component {
           <Route path="/create-users" component={CreateUsers} />
           <Route path="/explore" component={Explore} />
           <Route path="/explore-by-category/:id" component={CategoryCourses} />
+          <Route path="lesson/:id" component={LessonDisplay} />
         </Switch>
         <Footer />
       </React.Fragment>

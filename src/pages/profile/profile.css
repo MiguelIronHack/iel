@@ -1,3 +1,11 @@
+.profile-settings-section {
+  padding: 5vh 5vw;
+  min-height: min-content;
+  height: 74vh;
+  display: flex;
+  align-items: flex-start;
+}
+
 .profile-section {
   margin: 5vh 5vw;
   padding: 1rem;
@@ -5,18 +13,22 @@
   border-radius: 5px;
   background: hsl(0, 0%, 21%);
   filter: drop-shadow(-5px -5px 9px hsl(0, 0%, 21%));
+  min-height: min-content;
+  height: 100vh;
 }
 .profile-table {
   background: hsl(0, 0%, 21%);
   margin: 0 auto;
   width: 100%;
 }
-
 .profile-table > * {
   margin: 0 0.3vw;
 }
 .profile-th {
   width: 70%;
+}
+.profile-settings-form {
+  min-width: min-content;
 }
 .profile-section .link:hover {
   color: hsl(141, 71%, 48%);
