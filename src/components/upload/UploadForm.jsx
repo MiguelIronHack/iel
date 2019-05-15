@@ -18,7 +18,7 @@ export default class uploadForm extends Component {
     image: "",
     category: [],
     categories: [],
-    selectedCategory: [],
+    selectedCategory: {},
     submitted: false
   };
 
@@ -26,7 +26,8 @@ export default class uploadForm extends Component {
     getAllCategories()
       .then(res => {
         this.setState({
-          categories: res.data
+          categories: res.data,
+          selectedCategory: res.data[0]
         });
       })
       .catch(err => console.error(err));
@@ -87,6 +88,12 @@ export default class uploadForm extends Component {
     console.log(e.target.name);
   };
 
+  handleCategory = category => {
+    this.setState({
+      selectedCategory: category
+    });
+  };
+
   onClick = () => {
     getAllCourses()
       .then(res => console.log(res.data))
@@ -99,7 +106,14 @@ export default class uploadForm extends Component {
       return <Redirect to="/coursemanagement" />;
     }
     const { onSubmit, onChange, onClick } = this;
-    const { title, category, categories, description, video } = this.state;
+    const {
+      title,
+      selectedCategory,
+      category,
+      categories,
+      description,
+      video
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -143,10 +157,11 @@ export default class uploadForm extends Component {
             />
 
             <Dropdown
-              handleSelect={onChange}
+              handleSelect={this.handleCategory}
               key={title}
               data={categories}
-              name="category"
+              currentItem={!selectedCategory ? "Categories" : selectedCategory}
+              name={!selectedCategory ? "Categories" : selectedCategory}
               label="Category"
             />
 
