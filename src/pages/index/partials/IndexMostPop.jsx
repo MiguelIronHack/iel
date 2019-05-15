@@ -22,7 +22,7 @@ export class MostPop extends Component {
   }
 
   render() {
-    const { title, description } = this.state.courses;
+    const { title, description, _id } = this.state.courses;
     return (
       <Section id="pop-section" className="pop-section">
         <Hero className="pop-section-hero shadow">
@@ -34,7 +34,7 @@ export class MostPop extends Component {
           </Hero.Body>
         </Hero>
 
-        <Btn to="/register" className="enroll-btn" name="Enroll" />
+        <Btn toPage={`/lesson/${_id}`} className="enroll-btn" name="Enroll" />
         <NextSection className="next-section-btn" href="#index-courses" />
       </Section>
     );
