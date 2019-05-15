@@ -18,8 +18,10 @@ export default class explore extends Component {
     getAllCategories()
       .then(res => {
         this.setState({
-          categories: res.data
+          categories: res.data,
+          courses: res.data[0].courses
         });
+        console.log(res.data[0].courses, "dddddd");
       })
       .catch(err => console.error(err.response, "qqqqqq"));
 
