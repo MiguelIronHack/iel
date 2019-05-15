@@ -41,13 +41,13 @@
 .table thead th {
   text-align: center;
 }
-/* 
+
 .delete-user,
 .delete-course,
 .edit-user,
 .edit-course :hover {
   cursor: pointer;
-} */
+}
 
 .btn-create-course {
   text-align: center;

@@ -43,7 +43,9 @@ export default class explore extends Component {
           selectedCategory: res.data,
           courses: res.data.courses
         });
-        console.log(this.state.courses, " coouurrsseess");
+        if (this.state.courses.length === 0) {
+          return <h1>This category has no courses yet</h1>;
+        }
       })
       .catch(err => console.error(err.response, "qqqqqq"));
   };
