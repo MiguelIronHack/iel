@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const ApiUrl =
-  process.env.REACT_APP_BACK_URL + process.env.REACT_APP_BACK_PORT + "/api";
+const ApiUrl = process.env.REACT_APP_BACK_URL + "/api";
 
 export const getAllCourses = () => axios.get(`${ApiUrl}/course`);
 

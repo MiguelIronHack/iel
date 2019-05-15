@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const ApiUrl =
-  process.env.REACT_APP_BACK_URL + process.env.REACT_APP_BACK_PORT + "/api";
+const ApiUrl = process.env.REACT_APP_BACK_URL + "/api";
 
 console.log(ApiUrl);
 export const getAllCategories = () => axios.get(`${ApiUrl}/category`);
