@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Heading } from "react-bulma-components";
 import CourseSidePanel from "../components/CourseSidePanel";
 import LessonTable from "../components/LessonTable";
+import "../courses/CourseDisplay";
 
-import "../courses/Courses";
 export default class Courses extends Component {
   render() {
     return (

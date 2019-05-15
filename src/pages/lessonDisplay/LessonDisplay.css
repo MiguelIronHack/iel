@@ -1,6 +1,6 @@
 .lesson-display-section {
   margin-top: 1vh;
-  height: 100vh;
+  height: max-content;
   padding: 4vh 4vw;
 }
 .lesson-nav {
@@ -17,8 +17,8 @@
 }
 
 .lesson-display-section > .lesson {
-  background: hsl(0, 0%, 21%);
-  color: hsl(0, 0%, 96%);
+  color: hsl(0, 0%, 21%);
+  background: hsl(0, 0%, 96%);
   border: 2px solid hsl(0, 0%, 29%);
   filter: drop-shadow(-5px -5px 9px hsl(0, 0%, 21%));
   transition: all 0.3s ease-out;
@@ -70,4 +70,10 @@
 }
 .lesson {
   margin: 0 auto;
+}
+@media screen and (max-width: 450px) {
+  .lesson-nav-title {
+    margin-top: 5vw;
+    font-size: 1.1rem;
+  }
 }

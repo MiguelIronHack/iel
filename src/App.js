@@ -11,7 +11,7 @@ import Profile from "./pages/profile/Profile";
 import Register from "./pages/login&register/Register";
 import Login from "./pages/login&register/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Courses from "./pages/courses/Courses";
+import Courses from "./pages/courses/CourseDisplay";
 import CourseInfo from "./pages/courseInfo/CourseInfo";
 import CourseContent from "./pages/courseContent/CourseContent";
 import UserSettings from "./pages/user_settings/UserSettings";
@@ -56,7 +56,6 @@ class App extends Component {
           <Route path="/create-users" component={CreateUsers} />
           <Route path="/explore" component={Explore} />
           <Route path="/explore-by-category/:id" component={CategoryCourses} />
-
         </Switch>
         <Footer />
       </React.Fragment>
