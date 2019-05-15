@@ -1,28 +1,28 @@
 import React, { Component } from "react";
-import courseCard from "../../components/CourseCard";
-import { getAllCourses } from "../../api/coursesHandler.js";
-import { getAllCategories } from "../../api/categoryHandler.js";
+import { getAllCategories } from "../../api/categoryHandler";
 
-export default class Explore extends Component {
-  state = { courses: [] };
+export default class explore extends Component {
+  state = {
+    categories: []
+  };
 
   componentDidMount() {
-    getAllCourses()
-      .then(res => {
-        this.setState({ courses: res.data });
-      })
-      .catch(err => console.log(err.response));
+    getAllCategories().then(res => {
+      this.setState({
+        categories: res.data
+      });
+    });
   }
 
   render() {
-    const { courses } = this.state;
-
+    const { categories } = this.state;
+    console.log(categories);
     return (
-      <React.Fragment>
-        {courses.map((course, index) => {
-          console.log({ course });
+      <div>
+        {categories.map(e => {
+          return <section className="explore-seciton">{e.name}</section>;
         })}
-      </React.Fragment>
+      </div>
     );
   }
 }

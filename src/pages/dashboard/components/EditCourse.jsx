@@ -82,7 +82,7 @@ export default class CourseDetails extends Component {
   submitEdition = e => {
     e.preventDefault();
     const { title, description } = this.state.course;
-    const { selectedLevel, selectedCategory, video, image } = this.state;
+    const { selectedLevel, selectedCategory, video } = this.state;
 
     if (!this.state.imgFileList) {
       updateCourse(this.props.match.params.course, {

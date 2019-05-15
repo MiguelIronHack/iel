@@ -4,8 +4,9 @@ import Dropdown from "./../../components/RealDropDown";
 import { getLessons } from "./../../api/lessonHandler";
 import { getAllTags } from "../../api/tagHandler";
 import { getUserCourses, updateCourse } from "../../api/coursesHandler";
-import { createModule } from "../../api/moduleHandler";
+import { createModule, updateModule } from "../../api/moduleHandler";
 import { getLocalToken } from "../../api/ajaxLogin";
+import Pagination from "../../components/Pagination";
 import _ from "lodash";
 
 class BuildCourse extends Component {
@@ -19,8 +20,6 @@ class BuildCourse extends Component {
   };
 
   componentDidMount() {
-    //TODO  Render all the modules a course has kill me pls
-    //TODO get this hardcorded userId out of the way kek
     //TODO GOTTA BRING DEM PROMISE.all
     const userToken = getLocalToken();
     getUserCourses(userToken._id)
@@ -83,9 +82,27 @@ class BuildCourse extends Component {
     const selectedModule = { ...this.state.selectedModule };
     selectedModule.lessons.push(lesson);
     this.setState({ selectedModule: selectedModule });
+    const parsedLessons = selectedModule.lessons.map(lesson => lesson._id);
+    updateModule(selectedModule._id, { lessons: parsedLessons })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
+  handleRemove = (item, mod) => {
+    const index = mod.lessons.indexOf(item);
+    const arr = _.pull(mod.lessons, item);
+    const newLessons = arr.map(less => _.pick(less, "_id"));
+    updateModule(mod._id, { lessons: newLessons })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+    const modules = [...this.state.modules];
+    modules[modules.indexOf(mod)].lessons = arr;
+    this.setState({ modules });
   };
 
   render() {
+    console.log(this.state.modules);
     const {
       buildingCourse,
       courses,
@@ -106,6 +123,7 @@ class BuildCourse extends Component {
                 <button onClick={this.addModule} className="button">
                   Add Module
                 </button>
+                {/* <Pagination items={modules} /> */}
                 {modules.length ? (
                   modules.map((mod, index) => (
                     <List
@@ -114,6 +132,8 @@ class BuildCourse extends Component {
                       type="module"
                       handleModule={this.handleModuleSelect}
                       title={`Module ${index + 1}`}
+                      handleRemove={this.handleRemove}
+                      handleClick={() => 1 + 1}
                       data={mod.lessons}
                       module={mod}
                     />
@@ -155,6 +175,7 @@ class BuildCourse extends Component {
     );
   }
   watchState = e => {
+    console.log(this.state.modules);
     const newModules = this.state.modules.map(mod => _.pick(mod, "_id"));
     updateCourse(this.state.currentCourse._id, {
       courseModules: newModules

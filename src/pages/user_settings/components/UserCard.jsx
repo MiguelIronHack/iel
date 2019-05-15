@@ -1,7 +1,7 @@
 import React from "react";
 import "../settings.css";
 
-const UserCard = ({ user, handleImage }) => {
+const UserCard = ({ user }) => {
   if (!user) return null;
   return (
     <div className="card">

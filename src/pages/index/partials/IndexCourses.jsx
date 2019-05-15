@@ -23,12 +23,13 @@ export class IndexCourses extends Component {
     const { courses } = this.state;
     return (
       <section className="index-courses m-p" id="index-courses">
-        <Heading>Title</Heading>
+        <Heading>Popular Courses</Heading>
         <Columns>
           {courses.map((course, index) => (
-            <Columns.Column size={3} key={index}>
+            <Columns.Column size={4} key={index}>
               <Course
                 className="course-link"
+                key={index}
                 title={course.title}
                 description={course.description}
                 content={course.content}

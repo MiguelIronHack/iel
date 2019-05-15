@@ -1,6 +1,33 @@
 .lesson-display-section {
+  margin-top: 1vh;
+  height: 100vh;
   padding: 4vh 4vw;
 }
+.lesson-nav {
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 3rem;
+}
+.lesson-nav-title {
+  align-self: center;
+  margin: auto;
+  color: hsl(0, 0%, 96%);
+}
+
+.lesson-display-section > .lesson {
+  background: hsl(0, 0%, 21%);
+  color: hsl(0, 0%, 96%);
+  border: 2px solid hsl(0, 0%, 29%);
+  filter: drop-shadow(-5px -5px 9px hsl(0, 0%, 21%));
+  transition: all 0.3s ease-out;
+}
+.lesson-display-section > .lesson:hover {
+  border: 2px solid hsl(0, 0%, 21%);
+  transition: all 0.3s linear;
+}
+
 .lesson-header {
   text-align: center;
   line-height: 0.5;
@@ -12,7 +39,7 @@
 }
 
 .lesson-description {
-  font-style: oblique;
+  font-size: 1.7rem;
 }
 
 .lesson-content {
@@ -26,6 +53,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: #fff;
 }
 .lesson-nav-left,
 .lesson-nav-right > * {
@@ -34,12 +62,12 @@
 .lesson-nav-left > * > svg {
   margin-right: 1rem;
 }
-.lesson-nav-right {
-  margin-left: auto;
-}
 
 .lesson-nav-left.active,
 .lesson-nav-right.active {
   pointer-events: none;
   color: #333;
+}
+.lesson {
+  margin: 0 auto;
 }

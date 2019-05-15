@@ -8,7 +8,16 @@ class List extends Component {
   };
 
   render() {
-    const { data, module: mod, title, id, type, handleClick } = this.props;
+    const {
+      data,
+      module: mod,
+      title,
+      id,
+      type,
+      handleClick,
+      handleRemove
+    } = this.props;
+
     if (!data.length)
       return (
         <React.Fragment>
@@ -32,9 +41,12 @@ class List extends Component {
     return (
       <React.Fragment>
         {this.props.type === "module" ? (
-          <h1 id={id} onClick={e => this.raiseSelectedModule(mod)}>
-            {title}
-          </h1>
+          <div>
+            <h1 id={id} onClick={e => this.raiseSelectedModule(mod)}>
+              {title}
+            </h1>
+            <button className="delete">d</button>
+          </div>
         ) : (
           <h1>{title}</h1>
         )}
@@ -47,7 +59,14 @@ class List extends Component {
               key={index}
             >
               <div className="notification">
-                <button className="delete" />
+                {this.props.type === "module" ? (
+                  <button
+                    onClick={e => handleRemove(item, mod)}
+                    className="delete"
+                  >
+                    d
+                  </button>
+                ) : null}
                 <p>{item.title}</p>
                 <p>{item.description}</p>
               </div>

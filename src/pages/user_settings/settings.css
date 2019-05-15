@@ -8,3 +8,24 @@
 .profile-card > .media > .media-content > p {
   text-align: center;
 }
+.profile-user-info {
+  margin: auto;
+}
+.profile-user-info > .card {
+  border-radius: 5px;
+  border: 15px solid hsl(0, 0%, 9%);
+  padding: 1rem;
+  background: linear-gradient(hsl(0, 0%, 70%), hsl(0, 0%, 96%));
+}
+.profile-settings-form .label {
+  color: hsl(0, 0%, 96%);
+}
+.profile-settings-form {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-out;
+}
+.profile-settings-form .button:hover {
+  background: hsl(141, 100%, 82%);
+  transition: all 0.3s ease-out;
+}

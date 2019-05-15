@@ -75,7 +75,7 @@ class TextEditor extends Component {
           <div className="column is-4">
             <input
               className=" input is-info"
-              placeHolder="Course title"
+              placeholder="Course title"
               name="title"
               onChange={this.handleInput}
               value={title}
@@ -90,7 +90,7 @@ class TextEditor extends Component {
               value={description}
             />
           </div>
-          <label className="title">Lesson Content</label>
+          <label className="title editor-title">Lesson Content</label>
           <div onClick={() => this.focus} className="text-editor">
             <Editor
               editorState={this.state.editorState}

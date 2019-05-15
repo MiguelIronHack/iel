@@ -24,8 +24,9 @@
   align-items: center;
   justify-content: space-evenly;
 }
-.title {
+h1.title {
   text-align: center;
+  color: hsl(0, 0%, 96%);
 }
 
 .index-banner {
@@ -37,6 +38,7 @@
 }
 .index-banner-icon {
   transition: all 0.3s linear;
+  color: hsl(0, 0%, 96%);
 }
 .index-banner-icon:hover {
   color: hsl(0, 0%, 48%);
@@ -46,7 +48,6 @@
   display: flex;
   flex-direction: column;
 }
-
 .join-btn {
   align-self: center;
   width: fit-content;
@@ -58,6 +59,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+}
+.pop-section-hero {
+  background: hsl(171, 100%, 17%);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.pop-section-content {
+  color: hsl(0, 0%, 96%);
+  font-size: 1.2rem;
 }
 
 .btn {

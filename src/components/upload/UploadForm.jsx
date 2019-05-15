@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getAllCourses, createCourse } from "../../api/coursesHandler";
 import { createCategory, getAllCategories } from "../../api/categoryHandler";
+import { uploadImage } from "../../services/imageUploadAPI";
 import InputFile from "../InputFile";
 import { Heading } from "react-bulma-components";
 import DashboardNav from "../../pages/dashboard/components/DashboardNav";
@@ -23,35 +24,47 @@ export default class uploadForm extends Component {
     this.setState({ submitted: false });
   }
 
+  handleImage = file => {
+    this.setState({
+      imgFileList: file
+    });
+  };
+
   onSubmit = e => {
     e.preventDefault();
 
     const userToken = getLocalToken();
 
-    createCourse({
-      teacher: userToken._id,
-      title: this.state.title,
-      description: this.state.description,
-      media: {
-        video: this.state.video,
-        image: this.state.image
-      }
-    })
-      .then(res => {
-        console.log("We go to course page");
-        // <Redirect to="/coursemanagement" />;
-
-        this.setState({ submitted: true });
-
-        console.log(res.data);
+    uploadImage(this.state.imgFileList).then(res => {
+      console.log(res);
+      this.setState({
+        image: res.data.results[0].secure_url
+      });
+      createCourse({
+        teacher: userToken._id,
+        title: this.state.title,
+        description: this.state.description,
+        media: {
+          video: this.state.video,
+          image: this.state.image
+        }
       })
-      .catch(err => console.error(err));
+        .then(res => {
+          console.log("We go to the course page");
+          // <Redirect to="/coursemanagement" />;
 
-    createCategory({
-      name: this.state.category
-    })
-      .then(res => console.log(res.data))
-      .catch(err => console.error(err));
+          this.setState({ submitted: true });
+
+          console.log(res.data);
+        })
+        .catch(err => console.error(err));
+
+      createCategory({
+        name: this.state.category
+      })
+        .then(res => console.log(res.data))
+        .catch(err => console.error(err));
+    });
   };
 
   onChange = e => {
@@ -110,7 +123,7 @@ export default class uploadForm extends Component {
               type="input"
             />
 
-            <InputFile />
+            <InputFile handleImage={this.handleImage} />
 
             <label htmlFor="category">Category</label>
 
