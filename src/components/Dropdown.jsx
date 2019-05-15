@@ -38,7 +38,7 @@ export default class NavBarDropdown extends React.Component {
   render() {
     return (
       <Dropdown
-        className="columns is-vcentered has-margin-left-4 is-hoverable "
+        className="columns is-vcentered has-margin-left-4 is-hoverable"
         value={this.state.selected}
         onChange={this.onChange}
       >

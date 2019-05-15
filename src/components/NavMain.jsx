@@ -31,7 +31,7 @@ export default class NavMain extends React.Component {
           </NavLink>
           <Navbar.Burger onClick={this.toggleNavbar} />
         </Navbar.Brand>
-        <Navbar.Menu>
+        <Navbar.Menu className="has-background-dark">
           <Navbar.Container>
             <Navbar.Item renderAs="div">
               <NavLink className="nav-link" to="/" exact>
