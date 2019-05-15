@@ -20,7 +20,7 @@ const Dropdown = ({ currentItem, data, name, handleSelect, label }) => {
             aria-haspopup="true"
             aria-controls={name}
           >
-            <span>{currentItem && currentItem.name}</span>
+            <span>{currentItem.name}</span>
             <span className="icon is-small">
               <i className="fas fa-angle-down" aria-hidden="true" />
             </span>

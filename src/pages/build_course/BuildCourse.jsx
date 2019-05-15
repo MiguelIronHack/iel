@@ -40,7 +40,7 @@ class BuildCourse extends Component {
         const generalTag = { name: "All" };
         this.setState({
           tags: [generalTag, ...res.data],
-          selectedTag: generalTag.name
+          selectedTag: generalTag
         });
       })
       .catch(err => console.log(err));
