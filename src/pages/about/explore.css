@@ -23,7 +23,7 @@
 }
 .scroll-container::-webkit-scrollbar {
   width: 0px; /* Remove scrollbar space */
-  background: transparent; /* Optional: just make scrollbar invisible */
+  background: transparent; /* make scrollbar invisible */
 }
 .scroll-container {
   position: absolute;

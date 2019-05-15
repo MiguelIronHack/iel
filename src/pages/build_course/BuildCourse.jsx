@@ -72,7 +72,7 @@ class BuildCourse extends Component {
 
   handleSelect = data => {
     // const selectedTag = currentTarget.children[0].textContent;
-    this.setState({ selectedModule: data });
+    this.setState({ selectedTag: data });
     // this.setState({ selectedTag: selectedTag });
   };
 
@@ -125,6 +125,8 @@ class BuildCourse extends Component {
       tags
     } = this.state;
     if (!courses.length) return <h1>No courses to display</h1>;
+    //TODO PUT TAGS ON THE LESSONS
+    // const filteredLessons = lessons.filter(lesson => lesson._id = selectedTag._id );
     return (
       <React.Fragment>
         <div className="container columns is-12">

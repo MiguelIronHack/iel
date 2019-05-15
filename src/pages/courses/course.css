@@ -20,8 +20,13 @@
 .panel-block:hover {
   background: hsl(0, 0%, 11%) !important;
 }
+.course-article {
+  padding: 5vh 5vw;
+}
 .course-table {
   padding: 0 5vw;
+  margin: 0 auto;
+  min-width: min-content;
 }
 .resume-course-btn {
   margin-top: 5vh;

@@ -4,6 +4,7 @@ const DropdownItem = ({ index, data, handleSelect }) => {
   const raiseSelectedItem = e => {
     handleSelect(data);
   };
+
   return (
     <React.Fragment>
       {!index > 0 ? null : <hr className="dropdown-divider" />}

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
-import { convertFromRaw, convertToRaw } from "draft-js";
+import { convertToRaw } from "draft-js";
 import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./createLesson.css";
-import { createLesson, getOneLesson } from "../../api/lessonHandler";
+import { createLesson } from "../../api/lessonHandler";
 import { getLocalToken } from "../../api/ajaxLogin.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Dropdown from "../../components/RealDropDown";
+import { getAllTags } from "../../api/tagHandler";
 //TODO CLEAN INPUTS AND DENY SUBMISSION IF THE FIELDS ARE EMPTY
 
 class TextEditor extends Component {
@@ -19,6 +20,17 @@ class TextEditor extends Component {
       title: "",
       description: ""
     };
+  }
+
+  componentDidMount() {
+    getAllTags()
+      .then(({ data }) => {
+        this.setState({
+          tags: data,
+          selectedTag: data[0]
+        });
+      })
+      .catch(err => console.log("There was an error with the db", err));
   }
 
   notifyError = message =>
@@ -38,6 +50,11 @@ class TextEditor extends Component {
     this.setState({ editorState });
   };
 
+  handleTag = tag => {
+    console.log(tag);
+    this.setState({ selectedTag: tag });
+  };
+
   handleInput = ({ currentTarget }) => {
     const key = currentTarget.name;
     const value = currentTarget.value;
@@ -47,6 +64,7 @@ class TextEditor extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { title, description } = this.state;
+
     const user = getLocalToken();
     const raw = convertToRaw(this.state.editorState.getCurrentContent());
     const rawJSON = JSON.stringify(raw);
@@ -54,7 +72,8 @@ class TextEditor extends Component {
       content: rawJSON,
       teacher: user._id,
       title,
-      description
+      description,
+      tags: this.state.selectedTag
     })
       .then(res => {
         this.setState({
@@ -68,7 +87,7 @@ class TextEditor extends Component {
   };
 
   render() {
-    const { description, title } = this.state;
+    const { description, title, tags, selectedTag } = this.state;
     return (
       <div className="form-submit-lesson">
         <form onSubmit={this.handleSubmit}>
@@ -84,10 +103,16 @@ class TextEditor extends Component {
           <div className="column is-4">
             <input
               className="input is-info"
-              placeHolder="Description"
+              placeholder="Description"
               name="description"
               onChange={this.handleInput}
               value={description}
+            />
+            <Dropdown
+              data={tags}
+              currentItem={selectedTag}
+              handleSelect={this.handleTag}
+              name="tags"
             />
           </div>
           <label className="title editor-title">Lesson Content</label>
