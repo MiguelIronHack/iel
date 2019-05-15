@@ -7,6 +7,8 @@ import { getUserCourses, updateCourse } from "../../api/coursesHandler";
 import { createModule, updateModule } from "../../api/moduleHandler";
 import { getLocalToken } from "../../api/ajaxLogin";
 import Pagination from "../../components/Pagination";
+import ModuleList from "./ModulesList";
+
 import _ from "lodash";
 
 class BuildCourse extends Component {
@@ -88,7 +90,7 @@ class BuildCourse extends Component {
       .catch(err => console.log(err));
   };
   handleRemove = (item, mod) => {
-    const index = mod.lessons.indexOf(item);
+    // const index = mod.lessons.indexOf(item);
     const arr = _.pull(mod.lessons, item);
     const newLessons = arr.map(less => _.pick(less, "_id"));
     updateModule(mod._id, { lessons: newLessons })
@@ -102,7 +104,6 @@ class BuildCourse extends Component {
   };
 
   render() {
-    console.log(this.state.modules);
     const {
       buildingCourse,
       courses,
@@ -112,7 +113,6 @@ class BuildCourse extends Component {
       tags
     } = this.state;
     if (!courses.length) return <h1>No courses to display</h1>;
-
     return (
       <React.Fragment>
         <div className="container columns is-12">
@@ -123,24 +123,15 @@ class BuildCourse extends Component {
                 <button onClick={this.addModule} className="button">
                   Add Module
                 </button>
-                {/* <Pagination items={modules} /> */}
-                {modules.length ? (
-                  modules.map((mod, index) => (
-                    <List
-                      key={index}
-                      id={mod.id}
-                      type="module"
-                      handleModule={this.handleModuleSelect}
-                      title={`Module ${index + 1}`}
-                      handleRemove={this.handleRemove}
-                      handleClick={() => 1 + 1}
-                      data={mod.lessons}
-                      module={mod}
-                    />
-                  ))
-                ) : (
-                  <p>No Modules to display</p>
-                )}
+                {modules.map((mod, i) => (
+                  <ModuleList
+                    key={i}
+                    handleRemove={this.handleRemove}
+                    handleSelect={this.handleModuleSelect}
+                    title={`Module ${i + 1}`}
+                    data={mod}
+                  />
+                ))}
               </div>
               <div className="column is-4">
                 <button className="button">Add Lesson</button>
@@ -164,7 +155,6 @@ class BuildCourse extends Component {
                 handleClick={this.handleClick}
                 data={courses}
               />
-              ;
             </div>
           )}
         </div>
@@ -186,3 +176,22 @@ class BuildCourse extends Component {
 }
 
 export default BuildCourse;
+
+//  {/* <Pagination items={modules} /> */}
+//  {modules.length ? (
+//   modules.map((mod, index) => (
+//     <List
+//       key={index}
+//       id={mod.id}
+//       type="module"
+//       handleModule={this.handleModuleSelect}
+//       title={`Module ${index + 1}`}
+//       handleRemove={this.handleRemove}
+//       handleClick={() => 1 + 1}
+//       data={mod.lessons}
+//       module={mod}
+//     />
+//   ))
+// ) : (
+//   <p>No Modules to display</p>
+// )}
