@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 export default class CourseTable extends Component {
+  state = {
+    lessons: [],
+    description: ""
+  };
+
   render() {
     return (
-      <article className="columns">
-        <table className="table course-table is-hoverable is-fullwidth ">
+      <article className="columns course-article">
+        <table className="table course-table is-hoverable ">
           <thead>
             <tr>
               <th />

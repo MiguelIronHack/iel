@@ -1,9 +1,13 @@
 .explore-section {
-  height: 50vh;
+  height: min-content;
+  color: hsl(0, 0%, 96%);
 }
-
+.explore-section > div {
+  padding: 5vh 10vw;
+}
 .categories-menu {
   display: flex;
   justify-content: space-evenly;
   width: 100vw;
+  cursor: pointer;
 }

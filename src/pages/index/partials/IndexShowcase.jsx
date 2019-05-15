@@ -12,9 +12,6 @@ export class IndexShowcase extends Component {
         <Heading className="index-title has-text-dark">
           The more I read, the more I acquire, the more certain I am that I know
           nothing <em> - "Voltaire"</em>
-          <br />
-          <br />
-          The writer, not the the metro stop
         </Heading>
         <Btn name="Join Us" toPage="register" />
         <NextSection className="next-section-btn" href="#index-banner" />

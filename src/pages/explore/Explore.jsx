@@ -43,9 +43,6 @@ export default class explore extends Component {
           selectedCategory: res.data,
           courses: res.data.courses
         });
-        if (this.state.courses.length === 0) {
-          return <h1>This category has no courses yet</h1>;
-        }
       })
       .catch(err => console.error(err.response, "qqqqqq"));
   };
@@ -53,7 +50,7 @@ export default class explore extends Component {
   render() {
     const { categories, courses, allCourses } = this.state;
     return (
-      <div>
+      <section className="explore-section">
         <div>
           <h1>Explore courses by category</h1>
           <div className="explore-section">
@@ -69,16 +66,25 @@ export default class explore extends Component {
               ))}
             </ul>
             <Columns>
-              {courses.map((course, index) => (
-                <Columns.Column size={4} key={index}>
-                  <CourseCard
-                    key={index}
-                    title={course.title}
-                    description={course.description}
-                    date={course.date}
-                  />
-                </Columns.Column>
-              ))}
+              {!courses.length ? (
+                <div className="section">
+                  <h1 className="title">
+                    There is no courses in that category
+                  </h1>
+                </div>
+              ) : (
+                courses.map((course, index) => (
+                  <Columns.Column size={4} key={index}>
+                    <CourseCard
+                      key={index}
+                      id={course._id}
+                      title={course.title}
+                      description={course.description}
+                      date={course.date}
+                    />
+                  </Columns.Column>
+                ))
+              )}
             </Columns>
           </div>
         </div>
@@ -90,6 +96,7 @@ export default class explore extends Component {
                 <CourseCard
                   className="course-link"
                   key={index}
+                  id={course._id}
                   title={course.title}
                   description={course.description}
                   content={course.content}
@@ -99,7 +106,7 @@ export default class explore extends Component {
             ))}
           </Columns>
         </div>
-      </div>
+      </section>
     );
   }
 }
