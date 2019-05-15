@@ -10,7 +10,6 @@ import CourseCard from "../../components/CourseCard";
 export default class explore extends Component {
   state = {
     categories: [],
-    selectedCategory: {},
     allCourses: [],
     courses: []
   };
@@ -20,7 +19,6 @@ export default class explore extends Component {
       .then(res => {
         this.setState({
           categories: res.data
-          // selectedCategory: res.data[0]
         });
       })
       .catch(err => console.error(err.response, "qqqqqq"));
@@ -35,10 +33,7 @@ export default class explore extends Component {
   }
 
   handleCategory = e => {
-    // console.log("eeeee ", e);
-    // console.log("eeeee id ", e._id);
     const id = e._id;
-    // console.log(id, "  IDIDID");
     getCategory(id)
       .then(res => {
         console.log("clisk en category ", res.data);
@@ -52,22 +47,13 @@ export default class explore extends Component {
   };
 
   render() {
-    const { categories, selectedCategory, courses, allCourses } = this.state;
-    if (!selectedCategory && !courses.length) return;
-    // console.log(courses.length, selectedCategory);
-    // console.log(courses, " courses");
-    // console.log("diwjqdijwdiqujdq", courses[0]);
-    const filtered = courses.filter(
-      course => course.category === selectedCategory._id
-    );
-    console.log(filtered);
-
+    const { categories, courses, allCourses } = this.state;
     return (
       <div>
         <div>
           <h1>Explore courses by category</h1>
           <div className="explore-section">
-            <ul>
+            <ul className="categories-menu">
               {categories.map((cat, index) => (
                 <li
                   key={index}
@@ -78,14 +64,18 @@ export default class explore extends Component {
                 </li>
               ))}
             </ul>
-            {courses.map((course, index) => (
-              <CourseCard
-                key={index}
-                title={course.title}
-                description={course.description}
-                date={course.date}
-              />
-            ))}
+            <Columns>
+              {courses.map((course, index) => (
+                <Columns.Column size={4} key={index}>
+                  <CourseCard
+                    key={index}
+                    title={course.title}
+                    description={course.description}
+                    date={course.date}
+                  />
+                </Columns.Column>
+              ))}
+            </Columns>
           </div>
         </div>
         <div>
