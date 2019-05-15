@@ -50,7 +50,7 @@ export default class explore extends Component {
   render() {
     const { categories, courses, allCourses } = this.state;
     return (
-      <div>
+      <section className="explore-section">
         <div>
           <h1>Explore courses by category</h1>
           <div className="explore-section">
@@ -75,6 +75,7 @@ export default class explore extends Component {
                   <Columns.Column size={4} key={index}>
                     <CourseCard
                       key={index}
+                      id={course._id}
                       title={course.title}
                       description={course.description}
                       date={course.date}
@@ -93,6 +94,7 @@ export default class explore extends Component {
                 <CourseCard
                   className="course-link"
                   key={index}
+                  id={course._id}
                   title={course.title}
                   description={course.description}
                   content={course.content}
@@ -102,7 +104,7 @@ export default class explore extends Component {
             ))}
           </Columns>
         </div>
-      </div>
+      </section>
     );
   }
 }
