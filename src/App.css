@@ -34,8 +34,13 @@ h6,
 button {
   letter-spacing: 0.6px;
 }
-.button {
-  font-family: "Open Sans", sans-serif;
+.button.is-large {
+  /* font-family: "Open Sans", sans-serif; */
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  font-size: 1.2rem !important;
+  padding: 1.5rem;
 }
 
 .ml-1 {

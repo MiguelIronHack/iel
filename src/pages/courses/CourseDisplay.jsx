@@ -13,15 +13,7 @@ export default class Courses extends Component {
           <Heading size={2}>Course Title</Heading>
           <Progress max={100} value={25} color="success" id="progress" />
           <div className="box course-box">
-            <Heading size={4}>Week 1</Heading>
-            <CourseTable />
-          </div>
-          <div className="box course-box">
-            <Heading size={4}>Week 2</Heading>
-            <CourseTable />
-          </div>
-          <div className="box course-box">
-            <Heading size={4}>Week 3</Heading>
+            <h2 className="title">Week 1</h2>
             <CourseTable />
           </div>
         </div>
