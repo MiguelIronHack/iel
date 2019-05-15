@@ -1,19 +1,20 @@
 import axios from "axios";
 import { getLocalToken, deleteLocalToken } from "./ajaxLogin";
 
-const port = 4000;
-const ApiUrl = `http://localhost:${port}/api`;
+// const port = process.env.REACT_APP_BACK_PORT;
+const ApiUrl = process.env.REACT_APP_BACK_URL + "/api";
 
 const config = {
   withCredentials: true,
   headers: {
     "Content-Type": "application/json"
-  },
-  proxy: {
-    host: "localhost",
-    port: port,
-    auth: getLocalToken()
   }
+  // ,
+  // proxy: {
+  //   host: "localhost",
+  //   port: port,
+  //   auth: getLocalToken()
+  // }
 };
 
 //---------------USERS-------------------
