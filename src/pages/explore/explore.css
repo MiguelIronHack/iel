@@ -1,0 +1,9 @@
+.explore-section {
+  height: 50vh;
+}
+
+.categories-menu {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}

@@ -6,17 +6,17 @@ const InputFile = props => {
   };
 
   return (
-    <div class="file edit-course-upload-image">
-      <label class="file-label">
+    <div className="file edit-course-upload-image">
+      <label className="file-label">
         <input
           className="file-input"
           onChange={e => raiseImage(e)}
           id="inputImgFile"
           type="file"
         />
-        <span class="file-cta">
-          <span class="file-icon">
-            <i class="fas fa-upload" />
+        <span className="file-cta">
+          <span className="file-icon">
+            <i className="fas fa-upload" />
           </span>
           <span class="file-label">{props.name}</span>
         </span>
