@@ -3,11 +3,11 @@ import { getAllCourses, createCourse } from "../../api/coursesHandler";
 import { createCategory, getAllCategories } from "../../api/categoryHandler";
 import { uploadImage } from "../../services/imageUploadAPI";
 import InputFile from "../InputFile";
-import { Heading } from "react-bulma-components";
+import Dropdown from "../RealDropDown";
 import DashboardNav from "../../pages/dashboard/components/DashboardNav";
+import { Heading } from "react-bulma-components";
 import { getLocalToken } from "../../api/ajaxLogin.js";
 import { Redirect } from "react-router-dom";
-
 import "./form.css";
 
 export default class uploadForm extends Component {
@@ -17,8 +17,20 @@ export default class uploadForm extends Component {
     video: "",
     image: "",
     category: [],
+    categories: [],
+    selectedCategory: [],
     submitted: false
   };
+
+  componentDidMount() {
+    getAllCategories()
+      .then(res => {
+        this.setState({
+          categories: res.data
+        });
+      })
+      .catch(err => console.error(err));
+  }
 
   componentWillUnmount() {
     this.setState({ submitted: false });
@@ -26,7 +38,8 @@ export default class uploadForm extends Component {
 
   handleImage = file => {
     this.setState({
-      imgFileList: file
+      imgFileList: file,
+      imageName: file[0].name
     });
   };
 
@@ -71,15 +84,14 @@ export default class uploadForm extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(e.target.name);
   };
 
   onClick = () => {
     getAllCourses()
       .then(res => console.log(res.data))
       .catch(err => console.error(err));
-    getAllCategories()
-      .then(res => console.log(res.data))
-      .catch(err => console.error(err));
+    console.log(this.state.categories);
   };
 
   render() {
@@ -87,14 +99,14 @@ export default class uploadForm extends Component {
       return <Redirect to="/coursemanagement" />;
     }
     const { onSubmit, onChange, onClick } = this;
-    const { title, category, description, image, video } = this.state;
+    const { title, category, categories, description, video } = this.state;
 
     return (
       <React.Fragment>
         <DashboardNav />
         <section className="login-register-section">
           <Heading className="has-text-centered	">Upload Course</Heading>
-          <form className="register-form box" onSubmit={onSubmit}>
+          <form className="register-form box shadow" onSubmit={onSubmit}>
             <label htmlFor="title">Title</label>
             <input
               value={title}
@@ -123,17 +135,19 @@ export default class uploadForm extends Component {
               type="input"
             />
 
-            <InputFile handleImage={this.handleImage} />
+            <InputFile
+              handleImage={this.handleImage}
+              name={
+                !this.state.imageName ? "upload image" : this.state.imageName
+              }
+            />
 
-            <label htmlFor="category">Category</label>
-
-            <input
-              value={category}
-              onChange={onChange}
-              className="input"
-              placeholder="input your category link here..."
+            <Dropdown
+              handleSelect={onChange}
+              key={title}
+              data={categories}
               name="category"
-              type="category"
+              label="Category"
             />
 
             <button

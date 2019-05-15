@@ -18,7 +18,7 @@ const InputFile = props => {
           <span class="file-icon">
             <i class="fas fa-upload" />
           </span>
-          <span class="file-label">upload an image...</span>
+          <span class="file-label">{props.name}</span>
         </span>
       </label>
     </div>
