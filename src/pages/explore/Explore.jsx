@@ -15,17 +15,22 @@ export default class explore extends Component {
   };
 
   componentDidMount() {
-    getAllCategories().then(res => {
-      this.setState({
-        categories: res.data
-        // selectedCategory: res.data[0]
-      });
-    });
-    getAllCourses().then(res => {
-      this.setState({
-        courses: res.data
-      });
-    });
+    getAllCategories()
+      .then(res => {
+        this.setState({
+          categories: res.data
+          // selectedCategory: res.data[0]
+        });
+      })
+      .catch(err => console.error(err.response, "qqqqqq"));
+
+    getAllCourses()
+      .then(res => {
+        this.setState({
+          courses: res.data
+        });
+      })
+      .catch(err => console.error(err.response, "qqqqqq"));
   }
 
   handleCategory = e => {
