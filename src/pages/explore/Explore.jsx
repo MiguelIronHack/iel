@@ -10,7 +10,7 @@ import CourseCard from "../../components/CourseCard";
 export default class explore extends Component {
   state = {
     categories: [],
-    selectedCategory: {},
+    allCourses: [],
     courses: []
   };
 
@@ -18,52 +18,44 @@ export default class explore extends Component {
     getAllCategories()
       .then(res => {
         this.setState({
-          categories: res.data
-          // selectedCategory: res.data[0]
+          categories: res.data,
+          courses: res.data[0].courses
         });
+        console.log(res.data[0].courses, "dddddd");
       })
       .catch(err => console.error(err.response, "qqqqqq"));
 
     getAllCourses()
       .then(res => {
         this.setState({
-          courses: res.data
+          allCourses: res.data
         });
       })
       .catch(err => console.error(err.response, "qqqqqq"));
   }
 
   handleCategory = e => {
-    console.log("eeeee ", e);
-    console.log("eeeee id ", e._id);
     const id = e._id;
-    console.log(id, "  IDIDID");
     getCategory(id)
       .then(res => {
         console.log("clisk en category ", res.data);
         this.setState({
-          selectedCategory: res.data
+          selectedCategory: res.data,
+          courses: res.data.courses
         });
+        console.log(this.state.courses, " coouurrsseess");
       })
       .catch(err => console.error(err.response, "qqqqqq"));
   };
 
   render() {
-    const { categories, selectedCategory, courses } = this.state;
-    if (!selectedCategory && !courses.length) return;
-    // console.log(courses.length, selectedCategory);
-    // console.log(courses, " courses");
-    // console.log("diwjqdijwdiqujdq", courses[0]);
-    const filtered = courses.filter(
-      course => course.category === selectedCategory._id
-    );
-
+    const { categories, courses, allCourses } = this.state;
     return (
       <div>
-        <h1>Explore courses by category</h1>
-        <div className="explore-section">
-          <nav>
-            <ul>
+        <div>
+          <h1>Explore courses by category</h1>
+          <div className="explore-section">
+            <ul className="categories-menu">
               {categories.map((cat, index) => (
                 <li
                   key={index}
@@ -74,15 +66,36 @@ export default class explore extends Component {
                 </li>
               ))}
             </ul>
-          </nav>
-          {filtered.map((course, index) => (
-            <CourseCard
-              key={index}
-              title={course.title}
-              description={course.description}
-              date={course.date}
-            />
-          ))}
+            <Columns>
+              {courses.map((course, index) => (
+                <Columns.Column size={4} key={index}>
+                  <CourseCard
+                    key={index}
+                    title={course.title}
+                    description={course.description}
+                    date={course.date}
+                  />
+                </Columns.Column>
+              ))}
+            </Columns>
+          </div>
+        </div>
+        <div>
+          <h1>Explore courses by popularity</h1>
+          <Columns>
+            {allCourses.map((course, index) => (
+              <Columns.Column size={4} key={index}>
+                <CourseCard
+                  className="course-link"
+                  key={index}
+                  title={course.title}
+                  description={course.description}
+                  content={course.content}
+                  image={course.media.image}
+                />
+              </Columns.Column>
+            ))}
+          </Columns>
         </div>
       </div>
     );
