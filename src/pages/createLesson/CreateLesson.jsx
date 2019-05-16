@@ -10,6 +10,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dropdown from "../../components/RealDropDown";
 import { getAllTags } from "../../api/tagHandler";
+import SidePanel from "../components/CourseSidePanel";
+import { faPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+
 //TODO CLEAN INPUTS AND DENY SUBMISSION IF THE FIELDS ARE EMPTY
 
 class TextEditor extends Component {
@@ -18,7 +21,8 @@ class TextEditor extends Component {
     this.state = {
       editorState: EditorState.createEmpty(),
       title: "",
-      description: ""
+      description: "",
+      courseModules: []
     };
   }
 
@@ -88,53 +92,67 @@ class TextEditor extends Component {
   render() {
     const { description, title, tags, selectedTag } = this.state;
     return (
-      <div className="form-submit-lesson">
-        <form onSubmit={this.handleSubmit}>
-          <div className="column is-4">
-            <input
-              className=" input is-info"
-              placeholder="Lesson title"
-              name="title"
-              onChange={this.handleInput}
-              value={title}
-            />
-          </div>
-          <div className="column is-4">
-            <input
-              className="input is-info"
-              placeholder="Description"
-              name="description"
-              onChange={this.handleInput}
-              value={description}
-            />
-            <Dropdown
-              data={tags}
-              currentItem={selectedTag}
-              handleSelect={this.handleTag}
-              name="tags"
-            />
-          </div>
-          <label className="title editor-title">Lesson Content</label>
-          <div onClick={() => this.focus} className="text-editor">
-            <Editor
-              editorState={this.state.editorState}
-              onEditorStateChange={this.onContentStateChange}
-              wrapperClassName="wrapper-class"
-              editorClassName="editor-class"
-              toolbarClassName="toolbar-class"
-              toolbar={{
-                inline: { inDropdown: true },
-                list: { inDropdown: true },
-                textAlign: { inDropdown: true },
-                link: { inDropdown: true },
-                history: { inDropdown: true }
-              }}
-            />
-          </div>
-          <button className="button is-success">Submit Lesson</button>
-          <ToastContainer />
-        </form>
-      </div>
+      <>
+        <SidePanel
+          firstNavItem="My Courses"
+          firstNavItemIcon={faSignInAlt}
+          firstNavItemLink="/profile"
+          secondNavItem="Create Course"
+          secondNavItemIcon={faPlus}
+          secondNavItemLink="/build-course"
+          thirdNavItem="Create Lessons"
+          thirdNavItemIcon={faPlus}
+          thirdNavItemLink="/create/lesson"
+          courseModules={this.state.courseModules}
+        />
+        <div className="form-submit-lesson">
+          <form onSubmit={this.handleSubmit}>
+            <div className="column is-4">
+              <input
+                className=" input is-info"
+                placeholder="Lesson title"
+                name="title"
+                onChange={this.handleInput}
+                value={title}
+              />
+            </div>
+            <div className="column is-4">
+              <input
+                className="input is-info"
+                placeholder="Description"
+                name="description"
+                onChange={this.handleInput}
+                value={description}
+              />
+              <Dropdown
+                data={tags}
+                currentItem={selectedTag}
+                handleSelect={this.handleTag}
+                name="tags"
+              />
+            </div>
+            <label className="title editor-title">Lesson Content</label>
+            <div onClick={() => this.focus} className="text-editor">
+              <Editor
+                editorState={this.state.editorState}
+                onEditorStateChange={this.onContentStateChange}
+                wrapperClassName="wrapper-class"
+                editorClassName="editor-class"
+                toolbarClassName="toolbar-class"
+                toolbar={{
+                  inline: { inDropdown: true },
+                  list: { inDropdown: true },
+                  textAlign: { inDropdown: true },
+                  link: { inDropdown: true },
+                  history: { inDropdown: true }
+                }}
+              />
+            </div>
+            <button className="button is-success">Submit Lesson</button>
+            <ToastContainer />
+          </form>
+        </div>
+      </>
     );
   }
 }

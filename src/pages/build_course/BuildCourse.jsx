@@ -6,13 +6,14 @@ import { getAllTags } from "../../api/tagHandler";
 import { getUserCourses, updateCourse } from "../../api/coursesHandler";
 import { createModule, updateModule } from "../../api/moduleHandler";
 import { getLocalToken } from "../../api/ajaxLogin";
+import { faPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "../../components/Pagination";
 import ModuleList from "./ModulesList";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import _ from "lodash";
 import "./buildCourse.css";
-import { Btn } from "../../components/Btn";
+import SidePanel from "../components/CourseSidePanel";
 
 class BuildCourse extends Component {
   state = {
@@ -21,7 +22,8 @@ class BuildCourse extends Component {
     tags: [],
     selectedModule: "",
     courses: [],
-    modules: []
+    modules: [],
+    courseModules: []
   };
 
   componentDidMount() {
@@ -140,6 +142,18 @@ class BuildCourse extends Component {
 
     return (
       <React.Fragment>
+        <SidePanel
+          firstNavItem="My Courses"
+          firstNavItemIcon={faSignInAlt}
+          firstNavItemLink="/profile"
+          secondNavItem="Create Course"
+          secondNavItemIcon={faPlus}
+          secondNavItemLink="/build-course"
+          thirdNavItem="Create Lessons"
+          thirdNavItemIcon={faPlus}
+          thirdNavItemLink="/create/lesson"
+          courseModules={this.state.courseModules}
+        />
         <section className="build-course-section">
           <div>
             <div className="build-course-grid">
