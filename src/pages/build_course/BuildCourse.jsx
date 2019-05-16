@@ -69,6 +69,9 @@ class BuildCourse extends Component {
         modules.push(createdModule);
         currentCourse.courseModules = modules;
         this.setState({ currentCourse });
+        updateCourse(currentCourse._id, { courseModules: modules })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
   };
@@ -101,6 +104,9 @@ class BuildCourse extends Component {
     const currentCourse = { ...this.state.currentCourse };
     currentCourse.courseModules = arr;
     this.setState({ currentCourse });
+    updateCourse(currentCourse._id, { courseModules: arr })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   notifyError = () =>
