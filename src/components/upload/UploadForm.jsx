@@ -99,22 +99,14 @@ export default class uploadForm extends Component {
     });
   };
 
-  onClick = () => {
-    getAllCourses()
-      .then(res => console.log(res.data))
-      .catch(err => console.error(err));
-    console.log(this.state.categories);
-  };
-
   render() {
     if (this.state.submitted === true) {
       return <Redirect to="/coursemanagement" />;
     }
-    const { onSubmit, onChange, onClick } = this;
+    const { onSubmit, onChange } = this;
     const {
       title,
       selectedCategory,
-      // category,
       categories,
       description,
       video
@@ -189,9 +181,6 @@ export default class uploadForm extends Component {
               Submit
             </button>
           </form>
-          <button onClick={onClick} className="button">
-            get courses and categories
-          </button>
           <ToastContainer />
         </section>
       </React.Fragment>
