@@ -124,18 +124,17 @@ class TextEditor extends Component {
                 onChange={this.handleInput}
                 value={description}
               />
-              <div className="column is-4">
-                <Dropdown
-                  data={tags}
-                  currentItem={selectedTag}
-                  handleSelect={this.handleTag}
-                  name="tags"
-                />
-              </div>
             </div>
-            <div className="column is-4">
+            <div className="dropdownNsubmit">
+              <Dropdown
+                data={tags}
+                currentItem={selectedTag}
+                handleSelect={this.handleTag}
+                name="tags"
+              />
               <button className="button is-success">Submit Lesson</button>
             </div>
+
             <label className="title editor-title">Lesson Content</label>
             <div onClick={() => this.focus} className="text-editor">
               <Editor

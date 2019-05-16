@@ -27,7 +27,12 @@
   border-bottom-left-radius: 1rem;
   margin-bottom: 4vh;
 }
-
+.dropdownNsubmit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0.9rem;
+}
 @media screen and (max-width: 900px) {
   .form-submit-lesson {
     margin: 15vh 15vw;
