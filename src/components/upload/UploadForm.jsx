@@ -120,7 +120,6 @@ export default class uploadForm extends Component {
 
     return (
       <React.Fragment>
-        <DashboardNav />
         <section className="login-register-section">
           <Heading className="has-text-centered	">Upload Course</Heading>
           <form className="register-form box shadow" onSubmit={onSubmit}>
