@@ -49,7 +49,7 @@ export class Course extends Component {
       <>
         <Card className="course-card shadow" data-id={this.props._id}>
           <Card.Content>
-            <Link to={`/course-info/${this.props.id}`}>
+            <Link to={`/course/${this.props.id}`}>
               <Media>
                 <Media.Item
                   className="course-img"
@@ -64,7 +64,9 @@ export class Course extends Component {
                 </Media.Item>
               </Media>
               <Content>
-                <Moment format="DD/MM/YYYY">{this.props.date}</Moment>
+                <Moment className="nav-link" format="DD/MM/YYYY">
+                  {this.props.date}
+                </Moment>
               </Content>
             </Link>
           </Card.Content>
