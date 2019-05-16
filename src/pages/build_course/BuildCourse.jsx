@@ -163,7 +163,6 @@ class BuildCourse extends Component {
                     </div>
                   </div>
                   <div className="lesson-grid ">
-                    <button className="button">Add Lesson</button>
                     <Dropdown
                       name="tag"
                       handleSelect={this.handleSelect}
@@ -192,9 +191,9 @@ class BuildCourse extends Component {
               )}
             </div>
           </div>
-          <button onClick={this.watchState} className="button">
+          {/* <button onClick={this.watchState} className="button">
             TEST
-          </button>
+          </button> */}
           <ToastContainer />
         </section>
       </React.Fragment>

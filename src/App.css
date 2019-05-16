@@ -19,7 +19,8 @@
 html,
 body {
   scroll-behavior: smooth;
-  background: hsl(0, 0%, 14%);
+  background: linear-gradient(#111, #222 70.71%),
+    linear-gradient(#000, #000 70.71%);
   font-family: "Quicksand", sans-serif !important;
 }
 .section {
@@ -41,6 +42,12 @@ button {
   letter-spacing: 0.1rem;
   font-size: 1.2rem !important;
   padding: 1.5rem;
+}
+input {
+  background-color: hsl(0, 0%, 86%);
+}
+input:focus {
+  background-color: hsl(0, 0%, 96%);
 }
 
 .ml-1 {
