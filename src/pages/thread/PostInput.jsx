@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const PostInput = () => {
-    return (  );
-}
- 
+  return <h1>Hey</h1>;
+};
+
 export default PostInput;
