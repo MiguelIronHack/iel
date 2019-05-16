@@ -25,7 +25,6 @@ export default class Courses extends Component {
     if (!courseModules) return null;
     return (
       <section className="course-section columns is-mobile">
-        <CourseSidePanel courseModules={courseModules} />
         <div className="course-content column is-four-fifths">
           <Heading size={2}>{this.state.course.title}</Heading>
           <Progress max={100} value={25} color="success" id="progress" />
