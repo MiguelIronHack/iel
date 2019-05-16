@@ -54,6 +54,11 @@
   font-size: 1.3rem;
   color: #ff7171;
 }
+
+.profile-delete-btn > * {
+  pointer-events: none;
+}
+
 .profile-delete-btn:hover {
   color: #ff9879;
   transform: rotate(90deg);

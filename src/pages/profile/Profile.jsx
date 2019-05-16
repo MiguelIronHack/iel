@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
 import { getUser } from "../../api/userHandler";
+import { editUser } from "../../api/userHandler";
 
 import {
   Card,
@@ -24,29 +25,48 @@ export class Profile extends Component {
 
   componentDidMount() {
     const user = getLocalToken();
-    console.log(user);
+    // console.log(user);
     this.setState({ user });
     getUser(user._id)
       .then(res => {
-        console.log(res.data.enrolledCourses, " this are the data");
-        console.log(res.data.firstName);
+        // console.log(res.data.enrolledCourses, " this are the data");
+        // console.log(res.data.firstName);
 
         this.setState({
           teacher: res.data.firstName,
           courses: res.data.enrolledCourses
         });
-        console.log(this.state, " eyeyey");
+        // console.log(this.state, " eyeyey");
       })
       .catch(err => console.log(err));
   }
 
   handleDelete = e => {
-    console.log(e.target);
-    e.target.parentElement.parentElement.parentElement.remove();
+    // console.log(e.target);
+    const id = e.target.getAttribute("data-id");
+    let newCourses = [];
+    console.log(id, " id of the course");
+    console.log(this.state.courses);
+    for (var i = 0; i < this.state.courses.length; i++) {
+      if (this.state.courses[i]._id === id) {
+        console.log(this.state.courses[i]);
+        this.state.courses.splice(i, 1);
+        console.log(this.state.courses, "jjjjj");
+        console.log(newCourses, " array of courses");
+      }
+    }
+    this.setState({ courses: this.state.courses });
+    console.log(this.state.courses, " despues borrar");
+    const { enrolledCourses, _id } = this.state.user;
+    editUser(_id, { enrolledCourses: this.state.courses })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
-    console.log(this.state, " this is the new state");
+    // console.log(this.state, " this is the new state");
     if (!window.localStorage.userCredential) this.props.history.push("/");
     return (
       <section className="profile-section">
@@ -57,7 +77,7 @@ export class Profile extends Component {
               <tr>
                 <td className="column">
                   <Card className="has-background-grey-dark has-text-white-ter">
-                    <Card.Header>
+                    <Card.Header data-id={course._id}>
                       <Link to={course._id}>
                         <Card.Header.Title className="has-text-white-ter">
                           {this.state.teacher}
@@ -94,6 +114,7 @@ export class Profile extends Component {
                       </Link>
                       <div
                         className="profile-delete-btn is-danger"
+                        data-id={course._id}
                         onClick={this.handleDelete}
                       >
                         <FontAwesomeIcon icon={faTimesCircle} />
