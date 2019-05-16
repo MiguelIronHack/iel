@@ -13,7 +13,9 @@ import Dropdown from "../../../components/RealDropDown";
 
 export default class EditCategories extends Component {
   state = {
-    categories: []
+    categories: [],
+    tag: "",
+    category: ""
   };
   // get the categories and set the state to them
   componentDidMount() {
@@ -52,7 +54,7 @@ export default class EditCategories extends Component {
       return;
     }
     createCategory({ name: category })
-      .then(res => console.log(res.data))
+      .then(res => this.setState({ category: "" }))
       .catch(err => console.log(err));
   };
 
@@ -67,7 +69,7 @@ export default class EditCategories extends Component {
     createTag({ name: tag })
       .then(res =>
         updateCategoryTags(this.state.selectedCategory._id, res.data)
-          .then(res2 => console.log(res2))
+          .then(res2 => this.setState({ tag: "" }))
           .catch(err2 => console.log(err2))
       )
       .catch(err => console.log(err));
@@ -105,11 +107,20 @@ export default class EditCategories extends Component {
                   Tags in <b>{` ${selectedCategory.name}`}</b>
                 </p>
               )}
+              {selectedCategory &&
+                selectedCategory.tags.map(tag => (
+                  <p key={tag._id}>{tag.name}</p>
+                ))}
             </div>
           </div>
           <div className="columns">
             <div className="column is-5 box container">
-              <Input name="category" label="Category" handleChange={onChange} />
+              <Input
+                name="category"
+                text={this.state.category}
+                label="Category"
+                handleChange={onChange}
+              />
               <button className="button" onClick={handleCategory}>
                 New Category
               </button>
@@ -117,13 +128,17 @@ export default class EditCategories extends Component {
             <div className=" column  is-5 box container">
               <h1>Select a Category you want to create your tags for</h1>
               <Dropdown
-                name="hey"
-                label="hello"
+                name="category"
                 currentItem={selectedCategory}
                 data={categories}
                 handleSelect={this.handleDropdown}
               />
-              <Input name="tag" label="Tag" handleChange={onChange} />
+              <Input
+                text={this.state.tag}
+                name="tag"
+                label="Tag"
+                handleChange={onChange}
+              />
               <button className="button" onClick={handleTag}>
                 New Tag
               </button>

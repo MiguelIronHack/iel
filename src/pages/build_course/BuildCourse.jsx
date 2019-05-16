@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import _ from "lodash";
 import "./buildCourse.css";
+import { Btn } from "../../components/Btn";
 
 class BuildCourse extends Component {
   state = {
