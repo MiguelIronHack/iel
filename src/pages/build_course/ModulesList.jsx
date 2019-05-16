@@ -2,6 +2,7 @@ import React from "react";
 import List from "../../components/List";
 
 const ModuleList = ({
+  selectedMod,
   title,
   data,
   handleSelect,
@@ -11,7 +12,10 @@ const ModuleList = ({
   if (!data) return <h1>Nothing to display</h1>;
   return (
     <>
-      <div className="module" onClick={e => handleSelect(e, data)}>
+      <div
+        className={selectedMod._id === data._id ? "module active" : "module"}
+        onClick={e => handleSelect(e, data)}
+      >
         <h1>
           {title}
           <span className="delete-btn">
