@@ -3,7 +3,7 @@ import { deleteLocalToken } from "./ajaxLogin";
 // import { getLocalToken } from "./ajaxLogin";
 
 // const port = process.env.REACT_APP_BACK_PORT;
-const ApiUrl = process.env.REACT_APP_BACK_URL + "/api";
+const ApiUrl = process.env.REACT_APP_BACK_URL + "api";
 
 const config = {
   withCredentials: true,
