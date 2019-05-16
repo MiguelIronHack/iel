@@ -1,7 +1,11 @@
 .form-submit-lesson {
   width: 70vw;
-  margin: auto;
+  margin: 5vh 17vw;
 }
+.form-submit-lesson .dropdown-trigger {
+  padding: 1rem 0;
+}
+
 .editor-title {
   color: hsl(0, 0%, 96%);
 }
@@ -22,4 +26,11 @@
   background: hsl(0, 0%, 96%);
   border-bottom-left-radius: 1rem;
   margin-bottom: 4vh;
+}
+
+@media screen and (max-width: 900px) {
+  .form-submit-lesson {
+    margin: 15vh 15vw;
+    z-index: -1;
+  }
 }

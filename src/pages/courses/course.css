@@ -36,6 +36,8 @@
 .course-panel {
   position: fixed;
   min-width: 15vw;
+  left: 8vw;
+  top: 10vh;
 }
 .course-content {
   margin-left: 17vw;
@@ -66,7 +68,35 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-
+.course-panel {
+  padding: 0;
+  font-size: 1rem;
+  top: 15vh;
+  left: 1vw;
+  z-index: 100;
+}
+@media screen and (max-width: 1100px) {
+  .course-panel {
+    position: absolute;
+    display: flex;
+    padding: 0;
+    font-size: 1rem;
+    top: 15vh;
+    left: 14vw;
+  }
+  .panel-heading {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 0;
+  }
+  .panel-footer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 5px;
+  }
+}
 @media screen and (max-width: 600px) {
   .course-section {
     display: flex;
@@ -80,12 +110,7 @@
     padding: 0;
     font-size: 0.8rem;
   }
-  .course-panel {
-    display: flex;
-    padding: 0;
-    position: absolute;
-    font-size: 0.6rem;
-  }
+
   .message-body {
     font-size: 0.9rem;
   }
