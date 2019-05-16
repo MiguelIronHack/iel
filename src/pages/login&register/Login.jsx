@@ -30,7 +30,7 @@ export default class Login extends Component {
           // so the navbar state is refreshed with the current info
           window.location = "/profile";
         } else {
-          this.props.history.push("/login");
+          this.props.history.push("/profile");
         }
       })
       .catch(err => this.props.history.push("/login"));
