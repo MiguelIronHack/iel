@@ -7,8 +7,12 @@ class Thread extends Component {
     return (
       <section className="section thread-section">
         <h1>Thread Page</h1>
-        <Post />
-        <PostInput />
+        <div className="column is-5">
+          <Post />
+        </div>
+        <div className="column is-6 is-centered">
+          <PostInput />
+        </div>
       </section>
     );
   }

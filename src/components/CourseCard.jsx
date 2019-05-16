@@ -98,7 +98,7 @@ export class Course extends Component {
               liked={this.state.liked}
               like={this.handleLike}
             />
-            <p>Upvotes: &nbsp; {this.state.totalLikes}</p>
+            <p>Upvotes: &nbsp; {this.state.totalLikes || 0}</p>
           </div>
         </Card>
       </>
