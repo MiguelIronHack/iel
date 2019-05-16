@@ -115,6 +115,7 @@ button {
 .shadow {
   filter: drop-shadow(-5px -5px 9px hsl(0, 0%, 21%));
 }
+
 @media screen and (max-width: 340px) {
   .footer {
     min-height: min-content;

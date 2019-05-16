@@ -11,6 +11,7 @@ import ModuleList from "./ModulesList";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import _ from "lodash";
+import "./buildCourse.css";
 
 class BuildCourse extends Component {
   state = {
@@ -69,9 +70,13 @@ class BuildCourse extends Component {
       .catch(err => console.log(err));
   };
 
-  handleSelect = data => this.setState({ selectedTag: data });
+  handleSelect = data => {
+    this.setState({ selectedTag: data });
+  };
 
-  handleModuleSelect = mod => this.setState({ selectedModule: mod });
+  handleModuleSelect = (e, mod) => {
+    this.setState({ selectedModule: mod });
+  };
 
   addLesson = lesson => {
     if (!this.state.selectedModule) {
@@ -135,51 +140,53 @@ class BuildCourse extends Component {
     return (
       <React.Fragment>
         <section>
-          <div className="container columns is-12">
-            {buildingCourse ? (
-              <React.Fragment>
-                <div className="column is-6">
-                  <button onClick={this.addModule} className="button">
-                    Add Module
-                  </button>
-                  <div className="columns is-12">
-                    {currentCourse.courseModules.map((mod, i) => (
-                      <ModuleList
-                        handleModule={this.deleteModule}
-                        key={i}
-                        handleRemove={this.handleRemove}
-                        handleSelect={this.handleModuleSelect}
-                        title={`Module ${i + 1}`}
-                        data={mod}
-                      />
-                    ))}
+          <div>
+            <div className="build-course-section">
+              {buildingCourse ? (
+                <React.Fragment>
+                  <div>
+                    <button onClick={this.addModule} className="button">
+                      Add Module
+                    </button>
+                    <div className="module-grid ">
+                      {currentCourse.courseModules.map((mod, i) => (
+                        <ModuleList
+                          handleModule={this.deleteModule}
+                          key={i}
+                          handleRemove={this.handleRemove}
+                          handleSelect={this.handleModuleSelect}
+                          title={`Module ${i + 1}`}
+                          data={mod}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="column is-4">
-                  <button className="button">Add Lesson</button>
-                  <Dropdown
-                    name="tag"
-                    handleSelect={this.handleSelect}
-                    currentItem={selectedTag}
-                    data={tags}
-                  />
+                  <div className="lesson-grid ">
+                    <button className="button">Add Lesson</button>
+                    <Dropdown
+                      name="tag"
+                      handleSelect={this.handleSelect}
+                      currentItem={selectedTag}
+                      data={tags}
+                    />
+                    <List
+                      handleClick={this.addLesson}
+                      title="Lessons"
+                      data={filteredLessons}
+                    />
+                  </div>
+                </React.Fragment>
+              ) : (
+                <div>
+                  <h1 className="text is-center">Select a course to build !</h1>
                   <List
-                    handleClick={this.addLesson}
-                    title="Lessons"
-                    data={filteredLessons}
+                    title="Courses"
+                    handleClick={this.handleClick}
+                    data={courses}
                   />
                 </div>
-              </React.Fragment>
-            ) : (
-              <div className="column is-6">
-                <h1 className="text is-center">Select a course to build !</h1>
-                <List
-                  title="Courses"
-                  handleClick={this.handleClick}
-                  data={courses}
-                />
-              </div>
-            )}
+              )}
+            </div>
           </div>
           <button onClick={this.watchState} className="button">
             TEST
