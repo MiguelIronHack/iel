@@ -1,9 +1,16 @@
 import React from "react";
 
-const Upvote = ({ like }) => {
+const Upvote = ({ like, course, liked }) => {
+  const raiseLike = course => {
+    like(course);
+  };
+
   return (
-    <span onClick={like}>
-      <i class="fas fa-arrow-circle-up" />
+    <span
+      style={liked ? { pointerEvents: "none" } : { pointerEvents: "all" }}
+      onClick={() => raiseLike(course)}
+    >
+      <i className="fas fa-arrow-circle-up" />
     </span>
   );
 };

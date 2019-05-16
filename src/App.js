@@ -28,6 +28,7 @@ import CreateUsers from "./pages/login&register/CreateUsers";
 import CreateLesson from "./pages/createLesson/CreateLesson";
 import Explore from "./pages/explore/Explore";
 import CategoryCourses from "./pages/explore/CategoryCourses";
+import Thread from "./pages/thread/Thread";
 
 class App extends Component {
   render() {
@@ -46,6 +47,7 @@ class App extends Component {
           <Route path="/course-info/:id" component={CourseInfo} />
           <Route path="/course-content" component={CourseContent} />
           {/* <Route path="/lesson" component={LessonDisplay} /> */}
+          <Route path="/thread/:courseId" component={Thread} />
           <Route path="/lesson/:id" component={LessonDisplay} />
           <Route path="/course/:id" component={Courses} />
           <Route path="/usermanagement" component={UserManagement} />

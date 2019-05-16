@@ -6,15 +6,32 @@ import { getLocalToken } from "../api/ajaxLogin";
 import { getUser, editUser } from "../api/userHandler";
 import { Link } from "react-router-dom";
 import Upvote from "./Upvote";
+import { getCourse, rateCourse } from "../api/coursesHandler";
 
 export class Course extends Component {
   state = {
     user: {}
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    getCourse(this.props.id)
+      .then(({ data }) => {
+        if (data.likes.indexOf(getLocalToken()._id) >= 0)
+          this.setState({ totalLikes: data.likes.length, liked: true });
+      })
+      .catch(err => {});
+  }
 
-  handleLike = e => {};
+  handleLike = course => {
+    getCourse(course.id)
+      .then(({ data }) => {
+        if (data.likes.indexOf(getLocalToken()._id) >= 0) return;
+        rateCourse(course.id, getLocalToken()._id)
+          .then(({ data }) => this.setState({ liked: true }))
+          .catch(err => {});
+      })
+      .catch(err => console.log(err));
+  };
 
   handleClick = courseId => {
     const user = getLocalToken();
@@ -35,7 +52,7 @@ export class Course extends Component {
             .catch(err => console.error(err));
         })
         .catch(err => console.log(err));
-    }
+    } //TODO PROBABLY HAVE TO BE DEALING WITH THE EDIT USER STATE DUNNO
   };
 
   render() {
@@ -71,8 +88,12 @@ export class Course extends Component {
             >
               Enroll
             </button>
-            <Upvote course={this.props} like={this.handleLike} />
-            <p>111</p>
+            <Upvote
+              course={this.props}
+              liked={this.state.liked}
+              like={this.handleLike}
+            />
+            <p>{this.state.totalLikes}</p>
           </div>
         </Card>
       </>

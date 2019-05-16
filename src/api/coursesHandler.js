@@ -10,6 +10,9 @@ export const getCourse = id => axios.get(`${ApiUrl}/course/${id}`);
 
 export const deleteCourse = id => axios.delete(`${ApiUrl}/course/${id}`);
 
+export const rateCourse = (id, userId) =>
+  axios.patch(ApiUrl + "/course/rate/" + id, { userId });
+
 export const getRandomCourse = () =>
   axios.get(ApiUrl + "/course/random/course");
 
