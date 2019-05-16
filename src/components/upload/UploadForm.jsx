@@ -4,13 +4,14 @@ import { createCategory, getAllCategories } from "../../api/categoryHandler";
 import { uploadImage } from "../../services/imageUploadAPI";
 import InputFile from "../InputFile";
 import Dropdown from "../RealDropDown";
-import DashboardNav from "../../pages/dashboard/components/DashboardNav";
+import SidePanel from "../../pages/components/CourseSidePanel";
 import { Heading } from "react-bulma-components";
 import { getLocalToken } from "../../api/ajaxLogin.js";
 import { Redirect } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./form.css";
+import { faPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default class uploadForm extends Component {
   state = {
@@ -21,7 +22,8 @@ export default class uploadForm extends Component {
     category: [],
     categories: [],
     selectedCategory: {},
-    submitted: false
+    submitted: false,
+    courseModules: []
   };
 
   componentDidMount() {
@@ -120,7 +122,21 @@ export default class uploadForm extends Component {
 
     return (
       <React.Fragment>
-        <DashboardNav />
+        <SidePanel
+          firstNavItem="My Courses"
+          firstNavItemIcon={faSignInAlt}
+          firstNavItemLink="/profile"
+          secondNavItem="Build Course"
+          secondNavItemIcon={faPlus}
+          secondNavItemLink="/build-course"
+          thirdNavItem="Create Lessons"
+          thirdNavItemIcon={faPlus}
+          thirdNavItemLink="/create/lesson"
+          fourthNavItem="Create Course"
+          fourthNavItemIcon={faPlus}
+          fourthNavItemLink="/create-course"
+          courseModules={this.state.courseModules}
+        />
         <section className="login-register-section">
           <Heading className="has-text-centered	">Upload Course</Heading>
           <form className="register-form box shadow" onSubmit={onSubmit}>
@@ -151,14 +167,6 @@ export default class uploadForm extends Component {
               name="video"
               type="input"
             />
-
-            <InputFile
-              handleImage={this.handleImage}
-              name={
-                !this.state.imageName ? "upload image" : this.state.imageName
-              }
-            />
-
             <Dropdown
               handleSelect={this.handleCategory}
               key={title}
@@ -166,6 +174,12 @@ export default class uploadForm extends Component {
               currentItem={!selectedCategory ? "Categories" : selectedCategory}
               name={!selectedCategory ? "Categories" : selectedCategory}
               label="Category"
+            />
+            <InputFile
+              handleImage={this.handleImage}
+              name={
+                !this.state.imageName ? "upload image" : this.state.imageName
+              }
             />
 
             <button

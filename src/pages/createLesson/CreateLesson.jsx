@@ -103,6 +103,9 @@ class TextEditor extends Component {
           thirdNavItem="Create Lessons"
           thirdNavItemIcon={faPlus}
           thirdNavItemLink="/create/lesson"
+          fourthNavItem="Create Course"
+          fourthNavItemIcon={faPlus}
+          fourthNavItemLink="/create-course"
           courseModules={this.state.courseModules}
         />
         <div className="form-submit-lesson">

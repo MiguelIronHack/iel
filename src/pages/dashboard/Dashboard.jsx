@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default class Dashboard extends Component {
   render() {
     return (
-      <section className='course-management-section shadow'>
+      <section className="course-management-section shadow">
         <DashboardNav />
         <div className="dashboard-icons">
           <Link className="dashboard-showcase-link" to="/userManagement">

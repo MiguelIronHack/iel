@@ -47,14 +47,16 @@ export default class NavMain extends React.Component {
                 Home
               </NavLink>
             </Navbar.Item>
-            <Navbar.Item renderAs="div">
-              <NavLink className="nav-link" to="/about">
-                About
-              </NavLink>
-            </Navbar.Item>
+
             <Navbar.Item renderAs="div">
               <NavLink className="nav-link" to="/explore">
                 Explore
+              </NavLink>
+            </Navbar.Item>
+
+            <Navbar.Item renderAs="div">
+              <NavLink className="nav-link" to="/about">
+                About
               </NavLink>
             </Navbar.Item>
           </Navbar.Container>

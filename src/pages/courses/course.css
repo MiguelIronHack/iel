@@ -2,23 +2,19 @@
   padding: 5vh 2vw;
   min-height: 90vh;
 }
-
 .panel-block {
   display: flex;
   min-width: 15vw;
 }
-
 .aside-panel-icon {
   margin-left: auto;
   justify-self: flex-end;
   padding-left: 2vw;
   color: hsl(0, 0%, 96%);
 }
-
 .aside-panel-icon:hover {
   color: hsl(0, 0%, 100%);
 }
-
 .panel-block:hover {
   background: hsl(0, 0%, 11%) !important;
 }
@@ -83,7 +79,9 @@
     padding: 0;
     font-size: 1rem;
     top: 15vh;
-    left: 15.5vw;
+    left: 50%;
+    margin: 1rem auto;
+    transform: translate(-50%, -50%);
   }
   .panel-heading {
     border-top-left-radius: 5px;
