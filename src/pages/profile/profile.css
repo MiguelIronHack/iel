@@ -60,10 +60,20 @@
 }
 
 .profile-delete-btn:hover {
-  color: #ff9879;
+  color: #ce5029;
   transform: rotate(90deg);
   transition: all 0.3s ease-out;
   font-size: 1.4rem;
+}
+.card-footer > a {
+  color: hsl(0, 0%, 96%);
+  transition: all 1.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.card-footer > a:hover {
+  background: hsl(141, 71%, 48%);
+  transition: all 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 5px;
+  margin: 3px 1px;
 }
 
 @media screen and (min-width: 800px) {
