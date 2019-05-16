@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Columns } from "react-bulma-components";
 import "./explore.css";
 import CourseCard from "../../components/CourseCard";
-
+//TODO DEFAULT CATEGORY
 export default class explore extends Component {
   state = {
     categories: [],
@@ -52,7 +52,9 @@ export default class explore extends Component {
     return (
       <section className="explore-section">
         <div>
-          <h1>Explore courses by category</h1>
+          <h1 className="explore-by-cat-header ">
+            Explore courses by category
+          </h1>
           <div className="explore-section">
             <ul className="categories-menu">
               {categories.map((cat, index) => (
@@ -87,7 +89,9 @@ export default class explore extends Component {
           </div>
         </div>
         <div>
-          <h1>Explore courses by popularity</h1>
+          <h1 className="explore-by-pop-header">
+            Explore courses by popularity
+          </h1>
           <Columns>
             {allCourses.map((course, index) => (
               <Columns.Column size={4} key={index}>

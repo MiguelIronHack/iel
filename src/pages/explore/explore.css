@@ -3,8 +3,33 @@
   height: max-content;
   color: hsl(0, 0%, 96%);
 }
+.explore-section > div > .explore-by-cat-header {
+  background: rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
 .explore-section > div {
   padding: 5vh 10vw;
+}
+.explore-by-pop-header {
+  font-size: 2rem;
+  margin: 1rem;
+}
+.explore-section .columns .course-card {
+  min-height: min-content;
+}
+.explore-section .columns .course-card .card-content {
+  min-height: min-content;
+  height: 60vh;
+}
+.explore-section .columns .course-card .card-btn > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-section .columns .course-card .card-btn {
+  margin-top: auto;
 }
 .categories-menu {
   display: flex;
@@ -12,10 +37,13 @@
   align-items: center;
   width: 100%;
   cursor: pointer;
-  background: hsl(0, 0%, 21%);
+  background: hsl(0, 0%, 86%);
+  color: hsl(0, 0%, 21%);
   height: 10vh;
   min-height: max-content;
   font-size: 1.5rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .categories-menu li {
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
