@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
 import { getUser } from "../../api/userHandler";
 import { editUser } from "../../api/userHandler";
+import SidePanel from "../components/CourseSidePanel";
+import { faPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
 import {
   Card,
@@ -20,7 +22,8 @@ export class Profile extends Component {
   state = {
     name: "",
     courses: [],
-    user: {}
+    user: {},
+    courseModules: []
   };
 
   componentDidMount() {
@@ -69,64 +72,79 @@ export class Profile extends Component {
     // console.log(this.state, " this is the new state");
     if (!window.localStorage.userCredential) this.props.history.push("/");
     return (
-      <section className="profile-section">
-        <Heading>Enrolled Courses</Heading>
-        <table className="table profile-table columns">
-          {this.state.courses.map((course, i) => (
-            <tbody key={i}>
-              <tr>
-                <td className="column">
-                  <Card className="has-background-grey-dark has-text-white-ter">
-                    <Card.Header data-id={course._id}>
-                      <Link to={course._id}>
-                        <Card.Header.Title className="has-text-white-ter">
-                          {this.state.teacher}
-                        </Card.Header.Title>
-                      </Link>
-                    </Card.Header>
-                    <Card.Content>
-                      <Media>
-                        <Media.Item renderAs="figure" position="left">
-                          <Image
-                            size={64}
-                            alt="64x64"
-                            src={course.media.image}
-                          />
-                        </Media.Item>
-                        <Media.Item>
-                          <Heading className="has-text-white-ter" size={4}>
-                            {course.title}
-                          </Heading>
-                          <Heading subtitle size={6}>
-                            @johnsmith
-                          </Heading>
-                        </Media.Item>
-                      </Media>
-                      <Content>
-                        {course.description}
-                        <br />
-                        <time dateTime="2016-1-1">{course.updated_at}</time>
-                      </Content>
-                    </Card.Content>
-                    <Card.Footer>
-                      <Link to={`/course/${course._id}`}>
-                        <Card.Footer.Item renderAs="p">Go</Card.Footer.Item>
-                      </Link>
-                      <div
-                        className="profile-delete-btn is-danger"
-                        data-id={course._id}
-                        onClick={this.handleDelete}
-                      >
-                        <FontAwesomeIcon icon={faTimesCircle} />
-                      </div>
-                    </Card.Footer>
-                  </Card>
-                </td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
-      </section>
+      <>
+        <SidePanel
+          firstNavItem="My Courses"
+          firstNavItemIcon={faSignInAlt}
+          firstNavItemLink="/profile"
+          secondNavItem="Create Course"
+          secondNavItemIcon={faPlus}
+          secondNavItemLink="/build-course"
+          thirdNavItem="Create Lessons"
+          thirdNavItemIcon={faPlus}
+          thirdNavItemLink="/create/lesson"
+          courseModules={this.state.courseModules}
+        />
+
+        <section className="profile-section">
+          <Heading>Enrolled Courses</Heading>
+          <table className="table profile-table columns">
+            {this.state.courses.map((course, i) => (
+              <tbody key={i}>
+                <tr>
+                  <td className="column">
+                    <Card className="has-background-grey-dark has-text-white-ter">
+                      <Card.Header data-id={course._id}>
+                        <Link to={course._id}>
+                          <Card.Header.Title className="has-text-white-ter">
+                            {this.state.teacher}
+                          </Card.Header.Title>
+                        </Link>
+                      </Card.Header>
+                      <Card.Content>
+                        <Media>
+                          <Media.Item renderAs="figure" position="left">
+                            <Image
+                              size={64}
+                              alt="64x64"
+                              src={course.media.image}
+                            />
+                          </Media.Item>
+                          <Media.Item>
+                            <Heading className="has-text-white-ter" size={4}>
+                              {course.title}
+                            </Heading>
+                            <Heading subtitle size={6}>
+                              @johnsmith
+                            </Heading>
+                          </Media.Item>
+                        </Media>
+                        <Content>
+                          {course.description}
+                          <br />
+                          <time dateTime="2016-1-1">{course.updated_at}</time>
+                        </Content>
+                      </Card.Content>
+                      <Card.Footer>
+                        <Link to={`/course/${course._id}`}>
+                          <Card.Footer.Item renderAs="p">Go</Card.Footer.Item>
+                        </Link>
+                        <div
+                          className="profile-delete-btn is-danger"
+                          data-id={course._id}
+                          onClick={this.handleDelete}
+                        >
+                          <FontAwesomeIcon icon={faTimesCircle} />
+                        </div>
+                      </Card.Footer>
+                    </Card>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
+        </section>
+      </>
     );
   }
 }

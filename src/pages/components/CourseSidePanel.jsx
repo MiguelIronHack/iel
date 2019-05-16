@@ -1,43 +1,52 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faComments,
-  faBook,
-  faCircle,
-  faCheckCircle
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+
 export default class CourseSidePanel extends Component {
   render() {
-    const { courseModules } = this.props;
+    const { courseModules: data } = this.props;
 
     return (
       <aside className="panel course-panel column shadow">
         <p className="panel-heading" />
 
-        {courseModules.map((mod, i) => (
+        {data.map((mod, i) => (
           <a href={`#${mod._id}`}>
             <label className="panel-block has-background-dark has-text-white aside-panel-text">
               {`Module ${i + 1}`}
               <span className="panel-icon aside-panel-icon">
-                <FontAwesomeIcon icon={faCheckCircle} />
+                <FontAwesomeIcon icon={faCircle} />
               </span>
             </label>
           </a>
         ))}
+        <Link to={this.props.firstNavItemLink}>
+          <label className="panel-block has-background-dark has-text-white aside-panel-text">
+            <div className="aside-panel-text">{this.props.firstNavItem}</div>
+            <span className="panel-icon aside-panel-icon">
+              <FontAwesomeIcon icon={this.props.firstNavItemIcon} />
+            </span>
+          </label>
+        </Link>
 
-        <label className="panel-block has-background-dark has-text-white aside-panel-text">
-          <div className="aside-panel-text">Forum</div>
-          <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon icon={faComments} />
-          </span>
-        </label>
+        <Link to={this.props.secondNavItemLink}>
+          <label className="panel-block has-background-dark has-text-white aside-panel-text">
+            <div className="aside-panel-text">{this.props.secondNavItem}</div>
+            <span className="panel-icon aside-panel-icon">
+              <FontAwesomeIcon icon={this.props.secondNavItemIcon} />
+            </span>
+          </label>
+        </Link>
 
-        <label className="panel-block has-background-dark has-text-white aside-panel-text">
-          <div className="aside-panel-text"> Info</div>
-          <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon icon={faBook} />
-          </span>
-        </label>
+        <Link to={this.props.thirdNavItemLink}>
+          <label className="panel-block has-background-dark has-text-white aside-panel-text">
+            <div className="aside-panel-text">{this.props.thirdNavItem}</div>
+            <span className="panel-icon aside-panel-icon">
+              <FontAwesomeIcon icon={this.props.thirdNavItemIcon} />
+            </span>
+          </label>
+        </Link>
         <p className="panel-heading panel-footer" />
       </aside>
     );
