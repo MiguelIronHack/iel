@@ -51,7 +51,7 @@ export default class NavMain extends React.Component {
           </Navbar.Container>
           <Navbar.Container position="end">
             <Navbar.Item renderAs="div">
-              <NavBarDropdown />
+              <NavBarDropdown history={this.props.history} />
             </Navbar.Item>
           </Navbar.Container>
         </Navbar.Menu>

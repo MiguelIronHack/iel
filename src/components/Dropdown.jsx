@@ -1,7 +1,8 @@
 import React from "react";
 import { Dropdown } from "react-bulma-components";
 import { logout } from "../api/userHandler";
-import Dashboard from "./../pages/dashboard/Dashboard";
+import { faJava } from "@fortawesome/free-brands-svg-icons";
+import DropdownItem from "./DropdownItem";
 
 export default class NavBarDropdown extends React.Component {
   state = {
@@ -22,9 +23,9 @@ export default class NavBarDropdown extends React.Component {
       .catch(err => console.log("fuck"));
     window.location = "/";
   };
-  handleClick = e => {
-    console.log("hey");
-  };
+  // handleClick = e => {
+  //   this.props.history.push("/login");
+  // };
   componentDidMount() {
     if (window.localStorage.userCredential) {
       this.setState({
@@ -47,13 +48,18 @@ export default class NavBarDropdown extends React.Component {
           onChange={this.onChange}
         >
           <Dropdown.Item value="username">
-            <div onClick={() => console.log("user")}>Username</div>
+            <div onClick={() => this.props.history.push("/profile")}>
+              {this.state.firstName}
+            </div>
           </Dropdown.Item>
+
           <Dropdown.Item value="settings">
-            <div onClick={this.handleClick}>Settings</div>
+            <div onClick={() => this.props.history.push("/settings")}>
+              Settings
+            </div>
           </Dropdown.Item>
           <Dropdown.Item value="sign-out">
-            <div onClick={this.handleClick}>Sign Out</div>
+            <div onClick={() => this.handleSignOut()}>Sign Out</div>
           </Dropdown.Item>
         </Dropdown>
       );
@@ -64,11 +70,13 @@ export default class NavBarDropdown extends React.Component {
         value={this.state.selected}
         onChange={this.onChange}
       >
-        <Dropdown.Item value="sign-up">
-          <div onClick={this.handleClick}>Sign Up</div>
+        <Dropdown.Item value="login">
+          <div onClick={() => this.props.history.push("/login")}>Login</div>
         </Dropdown.Item>
-        <Dropdown.Item value="register">
-          <div onClick={this.handleClick}>Register</div>
+        <Dropdown.Item value="sign-up">
+          <div onClick={() => this.props.history.push("/register")}>
+            Sign Up
+          </div>
         </Dropdown.Item>
       </Dropdown>
     );

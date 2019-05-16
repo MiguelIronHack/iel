@@ -33,10 +33,10 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar />
+        <Navbar history={this.props.history} />
         <Switch>
           <Route path="/" component={Index} exact />
-          <Route path="/profile/:user/settings" component={UserSettings} />
+          <Route path="/settings" component={UserSettings} />
           <Route path="/profile" component={Profile} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
