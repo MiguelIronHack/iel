@@ -17,6 +17,12 @@ export default class NavMain extends React.Component {
       return { selected: !prevState.selected };
     });
 
+  handleHoverOff = () => {
+    this.setState(prevState => {
+      return { selected: !prevState.selected };
+    });
+  };
+
   render() {
     return (
       <Navbar className="navbar is-dark" active={this.state.selected}>
@@ -31,7 +37,10 @@ export default class NavMain extends React.Component {
           </NavLink>
           <Navbar.Burger onClick={this.toggleNavbar} />
         </Navbar.Brand>
-        <Navbar.Menu className="has-background-dark">
+        <Navbar.Menu
+          onMouseLeave={this.handleHoverOff}
+          className="has-background-dark"
+        >
           <Navbar.Container>
             <Navbar.Item renderAs="div">
               <NavLink className="nav-link" to="/" exact>
