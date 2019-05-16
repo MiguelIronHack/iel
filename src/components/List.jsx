@@ -11,7 +11,7 @@ class List extends Component {
     const { data, handleClick, deletable, mod } = this.props;
     if (!data.length)
       return (
-        <div className="notification">
+        <div className="module-content">
           <p>Empty</p>
         </div>
       );
@@ -33,7 +33,7 @@ class List extends Component {
                   e
                 </button>
               ) : null}
-              <div className="notification">
+              <div className="module-content">
                 <p>{item.title}</p>
                 <p>{item.description}</p>
               </div>

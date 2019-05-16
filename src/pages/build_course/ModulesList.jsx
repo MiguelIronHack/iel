@@ -10,12 +10,15 @@ const ModuleList = ({
 }) => {
   if (!data) return <h1>Nothing to display</h1>;
   return (
-    <React.Fragment>
-      <div className="column is-4" onClick={() => handleSelect(data)}>
+    <>
+      <div className="module" onClick={e => handleSelect(e, data)}>
         <h1>
           {title}
-          <span>
-            <button onClick={e => handleModule(data)} className="delete">
+          <span className="delete-btn">
+            <button
+              onClick={e => handleModule(data)}
+              className="delete delete-btn"
+            >
               x
             </button>
           </span>
@@ -27,7 +30,7 @@ const ModuleList = ({
           data={data.lessons}
         />
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
