@@ -10,7 +10,7 @@ export default class CategoryCourses extends Component {
   }
   componentDidMount() {}
   render() {
-    const { course } = this.state;
+    // const { course } = this.state;
     return <React.Fragment />;
   }
 }

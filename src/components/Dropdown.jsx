@@ -1,8 +1,8 @@
 import React from "react";
 import { Dropdown } from "react-bulma-components";
 import { logout } from "../api/userHandler";
-import { faJava } from "@fortawesome/free-brands-svg-icons";
-import DropdownItem from "./DropdownItem";
+// import { faJava } from "@fortawesome/free-brands-svg-icons";
+// import DropdownItem from "./DropdownItem";
 
 export default class NavBarDropdown extends React.Component {
   state = {

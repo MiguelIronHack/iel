@@ -26,11 +26,11 @@
 }
 
 .dashboard-nav a {
-  color: hsl(0, 0%, 96%);
+  color: hsl(0, 0%, 70%);
 }
 
 .dashboard-nav a:hover {
-  color: hsl(0, 0%, 88%);
+  color: hsl(0, 0%, 100%);
   transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -98,10 +98,10 @@
   margin: 1vh auto;
 }
 .dashboard-showcase-link {
-  color: hsl(0, 0%, 86%);
+  color: hsl(0, 0%, 70%);
   transition: all 3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .dashboard-showcase-link:hover {
-  color: hsl(0, 0%, 96%);
+  color: hsl(0, 0%, 100%);
   transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
