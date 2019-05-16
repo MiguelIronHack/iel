@@ -11,11 +11,22 @@ export class Course extends Component {
     user: {}
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    const user = getLocalToken();
+    getUser(user._id)
+      .then(res => {
+        this.setState({
+          user: res.data
+        });
+        // console.log(this.state.user, " user before enroll");
+      })
+      .catch(err => console.error(err.response, "qqqqqq"));
+    // console.log(user, " eyeyeye this is the user");
+  }
 
   handleClick = e => {
     const courseId = e.id;
-    // console.log(courseId, " course IDIDIDI");
+    console.log(courseId, " course IDIDIDI");
 
     this.state.user.enrolledCourses.push(courseId);
     console.log(this.state.user, " user after enroll");
