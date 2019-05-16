@@ -12,6 +12,9 @@ export const getCategory = id => axios.get(`${ApiUrl}/category/${id}`);
 
 export const deleteCategory = id => axios.delete(`${ApiUrl}/category/${id}`);
 
+export const updateCategoryTags = (id, data) =>
+  axios.patch(ApiUrl + "/category/tag-upd/" + id, data);
+
 export default {
   getAllCategories,
   createCategory,

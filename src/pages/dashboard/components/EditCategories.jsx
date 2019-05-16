@@ -4,10 +4,13 @@ import {
   deleteCategory,
   createCategory
 } from "../../../api/categoryHandler";
-import Nav from "./DashboardNav";
+import DashboardNav from "./DashboardNav";
 import Input from "./../../../components/Input";
 import { createTag } from "../../../api/tagHandler";
 import { ToastContainer, toast } from "react-toastify";
+import Dropdown from "../../../components/RealDropDown";
+import { updateCategoryTags } from "../../../api/categoryHandler";
+
 export default class EditCategories extends Component {
   state = {
     categories: []
@@ -15,7 +18,9 @@ export default class EditCategories extends Component {
   // get the categories and set the state to them
   componentDidMount() {
     getAllCategories()
-      .then(res => this.setState({ categories: res.data }))
+      .then(res => {
+        this.setState({ categories: res.data, selectedCategory: res.data[0] });
+      })
       .catch(err => console.error(err));
   }
   // get the values of the input
@@ -51,50 +56,78 @@ export default class EditCategories extends Component {
       .catch(err => console.log(err));
   };
 
-  handleTag = ({ currentTarget }) => {
+  handleDropdown = selectedCategory => this.setState({ selectedCategory });
+
+  handleTag = () => {
     const { tag } = this.state;
     if (!tag) {
       this.notifyError("Fill in the tag my man");
       return;
     }
     createTag({ name: tag })
-      .then(res => console.log(res.data))
+      .then(res =>
+        updateCategoryTags(this.state.selectedCategory._id, res.data)
+          .then(res => console.log(res))
+          .catch(err => console.error(err))
+      )
       .catch(err => console.log(err));
   };
 
   render() {
-    console.log(this.state.category, this.state.tag);
-    const { categories } = this.state;
+    const { categories, selectedCategory } = this.state;
     const { onChange, onClick, newCategory, handleTag, handleCategory } = this;
     return (
       <React.Fragment>
+        <DashboardNav />
         <section className="category-section">
-          <table className="table shadow">
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {categories.map((e, i) => (
-                <tr id={e._id} key={i}>
-                  <td>{e.name}</td>
-
-                  <td onClick={onClick}>X</td>
+          <div className="columns">
+            <table className="table shadow">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Delete</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="box container">
-            <Input name="category" label="Category" handleChange={onChange} />
-            <button className="button" onClick={handleCategory}>
-              New Category
-            </button>
-            <Input name="tag" label="Tag" handleChange={onChange} />
-            <button className="button" onClick={handleTag}>
-              New Tag
-            </button>
+              </thead>
+              <tbody>
+                {categories.map((e, i) => (
+                  <tr id={e._id} key={i}>
+                    <td>{e.name}</td>
+
+                    <td onClick={onClick}>X</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <div className="column is-5 box container">
+              {selectedCategory && (
+                <p>
+                  Tags in <b>{` ${selectedCategory.name}`}</b>
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column is-5 box container">
+              <Input name="category" label="Category" handleChange={onChange} />
+              <button className="button" onClick={handleCategory}>
+                New Category
+              </button>
+            </div>
+            <div className=" column  is-5 box container">
+              <h1>Select a Category you want to create your tags for</h1>
+              <Dropdown
+                name="hey"
+                label="hello"
+                currentItem={selectedCategory}
+                data={categories}
+                handleSelect={this.handleDropdown}
+              />
+              <Input name="tag" label="Tag" handleChange={onChange} />
+              <button className="button" onClick={handleTag}>
+                New Tag
+              </button>
+            </div>
           </div>
           <ToastContainer />
         </section>

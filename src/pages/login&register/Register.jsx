@@ -3,6 +3,8 @@ import { Heading } from "react-bulma-components";
 import "./loginRegister.css";
 import { createUser } from "../../api/userHandler";
 import { Btn } from "../../components/Btn";
+import { setLocalToken } from "../../api/ajaxLogin";
+import _ from "lodash";
 
 export default class Register extends Component {
   state = {
@@ -26,6 +28,15 @@ export default class Register extends Component {
     })
       .then(res => {
         console.log(res.data);
+        const user = _.pick(
+          res.data,
+          "avatar",
+          "_id",
+          "firstName",
+          "lastName",
+          "userName"
+        );
+        setLocalToken(user);
         this.props.history.push("/profile");
       })
       .catch(err => console.log(err.response));
