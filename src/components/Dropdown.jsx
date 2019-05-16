@@ -1,6 +1,5 @@
 import React from "react";
 import { Dropdown } from "react-bulma-components";
-import { NavLink } from "react-router-dom";
 import { logout } from "../api/userHandler";
 
 export default class NavBarDropdown extends React.Component {
@@ -22,7 +21,9 @@ export default class NavBarDropdown extends React.Component {
       .catch(err => console.log("fuck"));
     window.location = "/";
   };
-
+  handleClick = e => {
+    console.log("hey");
+  };
   componentDidMount() {
     if (window.localStorage.userCredential) {
       this.setState({
@@ -43,36 +44,23 @@ export default class NavBarDropdown extends React.Component {
         onChange={this.onChange}
       >
         <Dropdown.Item value="login">
-          <NavLink
-            className="has-text-dark"
-            to={
-              this.state.firstName
-                ? `profile/${this.state.firstName}/settings`
-                : "/login"
-            }
-          >
-            {this.state.firstName ? this.state.firstName : "Sign In"}
-          </NavLink>
+          <div onClick={this.handleClick}>Login</div>
         </Dropdown.Item>
-
-        {this.state.isAuth ? (
-          <React.Fragment>
-            <Dropdown.Item value="settings">
-              <NavLink to={`/profile/${this.state.firstName}/settings`}>
-                Settings
-              </NavLink>
-            </Dropdown.Item>
-            <Dropdown.Item onClick={this.handleSignOut} value="settings">
-              Sign Out
-            </Dropdown.Item>
-          </React.Fragment>
-        ) : (
-          <Dropdown.Item value="register">
-            <NavLink className="register-link" to="/register">
-              Register
-            </NavLink>
-          </Dropdown.Item>
-        )}
+        <Dropdown.Item value="username">
+          <div onClick={this.handleClick}>Username</div>
+        </Dropdown.Item>
+        <Dropdown.Item value="sign-up">
+          <div onClick={this.handleClick}>Sign Up</div>
+        </Dropdown.Item>
+        <Dropdown.Item value="settings">
+          <div onClick={this.handleClick}>Settings</div>
+        </Dropdown.Item>
+        <Dropdown.Item value="register">
+          <div onClick={this.handleClick}>Register</div>
+        </Dropdown.Item>
+        <Dropdown.Item value="sign-out">
+          <div onClick={this.handleClick}>Sign Out</div>
+        </Dropdown.Item>
       </Dropdown>
     );
   }

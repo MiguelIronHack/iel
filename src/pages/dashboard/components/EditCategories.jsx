@@ -5,10 +5,11 @@ import {
   createCategory
 } from "../../../api/categoryHandler";
 import Nav from "./DashboardNav";
-
+import Input from "./../../../components/Input";
+import { createTag } from "../../../api/tagHandler";
+import { ToastContainer, toast } from "react-toastify";
 export default class EditCategories extends Component {
   state = {
-    category: "",
     categories: []
   };
   // get the categories and set the state to them
@@ -18,10 +19,13 @@ export default class EditCategories extends Component {
       .catch(err => console.error(err));
   }
   // get the values of the input
-  onChange = e => {
-    this.setState({
-      category: e.target.value
-    });
+  onChange = ({ currentTarget }) => {
+    const key = currentTarget.name;
+    const value = currentTarget.value;
+    this.setState({ [key]: value });
+    // this.setState({
+    //   category: e.target.value
+    // });
   };
   // deleting a category by getting it's id
   onClick = e => {
@@ -30,24 +34,36 @@ export default class EditCategories extends Component {
     deleteCategory(target.id).then(console.log("category removed"));
   };
   // creating a new category
-  newCategory = e => {
-    e.preventDefault();
-    createCategory({
-      name: this.state.category
+
+  notifyError = message =>
+    toast(message, {
+      type: toast.TYPE.ERROR
     });
 
-    getAllCategories()
-      .then(res => this.setState({ categories: res.data }))
-      .catch(err => console.error(err));
+  handleCategory = ({ currentTarget }) => {
+    const { category } = this.state;
+    if (!category) {
+      this.notifyError("Fill in the field my man");
+      return;
+    }
+    createCategory({ name: this.state.category })
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
   };
 
+  handleTag = ({ currentTarget }) =>
+    createTag({ name: this.state.tag })
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
+
   render() {
+    console.log(this.state.category, this.state.tag);
     const { categories } = this.state;
-    const { onChange, onClick, newCategory } = this;
+    const { onChange, onClick, newCategory, handleTag, handleCategory } = this;
     return (
       <React.Fragment>
-        <Nav />
         <section className="category-section">
+          <Nav />
           <table className="table">
             <thead>
               <tr>
@@ -65,16 +81,17 @@ export default class EditCategories extends Component {
               ))}
             </tbody>
           </table>
-          <form className="box container" onSubmit={newCategory}>
-            <label htmlFor="category" />
-            <input
-              className="input"
-              type="text"
-              id="category"
-              onChange={onChange}
-            />
-            <button className="button">New Category</button>
-          </form>
+          <div className="box container">
+            <Input name="category" label="Category" handleChange={onChange} />
+            <button className="button" onClick={handleCategory}>
+              New Category
+            </button>
+            <Input name="tag" label="Tag" handleChange={onChange} />
+            <button className="button" onClick={handleTag}>
+              New Tag
+            </button>
+          </div>
+          <ToastContainer />
         </section>
       </React.Fragment>
     );
