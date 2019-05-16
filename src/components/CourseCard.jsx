@@ -88,7 +88,7 @@ export class Course extends Component {
           </Card.Content>
           <div className="card-btn">
             <button
-              className="button card-btn"
+              className="button"
               onClick={() => this.handleClick(this.props.id)}
             >
               Enroll
@@ -98,7 +98,7 @@ export class Course extends Component {
               liked={this.state.liked}
               like={this.handleLike}
             />
-            <p>{this.state.totalLikes}</p>
+            <p>Upvotes: &nbsp; {this.state.totalLikes}</p>
           </div>
         </Card>
       </>
