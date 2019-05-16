@@ -135,6 +135,7 @@ class BuildCourse extends Component {
       tags
     } = this.state;
     if (!courses.length) return <h1>No courses to display</h1>;
+    console.log(selectedTag, selectedTag._id);
     const filteredLessons =
       selectedTag && selectedTag._id
         ? lessons.filter(lesson => lesson.tags._id === selectedTag._id)
@@ -146,12 +147,15 @@ class BuildCourse extends Component {
           firstNavItem="My Courses"
           firstNavItemIcon={faSignInAlt}
           firstNavItemLink="/profile"
-          secondNavItem="Create Course"
+          secondNavItem="Build Course"
           secondNavItemIcon={faPlus}
           secondNavItemLink="/build-course"
           thirdNavItem="Create Lessons"
           thirdNavItemIcon={faPlus}
           thirdNavItemLink="/create/lesson"
+          fourthNavItem="Create Course"
+          fourthNavItemIcon={faPlus}
+          fourthNavItemLink="/create-course"
           courseModules={this.state.courseModules}
         />
         <section className="build-course-section">

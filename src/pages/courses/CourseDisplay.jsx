@@ -21,9 +21,8 @@ export default class Courses extends Component {
   }
 
   render() {
-    console.log(this.props.match.params.id);
     const { courseModules } = this.state.course;
-    if (typeof courseModules === "undefined") return null;
+    if (!courseModules) return null;
     return (
       <section className="course-section columns is-mobile">
         <CourseSidePanel courseModules={courseModules} />
