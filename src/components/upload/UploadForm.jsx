@@ -109,7 +109,7 @@ export default class uploadForm extends Component {
     const {
       title,
       selectedCategory,
-      category,
+      // category,
       categories,
       description,
       video

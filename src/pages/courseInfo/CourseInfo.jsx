@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Heading, Button } from "react-bulma-components";
+import { Heading } from "react-bulma-components";
 import "./CourseInfo.css";
 import { getCourse } from "../../api/coursesHandler";
 import EnroleBtn from "../../components/EnroleBtn";
