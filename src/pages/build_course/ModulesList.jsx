@@ -13,7 +13,11 @@ const ModuleList = ({
   return (
     <>
       <div
-        className={selectedMod._id === data._id ? "module active" : "module"}
+        className={
+          selectedMod && selectedMod._id === data._id
+            ? "module active"
+            : "module"
+        }
         onClick={e => handleSelect(e, data)}
       >
         <h1>
