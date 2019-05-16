@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Heading } from "react-bulma-components";
 import "./loginRegister.css";
 import { createUser } from "../../api/userHandler";
+import { Btn } from "../../components/Btn";
 
 export default class Register extends Component {
   state = {
@@ -92,6 +93,8 @@ export default class Register extends Component {
           </div>
           <button className="button is-primary  is-focused">Submit</button>
         </form>
+        <p>You have an account?</p>
+        <Btn className="is-small" name="Log in" toPage="login" />
       </section>
     );
   }

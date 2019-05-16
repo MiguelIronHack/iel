@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
+import EnroleBtn from "../../../components/EnroleBtn";
 export class MostPop extends Component {
   state = {
     courses: []
@@ -44,15 +45,8 @@ export class MostPop extends Component {
           </Hero.Body>
         </Hero>
         {this.isAuth() ? (
-          <Link
-            to={`/course/${_id}`}
-            onClick={this.notifySuccess}
-            className=" button is-dark enroll-btn"
-          >
-            Enroll
-          </Link>
+          <EnroleBtn id={_id} />
         ) : (
-          // <Btn toPage={`/course/${_id}`} className="enroll-btn" name="Enroll" />
           <Btn toPage={`/register`} className="enroll-btn" name="Enroll" />
         )}
 

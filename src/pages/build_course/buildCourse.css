@@ -1,0 +1,52 @@
+.build-course-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.build-course-section > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.build-course-section > div > .button {
+  margin: 2.5vh auto;
+}
+
+.module-grid {
+  margin: 0 auto;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  white-space: nowrap;
+  max-width: 40vw;
+  min-width: 40vh;
+  max-height: 80vh;
+  min-height: 60vh;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: hsl(0, 0%, 9%);
+}
+
+.module > h1 {
+  min-width: 10vw;
+  display: flex;
+  justify-content: space-around;
+  padding: 1vh;
+}
+.module > ul {
+  background: hsl(0, 0%, 21%);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1rem;
+}
+.module-content {
+  background: hsl(0, 0%, 96%);
+  padding: 1rem;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.module.active {
+  background: hsl(141, 71%, 48%);
+}
+.module > h1 {
+  background: hsl(0, 0%, 86%);
+}
