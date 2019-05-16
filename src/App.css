@@ -17,7 +17,7 @@
 html,
 body {
   scroll-behavior: smooth;
-  background: linear-gradient(0.25turn, #111, #000, #222);
+  background: linear-gradient(0.21turn, #111, #222, #222);
   font-family: "Quicksand", sans-serif !important;
 }
 .section {

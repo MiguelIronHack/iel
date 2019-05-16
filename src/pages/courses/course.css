@@ -77,7 +77,7 @@
     position: absolute;
     display: flex;
     padding: 0;
-    font-size: 0.7rem;
+    font-size: 1rem;
     top: 10vh;
     left: 50%;
     margin: 1rem auto;
@@ -109,7 +109,9 @@
     padding: 0;
     font-size: 0.8rem;
   }
-
+  .course-panel {
+    font-size: 0.7rem;
+  }
   .message-body {
     font-size: 0.9rem;
   }

@@ -6,6 +6,7 @@
   margin: 5vh auto;
 }
 .build-course-grid {
+  margin-left: 20vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -17,7 +18,13 @@
 .build-course-grid > div > .button {
   margin: 2.5vh auto;
 }
-
+.lesson-grid,
+.build-course-grid > :first-child {
+  background: hsl(0, 0%, 9%);
+}
+.build-course-grid > :first-child {
+  border-top-left-radius: 5px;
+}
 .module-grid {
   margin: 0 auto;
   display: flex;
@@ -80,6 +87,7 @@
 }
 .module {
   cursor: pointer;
+  min-width: min-content;
 }
 
 .build-course-showcase {
@@ -104,24 +112,34 @@
 .lesson-grid {
   display: flex;
   flex-direction: column;
-  position: fixed;
   right: 12vw;
-  top: 13.5vh;
+  top: 10;
+  overflow-y: scroll;
+  max-height: 70vh;
+  width: 50%;
+}
+.lesson-grid > .dropdown > .dropdown-trigger {
+  margin-top: 1rem;
 }
 .lesson-grid > ul > li > .module-content {
   border-radius: 5px;
   cursor: pointer;
+  min-width: min-content;
 }
 
 @media screen and (max-width: 1100px) {
   .module-grid {
-    max-width: 30vw;
-    min-width: 30vh;
+    max-width: 50vw;
+    min-width: 50vh;
   }
   .build-course-showcase {
     grid-column: 1 / span 2;
     padding: 10vh 5vw 5vh;
     margin: 0;
+  }
+  .lesson-grid {
+    right: 10vw;
+    top: 35vh;
   }
 }
 @media screen and (min-width: 1100px) {
@@ -134,7 +152,7 @@
     top: 13.5vh;
   }
   .lesson-grid > ul > li > .module-content {
-    padding: 2rem 5rem;
-    font-size: 2rem;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
   }
 }
