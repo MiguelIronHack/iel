@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Heading, Button } from "react-bulma-components";
 import "./CourseInfo.css";
 import { getCourse } from "../../api/coursesHandler";
+import EnroleBtn from "../../components/EnroleBtn";
 
 export default class courseInfo extends Component {
   state = { course: {} };
@@ -31,7 +32,7 @@ export default class courseInfo extends Component {
           <Heading size={4}>{course.teacher}</Heading>
           <Heading size={5}>Rate: *****</Heading>
 
-          <Button className="is-primary category-btn">Enroll Now!</Button>
+          <EnroleBtn id={course._id} />
         </header>
         <nav className="nav has-background-dark ">
           <ul className="navbar-start course-info-nav">
