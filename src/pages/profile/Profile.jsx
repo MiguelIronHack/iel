@@ -84,9 +84,9 @@ export class Profile extends Component {
         <section className="profile-section">
           <Heading>Enrolled Courses</Heading>
           <table className="table profile-table columns">
-            {this.state.courses.map((course, i) => (
-              <tbody key={i}>
-                <tr>
+            <tbody>
+              {this.state.courses.map((course, i) => (
+                <tr key={i}>
                   <td className="column">
                     <Card className="has-background-grey-dark has-text-white-ter">
                       <Card.Header data-id={course._id}>
@@ -135,8 +135,8 @@ export class Profile extends Component {
                     </Card>
                   </td>
                 </tr>
-              </tbody>
-            ))}
+              ))}
+            </tbody>
           </table>
         </section>
       </>
