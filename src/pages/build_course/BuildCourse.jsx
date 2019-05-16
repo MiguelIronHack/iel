@@ -137,7 +137,7 @@ class BuildCourse extends Component {
     if (!courses.length) return <h1>No courses to display</h1>;
     console.log(selectedTag, selectedTag._id);
     const filteredLessons =
-      selectedTag && selectedTag._id
+      selectedTag && !typeof selectedTag._id === "undefined"
         ? lessons.filter(lesson => lesson.tags._id === selectedTag._id)
         : lessons;
 
