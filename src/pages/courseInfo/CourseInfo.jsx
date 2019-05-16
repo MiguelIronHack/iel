@@ -21,10 +21,12 @@ export default class courseInfo extends Component {
   render() {
     console.log(this.state, "stateeeeee");
     const { course } = this.state;
+    if (!course.category) return null;
+    console.log(course.category || "heeeey", " categoryyy");
     return (
       <section className="course-info">
         <header className="course-header">
-          <Heading size={4}>{course.category}</Heading>
+          <Heading size={4}>{course.category[0].name}</Heading>
           <Heading size={2}>{course.title}</Heading>
           <Heading size={4}>{course.teacher}</Heading>
           <Heading size={5}>Rate: *****</Heading>
