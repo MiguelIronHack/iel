@@ -33,9 +33,21 @@
   justify-content: space-between;
   margin: 0 0.9rem;
 }
-@media screen and (max-width: 900px) {
+.dropdownNsubmit > .button {
+  background: hsl(204, 100%, 62%);
+  color: hsl(0, 0%, 96%);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.dropdownNsubmit > .button:hover {
+  background: hsl(141, 71%, 48%);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media screen and (max-width: 1100px) {
   .form-submit-lesson {
-    margin: 15vh 15vw;
+    margin: 15vh auto 5vh;
     z-index: -1;
+  }
+  .form-submit-lesson {
+    width: 85vw;
   }
 }

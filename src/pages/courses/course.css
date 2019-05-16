@@ -77,8 +77,8 @@
     position: absolute;
     display: flex;
     padding: 0;
-    font-size: 1rem;
-    top: 15vh;
+    font-size: 0.7rem;
+    top: 10vh;
     left: 50%;
     margin: 1rem auto;
     transform: translate(-50%, -50%);
