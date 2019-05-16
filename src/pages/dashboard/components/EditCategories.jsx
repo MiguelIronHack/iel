@@ -48,7 +48,7 @@ export default class EditCategories extends Component {
       <React.Fragment>
         <Nav />
         <section className="category-section">
-          <table className="table">
+          <table className="table shadow">
             <thead>
               <tr>
                 <th>Category</th>

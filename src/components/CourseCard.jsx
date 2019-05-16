@@ -62,6 +62,7 @@ export class Course extends Component {
             </Content>
           </Card.Content>
           <button
+            className="button card-btn"
             onClick={e => {
               return this.handleClick(this.props);
             }}

@@ -39,6 +39,26 @@
 .course-content {
   margin-left: 17vw;
 }
+.course-card {
+  display: flex;
+  flex-direction: column;
+}
+.course-card > .card-btn {
+  border: 1px solid hsl(0, 0%, 4%);
+  border-radius: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: hsl(0, 0%, 4%);
+  color: hsl(48, 100%, 64%);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  text-transform: uppercase;
+  font-size: 1.3rem;
+}
+.course-card > .card-btn:hover {
+  background: hsl(0, 0%, 21%);
+  color: hsl(0, 0%, 96%);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
 .panel-footer {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
