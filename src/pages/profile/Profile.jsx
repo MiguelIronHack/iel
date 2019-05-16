@@ -4,15 +4,7 @@ import { getUser } from "../../api/userHandler";
 import { editUser } from "../../api/userHandler";
 import SidePanel from "../components/CourseSidePanel";
 import { faPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
-
-import {
-  Card,
-  Media,
-  Image,
-  Heading,
-  Content,
-  Button
-} from "react-bulma-components";
+import { Card, Media, Image, Heading, Content } from "react-bulma-components";
 import "./profile.css";
 import { Link } from "react-router-dom";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
