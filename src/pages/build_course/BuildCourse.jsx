@@ -177,9 +177,12 @@ class BuildCourse extends Component {
                   </div>
                 </React.Fragment>
               ) : (
-                <div>
-                  <h1 className="text is-center">Select a course to build !</h1>
+                <div className="build-course-showcase">
+                  <h1 className="text is-center title">
+                    Select a course to build !
+                  </h1>
                   <List
+                    specialClass={true}
                     title="Courses"
                     handleClick={this.handleClick}
                     data={courses}
