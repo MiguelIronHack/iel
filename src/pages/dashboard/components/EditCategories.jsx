@@ -43,18 +43,24 @@ export default class EditCategories extends Component {
   handleCategory = ({ currentTarget }) => {
     const { category } = this.state;
     if (!category) {
-      this.notifyError("Fill in the field my man");
+      this.notifyError("Fill in the category my man");
       return;
     }
-    createCategory({ name: this.state.category })
+    createCategory({ name: category })
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
   };
 
-  handleTag = ({ currentTarget }) =>
-    createTag({ name: this.state.tag })
+  handleTag = ({ currentTarget }) => {
+    const { tag } = this.state;
+    if (!tag) {
+      this.notifyError("Fill in the tag my man");
+      return;
+    }
+    createTag({ name: tag })
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
+  };
 
   render() {
     console.log(this.state.category, this.state.tag);
