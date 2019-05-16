@@ -43,7 +43,7 @@ export default class UsersList extends Component {
     const { users } = this.state;
     console.log(users);
     return (
-      <React.Fragment>
+      <section className="course-management-section">
         <DashboardNav />
         <table className="table">
           <thead className="thead">
@@ -82,7 +82,7 @@ export default class UsersList extends Component {
           </tbody>
         </table>
         <Btn name="Create New User" toPage="create-users" />
-      </React.Fragment>
+      </section>
     );
   }
 }

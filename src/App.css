@@ -62,6 +62,14 @@ button {
 .navbar > * {
   padding: 0 1rem;
 }
+.course-management-section,
+.category-section {
+  padding: 5vh 10vw;
+}
+.table {
+  border-radius: 5px;
+  margin: 4vh auto;
+}
 /* Cards */
 
 .course-card {

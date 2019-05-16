@@ -17,11 +17,6 @@ export default class UsersList extends Component {
       .catch(err => console.log(err.response));
   }
 
-  // handleModify = e => {
-  //   const id = e.target.getAttribute("data-id");
-  //   console.log("this is the user ID to MODIFY: ", id);
-  // };
-
   handleDelete = e => {
     const target = e.target.parentElement.parentElement;
     target.remove(); // removing the course row from the front end
@@ -35,7 +30,7 @@ export default class UsersList extends Component {
     const { courses } = this.state;
     console.log(courses);
     return (
-      <React.Fragment>
+      <section className="course-management-section">
         <DashboardNav />
         <table className="table">
           <thead className="thead">
@@ -77,7 +72,7 @@ export default class UsersList extends Component {
         <span className="btn-create-course">
           <Btn name="Create New Course" toPage="create-course" />
         </span>
-      </React.Fragment>
+      </section>
     );
   }
 }

@@ -31,7 +31,7 @@
 
 .dashboard-nav a:hover {
   color: hsl(0, 0%, 88%);
-  transition: all 0.2s ease-out;
+  transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .td {
@@ -96,4 +96,12 @@
 
 .edit-course-upload-image {
   margin: 1vh auto;
+}
+.dashboard-showcase-link {
+  color: hsl(0, 0%, 96%);
+  transition: all 3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.dashboard-showcase-link:hover {
+  color: hsl(141, 100%, 62%);
+  transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
 }

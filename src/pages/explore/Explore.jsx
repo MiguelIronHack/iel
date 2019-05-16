@@ -21,9 +21,9 @@ export default class explore extends Component {
           categories: res.data,
           courses: res.data[0].courses
         });
-        console.log(res.data[0].courses, "dddddd");
+        console.log(res.data[0].courses);
       })
-      .catch(err => console.error(err.response, "qqqqqq"));
+      .catch(err => console.error(err));
 
     getAllCourses()
       .then(res => {
@@ -31,20 +31,20 @@ export default class explore extends Component {
           allCourses: res.data
         });
       })
-      .catch(err => console.error(err.response, "qqqqqq"));
+      .catch(err => console.error(err));
   }
 
   handleCategory = e => {
     const id = e._id;
     getCategory(id)
       .then(res => {
-        console.log("clisk en category ", res.data);
+        console.log(res.data);
         this.setState({
           selectedCategory: res.data,
           courses: res.data.courses
         });
       })
-      .catch(err => console.error(err.response, "qqqqqq"));
+      .catch(err => console.error(err));
   };
 
   render() {
