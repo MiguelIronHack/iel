@@ -27,7 +27,12 @@ export class Course extends Component {
       .then(({ data }) => {
         if (data.likes.indexOf(getLocalToken()._id) >= 0) return;
         rateCourse(course.id, getLocalToken()._id)
-          .then(({ data }) => this.setState({ liked: true }))
+          .then(({ data }) =>
+            this.setState({
+              totalLikes: this.state.totalLikes + 1,
+              liked: true
+            })
+          )
           .catch(err => {});
       })
       .catch(err => console.log(err));
