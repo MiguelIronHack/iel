@@ -5,6 +5,8 @@ import LessonNav from "./LessonNav";
 import Lesson from "./Lesson";
 import { getUser } from "../../api/userHandler";
 import { getLocalToken } from "../../api/ajaxLogin";
+import { getOneLesson, getLessons } from "../../api/lessonHandler";
+import { getModule } from "../../api/moduleHandler";
 
 export default class LessonDisplay extends React.Component {
   state = {
@@ -14,15 +16,24 @@ export default class LessonDisplay extends React.Component {
   };
 
   componentDidMount() {
-    const user = getLocalToken();
-    getUser(user._id)
-      .then(({ data: user }) => {
+    // const user = getLocalToken();
+    // getUser(user._id)
+    //   .then(({ data: user }) => {
+    //     this.setState({
+    //       lessons: user.lessons,
+    //       currentLesson: user.lessons[0]
+    //     });
+    //   })
+    //   .catch(err => console.log(err));
+    // getLessons()
+    getModule(this.props.match.params.id)
+      .then(res =>
         this.setState({
-          lessons: user.lessons,
-          currentLesson: user.lessons[0]
-        });
-      })
-      .catch(err => console.log(err));
+          lessons: res.data.lessons,
+          currentLesson: res.data.lessons[0]
+        })
+      )
+      .catch(err => console.error(err));
   }
 
   handlePage = direction => {
@@ -32,6 +43,7 @@ export default class LessonDisplay extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     const { currentLesson, lessons, currentPage } = this.state;
     console.log(currentPage);
     if (!lessons.length) return <p className="title">No lessons to display</p>;
@@ -41,14 +53,16 @@ export default class LessonDisplay extends React.Component {
           max={lessons.length}
           currentPage={currentPage}
           handlePage={this.handlePage}
-          title={currentLesson.title}
+          title={lessons[currentPage].title}
         />
         <section className="lesson-display-section">
-          <Heading>{currentLesson.title}</Heading>
+          <Heading>{lessons[currentPage].title}</Heading>
           <article className="lesson box column is-three-quarters">
-            <p className="lesson-description">{currentLesson.description}</p>
+            <p className="lesson-description">
+              {lessons[currentPage].description}
+            </p>
             <div className="lesson-content">
-              <Lesson lesson={currentLesson} />
+              <Lesson lesson={lessons[currentPage]} />
             </div>
           </article>
         </section>

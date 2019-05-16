@@ -51,7 +51,6 @@ class TextEditor extends Component {
   };
 
   handleTag = tag => {
-    console.log(tag);
     this.setState({ selectedTag: tag });
   };
 
@@ -73,7 +72,7 @@ class TextEditor extends Component {
       teacher: user._id,
       title,
       description,
-      tags: this.state.selectedTag
+      tags: this.state.selectedTag._id
     })
       .then(res => {
         this.setState({
@@ -94,7 +93,7 @@ class TextEditor extends Component {
           <div className="column is-4">
             <input
               className=" input is-info"
-              placeholder="Course title"
+              placeholder="Lesson title"
               name="title"
               onChange={this.handleInput}
               value={title}

@@ -8,3 +8,5 @@ export const createModule = courseId => {
 
 export const updateModule = (moduleId, data) =>
   axios.patch(url + "/" + moduleId, data);
+
+export const getModule = id => axios.get(url + "/" + id);

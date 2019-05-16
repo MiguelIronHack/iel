@@ -8,30 +8,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 export default class CourseSidePanel extends Component {
   render() {
+    const { courseModules } = this.props;
+
     return (
       <aside className="panel course-panel column shadow">
         <p className="panel-heading" />
 
-        <label className="panel-block has-background-dark has-text-white aside-panel-text">
-          Week 1
-          <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon icon={faCheckCircle} />
-          </span>
-        </label>
-
-        <label className="panel-block has-background-dark has-text-white aside-panel-text">
-          Week 2
-          <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon icon={faCircle} />
-          </span>
-        </label>
-
-        <label className="panel-block has-background-dark has-text-white aside-panel-text">
-          Week 3
-          <span className="panel-icon aside-panel-icon">
-            <FontAwesomeIcon icon={faCircle} />
-          </span>
-        </label>
+        {courseModules.map((mod, i) => (
+          <a href={`#${mod._id}`}>
+            <label className="panel-block has-background-dark has-text-white aside-panel-text">
+              {`Module ${i + 1}`}
+              <span className="panel-icon aside-panel-icon">
+                <FontAwesomeIcon icon={faCheckCircle} />
+              </span>
+            </label>
+          </a>
+        ))}
 
         <label className="panel-block has-background-dark has-text-white aside-panel-text">
           <div className="aside-panel-text">Forum</div>

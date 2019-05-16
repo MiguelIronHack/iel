@@ -11,7 +11,7 @@ const ModuleList = ({
   if (!data) return <h1>Nothing to display</h1>;
   return (
     <React.Fragment>
-      <div className="column" onClick={() => handleSelect(data)}>
+      <div className="column is-4" onClick={() => handleSelect(data)}>
         <h1>
           {title}
           <span>

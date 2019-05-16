@@ -49,7 +49,7 @@ export default class NavBarDropdown extends React.Component {
         >
           <Dropdown.Item value="username">
             <div onClick={() => this.props.history.push("/profile")}>
-              {this.state.firstName}
+              Profile
             </div>
           </Dropdown.Item>
 

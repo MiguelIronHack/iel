@@ -27,6 +27,8 @@ class UserSettings extends Component {
     }
   };
 
+  //TODO ADD INPUT FILE COMPONENT TO ADD IMAGES
+
   handleSubmit = e => {
     e.preventDefault();
     const { userName, firstName, avatar, lastName, _id } = this.state.user;
@@ -39,7 +41,6 @@ class UserSettings extends Component {
   };
 
   componentDidMount() {
-    // console.log(JSON.parse(window.localStorage.userCredential));
     const user = getLocalToken();
     this.setState({ user });
   }
@@ -76,7 +77,6 @@ class UserSettings extends Component {
   };
 
   render() {
-    // const { user: userName } = this.props.match.params;
     return (
       <section className="profile-settings-section">
         <div className="container columns is-12 shadow">
