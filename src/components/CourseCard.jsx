@@ -5,6 +5,7 @@ import Moment from "react-moment";
 import { getLocalToken } from "../api/ajaxLogin";
 import { getUser, editUser } from "../api/userHandler";
 import { Link } from "react-router-dom";
+import Upvote from "./Upvote";
 
 export class Course extends Component {
   state = {
@@ -12,6 +13,8 @@ export class Course extends Component {
   };
 
   componentDidMount() {}
+
+  handleLike = e => {};
 
   handleClick = courseId => {
     const user = getLocalToken();
@@ -33,15 +36,6 @@ export class Course extends Component {
         })
         .catch(err => console.log(err));
     }
-    // console.log(userinfo);
-    // this.state.user.enrolledCourses.push(courseId);
-    // console.log(this.state.user, " user after enroll");
-    // const { enrolledCourses, _id } = this.state.user;
-    // userEnrolls(_id, { enrolledCourses })
-    //   .then(res => {
-    //     console.log(res);
-    //   })
-    //   .catch(err => console.log(err));
   };
 
   render() {
@@ -70,12 +64,16 @@ export class Course extends Component {
               </Content>
             </Link>
           </Card.Content>
-          <button
-            className="button card-btn"
-            onClick={() => this.handleClick(this.props.id)}
-          >
-            Enroll
-          </button>
+          <div className="card-btn">
+            <button
+              className="button "
+              onClick={() => this.handleClick(this.props.id)}
+            >
+              Enroll
+            </button>
+            <Upvote course={this.props} like={this.handleLike} />
+            <p>111</p>
+          </div>
         </Card>
       </>
     );
