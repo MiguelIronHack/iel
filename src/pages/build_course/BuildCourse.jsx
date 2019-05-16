@@ -39,7 +39,8 @@ class BuildCourse extends Component {
       this.setState({
         courses: courses.data,
         lessons: lessons.data,
-        tags: [generalTag, ...tags.data]
+        tags: [generalTag, ...tags.data],
+        selectedTag: generalTag
       });
     });
   }
@@ -135,7 +136,6 @@ class BuildCourse extends Component {
       <React.Fragment>
         <section>
           <div className="container columns is-12">
-            <h1 className="text is-center">Select a course to build !</h1>
             {buildingCourse ? (
               <React.Fragment>
                 <div className="column is-6">
@@ -172,6 +172,7 @@ class BuildCourse extends Component {
               </React.Fragment>
             ) : (
               <div className="column is-6">
+                <h1 className="text is-center">Select a course to build !</h1>
                 <List
                   title="Courses"
                   handleClick={this.handleClick}

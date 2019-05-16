@@ -3,8 +3,7 @@ import React, { Component } from "react";
 import { Card, Media, Image, Content, Heading } from "react-bulma-components";
 import Moment from "react-moment";
 import { getLocalToken } from "../api/ajaxLogin";
-import { getUser } from "../api/userHandler";
-import { editUser } from "../api/userHandler";
+import { getUser, editUser } from "../api/userHandler";
 
 export class Course extends Component {
   state = {
@@ -13,18 +12,35 @@ export class Course extends Component {
 
   componentDidMount() {}
 
-  handleClick = e => {
-    const courseId = e.id;
-    // console.log(courseId, " course IDIDIDI");
-
-    this.state.user.enrolledCourses.push(courseId);
-    console.log(this.state.user, " user after enroll");
-    const { enrolledCourses, _id } = this.state.user;
-    editUser(_id, { enrolledCourses })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => console.log(err));
+  handleClick = courseId => {
+    const user = getLocalToken();
+    if (user) {
+      getUser(user._id)
+        .then(({ data: user }) => {
+          const enrolledCourses = user.enrolledCourses;
+          let isAlreadyEnrolled;
+          for (let course of enrolledCourses) {
+            course._id === courseId
+              ? (isAlreadyEnrolled = true)
+              : (isAlreadyEnrolled = false);
+          }
+          if (isAlreadyEnrolled) return;
+          enrolledCourses.push(courseId);
+          editUser(user._id, { enrolledCourses })
+            .then(res => console.log(res))
+            .catch(err => console.error(err));
+        })
+        .catch(err => console.log(err));
+    }
+    // console.log(userinfo);
+    // this.state.user.enrolledCourses.push(courseId);
+    // console.log(this.state.user, " user after enroll");
+    // const { enrolledCourses, _id } = this.state.user;
+    // userEnrolls(_id, { enrolledCourses })
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => console.log(err));
   };
 
   render() {
@@ -51,9 +67,7 @@ export class Course extends Component {
           </Card.Content>
           <button
             className="button card-btn"
-            onClick={e => {
-              return this.handleClick(this.props);
-            }}
+            onClick={() => this.handleClick(this.props.id)}
           >
             Enroll
           </button>

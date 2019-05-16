@@ -28,8 +28,10 @@ export const deleteUser = id => axios.delete(`${ApiUrl}/user/${id}`);
 
 export const login = userInfos => axios.post(`${ApiUrl}/auth/login`, userInfos);
 
+export const userEnrolls = (id, data) =>
+  axios.patch(ApiUrl + "/user/user-enrolls/" + id, data);
+
 export const editUser = (id, data) => {
-  console.log(id);
   return axios.patch(`${ApiUrl}/user/${id}`, data);
 };
 
