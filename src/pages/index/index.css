@@ -88,6 +88,32 @@ h1.title {
 .btn {
   margin: 4vh 0;
 }
+.card-btn {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.card-btn > *:nth-child(2),
+*:nth-child(3) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-btn > .button {
+  border: 1px solid hsl(0, 0%, 4%);
+  border-radius: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: hsl(0, 0%, 4%);
+  color: hsl(48, 100%, 64%);
+  text-transform: uppercase;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  font-size: 1.3rem;
+}
+.card-btn > *:hover {
+  background: hsl(0, 0%, 21%);
+  color: hsl(0, 0%, 96%);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
 
 .footer {
   display: flex;
