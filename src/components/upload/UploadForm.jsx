@@ -8,6 +8,8 @@ import DashboardNav from "../../pages/dashboard/components/DashboardNav";
 import { Heading } from "react-bulma-components";
 import { getLocalToken } from "../../api/ajaxLogin.js";
 import { Redirect } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./form.css";
 
 export default class uploadForm extends Component {
@@ -37,6 +39,11 @@ export default class uploadForm extends Component {
     this.setState({ submitted: false });
   }
 
+  notifyError = message =>
+    toast(message, {
+      type: toast.TYPE.WARNING
+    });
+
   handleImage = file => {
     this.setState({
       imgFileList: file,
@@ -48,37 +55,33 @@ export default class uploadForm extends Component {
     e.preventDefault();
 
     const userToken = getLocalToken();
-
-    uploadImage(this.state.imgFileList).then(res => {
-      console.log(res);
-      this.setState({
-        image: res.data.results[0].secure_url
-      });
-      createCourse({
-        teacher: userToken._id,
-        title: this.state.title,
-        description: this.state.description,
-        media: {
-          video: this.state.video,
-          image: this.state.image
-        }
-      })
-        .then(res => {
-          console.log("We go to the course page");
-          // <Redirect to="/coursemanagement" />;
-
-          this.setState({ submitted: true });
-
-          console.log(res.data);
+    try {
+      uploadImage(this.state.imgFileList).then(res => {
+        console.log(res);
+        this.setState({
+          image: res.data.results[0].secure_url
+        });
+        createCourse({
+          teacher: userToken._id,
+          title: this.state.title,
+          description: this.state.description,
+          category: [this.state.selectedCategory._id],
+          media: {
+            video: this.state.video,
+            image: this.state.image
+          }
         })
-        .catch(err => console.error(err));
-
-      createCategory({
-        name: this.state.category
-      })
-        .then(res => console.log(res.data))
-        .catch(err => console.error(err));
-    });
+          .then(res => {
+            console.log("We go to the course page");
+            // <Redirect to="/coursemanagement" />;
+            this.setState({ submitted: true });
+            console.log(res.data);
+          })
+          .catch(err => console.error(err));
+      });
+    } catch (err) {
+      this.notifyError("Be sure to upload an image !");
+    }
   };
 
   onChange = e => {
@@ -175,6 +178,7 @@ export default class uploadForm extends Component {
           <button onClick={onClick} className="button">
             get courses and categories
           </button>
+          <ToastContainer />
         </section>
       </React.Fragment>
     );
