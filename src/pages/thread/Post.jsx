@@ -1,7 +1,13 @@
 import React from "react";
 
 const Post = props => {
-  return <p>Post Message for Post Malone</p>;
+  return (
+    <div className="content">
+      <h1>Hello</h1>
+      <span class="tag is-primary">username</span>
+      <p>date</p>
+    </div>
+  );
 };
 
 export default Post;
