@@ -1,3 +1,13 @@
+.navmain-dropdown {
+  min-width: 14vw;
+  padding: 0 1rem;
+  justify-content: flex-end;
+}
+.navmain-dropdown > .dropdown-menu {
+  min-width: min-content;
+  width: 100%;
+}
+
 @media screen and (min-width: 1000px) {
   .nav-link {
     color: hsl(0, 0%, 96%);

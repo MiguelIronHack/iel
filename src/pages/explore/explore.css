@@ -1,5 +1,6 @@
 .explore-section {
-  height: min-content;
+  min-height: min-content;
+  height: max-content;
   color: hsl(0, 0%, 96%);
 }
 .explore-section > div {
@@ -8,6 +9,11 @@
 .categories-menu {
   display: flex;
   justify-content: space-evenly;
-  width: 100vw;
+  align-items: center;
+  width: 100%;
   cursor: pointer;
+  background: hsl(0, 0%, 21%);
+  height: 10vh;
+  min-height: max-content;
+  font-size: 1.5rem;
 }
