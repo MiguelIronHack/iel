@@ -63,7 +63,11 @@
 .build-course-showcase > .title {
   margin: 1rem auto 0;
 }
-
+.lesson-grid > ul > .build-course-lesson-display {
+  position: fixed;
+  z-index: 1;
+  right: 16vh;
+}
 @media screen and (max-width: 450px) {
   .module-grid {
     max-width: 30vw;
