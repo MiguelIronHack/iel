@@ -17,13 +17,12 @@ class List extends Component {
       );
     return (
       <React.Fragment>
-        <ul style={{minWidth: 'min-content'}}>
+        <ul style={{ minWidth: "min-content" }}>
           {data.map((item, index) => (
             <li
               id={item._id}
               style={{
-                margin: "1rem",
-                minWidth: "min-content"
+                minWidth: "100%"
               }}
               onClick={() => (!deletable ? handleClick(item) : void 0)}
               key={index}

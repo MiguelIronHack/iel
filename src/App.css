@@ -18,6 +18,9 @@ html,
 body {
   scroll-behavior: smooth;
   background: linear-gradient(0.21turn, #111, #222, #222);
+  background: url(https://images.pexels.com/photos/1526/dark-blur-blurred-gradient.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
+    no-repeat center;
+  background-size: cover;
   font-family: "Quicksand", sans-serif !important;
 }
 .section {
