@@ -13,7 +13,7 @@ const LessonNav = ({ title, handlePage, currentPage, max }) => {
 
   return (
     <React.Fragment>
-      <div className="has-background-grey-dark  is-active lesson-nav">
+      <div className="is-active lesson-nav">
         <p
           onClick={pageChange}
           name="left"

@@ -3,16 +3,22 @@
   height: max-content;
   padding: 4vh 4vw;
 }
+
 .lesson-nav {
+  display: flex;
   z-index: 1;
   position: fixed;
   width: 100%;
   top: 0;
   height: 3rem;
+  background: hsl(0, 0%, 21%);
+  color: hsl(0, 0%, 96%);
 }
+
 .lesson-nav-title {
   align-self: center;
   margin: auto;
+  margin-top: 5vh;
   color: hsl(0, 0%, 96%);
 }
 
@@ -66,7 +72,7 @@
 .lesson-nav-left.active,
 .lesson-nav-right.active {
   pointer-events: none;
-  color: #333;
+  color: #666;
 }
 .lesson {
   margin: 0 auto;
