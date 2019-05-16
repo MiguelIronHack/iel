@@ -139,9 +139,9 @@ class BuildCourse extends Component {
 
     return (
       <React.Fragment>
-        <section>
+        <section className="build-course-section">
           <div>
-            <div className="build-course-section">
+            <div className="build-course-grid">
               {buildingCourse ? (
                 <React.Fragment>
                   <div>

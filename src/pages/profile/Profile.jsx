@@ -109,7 +109,7 @@ export class Profile extends Component {
                       </Content>
                     </Card.Content>
                     <Card.Footer>
-                      <Link to={course._id}>
+                      <Link to={`/course/${course._id}`}>
                         <Card.Footer.Item renderAs="p">Go</Card.Footer.Item>
                       </Link>
                       <div

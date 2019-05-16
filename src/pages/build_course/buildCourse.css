@@ -1,13 +1,18 @@
 .build-course-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.build-course-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.build-course-section > div {
+.build-course-grid > div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.build-course-section > div > .button {
+.build-course-grid > div > .button {
   margin: 2.5vh auto;
 }
 
