@@ -88,7 +88,7 @@ export class Course extends Component {
           </Card.Content>
           <div className="card-btn">
             <button
-              className="button "
+              className="button card-btn"
               onClick={() => this.handleClick(this.props.id)}
             >
               Enroll
