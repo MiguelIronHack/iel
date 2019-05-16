@@ -44,7 +44,7 @@ export default class NavBarDropdown extends React.Component {
         value={this.state.selected}
         onChange={this.onChange}
       >
-        <Dropdown.Item Nvalue="username">
+        <Dropdown.Item value="username">
           <div onClick={this.handleClick}>Username</div>
         </Dropdown.Item>
         <Dropdown.Item value="sign-up">
