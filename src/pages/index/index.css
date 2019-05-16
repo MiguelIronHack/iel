@@ -52,6 +52,12 @@ h1.title {
   align-self: center;
   width: fit-content;
 }
+.enroll-btn {
+  margin: 4vh auto;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
 .chevron {
   height: 64px;
 }

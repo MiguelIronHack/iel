@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { getLocalToken } from "../api/ajaxLogin";
 import { getUser, editUser } from "../api/userHandler";
-import { Button } from "react-bulma-components";
 
 export default class EnroleBtn extends Component {
   state = {
@@ -37,12 +36,12 @@ export default class EnroleBtn extends Component {
   render() {
     return (
       <div>
-        <Button
-          className="is-primary category-btn"
+        <button
+          className="button is-dark enroll-btn"
           onClick={() => this.handleClick(this.props.id)}
         >
           Enroll Now!
-        </Button>
+        </button>
       </div>
     );
   }

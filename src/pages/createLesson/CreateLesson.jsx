@@ -135,7 +135,7 @@ class TextEditor extends Component {
                 handleSelect={this.handleTag}
                 name="tags"
               />
-              <button className="button is-success">Submit Lesson</button>
+              <button className="button">Submit Lesson</button>
             </div>
 
             <label className="title editor-title">Lesson Content</label>
