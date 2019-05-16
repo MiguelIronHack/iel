@@ -10,20 +10,7 @@ export class Course extends Component {
     user: {}
   };
 
-  componentDidMount() {
-    if (getLocalToken()) {
-      const user = getLocalToken();
-      getUser(user._id)
-        .then(res => {
-          this.setState({
-            user: res.data
-          });
-          // console.log(this.state.user, " user before enroll");
-        })
-        .catch(err => console.error(err.response, "qqqqqq"));
-      console.log(user, " eyeyeye this is the user");
-    }
-  }
+  componentDidMount() {}
 
   handleClick = courseId => {
     const user = getLocalToken();
