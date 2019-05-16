@@ -62,7 +62,7 @@ export default class CreateUser extends Component {
       password2
     } = this.state;
     return (
-      <section className="login-register-section">
+      <section className="create-user-section section">
         <Heading className="has-text-centered	">Register</Heading>
         <form className="register-form box" onSubmit={this.onSubmit}>
           <div className="control">

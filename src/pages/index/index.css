@@ -92,8 +92,8 @@ h1.title {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-.card-btn > *:nth-child(2),
-*:nth-child(3) {
+.index-courses .card-btn > *:nth-child(2),
+.index-courses .card-btn > *:nth-child(3) {
   display: flex;
   justify-content: center;
   align-items: center;
