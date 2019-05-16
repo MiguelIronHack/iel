@@ -40,7 +40,7 @@ export default class NavBarDropdown extends React.Component {
     const { isAuth } = this.state;
     return (
       <Dropdown
-        className="navbar-dropdown columns is-vcentered has-margin-left-4 is-hoverable"
+        className="navmain-dropdown columns is-vcentered has-margin-left-4 is-hoverable"
         value={this.state.selected}
         onChange={this.onChange}
       >
