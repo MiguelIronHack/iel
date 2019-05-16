@@ -20,7 +20,6 @@ class List extends Component {
         <ul>
           {data.map((item, index) => (
             <li
-              className="build-course-lesson-display"
               id={item._id}
               style={{
                 margin: "1rem"
