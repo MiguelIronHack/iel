@@ -32,7 +32,7 @@ export default class UsersList extends Component {
     return (
       <section className="course-management-section">
         <DashboardNav />
-        <table className="table">
+        <table className="table shadow">
           <thead className="thead">
             <tr className="tr">
               <th className="th">Title</th>
