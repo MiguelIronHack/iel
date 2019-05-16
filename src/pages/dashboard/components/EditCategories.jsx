@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import {
   getAllCategories,
   deleteCategory,
-  createCategory
+  createCategory,
+  updateCategoryTags
 } from "../../../api/categoryHandler";
 import DashboardNav from "./DashboardNav";
 import Input from "./../../../components/Input";
 import { createTag } from "../../../api/tagHandler";
 import { ToastContainer, toast } from "react-toastify";
 import Dropdown from "../../../components/RealDropDown";
-import { updateCategoryTags } from "../../../api/categoryHandler";
 
 export default class EditCategories extends Component {
   state = {
@@ -67,8 +67,8 @@ export default class EditCategories extends Component {
     createTag({ name: tag })
       .then(res =>
         updateCategoryTags(this.state.selectedCategory._id, res.data)
-          .then(res => console.log(res))
-          .catch(err => console.error(err))
+          .then(res2 => console.log(res2))
+          .catch(err2 => console.log(err2))
       )
       .catch(err => console.log(err));
   };

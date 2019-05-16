@@ -151,6 +151,7 @@ class BuildCourse extends Component {
                     <div className="module-grid ">
                       {currentCourse.courseModules.map((mod, i) => (
                         <ModuleList
+                          selectedMod={this.selectedModule}
                           handleModule={this.deleteModule}
                           key={i}
                           handleRemove={this.handleRemove}

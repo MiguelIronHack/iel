@@ -19,5 +19,6 @@ export default {
   getAllCategories,
   createCategory,
   getCategory,
-  deleteCategory
+  deleteCategory,
+  updateCategoryTags
 };

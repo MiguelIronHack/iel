@@ -2,9 +2,6 @@ import React from "react";
 import _ from "lodash";
 
 const Pagination = ({ pages, currentPage, pageSize }) => {
-  //   const pages = Math.ceil(items / pageSize);
-
-  //   console.log(_.countBy({ items }).values);
   const classes = "pagination-link";
   return (
     <nav
