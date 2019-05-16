@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Input from "../../components/Input";
 import Post from "./Post";
-
+import PostInput from "./PostInput";
 class Thread extends Component {
   state = {};
   render() {
@@ -9,7 +8,7 @@ class Thread extends Component {
       <section className="section thread-section">
         <h1>Thread Page</h1>
         <Post />
-        <Input />
+        <PostInput />
       </section>
     );
   }
