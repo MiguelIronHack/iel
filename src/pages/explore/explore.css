@@ -17,3 +17,13 @@
   min-height: max-content;
   font-size: 1.5rem;
 }
+.categories-menu li {
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.categories-menu li:hover {
+  background: hsl(171, 100%, 41%);
+  color: hsl(0, 0%, 21%);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 1rem;
+  padding: 1vh 1vw;
+}

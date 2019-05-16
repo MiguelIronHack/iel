@@ -1,9 +1,3 @@
-.next-section-btn {
-  color: #999;
-}
-.next-section-btn:hover {
-  color: #888;
-}
 .footer-btn > * {
   transform: rotate(180deg);
 }
