@@ -1,6 +1,7 @@
 .course-section {
   padding: 5vh 2vw;
   min-height: 90vh;
+  margin-left: 15vw;
 }
 .panel-block {
   display: flex;
@@ -117,6 +118,11 @@
     border-top-right-radius: 5px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 5px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .course-section {
+    margin: 5vh 0;
   }
 }
 @media screen and (max-width: 400px) {
