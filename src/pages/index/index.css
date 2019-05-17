@@ -41,7 +41,7 @@ h1.title {
   color: hsl(0, 0%, 96%);
 }
 .index-banner-icon:hover {
-  color: hsl(0, 0%, 48%);
+  color: hsl(171, 100%, 38%);
 }
 .index-courses {
   min-height: 60vh;
@@ -52,11 +52,15 @@ h1.title {
   align-self: center;
   width: fit-content;
 }
-.enroll-btn {
-  margin: 4vh auto;
+.join-btn:hover {
+  animation: jelly 0.5s;
+}
+.enroll-pop-btn {
+  padding: 0.7rem 1.3rem;
+  height: auto;
   font-size: 1.2rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
 }
 .chevron {
   height: 64px;
@@ -97,6 +101,17 @@ h1.title {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.index-courses .card-btn > *:nth-child(3) {
+  color: hsl(0, 0%, 96%);
+  cursor: default;
+}
+.index-courses .card-btn > *:nth-child(2) > .fas {
+  font-size: 1.9rem;
+}
+.index-courses .card-btn > *:nth-child(2) > .fas:hover {
+  font-size: 2rem;
+  color: hsl(48, 95%, 63%);
 }
 .card-btn > .button {
   border: 1px solid hsl(0, 0%, 4%);

@@ -122,6 +122,22 @@ input:focus {
   filter: drop-shadow(-5px -5px 9px hsl(0, 0%, 21%));
 }
 
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+
 @media screen and (max-width: 340px) {
   .footer {
     min-height: min-content;

@@ -41,7 +41,7 @@ export default class explore extends Component {
         : courses;
 
     return (
-      <section className="explore-section">
+      <section id="explore-section" className="explore-section">
         <div>
           <h1 className="explore-by-cat-header ">
             Explore courses by category

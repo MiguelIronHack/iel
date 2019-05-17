@@ -37,10 +37,10 @@ export default class EnroleBtn extends Component {
     return (
       <div>
         <button
-          className="button is-dark enroll-btn"
+          className="button is-dark join-btn enroll-pop-btn"
           onClick={() => this.handleClick(this.props.id)}
         >
-          Enroll Now!
+          <div>Enroll Now!</div>
         </button>
       </div>
     );
