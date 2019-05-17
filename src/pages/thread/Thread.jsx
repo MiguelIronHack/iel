@@ -2,12 +2,24 @@ import React, { Component } from "react";
 import Post from "./Post";
 import PostInput from "./PostInput";
 import "./thread.css";
+import { getCourse } from "../../api/coursesHandler";
+import { updateThread } from "../../api/threadHandler";
 class Thread extends Component {
   state = {
-    postMessage: ""
+    postMessage: "",
+    thread: { comments: [] }
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    const courseId = this.props.match.params.courseId;
+    this.setState({ courseId });
+    getCourse(courseId)
+      .then(({ data: course }) => {
+        this.props.history.push(`${course.title}`);
+        this.setState({ thread: course.thread });
+      })
+      .catch(err => console.log(err));
+  }
 
   handleChange = ({ currentTarget }) => {
     const key = currentTarget.name;
@@ -16,6 +28,10 @@ class Thread extends Component {
   };
   handleKeyDown = ({ key }) => {
     if (key === "Enter") this.sendPost();
+
+    const threadId = this.state.thread.id;
+    console.log(threadId);
+    // updateThread(thi)
   };
   sendPost = () => {
     this.setState({ postMessage: "" });
@@ -25,7 +41,7 @@ class Thread extends Component {
       <section className="thread-section">
         <h1 className="title">Threads</h1>
         <div className="post-message column is-5">
-          <Post />
+          <Post comments={this.state.thread.comments || []} />
         </div>
         <div className="post-send column is-6 is-centered">
           <PostInput
