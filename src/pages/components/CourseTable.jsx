@@ -30,15 +30,15 @@ export default class CourseTable extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                {mod.lessons.map((l, i) => (
+              {mod.lessons.map((l, i) => (
+                <tr>
                   <td key={i}>
                     <Link to={`/lesson/${mod._id}`}>{l.title}</Link>
                   </td>
-                ))}
-                <td>5h 30min</td>
-                <td>3h 20min</td>
-              </tr>
+                  <td>{Math.floor(Math.random() * 10)}h 30min</td>
+                  <td>{Math.floor(Math.random() * 3)}h 20min</td>
+                </tr>
+              ))}
             </tbody>
           </table>
 
