@@ -111,8 +111,12 @@ function Stars({ position }) {
   useRender(() => {
     const r = 5 * Math.sin(THREE.Math.degToRad((theta += 0.01)));
     const s = Math.cos(THREE.Math.degToRad(theta * 2));
-    group.current.rotation.set(r, r, r);
-    group.current.scale.set(s, s, s);
+    // The bug
+    if (!group.current) {
+    } else {
+      group.current.rotation.set(r, r, r);
+      group.current.scale.set(s, s, s);
+    }
   });
   const [geo, mat, coords] = useMemo(() => {
     const geo = new THREE.SphereBufferGeometry(1, 10, 10);
@@ -137,24 +141,6 @@ function Stars({ position }) {
     </a.group>
   );
 }
-
-/** This component creates a glitch effect */
-const Effects = React.memo(({ factor }) => {
-  const { gl, scene, camera, size } = useThree();
-  const composer = useRef();
-  useEffect(() => void composer.current.setSize(size.width, size.height), [
-    size
-  ]);
-  // This takes over as the main render-loop (when 2nd arg is set to true)
-  useRender(() => composer.current.render(), true);
-
-  return (
-    <effectComposer ref={composer} args={[gl]}>
-      <renderPass attachArray="passes" args={[scene, camera]} />
-      <a.glitchPass attachArray="passes" renderToScreen factor={factor} />
-    </effectComposer>
-  );
-});
 
 /** This component creates a bunch of parallaxed images */
 function Images({ top, mouse, scrollMax }) {
@@ -186,7 +172,7 @@ function Scene({ top, mouse }) {
         color="white"
         position={mouse.interpolate((x, y) => [x / 100, -y / 100, 6.5])}
       />
-      <Effects factor={top.interpolate([0, 150], [1, 0])} />
+
       <Background
         color={top.interpolate(
           [0, scrollMax * 0.25, scrollMax * 0.8, scrollMax],

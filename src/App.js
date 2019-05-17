@@ -17,7 +17,7 @@ import CourseContent from "./pages/courseContent/CourseContent";
 import UserSettings from "./pages/user_settings/UserSettings";
 import Footer from "./components/Footer";
 import LessonDisplay from "./pages/lessonDisplay/LessonDisplay";
-import About from "./pages/about/About";
+import About from "./pages/about/AboutMain";
 import UserManagement from "./pages/dashboard/components/UserManagement";
 import CourseManagement from "./pages/dashboard/components/CourseManagement";
 import UploadForm from "./components/upload/UploadForm";
