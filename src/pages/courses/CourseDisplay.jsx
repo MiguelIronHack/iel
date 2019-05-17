@@ -45,7 +45,7 @@ export default class Courses extends Component {
             </label>
           </Link>
           {courseModules.map((mod, i) => (
-            <a href={`#${mod._id}`}>
+            <a key={mod._id} href={`#${mod._id}`}>
               <label className="panel-block has-background-dark has-text-white aside-panel-text">
                 {`Module ${i + 1}`}
                 <span className="panel-icon aside-panel-icon">
