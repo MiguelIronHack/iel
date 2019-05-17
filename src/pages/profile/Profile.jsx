@@ -24,34 +24,22 @@ export class Profile extends Component {
     this.setState({ user });
     getUser(user._id)
       .then(res => {
-        // console.log(res.data.enrolledCourses, " this are the data");
-        // console.log(res.data.firstName);
-
         this.setState({
           teacher: res.data.firstName,
           courses: res.data.enrolledCourses
         });
-        // console.log(this.state, " eyeyey");
       })
       .catch(err => console.log(err));
   }
 
   handleDelete = e => {
-    // console.log(e.target);
     const id = e.target.getAttribute("data-id");
     let newCourses = [];
-    console.log(id, " id of the course");
-    console.log(this.state.courses);
     for (var i = 0; i < this.state.courses.length; i++) {
       if (this.state.courses[i]._id === id) {
-        console.log(this.state.courses[i]);
-        this.state.courses.splice(i, 1);
-        console.log(this.state.courses, "jjjjj");
-        console.log(newCourses, " array of courses");
       }
     }
     this.setState({ courses: this.state.courses });
-    console.log(this.state.courses, " despues borrar");
     const { enrolledCourses, _id } = this.state.user;
     editUser(_id, { enrolledCourses: this.state.courses })
       .then(res => {
@@ -61,7 +49,6 @@ export class Profile extends Component {
   };
 
   render() {
-    // console.log(this.state, " this is the new state");
     if (!window.localStorage.userCredential) this.props.history.push("/");
     return (
       <>

@@ -119,15 +119,13 @@ class BuildCourse extends Component {
     const newLessons = arr.map(less => _.pick(less, "_id"));
     updateModule(mod._id, { lessons: newLessons })
       .then(res => {
-        console.log(res);
+        const currentCourse = { ...this.state.currentCourse };
+        currentCourse.courseModules[
+          currentCourse.courseModules.indexOf(mod)
+        ].lessons = arr;
+        this.setState({ currentCourse });
       })
       .catch(err => console.log(err));
-    const currentCourse = { ...this.state.currentCourse };
-    currentCourse.courseModules[
-      currentCourse.courseModules.indexOf(mod)
-    ].lessons = arr;
-
-    this.setState({ currentCourse });
   };
 
   render() {
@@ -169,9 +167,9 @@ class BuildCourse extends Component {
               {buildingCourse ? (
                 <React.Fragment>
                   <div>
-                    <button onClick={this.addModule} className="button">
-                      Add Module
-                    </button>
+                    <span onClick={this.addModule}>
+                      <i className="fas fa-plus fa-2x" />
+                    </span>
                     <div className="module-grid ">
                       {currentCourse.courseModules.map((mod, i) => (
                         <ModuleList

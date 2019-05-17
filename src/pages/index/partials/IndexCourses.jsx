@@ -12,9 +12,7 @@ export class IndexCourses extends Component {
   componentDidMount() {
     getAllCourses()
       .then(res => {
-        console.log("taking data ", res.data);
         this.setState({ courses: res.data });
-        console.log("testing state after taking data ", this.state.courses);
       })
       .catch(err => console.error(err.response));
   }

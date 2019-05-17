@@ -6,6 +6,8 @@ class Thread extends Component {
     postMessage: ""
   };
 
+  componentDidMount() {}
+
   handleChange = ({ currentTarget }) => {
     const key = currentTarget.name;
     const value = currentTarget.value;
@@ -15,7 +17,6 @@ class Thread extends Component {
     if (key === "Enter") this.sendPost();
   };
   sendPost = () => {
-    console.log(this.state.postMessage);
     this.setState({ postMessage: "" });
   };
   render() {
