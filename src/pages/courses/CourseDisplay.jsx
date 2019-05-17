@@ -5,7 +5,11 @@ import CourseSidePanel from "../components/CourseSidePanel";
 import { Link } from "react-router-dom";
 import { getCourse } from "../../api/coursesHandler";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAddressCard,
+  faAddressBook,
+  faBook
+} from "@fortawesome/free-solid-svg-icons";
 
 import "./course.css";
 
@@ -26,13 +30,20 @@ export default class Courses extends Component {
 
   render() {
     const { courseModules } = this.state.course;
-    console.log(courseModules);
-    if (!courseModules) return null;
+    const { course } = this.state;
+    if (!courseModules || !course) return null;
     return (
       <>
         <aside className="panel course-panel column shadow">
           <p className="panel-heading" />
-
+          <Link to={`/thread/${course._id}`}>
+            <label className="panel-block has-background-dark has-text-white aside-panel-text">
+              <div className="aside-panel-text">View Comments</div>
+              <span className="panel-icon aside-panel-icon">
+                <FontAwesomeIcon icon={faBook} />
+              </span>
+            </label>
+          </Link>
           {courseModules.map((mod, i) => (
             <a href={`#${mod._id}`}>
               <label className="panel-block has-background-dark has-text-white aside-panel-text">
