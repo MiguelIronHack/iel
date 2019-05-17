@@ -4,10 +4,6 @@ import { getAllUsers, deleteUser } from "../../../api/userHandler";
 import "./dashboardComponents.css";
 import Btn from "../../../components/Btn";
 
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faUserTimes } from "@fortawesome/free-solid-svg-icons";
-// import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
-
 export default class UsersList extends Component {
   state = { users: [] };
 

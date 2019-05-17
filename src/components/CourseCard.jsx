@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { NavLink } from "react-router-dom";
 import { Card, Media, Image, Content, Heading } from "react-bulma-components";
 import Moment from "react-moment";
 import { getLocalToken } from "../api/ajaxLogin";
@@ -61,9 +60,10 @@ export class Course extends Component {
   };
 
   render() {
+    const { image, title, description, date, _id } = this.props;
     return (
       <>
-        <Card className="course-card shadow" data-id={this.props._id}>
+        <Card className="course-card shadow" data-id={_id}>
           <Card.Content>
             <Link to={`/course/${this.props.id}`}>
               <Media>
@@ -72,16 +72,16 @@ export class Course extends Component {
                   renderAs="figure"
                   position="left"
                 >
-                  <Image alt={this.props.title} src={this.props.image} />
+                  <Image alt={title} src={image} />
                 </Media.Item>
                 <Media.Item>
-                  <Heading size={5}>{this.props.title}</Heading>
-                  <p className="card-subtitle">{this.props.description}</p>
+                  <Heading size={5}>{title}</Heading>
+                  <p className="card-subtitle">{description}</p>
                 </Media.Item>
               </Media>
               <Content>
                 <Moment className="nav-link" format="DD/MM/YYYY">
-                  {this.props.date}
+                  {date}
                 </Moment>
               </Content>
             </Link>

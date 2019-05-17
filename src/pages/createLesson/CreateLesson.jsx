@@ -13,8 +13,6 @@ import { getAllTags } from "../../api/tagHandler";
 import SidePanel from "../components/CourseSidePanel";
 import { faPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
-//TODO CLEAN INPUTS AND DENY SUBMISSION IF THE FIELDS ARE EMPTY
-
 class TextEditor extends Component {
   constructor(props) {
     super(props);

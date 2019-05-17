@@ -23,9 +23,7 @@ export default class NavBarDropdown extends React.Component {
       .catch(err => console.log("fuck"));
     window.location = "/";
   };
-  // handleClick = e => {
-  //   this.props.history.push("/login");
-  // };
+
   componentDidMount() {
     if (window.localStorage.userCredential) {
       this.setState({

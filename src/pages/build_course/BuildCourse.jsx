@@ -8,7 +8,6 @@ import { createModule, updateModule } from "../../api/moduleHandler";
 import { getLocalToken } from "../../api/ajaxLogin";
 import SidePanel from "../components/CourseSidePanel";
 import { faPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
-import Pagination from "../../components/Pagination";
 import ModuleList from "./ModulesList";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

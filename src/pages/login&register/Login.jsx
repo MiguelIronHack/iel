@@ -3,6 +3,8 @@ import { Heading } from "react-bulma-components";
 import { setLocalToken } from "../../api/ajaxLogin";
 import { login } from "../../api/userHandler";
 import { Btn } from "../../components/Btn";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import _ from "lodash";
 
 export default class Login extends Component {
@@ -10,6 +12,11 @@ export default class Login extends Component {
     email: "",
     password: ""
   };
+
+  notifyError = message =>
+    toast(message, {
+      type: toast.TYPE.WARNING
+    });
 
   onSubmit = e => {
     e.preventDefault();
@@ -33,7 +40,7 @@ export default class Login extends Component {
           this.props.history.push("/profile");
         }
       })
-      .catch(err => this.props.history.push("/login"));
+      .catch(err => this.notifyError("Email or password incorrect"));
   };
 
   onChange = e => {
@@ -74,6 +81,7 @@ export default class Login extends Component {
         </form>
         <p>Don't you have an account yet?</p>
         <Btn className="is-small" name="Create an Account" toPage="register" />
+        <ToastContainer />
       </section>
     );
   }
