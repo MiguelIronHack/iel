@@ -37,7 +37,8 @@
   left: 8vw;
   top: 10vh;
   max-width: 80vw;
-  overflow-x: scroll;
+  overflow-y: scroll;
+  max-height: 60vh;
 }
 
 .course-content {
@@ -70,6 +71,8 @@
     left: 50%;
     margin: 1rem auto;
     transform: translate(-50%, -50%);
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
   .panel-heading {
     border-top-left-radius: 5px;
