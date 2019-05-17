@@ -72,6 +72,7 @@ export default class explore extends Component {
                       title={course.title}
                       description={course.description}
                       date={course.date}
+                      image={course.media.image}
                     />
                   </Columns.Column>
                 ))
