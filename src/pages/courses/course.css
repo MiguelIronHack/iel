@@ -36,7 +36,10 @@
   min-width: 15vw;
   left: 8vw;
   top: 10vh;
+  max-width: 80vw;
+  overflow-x: scroll;
 }
+
 .course-content {
   margin: 0 auto;
 }
