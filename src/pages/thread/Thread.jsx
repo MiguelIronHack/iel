@@ -22,7 +22,7 @@ class Thread extends Component {
   };
   render() {
     return (
-      <section className="section thread-section">
+      <section className="thread-section">
         <h1 className="title">Threads</h1>
         <div className="post-message column is-5">
           <Post />
