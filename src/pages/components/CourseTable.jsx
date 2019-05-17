@@ -31,8 +31,8 @@ export default class CourseTable extends Component {
             </thead>
             <tbody>
               {mod.lessons.map((l, i) => (
-                <tr>
-                  <td key={i}>
+                <tr key={i}>
+                  <td>
                     <Link to={`/lesson/${mod._id}`}>{l.title}</Link>
                   </td>
                   <td>{Math.floor(Math.random() * 10)}h 30min</td>
