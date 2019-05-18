@@ -2,13 +2,7 @@
 import "./explore.css";
 
 import * as THREE from "three/src/Three";
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  useMemo
-} from "react";
+import React, { useState, useRef, useCallback, useMemo } from "react";
 // A THREE.js React renderer, see: https://github.com/drcmda/react-three-fiber
 import {
   apply as applyThree,

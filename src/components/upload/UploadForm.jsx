@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { getAllCourses, createCourse } from "../../api/coursesHandler";
-import { createCategory, getAllCategories } from "../../api/categoryHandler";
+import { createCourse } from "../../api/coursesHandler";
+import { getAllCategories } from "../../api/categoryHandler";
 import { uploadImage } from "../../services/imageUploadAPI";
 import InputFile from "../InputFile";
 import Dropdown from "../RealDropDown";
@@ -59,7 +59,6 @@ export default class uploadForm extends Component {
     const userToken = getLocalToken();
     try {
       uploadImage(this.state.imgFileList).then(res => {
-        console.log(res);
         this.setState({
           image: res.data.results[0].secure_url
         });
@@ -77,7 +76,6 @@ export default class uploadForm extends Component {
             console.log("We go to the course page");
             // <Redirect to="/coursemanagement" />;
             this.setState({ submitted: true });
-            console.log(res.data);
           })
           .catch(err => console.error(err));
       });

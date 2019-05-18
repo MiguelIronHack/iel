@@ -9,32 +9,31 @@ import { getCourse, rateCourse } from "../api/coursesHandler";
 
 export class Course extends Component {
   state = {
-    user: {}
+    user: {},
+    liked: false,
+    totalLikes: 0
   };
 
   componentDidMount() {
     getCourse(this.props.id)
       .then(({ data }) => {
-        if (data.likes.indexOf(getLocalToken()._id) >= 0)
+        if (data.likes.indexOf(getLocalToken()._id) >= 0) {
           this.setState({ totalLikes: data.likes.length, liked: true });
+        }
       })
       .catch(err => {});
   }
 
   handleLike = course => {
-    getCourse(course.id)
-      .then(({ data }) => {
-        if (data.likes.indexOf(getLocalToken()._id) >= 0) return;
-        rateCourse(course.id, getLocalToken()._id)
-          .then(({ data }) =>
-            this.setState({
-              totalLikes: this.state.totalLikes + 1,
-              liked: true
-            })
-          )
-          .catch(err => {});
-      })
-      .catch(err => console.log(err));
+    if (this.state.liked === false) {
+      this.setState({ liked: true, totalLikes: this.state.totalLikes + 1 });
+
+      rateCourse(course.id, getLocalToken()._id)
+        .then(({ data }) => {
+          this.setState({ liked: true });
+        })
+        .catch(err => {});
+    }
   };
 
   handleClick = courseId => {
@@ -61,6 +60,7 @@ export class Course extends Component {
 
   render() {
     const { image, title, description, date, _id } = this.props;
+
     return (
       <>
         <Card className="course-card shadow" data-id={_id}>
@@ -98,7 +98,7 @@ export class Course extends Component {
               liked={this.state.liked}
               like={this.handleLike}
             />
-            <p>Upvotes: &nbsp; {this.state.totalLikes || 0}</p>
+            <p>Upvotes: &nbsp; {this.state.totalLikes}</p>
           </div>
         </Card>
       </>

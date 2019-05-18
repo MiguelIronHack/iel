@@ -5,7 +5,6 @@ import NextSection from "../components/NextSection";
 import { getRandomCourse } from "../../../api/coursesHandler";
 import { getLocalToken } from "../../../api/ajaxLogin";
 import { ToastContainer, toast } from "react-toastify";
-
 import "react-toastify/dist/ReactToastify.css";
 import EnroleBtn from "../../../components/EnroleBtn";
 export class MostPop extends Component {
@@ -19,7 +18,6 @@ export class MostPop extends Component {
         this.setState({
           courses: res.data
         });
-        console.log("testing state after taking data ", this.state.courses);
       })
       .catch(err => console.error(err.response));
   }
