@@ -111,7 +111,7 @@
 
 .build-course-showcase {
   grid-column: 1 / span 2;
-  padding: 5vh 17vw;
+  padding: 5vh 25vw 5vh 5vw;
 }
 .build-course-showcase > ul > li > .module-content {
   border-radius: 5px;
