@@ -4,6 +4,7 @@ import PostInput from "./PostInput";
 import "./thread.css";
 import { getCourse } from "../../api/coursesHandler";
 import { updateThread } from "../../api/threadHandler";
+import { getLocalToken } from "./../../api/ajaxLogin";
 class Thread extends Component {
   state = {
     postMessage: "",
@@ -15,7 +16,8 @@ class Thread extends Component {
     this.setState({ courseId });
     getCourse(courseId)
       .then(({ data: course }) => {
-        this.props.history.push(`${course.title}`);
+        console.log(course);
+        // this.props.history.push(`${course.title}`);
         this.setState({ thread: course.thread });
       })
       .catch(err => console.log(err));
@@ -26,15 +28,25 @@ class Thread extends Component {
     const value = currentTarget.value;
     this.setState({ [key]: value });
   };
+
   handleKeyDown = ({ key }) => {
     if (key === "Enter") this.sendPost();
-
-    const threadId = this.state.thread.id;
-    console.log(threadId);
-    // updateThread(thi)
   };
+
   sendPost = () => {
-    this.setState({ postMessage: "" });
+    const comments = [...this.state.thread.comments];
+    const comment = {
+      owner: getLocalToken()._id,
+      message: this.state.postMessage
+    };
+    comments.push(comment);
+    const thread = { ...this.state.thread };
+    thread.comments = comments;
+
+    updateThread(thread._id, { comments: thread.comments })
+      .then(res => {})
+      .catch(err => console.log(err));
+    this.setState({ postMessage: "", thread });
   };
   render() {
     return (
