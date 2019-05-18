@@ -16,7 +16,6 @@ class Thread extends Component {
     this.setState({ courseId });
     getCourse(courseId)
       .then(({ data: course }) => {
-        console.log(course);
         // this.props.history.push(`${course.title}`);
         this.setState({ thread: course.thread });
       })
@@ -37,16 +36,18 @@ class Thread extends Component {
     const comments = [...this.state.thread.comments];
     const comment = {
       owner: getLocalToken()._id,
-      message: this.state.postMessage
+      message: this.state.postMessage,
+      date: Date.now()
     };
     comments.push(comment);
     const thread = { ...this.state.thread };
     thread.comments = comments;
 
     updateThread(thread._id, { comments: thread.comments })
-      .then(res => {})
+      .then(({ data }) => {
+        this.setState({ postMessage: "", thread: data });
+      })
       .catch(err => console.log(err));
-    this.setState({ postMessage: "", thread });
   };
   render() {
     return (
