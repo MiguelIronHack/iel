@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "react-moment";
 
 const Post = ({ comments }) => {
   if (!comments.length)
@@ -8,7 +9,7 @@ const Post = ({ comments }) => {
     <div key={i} className="content">
       <h1>{com.message}</h1>
       <span className={"tag is-primary"}>{com.owner.userName}</span>
-      <p>{com.date}</p>
+      <Moment format="YYYY-MM-DD HH:mm">{com.date}</Moment>
     </div>
   ));
 };
