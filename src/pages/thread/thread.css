@@ -1,6 +1,7 @@
 .thread-section {
   margin: 5vh 25vw;
   padding: 5vh 5vw;
+  min-height: min-content;
   height: 90vh;
   display: flex;
   flex-direction: column;

@@ -22,7 +22,8 @@ class List extends Component {
             <li
               id={item._id}
               style={{
-                minWidth: "100%"
+                minWidth: "100%",
+                marginTop: "1vh"
               }}
               onClick={() => (!deletable ? handleClick(item) : void 0)}
               key={index}

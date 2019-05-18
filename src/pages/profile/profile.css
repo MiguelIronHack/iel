@@ -83,6 +83,6 @@
 
 @media screen and (min-width: 800px) {
   .profile-section {
-    margin: 5vh 17vw;
+    margin: 5vh 5vw 5vh 20vw;
   }
 }

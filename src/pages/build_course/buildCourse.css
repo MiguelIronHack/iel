@@ -6,14 +6,14 @@
   margin: 5vh auto;
 }
 .build-course-grid {
-  margin-left: 20vw;
+  margin-left: 18vw;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 60vw 40vw;
 }
 .build-course-grid > div {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 /* add button */
 .build-course-grid > :first-child > span {
@@ -36,14 +36,14 @@
   border-top-left-radius: 5px;
 }
 .module-grid {
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   overflow-x: scroll;
   overflow-y: scroll;
   white-space: nowrap;
-  max-width: 50vw;
+  max-width: 100%;
   min-width: 50vh;
-  max-height: 80vh;
+  max-height: 100%;
   min-height: 60vh;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -92,6 +92,8 @@
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
 }
 .module.active {
   background: hsl(141, 71%, 48%);
@@ -133,7 +135,7 @@
   top: 10;
   overflow-y: scroll;
   min-height: 70vh;
-  max-height: 75vh;
+  max-height: 100vh;
   width: 50%;
 }
 .lesson-grid > .dropdown > .dropdown-trigger {
@@ -169,7 +171,7 @@
 @media screen and (min-width: 1100px) {
   .module-grid {
     min-width: 45vw;
-    max-width: 45vw;
+    max-width: 100%;
   }
   .lesson-grid {
     right: 12vw;

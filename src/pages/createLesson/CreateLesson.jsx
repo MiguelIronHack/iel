@@ -95,7 +95,7 @@ class TextEditor extends Component {
           firstNavItem="My Courses"
           firstNavItemIcon={faSignInAlt}
           firstNavItemLink="/profile"
-          secondNavItem="Create Course"
+          secondNavItem="Build Course"
           secondNavItemIcon={faPlus}
           secondNavItemLink="/build-course"
           thirdNavItem="Create Lessons"
