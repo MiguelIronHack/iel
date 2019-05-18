@@ -65,7 +65,7 @@ export default class explore extends Component {
                 </div>
               ) : (
                 filteredCourses.map((course, index) => (
-                  <Columns.Column size={4} key={index}>
+                  <Columns.Column key={index}>
                     <CourseCard
                       key={index}
                       id={course._id}
@@ -86,7 +86,7 @@ export default class explore extends Component {
           </h1>
           <Columns>
             {courses.map((course, index) => (
-              <Columns.Column size={4} key={index}>
+              <Columns.Column key={index}>
                 <CourseCard
                   className="course-link"
                   key={index}
