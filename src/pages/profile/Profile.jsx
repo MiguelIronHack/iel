@@ -50,6 +50,7 @@ export class Profile extends Component {
 
   render() {
     if (!window.localStorage.userCredential) this.props.history.push("/");
+
     return (
       <>
         <SidePanel
@@ -77,7 +78,7 @@ export class Profile extends Component {
                   <td className="column">
                     <Card className="has-background-grey-dark has-text-white-ter">
                       <Card.Header data-id={course._id}>
-                        <Link to={course._id}>
+                        <Link to={`/public/user/${this.state.teacher}`}>
                           <Card.Header.Title className="has-text-white-ter">
                             {this.state.teacher}
                           </Card.Header.Title>
