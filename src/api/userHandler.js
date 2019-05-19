@@ -23,6 +23,8 @@ export const createUser = infos => axios.post(`${ApiUrl}/auth/create`, infos);
 
 export const getUser = id => axios.get(`${ApiUrl}/user/${id}`);
 
+export const getUserPublic = id => axios.get(ApiUrl + "/user/public/" + id);
+
 export const getAllUsers = () => axios.get(`${ApiUrl}/user`);
 
 export const deleteUser = id => axios.delete(`${ApiUrl}/user/${id}`);
