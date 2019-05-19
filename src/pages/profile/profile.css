@@ -75,6 +75,9 @@
   border-radius: 5px;
   margin: 3px 1px;
 }
+.chart {
+  margin: 1rem;
+}
 @media screen and (max-width: 1100px) {
   .profile-section {
     margin: 15vh 5vw 5vh;

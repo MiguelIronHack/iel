@@ -75,6 +75,7 @@ export class Profile extends Component {
 
         <section className="profile-section">
           <Heading>Enrolled Courses</Heading>
+          <Chart />
           <table className="table profile-table columns">
             <tbody>
               {this.state.courses.map((course, i) => (
@@ -130,7 +131,6 @@ export class Profile extends Component {
               ))}
             </tbody>
           </table>
-          <Chart />
         </section>
       </>
     );

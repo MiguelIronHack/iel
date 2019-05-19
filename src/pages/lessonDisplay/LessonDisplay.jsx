@@ -44,8 +44,8 @@ export default class LessonDisplay extends React.Component {
 
   render() {
     console.log(this.props);
-    const { currentLesson, lessons, currentPage } = this.state;
-    console.log(currentPage);
+    const { lessons, currentPage } = this.state;
+
     if (!lessons.length) return <p className="title">No lessons to display</p>;
     return (
       <React.Fragment>
@@ -57,6 +57,7 @@ export default class LessonDisplay extends React.Component {
         />
         <section className="lesson-display-section">
           <Heading>{lessons[currentPage].title}</Heading>
+
           <article className="lesson box column is-three-quarters">
             <p className="lesson-description">
               {lessons[currentPage].description}
