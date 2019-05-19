@@ -3,13 +3,9 @@ import React, { Component } from "react";
 class List extends Component {
   state = {};
 
-  raiseSelectedModule = mod => {
-    this.props.handleModule(mod);
-  };
-
   render() {
     const { data, handleClick, deletable, mod } = this.props;
-    if (!data.length)
+    if (!data)
       return (
         <div className="module-content">
           <p>Empty</p>
