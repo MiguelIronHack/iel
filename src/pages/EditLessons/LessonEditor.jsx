@@ -74,7 +74,6 @@ class LessonEditor extends Component {
 
   render() {
     const { selectedTag, tags, title, description } = this.state;
-    console.log(this.state.title, this.state.description);
     return (
       <>
         <div className="form-submit-lesson">

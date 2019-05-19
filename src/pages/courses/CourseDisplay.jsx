@@ -36,7 +36,12 @@ export default class Courses extends Component {
       <>
         <aside className="panel course-panel column shadow">
           <p className="panel-heading" />
-          <Link to={`/thread/${course._id}`}>
+          <Link
+            to={{
+              pathname: `/thread/${course._id}`,
+              state: { courseId: course._id }
+            }}
+          >
             <label className="panel-block has-background-dark has-text-white aside-panel-text">
               <div className="aside-panel-text">View Comments</div>
               <span className="panel-icon aside-panel-icon">
