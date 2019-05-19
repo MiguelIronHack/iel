@@ -1,4 +1,5 @@
 .login-register-section {
+  min-height: 100vh;
   padding: 5vh 25vw;
   color: hsl(0, 0%, 96%);
 }
