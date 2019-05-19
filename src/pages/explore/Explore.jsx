@@ -86,7 +86,7 @@ export default class explore extends Component {
           </h1>
           <Columns>
             {courses.map((course, index) => (
-              <Columns.Column key={index}>
+              <Columns.Column size={4} key={index}>
                 <CourseCard
                   className="course-link"
                   key={index}
