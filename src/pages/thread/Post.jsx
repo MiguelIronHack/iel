@@ -4,7 +4,6 @@ import Moment from "react-moment";
 const Post = ({ comments }) => {
   if (!comments.length)
     return <h1 className="title">No comments yet, be the first one ! </h1>;
-  console.log(comments);
 
   return comments.map((com, i) => (
     <div key={i} className="content">

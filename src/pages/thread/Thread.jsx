@@ -17,7 +17,7 @@ class Thread extends Component {
     getCourse(courseId)
       .then(({ data: course }) => {
         // this.props.history.push(`${course.title}`);
-        this.setState({ thread: course.thread });
+        this.setState({ thread: course.thread, course });
       })
       .catch(err => console.log(err));
   }
@@ -33,6 +33,7 @@ class Thread extends Component {
   };
 
   sendPost = () => {
+    if (!this.state.postMessage) return null;
     const comments = [...this.state.thread.comments];
     const comment = {
       owner: getLocalToken()._id,
@@ -50,9 +51,13 @@ class Thread extends Component {
       .catch(err => console.log(err));
   };
   render() {
+    const { course } = this.state;
+    if (!course) return null;
     return (
       <section className="thread-section">
-        <h1 className="title">Threads</h1>
+        <h1 className="title">
+          {`Course comments for: ${course.title}` || "Thread"}
+        </h1>
         <div className="post-message column is-5">
           <Post comments={this.state.thread.comments || []} />
         </div>

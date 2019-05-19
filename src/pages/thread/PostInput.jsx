@@ -13,7 +13,10 @@ const PostInput = ({ value, name, handleKeyDown, handleChange }) => {
         placeholder="Ask any questions related to the course here !"
       />
       <span className="icon is-small is-right">
-        <i className="fas fa-paper-plane" />
+        <i
+          style={!value ? { color: "grey" } : { color: "dodgerblue" }}
+          className="fas fa-paper-plane"
+        />
       </span>
     </div>
   );
