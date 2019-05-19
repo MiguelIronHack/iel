@@ -6,6 +6,10 @@ import { uploadImage } from "../../services/imageUploadAPI";
 import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
 import handleSpecialCharacters from "../../components/utils/handleSpecialCharacters";
 
+// chart
+import Chart from "./components/TagChart";
+//
+
 class UserSettings extends Component {
   state = {
     isAuth: false,
@@ -82,6 +86,7 @@ class UserSettings extends Component {
 
   render() {
     const { isEditing } = this.state;
+
     return (
       <section className="profile-settings-section">
         <div className="container columns is-12 shadow">
@@ -103,6 +108,7 @@ class UserSettings extends Component {
             </div>
           ) : null}
         </div>
+        <Chart />
       </section>
     );
   }
