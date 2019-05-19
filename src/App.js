@@ -30,7 +30,7 @@ import Explore from "./pages/explore/Explore";
 import CategoryCourses from "./pages/explore/CategoryCourses";
 import Thread from "./pages/thread/Thread";
 import EditLesson from "./pages/EditLessons/EditLesson";
-
+import PublicProfile from "./pages/PublicProfile/PublicProfile";
 class App extends Component {
   render() {
     return (
@@ -59,6 +59,7 @@ class App extends Component {
           <Route path="/edit-categories" component={EditCategories} />
           <Route path="/build-course" component={BuildCourse} />
           <Route path="/create-users" component={CreateUsers} />
+          <Route path="/user/profile/:id" component={PublicProfile} />
           <Route path="/explore" component={Explore} />
           <Route path="/explore-by-category/:id" component={CategoryCourses} />
         </Switch>
