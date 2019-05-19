@@ -49,14 +49,3 @@ class List extends Component {
 }
 
 export default List;
-
-{
-  /* {this.props.type === "module" ? (
-                  <button
-                    onClick={e => handleRemove(item, mod)}
-                    className="delete"
-                  >
-                    d
-                  </button>
-                ) : null} */
-}

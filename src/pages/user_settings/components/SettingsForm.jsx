@@ -1,6 +1,6 @@
 import React from "react";
-
 import EditInput from "./EditInput";
+import InputFile from "./../../../components/InputFile";
 
 const SettingsForm = ({ handleSubmit, user, handleChange, errors }) => {
   if (!user) return null;
@@ -41,6 +41,17 @@ const SettingsForm = ({ handleSubmit, user, handleChange, errors }) => {
           error={errors.lastName}
         />
 
+        <EditInput
+          text={user.description}
+          inputPlaceHolder={user.description}
+          name="description"
+          label="Description"
+          id="description"
+          error={errors.description}
+        />
+
+        <InputFile />
+
         <button
           className="button"
           disabled={Object.keys(errors).length ? true : false}
@@ -53,80 +64,3 @@ const SettingsForm = ({ handleSubmit, user, handleChange, errors }) => {
 };
 
 export default SettingsForm;
-
-// import EditInput from "./EditInput";
-// import { uploadImage } from "../../../services/imageUploadAPI";
-
-// export default class SettingsForm extends Component {
-//   state = {};
-
-//   raiseSubmit = e => {
-//     e.preventDefault();
-//     this.props.handleSubmit({
-//       firstName: this.state.firstName,
-//       lastName: this.state.lastName,
-//       userName: this.state.userName,
-//       avatar: this.state.avatar
-//     });
-//   };
-
-//   handleImage = e => {
-//     uploadImage(e)
-//       .then(res => {
-//         console.log(res.data.results[0].secure_url);
-//       })
-//       .catch(err => console.log(err));
-//   };
-
-//   handleChange = e => {
-//     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
-//     console.log(this.state);
-//   };
-//   prevent = e => {
-//     e.preventDefault();
-//   };
-
-//   render() {
-//     const { userName, lastName, avatar, firstName } = this.state;
-//     return (
-//       <React.Fragment>
-//         <form id={userName} onSubmit={this.raiseSubmit} className="column is-4">
-//           <EditInput
-//             props={this.props}
-//             inputPlaceHolder={userName}
-//             onChange={this.handleChange}
-//             name="userName"
-//             label="User Name"
-//           />
-//           <EditInput
-//             inputPlaceHolder={firstName}
-//             onChange={this.handleChange}
-//             name="firstName"
-//             label="First Name"
-//             id="firstName"
-//           />
-//           <EditInput
-//             inputPlaceHolder={lastName}
-//             name="lastName"
-//             onChange={this.handleChange}
-//             label="Last Name"
-//           />
-//           <EditInput
-//             inputPlaceHolder={avatar}
-//             name="avatar"
-//             onChange={this.handleChange}
-//             label="Image url"
-//           />
-//           <button className="button">Save Changes</button>
-//         </form>
-//         <input
-//           type="file"
-//           id="avatar2"
-//           name="avatar2"
-//           accept="image/png, image/jpeg"
-//           onChange={this.handleImage}
-//         />
-//       </React.Fragment>
-//     );
-//   }
-// }

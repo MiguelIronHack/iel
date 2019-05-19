@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Heading } from "react-bulma-components";
 import "./loginRegister.css";
 import { createUser } from "../../api/userHandler";
-import Dropdown from "../../components/RealDropDown";
 
 export default class CreateUser extends Component {
   state = {

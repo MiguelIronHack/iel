@@ -1,7 +1,7 @@
 import React from "react";
 import "../settings.css";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, handleClick, isEditing }) => {
   if (!user) return null;
   return (
     <div className="card">
@@ -21,7 +21,14 @@ const UserCard = ({ user }) => {
             <p className="subtitle is-6">
               username@&nbsp;{user.userName ? user.userName : "No Username yet"}
             </p>
-            <p className="subtitle is-6">TODO DESCRIPTION HERE</p>
+            <p className="subtitle is-6">
+              {user.description || "No description provided"}
+            </p>
+            {!isEditing ? (
+              <button className="button" onClick={handleClick}>
+                Edit settings
+              </button>
+            ) : null}
           </div>
         </div>
       </div>

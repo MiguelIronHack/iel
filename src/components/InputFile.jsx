@@ -1,8 +1,8 @@
 import React from "react";
 
-const InputFile = props => {
+const InputFile = ({ name, handleImage }) => {
   const raiseImage = e => {
-    props.handleImage(e.target.files);
+    handleImage(e.target.files);
   };
 
   return (
@@ -18,7 +18,7 @@ const InputFile = props => {
           <span className="file-icon">
             <i className="fas fa-upload" />
           </span>
-          <span className="file-label">{props.name}</span>
+          <span className="file-label">{name}</span>
         </span>
       </label>
     </div>

@@ -9,7 +9,8 @@ import handleSpecialCharacters from "../../components/utils/handleSpecialCharact
 class UserSettings extends Component {
   state = {
     isAuth: false,
-    errors: {}
+    errors: {},
+    isEditing: false
   };
 
   validateProperty = ({ name, value }) => {
@@ -33,11 +34,12 @@ class UserSettings extends Component {
     e.preventDefault();
     const { userName, firstName, avatar, lastName, _id } = this.state.user;
     editUser(_id, { userName, firstName, avatar, lastName })
-      .then(res => {
-        console.log(res);
+      .then(({ data }) => {
+        console.log(data);
       })
       .catch(err => console.log(err));
     setLocalToken(this.state.user);
+    this.setState({ isEditing: false });
   };
 
   componentDidMount() {
@@ -45,7 +47,9 @@ class UserSettings extends Component {
     this.setState({ user });
   }
 
-  handleClick = e => {};
+  handleClick = e => {
+    this.setState({ isEditing: !this.state.isEditing });
+  };
 
   handleChange = e => {
     const errors = { ...this.state.errors };
@@ -77,20 +81,27 @@ class UserSettings extends Component {
   };
 
   render() {
+    const { isEditing } = this.state;
     return (
       <section className="profile-settings-section">
         <div className="container columns is-12 shadow">
           <div className="column is-5 profile-user-info">
-            <UserCard user={this.state.user} handleImage={this.handleImage} />
-          </div>
-          <div className="column is-5">
-            <SettingsForm
-              errors={this.state.errors}
+            <UserCard
               user={this.state.user}
-              handleSubmit={this.handleSubmit}
-              handleChange={this.handleChange}
+              isEditing={isEditing}
+              handleClick={this.handleClick}
             />
           </div>
+          {isEditing ? (
+            <div className="column is-8">
+              <SettingsForm
+                errors={this.state.errors}
+                user={this.state.user}
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+              />
+            </div>
+          ) : null}
         </div>
       </section>
     );

@@ -37,7 +37,7 @@ class BuildCourse extends Component {
       getLessons(),
       getAllTags()
     ]).then(results => {
-      const generalTag = { name: "All" };
+      const generalTag = { name: "All", _id: "" };
       const [courses, lessons, tags] = results;
       this.setState({
         courses: courses.data,
@@ -138,9 +138,9 @@ class BuildCourse extends Component {
       tags
     } = this.state;
     if (!courses.length) return <h1>No courses to display</h1>;
-    console.log(selectedTag, selectedTag._id);
+
     const filteredLessons =
-      selectedTag && !typeof selectedTag._id === "undefined"
+      selectedTag && selectedTag._id
         ? lessons.filter(lesson => lesson.tags._id === selectedTag._id)
         : lessons;
 
