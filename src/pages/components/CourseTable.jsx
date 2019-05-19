@@ -42,8 +42,8 @@ export default class CourseTable extends Component {
             </tbody>
           </table>
 
-          <div className="course-table table is-hoverable is-fullwidth">
-            <article className="message has-background-white">
+          <div className="course-table table is-hoverable is-fullwidth course-table-message">
+            <article className="message">
               {mod.lessons.map((l, i) => (
                 <div key={i} className="message-body">
                   {l.description}

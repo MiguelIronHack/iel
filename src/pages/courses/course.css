@@ -22,10 +22,44 @@
 .course-article {
   padding: 5vh 5vw;
 }
+.course-box {
+  background: hsl(0, 0%, 11%);
+}
+.course-box .title {
+  color: hsl(0, 0%, 96%);
+}
+
 .course-table {
   padding: 0 5vw;
   margin: 0 auto;
   min-width: min-content;
+  background: hsl(0, 0%, 11%);
+  color: hsl(0, 0%, 96%);
+}
+.course-table th {
+  color: hsl(0, 0%, 90%) !important;
+}
+.course-table tr:hover {
+  background: hsl(0, 0%, 21%) !important;
+}
+.course-table .message-body {
+  color: hsl(0, 0%, 90%);
+}
+.course-table .message {
+  margin: auto !important;
+}
+.course-table .message {
+  background: hsl(0, 0%, 21%) !important;
+}
+.course-table .message > *:hover {
+  background: hsl(0, 0%, 31%);
+}
+.course-table a {
+  color: hsl(0, 0%, 96%);
+  font-size: 1.2rem;
+}
+.course-table-message {
+  margin: auto;
 }
 .resume-course-btn {
   margin-top: 5vh;
@@ -48,6 +82,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .panel-footer {
   border-top-left-radius: 0;
   border-top-right-radius: 0;

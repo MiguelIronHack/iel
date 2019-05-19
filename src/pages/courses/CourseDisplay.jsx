@@ -68,7 +68,7 @@ export default class Courses extends Component {
             <Heading size={2}>{this.state.course.title}</Heading>
             <Progress max={100} value={25} color="success" id="progress" />
             {courseModules.map((mod, i) => (
-              <div key={i} className="box course-box">
+              <div key={i} className="box course-box shadow">
                 <CourseTable mod={mod} index={i} />
               </div>
             ))}
