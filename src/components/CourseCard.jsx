@@ -80,7 +80,7 @@ export class Course extends Component {
                 </Media.Item>
               </Media>
               <Content>
-                <Moment className="nav-link" format="DD/MM/YYYY">
+                <Moment className="nav-link" calendar>
                   {date}
                 </Moment>
               </Content>
