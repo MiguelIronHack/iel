@@ -6,10 +6,6 @@ import { uploadImage } from "../../services/imageUploadAPI";
 import { getLocalToken, setLocalToken } from "./../../api/ajaxLogin";
 import handleSpecialCharacters from "../../components/utils/handleSpecialCharacters";
 
-// chart
-import Chart from "./components/TagChart";
-//
-
 class UserSettings extends Component {
   state = {
     isAuth: false,
@@ -110,7 +106,6 @@ class UserSettings extends Component {
             ) : null}
           </div>
         </section>
-        <Chart />
       </>
     );
   }

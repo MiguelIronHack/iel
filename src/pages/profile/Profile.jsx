@@ -9,6 +9,7 @@ import "./profile.css";
 import { Link } from "react-router-dom";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Chart from "./TagChart";
 
 export class Profile extends Component {
   state = {
@@ -129,6 +130,7 @@ export class Profile extends Component {
               ))}
             </tbody>
           </table>
+          <Chart />
         </section>
       </>
     );
