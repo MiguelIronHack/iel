@@ -4,9 +4,11 @@
   color: hsl(0, 0%, 96%);
 }
 .explore-section > div > .explore-by-cat-header {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.3);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  font-size: 1.2rem;
+  padding: 0.1rem;
 }
 .explore-section > div {
   padding: 5vh 10vw;

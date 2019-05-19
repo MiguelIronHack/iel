@@ -44,7 +44,7 @@ export default class explore extends Component {
       <section id="explore-section" className="explore-section">
         <div>
           <h1 className="explore-by-cat-header ">
-            Explore courses by category
+            Explore courses by clicking on a category
           </h1>
           <div className="explore-section">
             <ul className="categories-menu">
@@ -65,7 +65,7 @@ export default class explore extends Component {
                 </div>
               ) : (
                 filteredCourses.map((course, index) => (
-                  <Columns.Column key={index}>
+                  <Columns.Column size={6} key={index}>
                     <CourseCard
                       key={index}
                       id={course._id}

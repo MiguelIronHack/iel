@@ -88,8 +88,18 @@ input:focus {
   border-radius: 5px;
   min-height: max-content;
 }
+.course-card .media {
+  display: grid;
+  justify-content: center;
+}
+.card-content .content {
+  background: #000;
+  text-align: center;
+}
 .course-img {
   width: 64px;
+  justify-self: center;
+  margin-bottom: 2vh;
 }
 .card-subtitle {
   color: hsl(0, 0%, 96%);
