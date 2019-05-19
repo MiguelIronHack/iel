@@ -1,0 +1,31 @@
+.lesson-list {
+  min-height: 100vh;
+  padding: 5vh 5vw;
+}
+.lesson-list > div > h1,
+.lesson-list > div > p {
+  color: hsl(0, 0%, 96%);
+  font-size: 1.5rem;
+}
+.lesson-list > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.lesson-list > div > h1 {
+  justify-self: flex-start;
+  grid-row: 1 / span 2;
+  align-self: center;
+}
+.lesson-list > div > p {
+  justify-self: flex-end;
+  grid-column: 3/3;
+}
+.lesson-list > div > .dropdown {
+  justify-self: flex-end;
+  grid-column: 3/3;
+}
+.lesson-list .module-content:hover {
+  background: hsl(0, 0%, 9%);
+  color: hsl(0, 0%, 96%);
+  transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}

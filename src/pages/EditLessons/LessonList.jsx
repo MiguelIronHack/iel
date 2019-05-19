@@ -4,6 +4,7 @@ import Dropdown from "../../components/RealDropDown";
 import { getLessons } from "../../api/lessonHandler";
 import { getLocalToken } from "../../api/ajaxLogin";
 import { getAllTags } from "../../api/tagHandler";
+import "./editLesson.css";
 
 class LessonList extends Component {
   state = { lessons: [] };
@@ -33,10 +34,10 @@ class LessonList extends Component {
     const { tags, selectedTag, lessons } = this.state;
 
     return (
-      <>
-        <h1>Select a lesson you want to Edit</h1>
+      <section className="lesson-list">
         <div>
-          <p>Filter your lessons</p>
+          <h1>Select a lesson you want to Edit</h1>
+          <p>Filter by tag</p>
           <Dropdown
             name="tag"
             handleSelect={this.handleSelect}
@@ -45,7 +46,7 @@ class LessonList extends Component {
           />
         </div>
         <List data={lessons} handleClick={this.props.handleClick} />;
-      </>
+      </section>
     );
   }
 }
