@@ -12,9 +12,10 @@ class LessonList extends Component {
   componentDidMount() {
     getAllTags()
       .then(({ data }) => {
+        const generalTag = { name: "All", _id: "" };
         this.setState({
-          tags: data,
-          selectedTag: data[0]
+          tags: [generalTag, ...data],
+          selectedTag: generalTag
         });
       })
       .catch(err => console.log("There was an error with the db", err));
@@ -27,26 +28,32 @@ class LessonList extends Component {
   }
 
   handleSelect = selectedTag => {
-    console.log(selectedTag);
+    this.setState({ selectedTag });
   };
 
   render() {
     const { tags, selectedTag, lessons } = this.state;
+    const filteredLessons =
+      selectedTag && selectedTag._id
+        ? lessons.filter(lesson => lesson.tags._id === selectedTag._id)
+        : lessons;
 
     return (
-      <section className="lesson-list">
-        <div>
-          <h1>Select a lesson you want to Edit</h1>
-          <p>Filter by tag</p>
-          <Dropdown
-            name="tag"
-            handleSelect={this.handleSelect}
-            currentItem={selectedTag}
-            data={tags}
-          />
-        </div>
-        <List data={lessons} handleClick={this.props.handleClick} />;
-      </section>
+      <>
+        <section className="lesson-list">
+          <div>
+            <h1>Select a lesson you want to Edit</h1>
+            <p>Filter by tag</p>
+            <Dropdown
+              name="tag"
+              handleSelect={this.handleSelect}
+              currentItem={selectedTag}
+              data={tags}
+            />
+          </div>
+          <List data={filteredLessons} handleClick={this.props.handleClick} />;
+        </section>
+      </>
     );
   }
 }
