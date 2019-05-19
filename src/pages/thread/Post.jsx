@@ -12,7 +12,7 @@ const Post = ({ comments }) => {
         <img src={com.owner.avatar} className="icon" />
         <div>{com.owner.userName}</div>
         <div className="post-date">
-          <Moment format="YYYY-MM-DD HH:mm">{com.date}</Moment>
+          <Moment fromNow="YYYY-MM-DD HH:mm">{com.date}</Moment>
         </div>
       </div>
 

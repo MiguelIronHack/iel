@@ -165,10 +165,13 @@ class BuildCourse extends Component {
             <div className="build-course-grid">
               {buildingCourse ? (
                 <React.Fragment>
-                  <div>
-                    <span onClick={this.addModule}>
-                      <i className="fas fa-plus fa-2x" />
-                    </span>
+                  <div className="build-course-icon">
+                    <div className="module-title">
+                      <span onClick={this.addModule}>
+                        <i className="fas fa-plus fa-2x" />
+                      </span>
+                      Add a module
+                    </div>
                     <div className="module-grid ">
                       {currentCourse.courseModules.map((mod, i) => (
                         <ModuleList

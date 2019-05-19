@@ -25,9 +25,10 @@ const UserCard = ({ user, handleClick, isEditing }) => {
               {user.description || "No description provided"}
             </p>
             {!isEditing ? (
-              <button className="button" onClick={handleClick}>
+              <div className="button" onClick={handleClick}>
                 Edit settings
-              </button>
+                <i class="fas fa-cog" />
+              </div>
             ) : null}
           </div>
         </div>

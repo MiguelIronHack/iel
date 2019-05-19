@@ -16,14 +16,19 @@
   align-items: flex-start;
 }
 /* add button */
-.build-course-grid > :first-child > span {
-  margin: 1rem;
+.build-course-grid .build-course-icon > .module-title {
+  display: flex;
+  align-items: center;
   color: hsl(0, 0%, 96%);
 }
-.build-course-grid > :first-child > span:hover {
-  transform: rotate(90deg);
+.build-course-grid .build-course-icon > .module-title > span {
+  margin-right: 1rem;
+  color: hsl(0, 0%, 96%);
+}
+.build-course-grid .build-course-icon > .module-title > span:hover {
   color: hsl(141, 71%, 48%);
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: rotate(90deg);
 }
 .build-course-grid > div > .button {
   margin: 2.5vh auto;
@@ -44,7 +49,7 @@
   max-width: 100%;
   min-width: 50vh;
   max-height: 100%;
-  min-height: 60vh;
+  min-height: 80vh;
   border: 1px solid #ccc;
   border-radius: 5px;
   background: hsl(0, 0%, 21%);

@@ -8,6 +8,21 @@
 .profile-card > .media > .media-content > p {
   text-align: center;
 }
+.profile-card > .media > .media-content {
+  display: flex;
+  flex-direction: column;
+}
+.profile-card > .media > .media-content .button {
+  display: flex;
+  justify-content: space-between;
+  background: hsl(0, 0%, 21%);
+  color: hsl(0, 0%, 96%);
+}
+.profile-card > .media > .media-content .button:hover {
+  background: hsl(0, 0%, 9%);
+  color: hsl(48, 100%, 67%);
+  transition: all 0.3s ease-out;
+}
 .profile-user-info {
   margin: auto;
 }

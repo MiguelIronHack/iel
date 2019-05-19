@@ -99,7 +99,7 @@ export default class uploadForm extends Component {
 
   render() {
     if (this.state.submitted === true) {
-      return <Redirect to="/coursemanagement" />;
+      return <Redirect to="/explore" />;
     }
     const { onSubmit, onChange } = this;
     const {
