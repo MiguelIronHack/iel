@@ -40,13 +40,13 @@ export class TagChart extends Component {
             title: {
               display: true,
               text: "Most famous tags",
-              fontColor: "#fff"
+              fontColor: "hsl(0, 0%, 96%)"
             },
             legend: {
               display: true,
               position: "right",
               labels: {
-                fontColor: "#fff"
+                fontColor: "hsl(0, 0%, 96%)"
               }
             }
           }}
