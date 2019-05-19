@@ -4,12 +4,27 @@ import { getAllCategories } from "../../../api/categoryHandler";
 
 export class TagChart extends Component {
   state = {
-    chartData: {}
+    chartData: {
+      labels: ["Coding", "Nature", "Music"],
+      datasets: [
+        {
+          label: "People enrolled",
+          data: [3, 2, 1, 0],
+
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.6)",
+            "rgba(54, 162, 235, 0.6)",
+            "rgba(255, 206, 86, 0.6)"
+            // "rgba(75, 192, 192, 0.6)"
+          ]
+        }
+      ]
+    }
   };
 
   componentDidMount() {
     getAllCategories()
-      .then(res => res.data.map(c => this.setState({ chartData: c.tags })))
+      .then(res => res.data.map(c => console.log(c.name)))
       .catch({});
   }
   render() {
@@ -17,18 +32,22 @@ export class TagChart extends Component {
 
     return (
       <div className="chart">
-        <Bar
+        <Pie
           data={this.state.chartData}
-          width={100}
-          height={50}
+          width={500}
+          height={200}
           options={{
             title: {
               display: true,
-              text: "Largest Cities Europe"
+              text: "Most famous tags",
+              fontColor: "#fff"
             },
             legend: {
               display: true,
-              position: "right"
+              position: "right",
+              labels: {
+                fontColor: "#fff"
+              }
             }
           }}
         />

@@ -88,28 +88,30 @@ class UserSettings extends Component {
     const { isEditing } = this.state;
 
     return (
-      <section className="profile-settings-section">
-        <div className="container columns is-12 shadow">
-          <div className="column is-5 profile-user-info">
-            <UserCard
-              user={this.state.user}
-              isEditing={isEditing}
-              handleClick={this.handleClick}
-            />
-          </div>
-          {isEditing ? (
-            <div className="column is-8">
-              <SettingsForm
-                errors={this.state.errors}
+      <>
+        <section className="profile-settings-section">
+          <div className="container columns is-12 shadow">
+            <div className="column is-5 profile-user-info">
+              <UserCard
                 user={this.state.user}
-                handleSubmit={this.handleSubmit}
-                handleChange={this.handleChange}
+                isEditing={isEditing}
+                handleClick={this.handleClick}
               />
             </div>
-          ) : null}
-        </div>
+            {isEditing ? (
+              <div className="column is-8">
+                <SettingsForm
+                  errors={this.state.errors}
+                  user={this.state.user}
+                  handleSubmit={this.handleSubmit}
+                  handleChange={this.handleChange}
+                />
+              </div>
+            ) : null}
+          </div>
+        </section>
         <Chart />
-      </section>
+      </>
     );
   }
 }
