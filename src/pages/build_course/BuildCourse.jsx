@@ -114,7 +114,6 @@ class BuildCourse extends Component {
     });
 
   handleRemove = (item, mod) => {
-    // const index = mod.lessons.indexOf(item);
     const arr = _.pull(mod.lessons, item);
     const newLessons = arr.map(less => _.pick(less, "_id"));
     updateModule(mod._id, { lessons: newLessons })
@@ -213,24 +212,11 @@ class BuildCourse extends Component {
               )}
             </div>
           </div>
-          {/* <button onClick={this.watchState} className="button">
-            TEST
-          </button> */}
           <ToastContainer />
         </section>
       </React.Fragment>
     );
   }
-  watchState = e => {
-    const newModules = this.state.currentCourse.courseModules.map(mod =>
-      _.pick(mod, "_id")
-    );
-    updateCourse(this.state.currentCourse._id, {
-      courseModules: newModules
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
 }
 
 export default BuildCourse;

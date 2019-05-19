@@ -25,7 +25,6 @@ export default class EnroleBtn extends Component {
           enrolledCourses.push(courseId);
           editUser(user._id, { enrolledCourses })
             .then(res => {
-              console.log(res);
               window.location = "/profile";
             })
             .catch(err => console.error(err));

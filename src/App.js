@@ -29,6 +29,7 @@ import CreateLesson from "./pages/createLesson/CreateLesson";
 import Explore from "./pages/explore/Explore";
 import CategoryCourses from "./pages/explore/CategoryCourses";
 import Thread from "./pages/thread/Thread";
+import EditLesson from "./pages/EditLessons/EditLesson";
 
 class App extends Component {
   render() {
@@ -44,6 +45,7 @@ class App extends Component {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/about" component={About} />
           <Route path="/create/lesson" component={CreateLesson} />
+          <Route path="/edit-lesson" component={EditLesson} />
           <Route path="/course-info/:id" component={CourseInfo} />
           <Route path="/course-content" component={CourseContent} />
           {/* <Route path="/lesson" component={LessonDisplay} /> */}

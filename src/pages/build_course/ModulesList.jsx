@@ -10,7 +10,6 @@ const ModuleList = ({
   handleModule
 }) => {
   if (!data) return <h1>Nothing to display</h1>;
-  console.log(selectedMod, data);
   return (
     <>
       <div
