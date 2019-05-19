@@ -2,12 +2,13 @@
   margin-top: 1vh;
   height: max-content;
   padding: 4vh 4vw;
+  min-height: 100vh;
 }
 
 .lesson-nav {
   display: flex;
   z-index: 1;
-  position: fixed;
+  position: sticky;
   width: 100%;
   top: 0;
   height: 3rem;
