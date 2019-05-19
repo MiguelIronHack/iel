@@ -4,6 +4,7 @@
   min-height: 100vh;
   align-items: center;
   color: hsl(0, 0%, 96%);
+  padding: 5vh 5vw;
 }
 .thread-section .post-message {
   width: 80%;
