@@ -27,7 +27,7 @@ export default class Register extends Component {
       password2: this.state.password2
     })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         const user = _.pick(
           res.data,
           "avatar",
@@ -46,7 +46,7 @@ export default class Register extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state.firstName);
+    // console.log(this.state.firstName);
   };
 
   render() {

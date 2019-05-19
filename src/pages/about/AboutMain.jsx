@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AboutPage, { About } from "./About";
+import AboutPage from "./About";
 
 export class AboutMain extends Component {
   render() {

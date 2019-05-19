@@ -4,7 +4,11 @@ const Upvote = ({ like, course, liked }) => {
   const raiseLike = course => {
     like(course);
   };
+<<<<<<< HEAD
 
+=======
+  // console.log("there");
+>>>>>>> ce2764bcbf6e3aabc21fd69f9296ab871e50095b
   return (
     <span
       style={

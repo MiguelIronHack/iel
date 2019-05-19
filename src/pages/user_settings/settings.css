@@ -21,7 +21,7 @@
 .profile-card > .media > .media-content .button:hover {
   background: hsl(0, 0%, 9%);
   color: hsl(48, 100%, 67%);
-  transition: all 0.3s ease-out;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .profile-user-info {
   margin: auto;
@@ -30,7 +30,7 @@
   border-radius: 5px;
   border: 15px solid hsl(0, 0%, 9%);
   padding: 1rem;
-  background: linear-gradient(hsl(0, 0%, 70%), hsl(0, 0%, 96%));
+  background: linear-gradient(hsl(0, 0%, 96%), hsl(0, 0%, 80%));
 }
 .profile-settings-form .label {
   color: hsl(0, 0%, 96%);
@@ -38,9 +38,9 @@
 .profile-settings-form {
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease-out;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .profile-settings-form .button:hover {
   background: hsl(141, 100%, 82%);
-  transition: all 0.3s ease-out;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }

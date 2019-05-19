@@ -7,6 +7,7 @@
 
 .lesson-nav {
   display: flex;
+  align-items: center;
   z-index: 1;
   position: sticky;
   width: 100%;
@@ -19,7 +20,7 @@
 .lesson-nav-title {
   align-self: center;
   margin: auto;
-  margin-top: 5vh;
+  margin-top: 3vh;
   color: hsl(0, 0%, 96%);
 }
 

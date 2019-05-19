@@ -8,7 +8,7 @@ const Post = ({ comments }) => {
   return comments.map((com, i) => (
     <div key={i} className="content">
       <div className="post-user-and-date">
-        <img src={com.owner.avatar} className="icon" />
+        <img src={com.owner.avatar} className="icon" alt={com.owner.avatar} />
         <div>{com.owner.userName}</div>
         <div className="post-date">
           <Moment fromNow="YYYY-MM-DD HH:mm">{com.date}</Moment>

@@ -1,7 +1,6 @@
 import React from "react";
 import { convertFromRaw, EditorState } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
-import "./lesson.css";
 const Lesson = ({ lesson }) => {
   if (typeof lesson === "undefined") return null;
 

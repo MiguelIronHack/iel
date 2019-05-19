@@ -25,7 +25,7 @@ export default class NavMain extends React.Component {
 
   render() {
     return (
-      <Navbar className="navbar is-dark" active={this.state.selected}>
+      <Navbar id="home" className="navbar is-dark" active={this.state.selected}>
         <Navbar.Brand>
           <NavLink to="/">
             <Navbar.Item renderAs="div">

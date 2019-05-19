@@ -8,7 +8,7 @@ export class IndexFooter extends Component {
       <Footer className="footer">
         <Container>
           <div className="footer-content">
-            <a href="#">
+            <a href="#home">
               <img
                 className="footer-img"
                 src="https://ia601407.us.archive.org/24/items/cupidstrick_execs_Logo/logo.png"
