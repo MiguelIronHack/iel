@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { getUserPublic } from "../../api/userHandler";
-
-import getUserInfo from "./../../components/utils/getUserInfo";
 import UserPublicCard from "./../../components/UserPublicCard";
 import TagChart from "../profile/TagChart";
 class PublicProfile extends Component {
@@ -24,7 +22,14 @@ class PublicProfile extends Component {
               <UserPublicCard user={this.state.user} />
             </div>
           </div>
-          <div className="column is-7" />
+          <div className="column is-7">
+            <ul className="categories-menu">
+              <li>Created Courses</li>
+              <li>Finished Courses</li>
+              <li>Attended Courses</li>
+              <li>Overview</li>
+            </ul>
+          </div>
         </div>
       </section>
     );
