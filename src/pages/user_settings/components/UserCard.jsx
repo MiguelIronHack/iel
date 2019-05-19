@@ -27,7 +27,7 @@ const UserCard = ({ user, handleClick, isEditing }) => {
             {!isEditing ? (
               <div className="button" onClick={handleClick}>
                 Edit settings
-                <i class="fas fa-cog" />
+                <i className="fas fa-cog" />
               </div>
             ) : null}
           </div>
