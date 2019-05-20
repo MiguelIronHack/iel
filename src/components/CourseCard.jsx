@@ -85,7 +85,10 @@ export class CourseCard extends Component {
                 </Media.Item>
               </Media>
               <Content>
-                <Link to={"/user/profile/" + course.teacher[0]._id}>
+                <Link
+                  className="user-profile"
+                  to={"/user/profile/" + course.teacher[0]._id}
+                >
                   {course.teacher[0].firstName}&nbsp;
                   {course.teacher[0].lastName}&nbsp;
                 </Link>
