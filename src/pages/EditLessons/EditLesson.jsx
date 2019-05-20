@@ -8,14 +8,13 @@ class EditLesson extends Component {
     isEditing: false,
     selectedLesson: {},
     lessons: [],
-    count: 0,
     courseModules: []
   };
 
   componentDidMount() {
     window.onpopstate = e => {
-      this.setState({ isEditing: false, count: this.state.count + 1 });
-      this.props.history.push("/edit-lesson");
+      this.setState({ isEditing: false });
+      //   this.props.history.push("/edit-lesson");
     };
   }
 
