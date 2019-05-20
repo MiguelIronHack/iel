@@ -161,6 +161,9 @@ class BuildCourse extends Component {
           fifthNavItem="Edit Lessons"
           fifthNavItemIcon={faPlus}
           fifthNavItemLink="/edit-lesson"
+          sixthNavItem="Manage Courses"
+          sixthNavItemIcon={faPlus}
+          sixthNavItemLink="/coursemanagement"
           courseModules={this.state.courseModules}
         />
         <section className="build-course-section">

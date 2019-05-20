@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 import DashboardNav from "./DashboardNav";
-import { getAllCourses, deleteCourse } from "../../../api/coursesHandler";
+import {
+  getAllCourses,
+  deleteCourse,
+  getUserCourses
+} from "../../../api/coursesHandler";
 import "./dashboardComponents.css";
 import Btn from "../../../components/Btn";
 import { Link } from "react-router-dom";
-
+import { getLocalToken } from "./../../../api/ajaxLogin";
+import SidePanel from "../../components/CourseSidePanel";
+import { faPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 export default class UsersList extends Component {
   state = { courses: [] };
 
   componentDidMount() {
     // this is the display board function
-    getAllCourses()
+
+    getUserCourses(getLocalToken()._id)
       .then(res => {
         this.setState({ courses: res.data });
       })
@@ -28,10 +35,30 @@ export default class UsersList extends Component {
 
   render() {
     const { courses } = this.state;
-    console.log(courses);
+
     return (
       <section className="course-management-section">
-        <DashboardNav />
+        <SidePanel
+          firstNavItem="My Courses"
+          firstNavItemIcon={faSignInAlt}
+          firstNavItemLink="/profile"
+          secondNavItem="Build Course"
+          secondNavItemIcon={faPlus}
+          secondNavItemLink="/build-course"
+          thirdNavItem="Create Lessons"
+          thirdNavItemIcon={faPlus}
+          thirdNavItemLink="/create/lesson"
+          fourthNavItem="Create Course"
+          fourthNavItemIcon={faPlus}
+          fourthNavItemLink="/create-course"
+          fifthNavItem="Edit Lessons"
+          fifthNavItemIcon={faPlus}
+          fifthNavItemLink="/edit-lesson"
+          sixthNavItem="Manage Courses"
+          sixthNavItemIcon={faPlus}
+          sixthNavItemLink="/coursemanagement"
+          courseModules={this.state.courseModules || []}
+        />
         <table className="table shadow">
           <thead className="thead">
             <tr className="tr">

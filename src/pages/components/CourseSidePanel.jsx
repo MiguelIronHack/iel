@@ -63,6 +63,14 @@ export default class CourseSidePanel extends Component {
             </span>
           </label>
         </Link>
+        <Link to={this.props.sixthNavItemLink}>
+          <label className="panel-block has-background-dark has-text-white aside-panel-text">
+            <div className="aside-panel-text">{this.props.sixthNavItem}</div>
+            <span className="panel-icon aside-panel-icon">
+              <FontAwesomeIcon icon={this.props.sixthNavItemIcon} />
+            </span>
+          </label>
+        </Link>
         <p className="panel-heading panel-footer" />
       </aside>
     );

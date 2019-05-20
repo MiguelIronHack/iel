@@ -94,7 +94,7 @@ export default class CourseDetails extends Component {
           video: video
         }
       })
-        .then(res => console.log(res))
+        .then(res => this.props.history.push("/coursemanagement"))
         .catch(err => console.error(err));
     } else {
       uploadImage(this.state.imgFileList)
@@ -130,7 +130,6 @@ export default class CourseDetails extends Component {
     if (!course) return null;
     return (
       <section className="edit-course-section has-background-dark">
-        <DashboardNav rowId={course._id} />
         <form
           id={course._id}
           onSubmit={this.submitEdition}
@@ -148,14 +147,6 @@ export default class CourseDetails extends Component {
             handleChange={this.handleChange}
             name="description"
             text={course.description}
-            inputPlaceHolder="Edit field"
-          />
-
-          <Input
-            label="Video:"
-            handleChange={this.handleChange}
-            name="video"
-            text={video}
             inputPlaceHolder="Edit field"
           />
 

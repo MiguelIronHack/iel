@@ -120,6 +120,9 @@ export default class uploadForm extends Component {
           fifthNavItem="Edit Lessons"
           fifthNavItemIcon={faPlus}
           fifthNavItemLink="/edit-lesson"
+          sixthNavItem="Manage Courses"
+          sixthNavItemIcon={faPlus}
+          sixthNavItemLink="/coursemanagement"
           courseModules={this.state.courseModules}
         />
         <section className="login-register-section">
@@ -143,7 +146,6 @@ export default class uploadForm extends Component {
               name="description"
               type="text"
             />
-            <label htmlFor="video">Video</label>
 
             <Dropdown
               handleSelect={this.handleCategory}

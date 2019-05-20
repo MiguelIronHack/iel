@@ -73,12 +73,15 @@ export class Profile extends Component {
           fifthNavItem="Edit Lessons"
           fifthNavItemIcon={faPlus}
           fifthNavItemLink="/edit-lesson"
+          sixthNavItem="Manage Courses"
+          sixthNavItemIcon={faPlus}
+          sixthNavItemLink="/coursemanagement"
           courseModules={this.state.courseModules}
         />
 
         <section className="profile-section">
           <Heading>Enrolled Courses</Heading>
-          <Chart />
+          {/* <Chart /> */}
           <table className="table profile-table columns">
             <tbody>
               {this.state.courses.map((course, i) => (

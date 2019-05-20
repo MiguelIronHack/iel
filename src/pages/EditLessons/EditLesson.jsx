@@ -47,6 +47,9 @@ class EditLesson extends Component {
           fifthNavItem="Edit Lessons"
           fifthNavItemIcon={faPlus}
           fifthNavItemLink="/edit-lesson"
+          sixthNavItem="Manage Courses"
+          sixthNavItemIcon={faPlus}
+          sixthNavItemLink="/coursemanagement"
           courseModules={this.state.courseModules}
         />
         <LessonList handleClick={this.startEdit} />;
