@@ -10,6 +10,7 @@
   color: hsl(0, 0%, 96%);
   transition: all 0.2s ease-out;
 }
+
 .link:hover {
   background: hsl(0, 0%, 48%);
 }
@@ -95,6 +96,17 @@ input:focus {
 .card-content .content {
   text-align: center;
 }
+.card-header-title > a {
+  text-decoration: none;
+  color: hsl(0, 0%, 96%);
+  transition: all 0.2s ease-out;
+  text-transform: capitalize;
+}
+.card-header-title > a:hover {
+  text-decoration: none;
+  color: hsl(204, 75%, 76%);
+  transition: all 0.2s ease-out;
+}
 .course-img {
   width: 64px;
   justify-self: center;
@@ -103,6 +115,9 @@ input:focus {
 .card-subtitle {
   color: hsl(0, 0%, 96%);
   text-align: center;
+}
+.dropdown-item.is-active {
+  background: hsl(0, 0%, 86%) !important;
 }
 /*  */
 .footer > .container {
