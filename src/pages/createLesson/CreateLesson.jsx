@@ -36,12 +36,9 @@ class TextEditor extends Component {
   }
 
   notifyError = message =>
-    toast(
-      "Something went bad, might be us, might be you, we don't know " + message,
-      {
-        type: toast.TYPE.ERROR
-      }
-    );
+    toast(message, {
+      type: toast.TYPE.ERROR
+    });
 
   notifySuccess = () =>
     toast("Your lesson has been submitted my bruddahs", {
@@ -64,8 +61,13 @@ class TextEditor extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     const { title, description } = this.state;
 
+    if (!title || !description) {
+      this.notifyError("You must fill in the form to be able to submit");
+      return;
+    }
     const user = getLocalToken();
     const raw = convertToRaw(this.state.editorState.getCurrentContent());
     const rawJSON = JSON.stringify(raw);

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Upvote from "./Upvote";
 import { getCourse, rateCourse } from "../api/coursesHandler";
 
-export class Course extends Component {
+export class CourseCard extends Component {
   state = {
     user: {},
     liked: false,
@@ -17,8 +17,12 @@ export class Course extends Component {
   componentDidMount() {
     getCourse(this.props.id)
       .then(({ data }) => {
+        this.setState({ course: data });
         if (data.likes.indexOf(getLocalToken()._id) >= 0) {
-          this.setState({ totalLikes: data.likes.length, liked: true });
+          this.setState({
+            totalLikes: data.likes.length,
+            liked: true
+          });
         }
       })
       .catch(err => {});
@@ -55,12 +59,13 @@ export class Course extends Component {
             .catch(err => console.error(err));
         })
         .catch(err => console.log(err));
-    } //TODO PROBABLY HAVE TO BE DEALING WITH THE EDIT USER STATE DUNNO
+    }
   };
 
   render() {
     const { image, title, description, date, _id } = this.props;
-
+    const { course } = this.state;
+    if (!course) return <h1>Nothing here</h1>;
     return (
       <>
         <Card className="course-card shadow" data-id={_id}>
@@ -80,6 +85,10 @@ export class Course extends Component {
                 </Media.Item>
               </Media>
               <Content>
+                <Link to={"/user/profile/" + course.teacher[0]._id}>
+                  {course.teacher[0].firstName}&nbsp;
+                  {course.teacher[0].lastName}
+                </Link>
                 <Moment className="nav-link" calendar>
                   {date}
                 </Moment>
@@ -106,4 +115,4 @@ export class Course extends Component {
   }
 }
 
-export default Course;
+export default CourseCard;

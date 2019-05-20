@@ -14,35 +14,15 @@ const LessonNav = ({ title, handlePage, currentPage, max }) => {
   return (
     <React.Fragment>
       <div className="is-active lesson-nav">
-        <p
-          onClick={pageChange}
-          name="left"
-          className={
-            currentPage <= 0 ? "lesson-nav-left active" : "lesson-nav-left"
-          }
-        >
+        <p onClick={pageChange} name="left" className="lesson-nav-left">
           <span>
             <FontAwesomeIcon className="lesson-nav-icon" icon={faChevronLeft} />
             Previous
           </span>
         </p>
         <p className="lesson-nav-title title">{title}</p>
-        <p
-          onClick={pageChange}
-          direction="right"
-          className={
-            currentPage >= max - 1
-              ? "lesson-nav-right active"
-              : "lesson-nav-right"
-          }
-        >
-          <span
-            className={
-              currentPage >= max - 1
-                ? "lesson-nav-right active"
-                : "lesson-nav-right"
-            }
-          >
+        <p onClick={pageChange} direction="right" className="lesson-nav-right">
+          <span className="lesson-nav-right">
             Next
             <FontAwesomeIcon
               className="lesson-nav-icon"

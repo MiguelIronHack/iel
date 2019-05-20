@@ -1,11 +1,7 @@
 import React from "react";
-import { Heading } from "react-bulma-components";
 import "./LessonDisplay.css";
 import LessonNav from "./LessonNav";
 import Lesson from "./Lesson";
-import { getUser } from "../../api/userHandler";
-import { getLocalToken } from "../../api/ajaxLogin";
-import { getOneLesson, getLessons } from "../../api/lessonHandler";
 import { getModule } from "../../api/moduleHandler";
 
 export default class LessonDisplay extends React.Component {
@@ -16,34 +12,35 @@ export default class LessonDisplay extends React.Component {
   };
 
   componentDidMount() {
-    // const user = getLocalToken();
-    // getUser(user._id)
-    //   .then(({ data: user }) => {
-    //     this.setState({
-    //       lessons: user.lessons,
-    //       currentLesson: user.lessons[0]
-    //     });
-    //   })
-    //   .catch(err => console.log(err));
-    // getLessons()
     getModule(this.props.match.params.id)
       .then(res =>
         this.setState({
           lessons: res.data.lessons,
-          currentLesson: res.data.lessons[0]
+          currentLesson: res.data.lessons[0],
+          currentPage: this.props.location.state.currentPage
         })
       )
       .catch(err => console.error(err));
   }
 
   handlePage = direction => {
-    direction === "right"
-      ? this.setState({ currentPage: this.state.currentPage + 1 })
-      : this.setState({ currentPage: this.state.currentPage - 1 });
+    const currentPage = this.state.currentPage;
+    const max = this.state.lessons.length;
+    if (direction === "right" && currentPage + 1 >= max) {
+      this.setState({ currentPage: currentPage });
+      this.props.history.goBack();
+      return;
+    }
+    if (direction === "left" && currentPage - 1 < 0) {
+      this.setState({ currentPage: currentPage });
+      this.props.history.goBack();
+      return;
+    }
+    if (direction === "right") this.setState({ currentPage: currentPage + 1 });
+    if (direction === "left") this.setState({ currentPage: currentPage - 1 });
   };
 
   render() {
-    console.log(this.props);
     const { lessons, currentPage } = this.state;
 
     if (!lessons.length) return <p className="title">No lessons to display</p>;
@@ -56,8 +53,6 @@ export default class LessonDisplay extends React.Component {
           title={lessons[currentPage].title}
         />
         <section className="lesson-display-section">
-          <Heading>{lessons[currentPage].title}</Heading>
-
           <article className="lesson box column is-three-quarters">
             <p className="lesson-description">
               {lessons[currentPage].description}

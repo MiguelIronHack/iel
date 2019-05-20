@@ -2,7 +2,13 @@ import React from "react";
 import EditInput from "./EditInput";
 import InputFile from "./../../../components/InputFile";
 
-const SettingsForm = ({ handleSubmit, user, handleChange, errors }) => {
+const SettingsForm = ({
+  handleSubmit,
+  user,
+  handleChange,
+  errors,
+  handleImage
+}) => {
   if (!user) return null;
   return (
     <React.Fragment>
@@ -42,6 +48,7 @@ const SettingsForm = ({ handleSubmit, user, handleChange, errors }) => {
         />
 
         <EditInput
+          onChange={handleChange}
           text={user.description}
           inputPlaceHolder={user.description}
           name="description"
@@ -50,7 +57,7 @@ const SettingsForm = ({ handleSubmit, user, handleChange, errors }) => {
           error={errors.description}
         />
 
-        <InputFile />
+        <InputFile handleImage={handleImage} />
 
         <button
           className="button"

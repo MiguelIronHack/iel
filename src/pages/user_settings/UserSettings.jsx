@@ -30,16 +30,32 @@ class UserSettings extends Component {
 
   //TODO ADD INPUT FILE COMPONENT TO ADD IMAGES
 
+  handleImage = file => {
+    this.setState({ file });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     const { userName, firstName, avatar, lastName, _id } = this.state.user;
-    editUser(_id, { userName, firstName, avatar, lastName })
-      .then(({ data }) => {
-        console.log(data);
+    uploadImage(this.state.file)
+      .then(res => {
+        const imageUrl = res.data.results[0].secure_url;
+        const user = getLocalToken();
+        user.avatar = imageUrl;
+        setLocalToken(user);
+        const user2 = { ...this.state.user };
+        user2.avatar = imageUrl;
+        this.setState({ user: user2 });
+        editUser(_id, { userName, firstName, avatar: user2.avatar, lastName })
+          .then(({ data }) => {
+            console.log(data);
+          })
+          .catch(err => console.log(err));
+
+        setLocalToken(this.state.user);
+        this.setState({ isEditing: false });
       })
       .catch(err => console.log(err));
-    setLocalToken(this.state.user);
-    this.setState({ isEditing: false });
   };
 
   componentDidMount() {
@@ -66,19 +82,19 @@ class UserSettings extends Component {
     this.setState({ user, errors });
   };
 
-  handleImage = e => {
-    uploadImage(e)
-      .then(res => {
-        const imageUrl = res.data.results[0].secure_url;
-        const user = getLocalToken();
-        user.avatar = imageUrl;
-        setLocalToken(user);
-        const user2 = { ...this.state.user };
-        user2.avatar = imageUrl;
-        this.setState({ user: user2 });
-      })
-      .catch(err => console.log(err));
-  };
+  // handleImage = e => {
+  //   uploadImage(e)
+  //     .then(res => {
+  //       const imageUrl = res.data.results[0].secure_url;
+  //       const user = getLocalToken();
+  //       user.avatar = imageUrl;
+  //       setLocalToken(user);
+  //       const user2 = { ...this.state.user };
+  //       user2.avatar = imageUrl;
+  //       this.setState({ user: user2 });
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   render() {
     const { isEditing } = this.state;
@@ -97,6 +113,7 @@ class UserSettings extends Component {
             {isEditing ? (
               <div className="column is-8">
                 <SettingsForm
+                  handleImage={this.handleImage}
                   errors={this.state.errors}
                   user={this.state.user}
                   handleSubmit={this.handleSubmit}

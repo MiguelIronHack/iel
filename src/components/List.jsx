@@ -16,7 +16,7 @@ class List extends Component {
         <ul style={{ minWidth: "min-content" }}>
           {data.map((item, index) => (
             <li
-              id={item._id}
+              id={item._id || index}
               style={{
                 minWidth: "100%",
                 marginTop: "1vh"

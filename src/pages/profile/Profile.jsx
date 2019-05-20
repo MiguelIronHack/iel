@@ -44,11 +44,11 @@ export class Profile extends Component {
     const { enrolledCourses, _id } = this.state.user;
     editUser(_id, { enrolledCourses: this.state.courses })
       .then(res => {
-        console.log(res);
+        console.log(res); //TODO NOTIFY
       })
       .catch(err => console.log(err));
   };
-
+  z;
   render() {
     if (!window.localStorage.userCredential) this.props.history.push("/");
 
@@ -83,9 +83,9 @@ export class Profile extends Component {
                   <td className="column">
                     <Card className="has-background-grey-dark has-text-white-ter">
                       <Card.Header data-id={course._id}>
-                        <Link to={`/public/user/${this.state.teacher}`}>
+                        <Link to={`/user/profile/${course.teacher[0]._id}`}>
                           <Card.Header.Title className="has-text-white-ter">
-                            {this.state.teacher}
+                            {course.teacher[0].firstName}
                           </Card.Header.Title>
                         </Link>
                       </Card.Header>

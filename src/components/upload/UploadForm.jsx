@@ -55,7 +55,6 @@ export default class uploadForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
     const userToken = getLocalToken();
     try {
       uploadImage(this.state.imgFileList).then(res => {
@@ -84,11 +83,10 @@ export default class uploadForm extends Component {
     }
   };
 
-  onChange = e => {
+  onChange = ({ currentTarget }) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [currentTarget.name]: currentTarget.value
     });
-    console.log(e.target.name);
   };
 
   handleCategory = category => {
@@ -99,16 +97,10 @@ export default class uploadForm extends Component {
 
   render() {
     if (this.state.submitted === true) {
-      return <Redirect to="/explore" />;
+      return <Redirect to="/build-course" />;
     }
     const { onSubmit, onChange } = this;
-    const {
-      title,
-      selectedCategory,
-      categories,
-      description,
-      video
-    } = this.state;
+    const { title, selectedCategory, categories, description } = this.state;
 
     return (
       <React.Fragment>
@@ -152,14 +144,7 @@ export default class uploadForm extends Component {
               type="text"
             />
             <label htmlFor="video">Video</label>
-            <input
-              value={video}
-              onChange={onChange}
-              className="input"
-              placeholder="input your video link here..."
-              name="video"
-              type="input"
-            />
+
             <Dropdown
               handleSelect={this.handleCategory}
               key={title}

@@ -14,7 +14,6 @@ export default class CourseTable extends Component {
   componentDidMount() {}
 
   render() {
-    console.log(this.props.mod);
     const { mod } = this.props;
     return (
       <>
@@ -24,19 +23,23 @@ export default class CourseTable extends Component {
           <table className="table course-table is-hoverable ">
             <thead>
               <tr>
-                <th />
-                <th>Duration</th>
-                <th>Remaining</th>
+                <th>Lessons</th>
               </tr>
             </thead>
             <tbody>
               {mod.lessons.map((l, i) => (
                 <tr key={i}>
                   <td>
-                    <Link to={`/lesson/${mod._id}`}>{l.title}</Link>
+                    <Link
+                      to={{
+                        pathname: `/lesson/${mod._id}`,
+                        state: { currentPage: i }
+                      }}
+                    >
+                      {l.title}
+                    </Link>
+                    {/* <Link to={`/lesson/${mod._id}`}>{l.title}</Link> */}
                   </td>
-                  <td>{Math.floor(Math.random() * 10)}h 30min</td>
-                  <td>{Math.floor(Math.random() * 3)}h 20min</td>
                 </tr>
               ))}
             </tbody>
