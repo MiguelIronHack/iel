@@ -10,7 +10,8 @@ import Dropdown from "../../components/RealDropDown";
 import { getAllTags } from "../../api/tagHandler";
 import { updateLesson } from "../../api/lessonHandler";
 import { deleteLesson } from "./../../api/lessonHandler";
-
+import SidePanel from "./../components/CourseSidePanel";
+import { faPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 class LessonEditor extends Component {
   state = {
     title: "",
@@ -81,6 +82,28 @@ class LessonEditor extends Component {
     const { selectedTag, tags, title, description } = this.state;
     return (
       <>
+        <SidePanel
+          firstNavItem="My Courses"
+          firstNavItemIcon={faSignInAlt}
+          firstNavItemLink="/profile"
+          secondNavItem="Build Course"
+          secondNavItemIcon={faPlus}
+          secondNavItemLink="/build-course"
+          thirdNavItem="Create Lessons"
+          thirdNavItemIcon={faPlus}
+          thirdNavItemLink="/create/lesson"
+          fourthNavItem="Create Course"
+          fourthNavItemIcon={faPlus}
+          fourthNavItemLink="/create-course"
+          fifthNavItem="Edit Lessons"
+          fifthNavItemIcon={faPlus}
+          fifthNavItemLink="/edit-lesson"
+          sixthNavItem="Manage Courses"
+          sixthNavItemIcon={faPlus}
+          sixthNavItemLink="/coursemanagement"
+          courseModules={this.state.courseModules || []}
+        />
+
         <div className="form-submit-lesson">
           <form onSubmit={this.saveChanges}>
             <div className="column is-4">
