@@ -72,7 +72,7 @@ input:focus {
 }
 .course-management-section,
 .category-section {
-  padding: 5vh 10vw;
+  padding: 15vh 10vw 5vh;
 }
 .table {
   border-radius: 5px;
