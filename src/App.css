@@ -25,6 +25,7 @@ body {
   font-family: "Quicksand", sans-serif !important;
 }
 .section {
+  min-height: min-content;
   height: 100vh;
 }
 h1,

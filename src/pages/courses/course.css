@@ -87,15 +87,16 @@
   justify-content: space-between;
 }
 .course-card .card-content .content a {
-  color: hsl(204, 100%, 81%);
+  text-decoration: none;
+  color: hsl(0, 0%, 96%);
+  transition: all 0.2s ease-out;
   text-transform: capitalize;
   font-size: 1.2rem;
-  font-weight: 600;
 }
 .course-card .card-content .content a:hover {
-  color: hsl(204, 100%, 90%);
-  text-transform: capitalize;
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  text-decoration: none;
+  color: hsl(204, 75%, 76%);
+  transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .panel-footer {
   border-top-left-radius: 0;
