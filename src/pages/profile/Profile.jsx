@@ -48,8 +48,9 @@ export class Profile extends Component {
         console.log(res); //TODO NOTIFY
       })
       .catch(err => console.log(err));
+    e.target.parentElement.parentElement.parentElement.remove();
   };
-  z;
+
   render() {
     if (!window.localStorage.userCredential) this.props.history.push("/");
     if (!this.state.courses) return null;
@@ -134,7 +135,9 @@ export class Profile extends Component {
                           data-id={course._id}
                           onClick={this.handleDelete}
                         >
-                          <FontAwesomeIcon icon={faTimesCircle} />
+                          <span>
+                            <FontAwesomeIcon icon={faTimesCircle} />
+                          </span>
                         </div>
                       </Card.Footer>
                     </Card>
