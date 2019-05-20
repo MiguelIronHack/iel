@@ -1,6 +1,6 @@
 .lesson-list {
   min-height: 100vh;
-  padding: 5vh 5vw;
+  padding: 5vh 5vw 5vh 20vw;
 }
 .lesson-list > div > h1,
 .lesson-list > div > p {
@@ -28,4 +28,9 @@
   background: hsl(0, 0%, 9%);
   color: hsl(0, 0%, 96%);
   transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media screen and (max-width: 1100px) {
+  .lesson-list {
+    padding: 15vh 5vw 5vh 5vw;
+  }
 }

@@ -72,11 +72,7 @@ export class CourseCard extends Component {
           <Card.Content>
             <Link to={`/course/${this.props.id}`}>
               <Media>
-                <Media.Item
-                  className="course-img"
-                  renderAs="figure"
-                  position="left"
-                >
+                <Media.Item className="course-img" renderAs="figure">
                   <Image alt={title} src={image} />
                 </Media.Item>
                 <Media.Item>
@@ -85,7 +81,10 @@ export class CourseCard extends Component {
                 </Media.Item>
               </Media>
               <Content>
-                <Link to={"/user/profile/" + course.teacher[0]._id}>
+                <Link
+                  className="user-profile"
+                  to={"/user/profile/" + course.teacher[0]._id}
+                >
                   {course.teacher[0].firstName}&nbsp;
                   {course.teacher[0].lastName}&nbsp;
                 </Link>
