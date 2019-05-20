@@ -72,11 +72,7 @@ export class CourseCard extends Component {
           <Card.Content>
             <Link to={`/course/${this.props.id}`}>
               <Media>
-                <Media.Item
-                  className="course-img"
-                  renderAs="figure"
-                  position="left"
-                >
+                <Media.Item className="course-img" renderAs="figure">
                   <Image alt={title} src={image} />
                 </Media.Item>
                 <Media.Item>
