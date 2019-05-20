@@ -23,7 +23,6 @@ export class TagChart extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.data, this.props.keys);
     const chartData = {
       labels: this.props.keys,
       datasets: [
@@ -41,10 +40,6 @@ export class TagChart extends Component {
       ]
     };
     this.setState({ chartData });
-
-    // getAllCategories()
-    //   .then(res => res.data.map(c => console.log(c.name)))
-    //   .catch({});
   }
   render() {
     return (

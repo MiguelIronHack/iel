@@ -26,7 +26,6 @@ class PublicProfile extends Component {
       .then(({ data: courses }) => {
         const coursePopularityPerCategory = {};
         courses.forEach(course => {
-          console.log(course);
           if (
             coursePopularityPerCategory.hasOwnProperty(course.category[0].name)
           ) {
@@ -59,7 +58,6 @@ class PublicProfile extends Component {
     if (!user || !navigation || !coursePopularityPerCategory)
       return <h1>Error</h1>;
     const selectedView = user[selectedPath.path];
-    console.log(this.state.coursePopularityPerCategory);
     return (
       <section className="section">
         <div className="columns is-12">
