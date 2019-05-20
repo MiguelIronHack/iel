@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Dropdown from "../../components/RealDropDown";
 import { getAllTags } from "../../api/tagHandler";
 import { updateLesson } from "../../api/lessonHandler";
+import { deleteLesson } from "./../../api/lessonHandler";
 
 class LessonEditor extends Component {
   state = {
@@ -56,7 +57,11 @@ class LessonEditor extends Component {
   onContentStateChange = editorState => {
     this.setState({ editorState });
   };
-
+  handleDelete = e => {
+    deleteLesson(this.state.lesson._id)
+      .then(res => this.props.history.goBack())
+      .catch(err => console.log(err));
+  };
   saveChanges = e => {
     e.preventDefault();
     const { lesson, title, description, selectedTag } = this.state;
@@ -103,6 +108,7 @@ class LessonEditor extends Component {
                 handleSelect={this.handleTag}
                 name="tags"
               />
+
               <button className="button">Submit Lesson</button>
             </div>
 
@@ -125,6 +131,9 @@ class LessonEditor extends Component {
             </div>
             <ToastContainer />
           </form>
+          <button onClick={this.handleDelete} className="button is-danger">
+            Delete Lesson
+          </button>
         </div>
       </>
     );

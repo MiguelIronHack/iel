@@ -136,7 +136,33 @@ class BuildCourse extends Component {
       currentCourse,
       tags
     } = this.state;
-    if (!courses.length) return <h1>No courses to display</h1>;
+    if (!courses.length)
+      return (
+        <section className="build-course-section">
+          <SidePanel
+            firstNavItem="My Courses"
+            firstNavItemIcon={faSignInAlt}
+            firstNavItemLink="/profile"
+            secondNavItem="Build Course"
+            secondNavItemIcon={faPlus}
+            secondNavItemLink="/build-course"
+            thirdNavItem="Create Lessons"
+            thirdNavItemIcon={faPlus}
+            thirdNavItemLink="/create/lesson"
+            fourthNavItem="Create Course"
+            fourthNavItemIcon={faPlus}
+            fourthNavItemLink="/create-course"
+            fifthNavItem="Edit Lessons"
+            fifthNavItemIcon={faPlus}
+            fifthNavItemLink="/edit-lesson"
+            sixthNavItem="Manage Courses"
+            sixthNavItemIcon={faPlus}
+            sixthNavItemLink="/coursemanagement"
+            courseModules={this.state.courseModules}
+          />
+          <h1 className="title">No courses to display</h1>
+        </section>
+      );
 
     const filteredLessons =
       selectedTag && selectedTag._id

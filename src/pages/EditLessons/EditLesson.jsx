@@ -28,7 +28,10 @@ class EditLesson extends Component {
 
   render() {
     const { selectedLesson, isEditing } = this.state;
-    if (isEditing) return <LessonEditor lesson={selectedLesson} />;
+    if (isEditing)
+      return (
+        <LessonEditor history={this.props.history} lesson={selectedLesson} />
+      );
     return (
       <>
         <SidePanel
