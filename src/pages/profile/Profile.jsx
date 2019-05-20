@@ -85,11 +85,10 @@ export class Profile extends Component {
                   <td className="column">
                     <Card className="has-background-grey-dark has-text-white-ter">
                       <Card.Header data-id={course._id}>
-                        <Card.Header.Title
-                          to={`/user/profile/${course.teacher[0]._id}`}
-                          className="has-text-white-ter"
-                        >
-                          {course.teacher[0].firstName}
+                        <Card.Header.Title className="has-text-white-ter">
+                          <Link to={`/user/profile/${course.teacher[0]._id}`}>
+                            {course.teacher[0].firstName}
+                          </Link>
                         </Card.Header.Title>
                       </Card.Header>
                       <Card.Content>
