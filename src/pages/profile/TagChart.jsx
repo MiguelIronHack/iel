@@ -23,6 +23,25 @@ export class TagChart extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props.data, this.props.keys);
+    const chartData = {
+      labels: this.props.keys,
+      datasets: [
+        {
+          label: "Popularity per course",
+          data: this.props.data,
+
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)"
+            // "rgba(75, 192, 192, 0.6)"
+          ]
+        }
+      ]
+    };
+    this.setState({ chartData });
+
     // getAllCategories()
     //   .then(res => res.data.map(c => console.log(c.name)))
     //   .catch({});
@@ -37,7 +56,7 @@ export class TagChart extends Component {
           options={{
             title: {
               display: true,
-              text: "Courses enrolled by type",
+              text: "Popularity per category",
               fontColor: "hsl(0, 0%, 96%)"
             },
             legend: {

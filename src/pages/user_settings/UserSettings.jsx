@@ -82,20 +82,6 @@ class UserSettings extends Component {
     this.setState({ user, errors });
   };
 
-  // handleImage = e => {
-  //   uploadImage(e)
-  //     .then(res => {
-  //       const imageUrl = res.data.results[0].secure_url;
-  //       const user = getLocalToken();
-  //       user.avatar = imageUrl;
-  //       setLocalToken(user);
-  //       const user2 = { ...this.state.user };
-  //       user2.avatar = imageUrl;
-  //       this.setState({ user: user2 });
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
   render() {
     const { isEditing } = this.state;
 

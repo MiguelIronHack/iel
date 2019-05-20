@@ -50,8 +50,14 @@ class PublicProfile extends Component {
   };
 
   render() {
-    const { navigation, user, selectedPath } = this.state;
-    if (!user || !navigation) return <h1>Error</h1>;
+    const {
+      navigation,
+      user,
+      selectedPath,
+      coursePopularityPerCategory
+    } = this.state;
+    if (!user || !navigation || !coursePopularityPerCategory)
+      return <h1>Error</h1>;
     const selectedView = user[selectedPath.path];
     console.log(this.state.coursePopularityPerCategory);
     return (
@@ -60,6 +66,12 @@ class PublicProfile extends Component {
           <div className=" container shadow column is-5">
             <div className=" profile-user-info">
               <UserPublicCard user={this.state.user} />
+              <TagChart
+                keys={Object.keys(this.state.coursePopularityPerCategory) || []}
+                data={
+                  Object.values(this.state.coursePopularityPerCategory) || []
+                }
+              />
             </div>
           </div>
           <div className="column is-7">
