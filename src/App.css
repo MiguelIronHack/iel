@@ -115,8 +115,7 @@ input:focus {
   height: 100%;
   min-height: min-content;
 }
-.explore-section .columns .course-card .card-content > a > .content {
-}
+
 .course-img {
   width: 64px;
   justify-self: center;
@@ -175,5 +174,10 @@ input:focus {
 @media screen and (max-width: 340px) {
   .footer {
     min-height: min-content;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .course-management-section {
+    padding: 5vh 5vw 5vh 20vw;
   }
 }
