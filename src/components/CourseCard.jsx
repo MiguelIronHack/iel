@@ -87,7 +87,7 @@ export class CourseCard extends Component {
               <Content>
                 <Link to={"/user/profile/" + course.teacher[0]._id}>
                   {course.teacher[0].firstName}&nbsp;
-                  {course.teacher[0].lastName}
+                  {course.teacher[0].lastName}&nbsp;
                 </Link>
                 <Moment className="nav-link" calendar>
                   {date}

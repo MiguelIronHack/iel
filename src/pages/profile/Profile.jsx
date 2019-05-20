@@ -10,7 +10,8 @@ import { Link } from "react-router-dom";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Chart from "./TagChart";
-
+import Moment from "react-moment";
+import { updateThread } from "./../../api/threadHandler";
 export class Profile extends Component {
   state = {
     name: "",
@@ -51,6 +52,7 @@ export class Profile extends Component {
   z;
   render() {
     if (!window.localStorage.userCredential) this.props.history.push("/");
+    if (!this.state.courses) return null;
 
     return (
       <>
@@ -83,11 +85,12 @@ export class Profile extends Component {
                   <td className="column">
                     <Card className="has-background-grey-dark has-text-white-ter">
                       <Card.Header data-id={course._id}>
-                        <Link to={`/user/profile/${course.teacher[0]._id}`}>
-                          <Card.Header.Title className="has-text-white-ter">
-                            {course.teacher[0].firstName}
-                          </Card.Header.Title>
-                        </Link>
+                        <Card.Header.Title
+                          to={`/user/profile/${course.teacher[0]._id}`}
+                          className="has-text-white-ter"
+                        >
+                          {course.teacher[0].firstName}
+                        </Card.Header.Title>
                       </Card.Header>
                       <Card.Content>
                         <Media>
@@ -100,7 +103,13 @@ export class Profile extends Component {
                           </Media.Item>
                           <Media.Item>
                             <Heading className="has-text-white-ter" size={4}>
-                              {course.title}
+                              <Link
+                                to={`/course/${course._id}`}
+                                className="has-text-white-ter"
+                                size={4}
+                              >
+                                {course.title}
+                              </Link>
                             </Heading>
                             <Heading subtitle size={6}>
                               @johnsmith
@@ -110,7 +119,10 @@ export class Profile extends Component {
                         <Content>
                           {course.description}
                           <br />
-                          <time dateTime="2016-1-1">{course.updated_at}</time>
+
+                          <Moment className="nav-link" calendar>
+                            {course.updated_at}
+                          </Moment>
                         </Content>
                       </Card.Content>
                       <Card.Footer>
